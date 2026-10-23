@@ -6,7 +6,13 @@
   'use strict';
   const el=document.getElementById('visitor-counter-total');
   if(!el)return;
-  const endpoint='https://countapi.mileshilliard.com/api/v1/hit/delghe_com_pageviews_20261023';
+  // Keep test-site and production visits separate.
+  const hostname=location.hostname.toLowerCase();
+  const key=hostname==='delghe.com'||hostname==='www.delghe.com'
+    ? 'delghe_com_pageviews_20261023'
+    : hostname==='delghe3.github.io' ? 'delghem_github_preview_pageviews_20261023' : '';
+  if(!key)return;
+  const endpoint='https://countapi.mileshilliard.com/api/v1/hit/'+key;
   const controller=new AbortController();
   const cancel=setTimeout(()=>controller.abort(),8000);
   fetch(endpoint,{method:'GET',cache:'no-store',mode:'cors',credentials:'omit',referrerPolicy:'no-referrer',signal:controller.signal})
