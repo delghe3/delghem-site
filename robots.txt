@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /qa-responsive.html
+
+Sitemap: https://www.delghe.com/sitemap.xml
