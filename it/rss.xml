@@ -1,22 +1,22 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
   <channel>
     <title>DÈLGHEM · approfondimenti FEM per Apple Silicon</title>
     <link>https://www.delghe.com/it/</link>
-    <description>Aggiornamenti tecnici sui benchmark FEM e sul progetto DÈLGHEM in sviluppo</description>
+    <description>Risultati Kratos, modellazione nativa FEM per Apple Silicon e sviluppo di DÈLGHEM.</description>
     <language>it-IT</language>
     <lastBuildDate>Sat, 24 Oct 2026 07:00:00 GMT</lastBuildDate>
     <item>
-      <title>Analisi Pushover e IDA su Mac | DÈLGHEM FEM nativo</title>
+      <title>Kratos su Mac: cicli plastici, IDA e Pushover | DÈLGHEM</title>
       <link>https://www.delghe.com/analisi-pushover-ida-mac/</link>
-      <description>Curve Pushover X/Y con plasticizzazione S235, 16 analisi IDA Kratos e accelerogrammi reali del solver DÈLGHEM D2 per Apple Silicon. Benchmark con limiti espliciti.</description>
+      <description>Risultati autentici KratosMultiphysics su Mac Apple Silicon: tensioni FEM, 240 stati ciclici assiali, plasticità delle fibre S235 e 16 analisi IDA. Limiti chiari.</description>
       <pubDate>Sat, 24 Oct 2026 07:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://www.delghe.com/analisi-pushover-ida-mac/</guid>
     </item>
     <item>
       <title>Mappe di tensione FEM 3D su Mac | DÈLGHEM D2</title>
       <link>https://www.delghe.com/mappe-tensioni-fem-3d/</link>
-      <description>Mappe colorate Von Mises, σ11, σ22 e τ12 su 176 shell QUAD4 e 66 aste da analisi OpenSeesPy reale. Scopri il visualizzatore FEM 3D DÈLGHEM per Apple Silicon.</description>
+      <description>Mappe colorate Von Mises, σ11, σ22 e τ12 su 176 shell QUAD4 e 66 aste da analisi KratosMultiphysics reale. Scopri il visualizzatore FEM 3D DÈLGHEM per Apple Silicon.</description>
       <pubDate>Sat, 24 Oct 2026 07:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://www.delghe.com/mappe-tensioni-fem-3d/</guid>
     </item>

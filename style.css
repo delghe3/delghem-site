@@ -714,7 +714,7 @@ body.photo-open{overflow:hidden}
 @media(max-width:720px){.rc-details-gallery img{height:auto;min-height:0;aspect-ratio:2.8;object-fit:contain}}
 @media(max-width:400px){.rc-details-gallery img{aspect-ratio:3.3}}
 
-/* FEM LAB / source-backed OpenSees and Kratos analytic visualization */
+/* FEM LAB / source-backed KratosMultiphysics static and dynamic engineering visualization */
 .fem-lab-section{background:#0b2733;color:#e9f4f1;border-top:1px solid #2b5460;border-bottom:1px solid #2b5460;scroll-margin-top:80px;padding:clamp(78px,8.4vw,132px) var(--gutter)}
 .fem-lab-inner{max-width:1520px;margin:0 auto}
 .fem-lab-heading{display:grid;grid-template-columns:1fr .8fr;gap:clamp(30px,5vw,100px);align-items:end}

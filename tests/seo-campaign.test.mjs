@@ -54,7 +54,7 @@ test('sitemap declares all six canonical URLs once, includes new real D2 images,
   const hit='<loc>https://www.delghe.com/'+slug+'/</loc>';
   assert.equal(sitemap.split(hit).length,2,slug+' unique sitemap entry');
  }
- assert.match(sitemap,/assets\/fem-lab\/gallery\/pushover-plastic-x-actual-solver\.webp/);
+ assert.match(sitemap,/assets\/fem-lab\/gallery\/kratos-axial-loading\.webp/);
  assert.match(sitemap,/assets\/real-d2\/complex-frame-poster\.webp/);
  const keys=readdirSync(root).filter(n=>/^[a-z0-9-]{16,64}\.txt$/.test(n));
  assert.ok(keys.length>=1,'IndexNow key URL must exist at site root');

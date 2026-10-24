@@ -1,35 +1,60 @@
-DÈLGHEM D2 · FEM LAB: ACTUAL SOURCE BACKED RESULTS
-Read-only extraction from local D2 files; no source application code edited.
-STRESS source: work/reconciliation/core-cut-native-8.json | SHA256: 03369ca32bf26ad101a3b00f78b8fbe4826a362acb05347ac26439178bd155eb
-PUSHOVER source: work/continuous-20261022T231218Z-51b4fe/verification/guided-dynamics-source-first/guided-dynamics-ui-source-7IpeRs/pushover-engine-report.json | SHA256: 3813d37c3571cf0563783ac3ac66563310914a0e4b721a9b7cbc55c55ceb81dd
-IDA source: exports/Hyperfem_2026-10-23T00-58-03-164Z_a97f6b85.ida-suite.json | SHA256: d7eda747e36c42572ae0acb17ca974c5583a70fd3837b0987ea83bdaa54dbd23
-Stress: 128 real QUAD shell results, 4 Gauss points per element, front/back MPa; per-element color uses average, not a physical reconstruction of continuous contours.
-Pushover: Kratos nonlinear-static protocol but ELASTIC material. It is NOT a validated nonlinear capacity curve or a collapse computation.
-IDA: 2 analytic diagnostic acceleration histories and 2 scaled completed runs each. NO collapse, NO observed plasticity and NO statistical fragility curve.
-Every dataset belongs to a separate verified software benchmark fixture, NOT the asymmetric homepage building model.
-These charts are NOT certified structural checks, not proof of whole-product qualification, and not authorized for executive structural design.
+DÈLGHEM D2 — KRATOSMULTIPHYSICS SOURCE-BACKED FEM LAB
+Build date: 24 October 2026
+This is the website-publicated technical evidence of distinct D2 benchmark cases.
 
+ENGINE: KratosMultiphysics for every active numerical chart, without solver attribution substitutions.
 
-DÈLGHEM D2 FEM LAB V2 · READ-ONLY SOLVER-EVIDENCE BUNDLE
-Advanced shell: script scripts/build-showcase-shell.mjs derived from actual D2 B01 benchmark, 176 real QUAD4 shell responses, coupled physical beams and wall opening.
-Nonlinear X/Y pushover: scripts/build-advanced-pushover.mjs, real OpenSeesPy steel-fiber IPE300 S235 displacement control, 32 converged states/direction, observed plastic strain.
-IDA X/Y: scripts/build-advanced-ida.mjs, real KratosMultiphysics steel-fiber Newmark dynamics, 8 discrete intensity levels for each of two diagnostic orientations, 16 completed actual solves.
-No collapse or numerical failure is reclassified as a limit state; no statistical fragility is inferred from two oriented analytical diagnostic models.
-Website 3D stress colors subdivide shell panels using bilinear interpolation BETWEEN existing shell Gauss values, solely for visualization, not a solver-derived continuous nodal stress field.
-Gallery images are actual Chrome captures of the D2-data-fed website visualization, not native application screenshots; UI proof screenshots have their independent source files.
-CAVEAT: These are separate benchmark fixtures. None is the conceptual complex building on the homepage. NOT certified structural checks.
+STATIC SHELL BENCHMARK B01
+  Solver: KratosMultiphysics
+  Separate geometry: Telaio con impalcati a geometria variabile
+  Elements: 176 QUAD4, 66 physical beam segments, 218 nodes.
+  Static equilibrium residual: 8.209093065765238e-12
+  Input fixture SHA256: b37752d5eef84ba2477eb3d17f413fd2658d097f2abed73dd46dcd82e1c7ca96
+  Solved native Kratos result SHA256: c77c54baf6c50afbd5021267b3bc3c65ceea03f97646ce43330f457577b0d252
+  Face stress recovery: linear elastic isotropic face plane stresses N/h ± 6M/h² from genuine Kratos membrane force and bending moment resultants, MPa; local shell coordinates
+  Values in MPa are reconstructed from native local membrane force and bending moment resultants N/h ± 6M/h²; surface color uses only same-element Gauss values.
+  NOT a certified static or seismic verification of the homepage concept tower.
 
-V2 asset source: assets/fem-lab/advanced-shell-results.json | SHA256: 498e86ac4dfd57f102b65e63ca6dcba4335cbec42acc79af35d78e1e3c7a4d34 | bytes: 307015
-V2 asset source: assets/fem-lab/native-plastic-pushover.json | SHA256: 5dfb526461708537d93c78cb2cb8aeca42cfff7c57119b3d245d61297172f15e | bytes: 12349
-V2 asset source: assets/fem-lab/native-nonlinear-ida.json | SHA256: b1dde5facebd6172ef3615fb623be76326b45e8b1d85205e69d0f4678f0f2c5d | bytes: 749212
-V2 asset source: assets/fem-lab/d2-ida-original-ui.png | SHA256: 603961008601ec9e18f1a7696e4ee11c5e3f2729260903d8a03e141efc5b4507 | bytes: 351141
-V2 asset source: assets/fem-lab/d2-pushover-original-ui.png | SHA256: 01183a6318bcb5bc0d32aafad5471902cfbcbd04a45929e9c38da059d3190eff | bytes: 311857
-V2 asset source: assets/fem-lab/d2-ida-settings-ui.webp | SHA256: d34b8c2c2d5a0ed9859a4cb1d9e71ef5792a8a999daba9e9ac8d226e81341c1d | bytes: 41536
-V2 asset source: assets/fem-lab/d2-ida-input-ui.webp | SHA256: e070b7d1a30dc3df3fc125cd84f8f2867b2a0bbe4aedd3d772ff30e82208c846 | bytes: 41388
-V2 asset source: assets/fem-lab/d2-pushover-settings-ui.webp | SHA256: 1536ce7c4e65ca82e8f815301b8df9c7068d4999919d0549b4e661dab4d8da7e | bytes: 42124
-V2 asset source: assets/fem-lab/gallery/stress-actual-solver.webp | SHA256: 9b96f2be1f8114c37f812dcb3b2ae1690e75bedf7ef7e8646a45dd8a2df4d8fc | bytes: 42228
-V2 asset source: assets/fem-lab/gallery/pushover-plastic-x-actual-solver.webp | SHA256: f2914ef0d3d122d7946490cb4582377ef951846f83fbf13dcdd7c6407ce6113c | bytes: 24396
-V2 asset source: assets/fem-lab/gallery/pushover-fiber-plastic-actual-solver.webp | SHA256: d9e8a478f30b7146c5fb8187ec09e7fd3808988f9990c2b1463bd6344b8e0f78 | bytes: 31220
-V2 asset source: assets/fem-lab/gallery/ida-nonlinear-x-actual-solver.webp | SHA256: f2e5220b9813c124f270163ed74c74d2dc8e605f74e9390aabb8b375375ca28d | bytes: 21752
-V2 asset source: assets/fem-lab/gallery/ida-hysteresis-actual-solver.webp | SHA256: 1e303a5f3a388f389ed5fb061c99b15cddfaeef6333b22c9d2dd42a7f0f3aa81 | bytes: 14704
-V2 asset source: assets/fem-lab/gallery/accelerogram-x-actual-solver.webp | SHA256: 6df017a2aaef526a8640c48d4e6fff2c0c22bcd48d2c69e9503655dbd02d7f56 | bytes: 25040
+NONLINEAR STATIC S235 STEEL-FIBER AXIAL CYCLIC SPECIMEN
+  Solver: KratosMultiphysics
+  Specimen: IPE 300, steel S235, 3 m, X axis.
+  Five axial loading/unloading/reversal branches, 240 genuinely accepted variable states.
+  Maximum observed fiber plastic strain: 0.006250100223872489
+  D2 raw result SHA256: 1e8023c7b0bf113df71befbd00f08654d5b7c58603138bef5d3f6e9cfc649394
+  Original analysis request SHA256: 7481a4deed9849e4a40068dad24db40bfd9ea7f1146d15bcac49757fbebe30d5
+  Source: D2/work/continuous-20261022T231218Z-51b4fe/verification/distributed-aligned/results/steel-linear-distributed-cycle-preload-kratos-raw.json
+  This is an axial cyclic case, NOT a lateral building Pushover capacity curve; no ultimate displacement/collapse inferred.
+
+INCREMENTAL DYNAMIC ANALYSIS
+  Solver: KratosMultiphysics
+  2 diagnostic orientations, 16 genuinely completed nonlinear intensity analyses.
+  strong-X: input SHA256 97162088c27e8badf0f0b0bece5594b96fa2c0a4035b544c2a245bae3ac3c4f9; native result SHA256 e7dae2b49aca13cba3977f6fa0149c77e88a0ab03306d6d34bf535162e6b00db
+  weak-Y: input SHA256 a4af26e605d01b174e5b414cb8222145cb26d9a758e7e697195aaa8dbd1e56e4; native result SHA256 03a2c8fdb5fa953171613935a1e93b5d51f9c7a4566bb893aeb591d832421f16
+  Input accelerograms are analytical diagnostics, not actual historic earthquake records.
+  No collapse observed; no statistical fragility curve is inferred from the orientations.
+
+IMAGE AND DATA FILE INTEGRITY (SOURCE HASHES)
+assets/fem-lab/advanced-shell-results.json | SHA256: c18e7a282e617df57fa51c1f3edb1cc2ec2e84097306288669af8091fe5cf1fc | bytes: 309278
+assets/fem-lab/native-kratos-cyclic.json | SHA256: e43bb657875bb0c98e233edb6b886aca7fd8471672c7c7a5fe40f2062bd66d33 | bytes: 86227
+assets/fem-lab/native-nonlinear-ida.json | SHA256: b1dde5facebd6172ef3615fb623be76326b45e8b1d85205e69d0f4678f0f2c5d | bytes: 749212
+assets/fem-lab/gallery/stress-actual-solver.webp | SHA256: 085dc411bcf58bacde35e33b26e99cedb56c8c1c237dff1b28b116e676f7857c | bytes: 38908
+assets/fem-lab/gallery/kratos-axial-loading.webp | SHA256: 4b1872cd9b74acfed6f6a850af6cd63cbb4eac48867064f691c8887b6b35462a | bytes: 26816
+assets/fem-lab/gallery/kratos-axial-cyclic-loop.webp | SHA256: 9ae3d2b514782b45981e08cdc13adbff773aa4d62f467f70464ab612a68c4308 | bytes: 32558
+assets/fem-lab/gallery/kratos-axial-plastic-strain.webp | SHA256: ceb0041e7c030b60a692907e78bc52d7decfb1f868a71c81b2209fc75144a7a6 | bytes: 30360
+assets/fem-lab/gallery/ida-nonlinear-x-actual-solver.webp | SHA256: f2e5220b9813c124f270163ed74c74d2dc8e605f74e9390aabb8b375375ca28d | bytes: 21752
+assets/fem-lab/gallery/ida-nonlinear-y-actual-solver.webp | SHA256: fce2378e87525768df42cc834be9a6412c0263a2fba17c0c1d8033f2f063ced5 | bytes: 20840
+assets/fem-lab/gallery/ida-hysteresis-actual-solver.webp | SHA256: 1e303a5f3a388f389ed5fb061c99b15cddfaeef6333b22c9d2dd42a7f0f3aa81 | bytes: 14704
+assets/fem-lab/gallery/ida-hysteresis-y-actual-solver.webp | SHA256: 0cf105a27ba4618abde65c4807c2a9d495ee07aa470dd2dfca86e51582656a19 | bytes: 11780
+assets/fem-lab/gallery/accelerogram-x-actual-solver.webp | SHA256: 6df017a2aaef526a8640c48d4e6fff2c0c22bcd48d2c69e9503655dbd02d7f56 | bytes: 25040
+assets/fem-lab/gallery/accelerogram-y-actual-solver.webp | SHA256: ce50f2efe04016ed5a0c894db31ba8d1e466c7680b0b4c1d74eaf97c51b69714 | bytes: 23884
+assets/fem-lab/gallery/response-x-actual-solver.webp | SHA256: cf100dbe95793c5fefdcb5cf564afc5d1e962c99ab041f68be1d7b0ae8d9fe92 | bytes: 29028
+assets/fem-lab/gallery/response-y-actual-solver.webp | SHA256: 6c5836969038b533b531199afe512efaf97d8be203f11442697e10df3be402d8 | bytes: 27692
+scripts/build-kratos-shell.mjs | SHA256: 1daafc569e79628e2aca99029ea61e7ad015536ae54b7fee4f1f927fdf0afab5 | bytes: 9999
+scripts/build-kratos-cyclic.mjs | SHA256: bc135931b25aaaa291b097421567255bb0a9e30f6041f20dfae9f51e5424f45c | bytes: 4536
+scripts/build-advanced-ida.mjs | SHA256: cf005f6cdb9a1de5323d4af9a43d0f942342274d8be0104705ae70cf6528fbe9 | bytes: 4510
+
+RESTRICTIONS
+  All cases are independently documented benchmarks and are not results for the eight-storey homepage D2 concept structure.
+  Not certified or licensed structural design checks; no inferred code compliance or verified collapse capacity.
+  Gallery images are browser captures of genuine solver-fed Canvas/SVG plots; they are not photographs of the engineering application.
+  Source screenshots of the D2 interface are separate original media, not representations of the same 240-state axial specimen.

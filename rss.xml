@@ -1,22 +1,22 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
   <channel>
     <title>DÈLGHEM · Apple Silicon structural FEM insights</title>
     <link>https://www.delghe.com/</link>
-    <description>DÈLGHEM engineering development and technical benchmark updates</description>
+    <description>Real Kratos engineering benchmarks and native structural FEM development updates.</description>
     <language>en-GB</language>
     <lastBuildDate>Sat, 24 Oct 2026 07:00:00 GMT</lastBuildDate>
     <item>
-      <title>Nonlinear Pushover and IDA on Mac | DÈLGHEM FEM</title>
+      <title>Kratos FEM on Mac: Cyclic Plasticity, IDA and Pushover</title>
       <link>https://www.delghe.com/en/nonlinear-pushover-ida-mac/</link>
-      <description>Explore real S235 steel-fiber Pushover curves, 16 Kratos IDA runs, accelerograms and hysteresis results from DÈLGHEM D2 on Apple Silicon, with documented model limits.</description>
+      <description>Source-backed KratosMultiphysics engineering results on Apple Silicon: nonlinear S235 axial cyclic response with 240 states, 16 IDA analyses and real solver input records.</description>
       <pubDate>Sat, 24 Oct 2026 07:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://www.delghe.com/en/nonlinear-pushover-ida-mac/</guid>
     </item>
     <item>
       <title>3D FEM Stress Contours and QUAD4 Shells | DÈLGHEM</title>
       <link>https://www.delghe.com/en/3d-fem-stress-contours/</link>
-      <description>Inspect genuine OpenSeesPy Von Mises, σ11, σ22 and τ12 contour maps on 176 QUAD4 shells and 66 frame members in DÈLGHEM for native Apple Silicon Macs.</description>
+      <description>Inspect genuine KratosMultiphysics Von Mises, σ11, σ22 and τ12 contour maps on 176 QUAD4 shells and 66 frame members in DÈLGHEM for native Apple Silicon Macs.</description>
       <pubDate>Sat, 24 Oct 2026 07:00:00 GMT</pubDate>
       <guid isPermaLink="true">https://www.delghe.com/en/3d-fem-stress-contours/</guid>
     </item>

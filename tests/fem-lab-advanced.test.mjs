@@ -25,13 +25,13 @@ test('Scrolling FEM laboratory shows four analytical chapters without click-to-r
   assert.match(s,/d2-ida-original-ui/);
  }
  assert.match(read('fem-lab.js'),/native-nonlinear-ida\.json/);
- assert.match(read('fem-lab.js'),/native-plastic-pushover\.json/);
+ assert.match(read('fem-lab.js'),/native-kratos-cyclic\.json/);
  assert.match(read('fem-lab.js'),/advanced-shell-results\.json/);
 });
 test('Advanced D2 shell contours are real nonlinear-adjacent detailed structural static results',()=>{
  const a=json('assets/fem-lab/advanced-shell-results.json');
  assert.equal(a.schema,'delghem-showcase-shell-1');
- assert.equal(a.sourceEngine,'OpenSeesPy');
+ assert.equal(a.sourceEngine,'KratosMultiphysics');
  assert.ok(a.residual<1e-7);
  assert.equal(a.mesh.shellCount,176);
  assert.equal(a.elements.length,176);
@@ -46,26 +46,22 @@ test('Advanced D2 shell contours are real nonlinear-adjacent detailed structural
  }
  assert.ok(a.beams.every(x=>x.n1&&x.n2&&x.a.length===3&&x.b.length===3));
 });
-test('Genuine steel fiber X/Y nonlinear Pushover capacity curves contain observed plastic branch, not a fabricated bending curve',()=>{
- const a=json('assets/fem-lab/native-plastic-pushover.json');
- assert.equal(a.schema,'delghem-showcase-plastic-pushover-1');
- assert.equal(a.realNonlinearBenchmarks.length,2);
- assert.deepEqual(a.realNonlinearBenchmarks.map(r=>r.direction),['X','Y']);
- for(const r of a.realNonlinearBenchmarks){
-  assert.equal(r.sourceEngine,'OpenSeesPy');
-  assert.equal(r.material,'steel-fiber');
-  assert.equal(r.completed,true);
-  assert.equal(r.completeStructuralVerification,false);
-  assert.equal(r.points.length,32);
-  assert.ok(r.maxPlasticStrain>1e-4);
-  assert.ok(r.points.every(p=>Number.isFinite(p.shearKN)&&Number.isFinite(p.displacementMM)&&Number.isFinite(p.maxPlasticStrain)));
-  const plastic=r.points.find(p=>p.maxPlasticStrain>1e-7);
-  assert.ok(plastic&&plastic.displacementMM>r.points[0].displacementMM);
-  const stiffness0=r.points[1].shearKN/r.points[1].displacementMM;
-  const stiffnessAfter=(r.points.at(-1).shearKN-plastic.shearKN)/(r.points.at(-1).displacementMM-plastic.displacementMM);
-  assert.ok(Math.abs(stiffnessAfter)<Math.abs(stiffness0)*.7,JSON.stringify({direction:r.direction,stiffness0,stiffnessAfter}));
-  assert.match(r.rawSolverResultSha256,/^[a-f0-9]{64}$/);
- }
+test('The original cyclic S235 specimen uses authentic Kratos states and does not claim global lateral Pushover',()=>{
+ const a=json('assets/fem-lab/native-kratos-cyclic.json');
+ assert.equal(a.schema,'delghem-kratos-steel-cyclic-1');
+ assert.equal(a.engine,'KratosMultiphysics');
+ assert.equal(a.material,'steel-fiber');
+ assert.equal(a.geometry,'axial');
+ assert.equal(a.complete,true);
+ assert.equal(a.completeStructuralVerification,false);
+ assert.equal(a.states.length,240);
+ assert.equal(a.branches.length,5);
+ assert.equal(a.claimsGlobalPushoverCapacity,false);
+ assert.ok(a.maxPlasticStrain>1e-3);
+ assert.ok(a.states.some(s=>s.displacementMM<0));
+ assert.ok(a.states.some(s=>s.axialForceKN<0));
+ for(const branch of a.branches)assert.equal(branch.points.length,48);
+ assert.match(a.sourceSha256,/^[a-f0-9]{64}$/);
 });
 test('Genuine IDA uses 16 actual Kratos steel-fiber results and all native time histories',()=>{
  const a=json('assets/fem-lab/native-nonlinear-ida.json');

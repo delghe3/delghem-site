@@ -6,11 +6,11 @@ Sito web statico bilingue (italiano / inglese) pubblicato tramite GitHub Pages s
 
 - Pagina principale IT/EN, scheda delle 12 aree tecniche e panoramica dello stato di sviluppo.
 - **Torre 3D dimostrativa di OTTO piani** ricavata da un file nativo DÈLGHEM D2 (212 nodi, 514 aste, 112 shell, 24 plinti), con nucleo in C.A. C30/37, colonne e travi in S355 a sezioni variabili, copertura in legno GL24h sopra l’ottavo piano, capriate metalliche e lignee sulle due ali laterali, balconi e terrazze. I pannelli lignei dispongono dei laminati ortotropi richiesti dal validatore reale D2; sezioni, suolo, materiali, coperture e fondazioni sono **ipotesi concettuali non sottoposte ad analisi, verifiche di sicurezza o dimensionamenti**. Il modello è interattivo e conserva i pulsanti per rotazione, deformata illustrativa e colorazione qualitativa.
-- **Laboratorio FEM V2** IT/EN a **scorrimento continuo** (nessun grafico nascosto in tab): mappa 3D con 176 shell QUAD4 e 66 aste di un telaio irregolare con apertura, calcolato da D2/OpenSeesPy con residuo di equilibrio ~4,0×10^-12; campi di tensione alle facce e deformata 800×, senza valori inventati.
-- **Curve Pushover non lineari** X/Y in acciaio S235 IPE300, 32 incrementi convergenti per direzione, plasticizzazione misurata nelle fibre e grafico separato di εp. Curve limitate al dominio di spostamento effettivamente calcolato, senza estrapolare collassi o capacità ultime.
-- **Curve IDA Kratos** X/Y, 8 intensità reali per direzione, 16 analisi concluse, con punti plasticizzati e storie dinamiche e diagrammi isteretici; non sono record sismici indipendenti per calcolare una fragilità statistica.
-- **Accelerogrammi** analitici X/Y e corrispondenti spostamenti strutturali realmente calcolati. Tutte le sezioni sono visibili senza clic e sono completamente localizzate.
-- **Galleria** con sei rendering numerici veri (Canvas/SVG dal sito basato sui dati dei solutori) + cinque immagini autentiche dell’interfaccia D2. File sorgenti tracciati in assets/fem-lab/PROVENANCE.txt con hash SHA256 e script riproducibili in scripts/build-showcase-shell.mjs, scripts/build-advanced-pushover.mjs, scripts/build-advanced-ida.mjs. Tutti i casi sono benchmark distinti e nessuno è una verifica di sicurezza certificata.
+- **Laboratorio FEM Kratos** IT/EN in quattro sezioni permanenti: shell QUAD4 del benchmark spaziale B01, 176 shell e 66 aste, soluzione nativa KratosMultiphysics con residuo 8,2×10⁻¹². Tensioni superficiali in MPa ricostruite dalle risultanti locali N e M con N/h ± 6M/h²; colori interpolati nel solo elemento di origine, senza inventare campi ai nodi.
+- **Risposta ciclica assiale non lineare Kratos** su provino S235 IPE 300, lungo 3 m: 240 stati convergenti e 5 rami reali di carico/scarico/inversione, con plasticizzazione delle fibre pari fino a 0,625%. Non è una curva di capacità Pushover laterale né la verifica della torre a otto piani. Il percorso Pushover flessionale è ancora in validazione.
+- **Analisi dinamica incrementale IDA Kratos**: due orientamenti diagnostici, otto intensità ognuno, sedici analisi concluse con fibre plasticizzate e nessun collasso osservato; non viene dedotta una fragilità statistica.
+- **Accelerogrammi analitici e risposte strutturali**, realmente elaborati da Kratos a ogni fattore di scala, con grafici accelerazione–tempo, spostamento–tempo e risposta ciclica dinamica.
+- Galleria aggiornata con rendering degli stessi risultati Kratos realmente calcolati e schermate autentiche D2, tutte attribuite al rispettivo benchmark. Gli hash delle fonti e le limitazioni sono in assets/fem-lab/PROVENANCE.txt.
 - Elaborati autentici D2 in C.A.: estratti delle tavole A1 e DXF con armature e staffe, ricavati dai file esportati dall'applicazione.
 - 16 screenshot autentici dell'app, con miniature e viste grandi in WebP; hash degli originali conservati **fuori dal repository pubblico**.
 - Articoli tecnici IT/EN su architettura ARM64 FEM e disegni di officina.
@@ -29,7 +29,7 @@ Sito web statico bilingue (italiano / inglese) pubblicato tramite GitHub Pages s
 
 ## Sviluppo e test
 
-Avvio senza build: `python3 -m http.server 8765 --bind 127.0.0.1` nella directory principale. Visitare `http://127.0.0.1:8765/` e `/it/`.
+Avvio senza build: `node scripts/serve-local.mjs 8765` nella directory principale. Visitare `http://127.0.0.1:8765/` e `/it/`.
 
 Test senza dipendenze: `node --test tests/*.test.mjs`.
 

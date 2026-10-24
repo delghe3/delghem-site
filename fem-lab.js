@@ -1,8 +1,9 @@
 /**
  * DÈLGHEM D2 • native solver FEM showcase.
  * ALL FOUR LAB CHAPTERS ARE SCROLLABLE/ALWAYS VISIBLE.
- * All data come from 176 actual OpenSees QUAD4 shells, 64 real nonlinear
- * steel-fiber Pushover states, and 16 Kratos/Newmark steel-fiber IDA runs.
+ * All datasets come from Kratos: 176 actual QUAD4 shells and 66 beams,
+ * 240 real nonlinear steel-fiber axial cyclic states and 16 nonlinear IDA runs.
+ * The static axial cyclic specimen is NOT a verified lateral Pushover.
  * Test cases are independent of one another and of the conceptual home model.
  */
 const labRoot=document.getElementById('fem-lab');
@@ -81,67 +82,99 @@ if(labRoot){
   return [lo-delta*pad,hi+delta*pad];
  }
  const pc=v=>num(v*100,3)+'%';
- let shell=null,push=null,ida=null;
- // ---- Real 32-step post-yield capacity paths; never a fabricated curve. ----
- function capacity(b,id,color){
-  const svg=$(id);const all=[{displacementMM:0,shearKN:0,maxPlasticStrain:0},...b.points];
-  const rows=all.map(q=>({x:q.displacementMM,y:q.shearKN}));
-  const ax=axes(svg,{xMax:all.at(-1).displacementMM*1.10,
-   yMax:Math.max(...all.map(q=>q.shearKN))*1.18,xLabel:labels.u,yLabel:labels.v});
-  const first=all.findIndex(x=>x.maxPlasticStrain>1e-7);
-  const split=Math.max(1,first);
-  const early=rows.slice(0,split+1),after=rows.slice(split);
-  if(after.length>1){
-   const shadow=[...after.map(q=>ax.x(q.x)+','+ax.y(q.y)),
-      ax.x(after.at(-1).x)+','+ax.y(0),ax.x(after[0].x)+','+ax.y(0)];
-   sNode(svg,'polygon',{points:shadow.join(' '),fill:'#f0a16b','fill-opacity':.15});
+ let shell=null,cyclic=null,ida=null;
+ // ---- Genuine Kratos S235 axial cyclic nonlinearity (not lateral pushover) ----
+ function drawCyclicLoading(){
+  const svg=$('lab-pushover-svg');
+  const branch=cyclic.branches[0];
+  const points=[{displacementMM:0,axialForceKN:0,maxPlasticStrain:0},...branch.points];
+  const rows=points.map(p=>({x:p.displacementMM,y:p.axialForceKN}));
+  const max=Math.max(...rows.map(x=>x.y));
+  const ax=axes(svg,{xMin:0,xMax:Math.max(13,branch.targetDisplacementMM*1.1),
+   yMin:0,yMax:max*1.15,xLabel:labels.u,
+   yLabel:txt('Axial force above preload [kN]','Forza assiale oltre il precarico [kN]')});
+  const first=points.findIndex(s=>s.maxPlasticStrain>1e-7);
+  const pivot=Math.max(1,first);
+  trace(svg,rows.slice(0,pivot+1),ax,{color:'#087e9f',width:4.4,title:'Actual Kratos elastic segment'});
+  trace(svg,rows.slice(pivot),ax,{color:'#df694d',width:4.8,title:'Actual Kratos steel-fiber plastic segment'});
+  rows.slice(1).forEach((r,i)=>{if(i%6===0||i===first-1||i===rows.length-2)
+    marker(svg,r,ax,{plastic:points[i+1].maxPlasticStrain>1e-7,
+     color:'#087e9f',description:txt('Kratos axial loading','Carico assiale Kratos')});});
+  if(first>0){
+   const r=rows[first],x=ax.x(r.x),y=ax.y(r.y);
+   sNode(svg,'circle',{cx:x,cy:y,r:10,fill:'none',stroke:'#c6543f','stroke-width':2.6});
+   sNode(svg,'text',{x:Math.min(ax.R-12,x+14),y:y-17,fill:'#a7533a',
+    'font-size':12,'font-weight':860},txt('FIRST PLASTIC FIBER','PRIMA FIBRA PLASTICA'));
   }
-  trace(svg,early,ax,{color,width:4.3,title:'Measured initial elastic branch'});
-  trace(svg,after,ax,{color:'#d85f42',width:4.6,title:'Measured real steel-fiber plastic branch'});
-  rows.slice(1).forEach((q,i)=>{if(i%4===0||i===first-1||i===rows.length-2)
-   marker(svg,q,ax,{plastic:all[i+1].maxPlasticStrain>1e-7,color,radius:4.3,description:b.direction+' / S235'});});
-  if(first>=1){
-   const y=all[first],x0=ax.x(y.displacementMM),y0=ax.y(y.shearKN);
-   sNode(svg,'circle',{cx:x0,cy:y0,r:12,stroke:'#e36a44','stroke-width':2.5,fill:'none'});
-   const lineEnd=Math.max(200,Math.min(780,x0+55));
-   sNode(svg,'line',{x1:x0,y1:y0-13,x2:lineEnd,y2:y0-50,stroke:'#a75e3d','stroke-width':1.5,'stroke-dasharray':'5 4'});
-   sNode(svg,'text',{x:lineEnd+4,y:y0-56,'font-size':12,'font-weight':860,fill:'#ae5e3a'},txt('FIBER YIELD','INIZIO PLAST.'));
+  sNode(svg,'text',{x:ax.R-6,y:ax.T+13,'text-anchor':'end',
+   fill:'#326776','font-size':12,'font-weight':860},'KRATOS · '+branch.points.length+' '+txt('CONVERGED','CONVERGENTI'));
+ }
+ function drawCyclicLoop(){
+  const svg=$('lab-pushover-y-svg');
+  const values=cyclic.states;
+  const bx=range([...values.map(p=>p.displacementMM),0],.09);
+  const by=range([...values.map(p=>p.axialForceKN),0],.12);
+  const ax=axes(svg,{xMin:bx[0],xMax:bx[1],yMin:by[0],yMax:by[1],
+   xLabel:labels.u,yLabel:txt('Signed axial force [kN]','Forza assiale con segno [kN]')});
+  const palette=['#0c85a0','#df744c','#3768a5','#936dba','#32a18f'];
+  for(const [i,branch] of cyclic.branches.entries()){
+   const rows=branch.points.map(p=>({x:p.displacementMM,y:p.axialForceKN}));
+   if(i>0){
+    const previous=cyclic.branches[i-1].points.at(-1);
+    rows.unshift({x:previous.displacementMM,y:previous.axialForceKN});
+   }
+   trace(svg,rows,ax,{color:palette[i],width:3.25,
+    title:'Native Kratos steel-fiber axial path '+(i+1)});
+   const final=rows.at(-1);
+   marker(svg,final,ax,{color:palette[i],radius:6,
+    description:txt('Converged branch','Ramo convergente')+' '+(i+1)});
   }
-  sNode(svg,'text',{x:ax.R-5,y:ax.T+14,'text-anchor':'end',fill:'#306472','font-size':12,'font-weight':850},b.points.length+' '+txt('STATES','STATI'));
-  sNode(svg,'text',{x:ax.R-5,y:ax.B-14,'text-anchor':'end',fill:'#a86445','font-size':12,'font-weight':800},'εp,max '+pc(b.maxPlasticStrain));
+  sNode(svg,'text',{x:ax.R-8,y:ax.T+14,'text-anchor':'end',
+   fill:'#326776','font-size':12,'font-weight':850},
+   cyclic.states.length+' '+txt('ACCEPTED STATES / 5 BRANCHES','STATI ACCETTATI / 5 RAMI'));
  }
- function renderPushover(){
-  const [x,y]=push.realNonlinearBenchmarks;
-  capacity(x,'lab-pushover-svg','#087e9f');
-  capacity(y,'lab-pushover-y-svg','#b66b40');
-  $('lab-pushover-count').textContent=x.points.length+' X + '+y.points.length+' Y';
-  $('lab-push-peak').textContent=[x,y].map(b=>num(Math.max(...b.points.map(p=>p.shearKN)),2)+' kN').join(' / ');
-  $('lab-push-plastic').textContent=[pc(x.maxPlasticStrain),pc(y.maxPlasticStrain)].join(' / ');
-  renderPlastic([x,y]);
-  drawSpecimen();
- }
- function renderPlastic(paths){
+ function drawCyclicPlasticity(){
   const svg=$('lab-plastic-svg');
-  const max=Math.max(...paths.flatMap(b=>b.points.map(x=>x.maxPlasticStrain)))*100;
-  const ax=axes(svg,{xMax:132,yMax:max*1.20,xLabel:labels.u,yLabel:labels.plastic});
-  paths.forEach((b,i)=>{
-   const color=i===0?'#087d9f':'#c36b42';
-   const rows=[{x:0,y:0},...b.points.map(q=>({x:q.displacementMM,y:q.maxPlasticStrain*100}))];
-   trace(svg,rows,ax,{color,width:3.5,title:'Actual D2 steel-fiber plastic strain '+b.direction});
-   rows.slice(1).forEach((q,j)=>{if(j%5===0||j===rows.length-2)marker(svg,q,ax,{color,plastic:q.y>1e-5,radius:3,description:'εp '+b.direction});});
-  });
+  const rows=[{x:0,y:0},...cyclic.states.map((p,i)=>({x:i+1,y:p.maxPlasticStrain*100}))];
+  const max=Math.max(...rows.map(x=>x.y))*1.25;
+  const ax=axes(svg,{xMin:0,xMax:cyclic.states.length*1.035,
+   yMin:0,yMax:max,xLabel:txt('Accepted load increment','Incremento di carico accettato'),
+   yLabel:labels.plastic});
+  const colors=['#168da5','#e07851','#4d70ac','#976bc1','#33a594'];
+  for(const [i,branch] of cyclic.branches.entries()){
+   const start=i*48,end=(i+1)*48;
+   const curve=rows.slice(i===0?0:start,end+1);
+   trace(svg,curve,ax,{color:colors[i],width:3.4,
+    title:txt('Plastic strain on axial branch ','Deformazione plastica sul ramo ')+(i+1)});
+   const last=curve.at(-1);
+   marker(svg,last,ax,{plastic:last.y>1e-5,color:colors[i],radius:5,
+    description:txt('Branch ending','Fine ramo')+' '+(i+1)});
+  }
  }
- function drawSpecimen(){
+ function drawCyclicSpecimen(){
   const svg=$('lab-schematic-svg');svg.replaceChildren();
-  const x=184,top=44,bottom=215;
-  sNode(svg,'rect',{x:x-12,y:top,width:24,height:bottom-top,fill:'#387990',stroke:'#174a66','stroke-width':2,rx:2});
-  sNode(svg,'path',{d:'M '+(x-36)+' '+bottom+' H '+(x+36)+' M '+(x-27)+' '+bottom+' l -12 18 M '+(x-8)+' '+bottom+' l -12 18 M '+(x+11)+' '+bottom+' l -12 18 M '+(x+30)+' '+bottom+' l -12 18',stroke:'#486c75','stroke-width':3,fill:'none'});
-  sNode(svg,'path',{d:'M '+(x+2)+' '+top+' l 67 0 m -12 -11 l 12 11 -12 11',stroke:'#cb7047','stroke-width':4,fill:'none'});
-  sNode(svg,'text',{x:x+79,y:top+4,fill:'#be6743','font-size':13,'font-weight':850},'uX / uY');
-  sNode(svg,'line',{x1:x-58,y1:top,x2:x-58,y2:bottom,stroke:'#719fa4','stroke-width':1.7});
-  sNode(svg,'text',{x:x-70,y:143,transform:'rotate(-90 '+(x-70)+' 143)','text-anchor':'middle',fill:'#315968','font-size':14,'font-weight':820},'3.00 m');
-  sNode(svg,'text',{x:18,y:44,fill:'#214e63','font-size':15,'font-weight':850},'IPE 300 · S235');
-  sNode(svg,'text',{x:18,y:63,fill:'#547f89','font-size':11},txt('D2 verified fixture geometry','Geometria del caso di prova D2'));
+  const start=76,end=312,y=129;
+  sNode(svg,'rect',{x:start,y:y-15,width:end-start,height:30,
+   fill:'#4c91a5',stroke:'#1a536e','stroke-width':2.4,rx:3});
+  sNode(svg,'path',{d:'M 69 82 V 181 M 69 96 l -15 17 M 69 119 l -15 17 M 69 142 l -15 17 M 69 165 l -15 17',
+   stroke:'#38687b','stroke-width':3.2,fill:'none'});
+  sNode(svg,'path',{d:'M 307 129 H 368 M 352 115 l 16 14 -16 14',stroke:'#df754d','stroke-width':4,fill:'none'});
+  sNode(svg,'text',{x:294,y:97,fill:'#b46847','font-size':13,'font-weight':850},'uX ↔');
+  sNode(svg,'text',{x:187,y:104,'text-anchor':'middle',fill:'#18546b',
+   'font-size':14,'font-weight':850},'IPE 300 · S235');
+  sNode(svg,'line',{x1:start,y1:177,x2:end,y2:177,stroke:'#6997a1','stroke-width':1.5});
+  for(const x of [start,end])sNode(svg,'line',{x1:x,y1:169,x2:x,y2:184,stroke:'#6997a1','stroke-width':1.5});
+  sNode(svg,'text',{x:194,y:195,fill:'#376a75','text-anchor':'middle',
+   'font-size':13,'font-weight':800},'L = 3.00 m');
+  sNode(svg,'text',{x:194,y:239,fill:'#527982','text-anchor':'middle',
+   'font-size':11},txt('Actual axial cyclic specimen','Provino ciclico assiale reale'));
+ }
+ function renderCyclic(){
+  drawCyclicLoading();drawCyclicLoop();drawCyclicPlasticity();drawCyclicSpecimen();
+  const f=cyclic.states.map(p=>Math.abs(p.axialForceKN));
+  $('lab-pushover-count').textContent=cyclic.states.length+' / '+cyclic.branches.length;
+  $('lab-push-peak').textContent=num(Math.max(...f),1)+' kN';
+  $('lab-push-plastic').textContent=pc(cyclic.maxPlasticStrain);
  }
  // ---- 16 actual Kratos nonlinear IDA time histories, eight PGA levels each ----
  function renderIDA(){
@@ -398,7 +431,7 @@ if(labRoot){
  // All four chapters are present and visible in static HTML, not tabs.
  const paths={
   shell:new URL('./assets/fem-lab/advanced-shell-results.json',import.meta.url),
-  push:new URL('./assets/fem-lab/native-plastic-pushover.json',import.meta.url),
+  cyclic:new URL('./assets/fem-lab/native-kratos-cyclic.json',import.meta.url),
   ida:new URL('./assets/fem-lab/native-nonlinear-ida.json',import.meta.url)
  };
  async function load(name){
@@ -410,11 +443,11 @@ if(labRoot){
  .then(rows=>{
   for(const [key,data] of rows){
    if(key==='shell')shell=data;
-   if(key==='push')push=data;
+   if(key==='cyclic')cyclic=data;
    if(key==='ida')ida=data;
   }
   if(shell?.schema!=='delghem-showcase-shell-1'||shell.elements?.length!==176||
-    push?.schema!=='delghem-showcase-plastic-pushover-1'||push.realNonlinearBenchmarks?.length!==2||
+    cyclic?.schema!=='delghem-kratos-steel-cyclic-1'||cyclic.engine!=='KratosMultiphysics'||cyclic.states?.length!==240||
     ida?.schema!=='delghem-showcase-steel-ida-1'||ida.models?.length!==2||
     ida.models.some(m=>m.runs?.length!==8)||ida.noFragilityClaim!==true)
     throw Error('DÈLGHEM D2 provenance mismatch');
@@ -423,7 +456,7 @@ if(labRoot){
   const hi=[0,1,2].map(i=>Math.max(...points.map(p=>p[i])));
   frameBounds={center:lo.map((v,i)=>(v+hi[i])/2)};
   $('lab-scale').value='1.0';
-  renderPushover();renderIDA();renderAcceleration();
+  renderCyclic();renderIDA();renderAcceleration();
   // Show interactive chart SVGs only after all 11 figures have rendered.
   labRoot.dataset.labChartsReady='true';
   scheduleStress();

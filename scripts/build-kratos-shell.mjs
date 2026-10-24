@@ -1,14 +1,13 @@
 /**
  * Repeat the D2 B01 irregular two-level wall + slab FEM benchmark at 4×4
- * quadrilateral refinement. Solver code and material properties are D2's,
- * with no global D2 file mutations.
+ * quadrilateral refinement. Native KratosMultiphysics only, D2 source fixture,
+ * fixture is read-only; no D2 application code is modified.
  * Data provenance: D2 scripts/b01-irregular-wall-slab-refinement.mjs;
  * D2 tests/fixtures/b01-coupled-wall-slab.hfm.json
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import {spawnSync} from 'node:child_process';
 import {pathToFileURL} from 'node:url';
 const D2=process.env.DELGHEM_D2_REPO || '/Users/delghe/Desktop/D2/Progetto';
 const site=path.resolve(new URL('..',import.meta.url).pathname);
@@ -111,52 +110,88 @@ function subdivide(m,n){
 }
 
 const model=subdivide(original,4);
-const request={model,analysis:'static',selection:'case:LC1'};
-const proc=spawnSync(path.join(D2,'.venv/bin/python'),[path.join(D2,'scripts/opensees_shell.py')],{
- cwd:D2,input:JSON.stringify(request),encoding:'utf8',
- timeout:105000,maxBuffer:64_000_000,
- env:{...process.env,OPENBLAS_NUM_THREADS:'1',OMP_NUM_THREADS:'1',VECLIB_MAXIMUM_THREADS:'1',OMP_WAIT_POLICY:'PASSIVE',
- PYTHONDONTWRITEBYTECODE:'1'}
-});
-const line=(proc.stdout??'').split('\n').find(x=>x.startsWith('HYPERFEM_JSON:'));
-if(proc.status!==0||!line)throw Error('D2 OpenSees solve failed: '+String(proc.stderr).slice(-4500)+' '+String(proc.stdout).slice(-1800));
-const result=JSON.parse(line.slice('HYPERFEM_JSON:'.length));
-if(result.error)throw Error(result.error);
-if(!(result.residual<1e-7)||result.shells.length!==176||model.shells.length!==176||!result.nodes)throw Error('Incorrect D2 native physical solve');
-const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+process.env.HYPERFEM_COMMERCIAL_RUNTIME='1'; // fail closed: NO other solver fallback
+const {runShellEngine}=await import(pathToFileURL(path.join(D2,'app/shell-engine.mjs')).href);
+const t=Date.now();
+const {result}=await runShellEngine(D2,{model,analysis:'static',selection:'case:LC1'});
+if(result.engine!=='KratosMultiphysics'||!(result.residual<1e-7)||
+   result.shells?.length!==176||model.shells?.length!==176||!result.nodes)
+ throw Error('Native Kratos verification failed: '+JSON.stringify({
+  engine:result.engine,residual:result.residual,shells:result.shells?.length}));
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const pts=Object.fromEntries(model.nodes.map(n=>[n.id,[n.x,n.y,n.z]]));
-const selected=['sigma11MPa','sigma22MPa','tau12MPa','vonMisesMPa'];
-const elements=result.shells.map(shell=>({
- id:shell.id, nodes:shell.nodes,
- vertices:shell.nodes.map(id=>pts[id]),thicknessM:shell.thickness,
- gauss:shell.gauss.map(g=>({
-  position:g.point,
-  top:Object.fromEntries(selected.map(key=>[key,g.faceStresses.top[key]])),
-  bottom:Object.fromEntries(selected.map(key=>[key,g.faceStresses.bottom[key]]))
- }))
-}));
-const beams=model.members.map(b=>({id:b.id,n1:b.n1,n2:b.n2,a:pts[b.n1],b:pts[b.n2],kind:'physical supporting beam'}));
+const materials=new Map(model.materials.map(m=>[m.id,m]));
+const shellInputs=new Map(model.shells.map(s=>[s.id,s]));
+const keys=['sigma11MPa','sigma22MPa','tau12MPa','vonMisesMPa'];
+const toMPa=stressKnM2=>stressKnM2/1000;
+function faceStress(resultants,h,which){
+ const sign=which==='top'?1:-1;
+ const v=[
+  toMPa(resultants[0]/h+sign*6*resultants[3]/(h*h)),
+  toMPa(resultants[1]/h+sign*6*resultants[4]/(h*h)),
+  toMPa(resultants[2]/h+sign*6*resultants[5]/(h*h))
+ ];
+ const vm=Math.sqrt(Math.max(0,v[0]*v[0]+v[1]*v[1]-v[0]*v[1]+3*v[2]*v[2]));
+ return Object.fromEntries(keys.map((key,i)=>[key,i<3?v[i]:vm]));
+}
+const elements=result.shells.map(shell=>{
+ const source=shellInputs.get(shell.id);
+ if(!source||shell.gauss.length!==4)throw Error('Incomplete Kratos shell '+shell.id);
+ const h=source.thickness,material=materials.get(source.material);
+ if(!material||source.laminate)throw Error('This public isotropic benchmark disallows unresolved layered shells');
+ const gauss=shell.gauss.map(g=>{
+  const R=g.resultants;
+  if(!Array.isArray(R)||R.length!==8||!R.every(Number.isFinite))
+   throw Error('Missing native shell stress resultants '+shell.id);
+  // Linear-elastic constitutive recovery from Kratos membrane forces and
+  // bending moments, in the actual native QUAD4 local panel basis.
+  // N/h ± 6M/h² gives face plane stresses in kN/m²; /1000 gives MPa.
+  const top=faceStress(R,h,'top'),bottom=faceStress(R,h,'bottom');
+  if(Object.values(top).concat(Object.values(bottom)).some(x=>!Number.isFinite(x)))
+   throw Error('Nonfinite native Kratos face stress recovery '+shell.id);
+  // The actual Kratos generalized membrane strains can independently check
+  // isotropic plane stress at the four Gauss points (up to solver scaling).
+  if(Array.isArray(g.strains)){
+   const factor=material.E/(1-material.nu*material.nu);
+   const chk=[factor*(g.strains[0]+material.nu*g.strains[1]),
+             factor*(g.strains[1]+material.nu*g.strains[0]),
+             material.E/(2*(1+material.nu))*g.strains[2]];
+   const rec=[R[0]/h,R[1]/h,R[2]/h];
+   const maximum=Math.max(1,...rec.map(Math.abs),...chk.map(Math.abs));
+   const err=Math.max(...chk.map((x,i)=>Math.abs(x-rec[i])))/maximum;
+   if(err>0.12)throw Error('Kratos membrane stress/strain constitutive audit failed '+shell.id+' '+err);
+  }
+  return {position:g.point,top,bottom};
+ });
+ return {id:shell.id,nodes:shell.nodes,vertices:shell.nodes.map(id=>pts[id]),
+  thicknessM:h,material:source.material,gauss};
+});
+const beams=model.members.map(b=>({
+ id:b.id,n1:b.n1,n2:b.n2,a:pts[b.n1],b:pts[b.n2],
+ kind:'physical supporting beam'}));
 const displacements=Object.fromEntries(result.nodes.map(n=>[n.id,n.u.slice(0,3)]));
-const exportData={
+const out={
  schema:'delghem-showcase-shell-1',
  modelTitle:original.title,
  sourceFixture:'D2/tests/fixtures/b01-coupled-wall-slab.hfm.json',
- sourceBenchmark:'D2/scripts/b01-irregular-wall-slab-refinement.mjs',
- sourceFixtureSha256:hash(fixtureBytes),
- sourceBenchmarkSha256:hash(fs.readFileSync(path.join(D2,'scripts/b01-irregular-wall-slab-refinement.mjs'))),
- rawSolverResultSha256:hash(line),
- sourceEngine:result.engine,analysis:result.analysis,selection:result.selection,residual:result.residual,
+ sourceBenchmark:'site/scripts/build-kratos-shell.mjs',
+ sourceFixtureSha256:sha(fixtureBytes),
+ sourceBenchmarkSha256:sha(fs.readFileSync(path.join(site,'scripts/build-kratos-shell.mjs'))),
+ rawSolverResultSha256:sha(JSON.stringify(result)),
+ sourceEngine:result.engine,analysis:result.analysis,selection:'case:LC1',residual:result.residual,
  completeStructuralVerification:false,
- loadCase:'LC1 · distributed pressure on slabs and assigned node forces',
- mesh:{nodeCount:model.nodes.length,shellCount:model.shells.length,beamCount:model.members.length,subdivisionPerOriginalQuad:4},
+ loadCase:'LC1 · assigned forces and slab pressure',
+ mesh:{nodeCount:model.nodes.length,shellCount:model.shells.length,
+  beamCount:model.members.length,subdivisionPerOriginalQuad:4},
+ stressRecovery:'linear elastic isotropic face plane stresses N/h ± 6M/h² from genuine Kratos membrane force and bending moment resultants, MPa; local shell coordinates',
  elements,beams,displacements,
- limits:'D2 B01 isolated spatial benchmark with refined QUAD shells, structural walls, slab, beams and a wall opening. Real static OpenSeesPy solver data. The face stresses are retrieved at native Gauss points, with per-shell average only for colorization. Not the homepage native building, not a project verification.'
+ limits:'D2 B01 spatial benchmark with wall opening, 176 native Kratos QUAD4 shells, 66 actual frame members. Four real Gauss point native shell resultants per element; face stresses reconstructed from local isotropic membrane/bending resultants, not directly output as stresses by Kratos. No general building design safety certification.'
 };
-const output=path.join(site,'assets/fem-lab/advanced-shell-results.json');
-fs.mkdirSync(path.dirname(output),{recursive:true});
-fs.writeFileSync(output,JSON.stringify(exportData)+'\n');
-console.log('SHOWCASE_EXPORTED',JSON.stringify({
- model:exportData.modelTitle,quad:exportData.mesh.shellCount,nodes:exportData.mesh.nodeCount,
- beams:exportData.mesh.beamCount,rawSha:exportData.rawSolverResultSha256,
- fileBytes:fs.statSync(output).size,engine:result.engine,residual:result.residual
-}));
+const target=path.join(site,'assets/fem-lab/advanced-shell-results.json');
+const temp=target+'.tmp';
+fs.writeFileSync(temp,JSON.stringify(out)+'\n');
+fs.renameSync(temp,target);
+console.log('KRATOS_SHELL_EXPORTED',JSON.stringify({
+ shellCount:out.elements.length,nodes:out.mesh.nodeCount,beams:beams.length,
+ residual:out.residual,engine:out.sourceEngine,
+ bytes:fs.statSync(target).size,seconds:(Date.now()-t)/1000}));

@@ -3,7 +3,7 @@ set -euo pipefail
 cd /Users/delghe/Desktop/DELGHEM-SITO-AGGIORNAMENTO
 mkdir -p assets/social
 base='assets/real-d2/complex-frame-poster.webp'
-curve='assets/fem-lab/gallery/pushover-plastic-x-actual-solver.webp'
+curve='assets/fem-lab/gallery/kratos-axial-loading.webp'
 font='assets/Manrope.ttf'
 function draw_social(){
   lang="$1"
