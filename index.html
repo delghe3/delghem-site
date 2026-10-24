@@ -98,9 +98,10 @@
       <div class="structure-stage">
         <img class="model-poster" src="./assets/real-d2/mixed-frame-poster.webp" width="792" height="643" alt="Conceptual mixed reinforced concrete and steel DÈLGHEM D2 model render, based on a D2 validated geometric fixture" decoding="async">
         <div class="model-concept-label" aria-label="DÈLGHEM D2: 60 nodes, 124 members, 30 shells, 8 braces; C30/37; conceptual mixed RC/steel demo">DÈLGHEM D2 · MIXED RC + STEEL · 8 BRACES</div>
+        <div class="model-motion-status" id="model-motion-status" role="status" aria-live="polite">⟳ LIVE 3D ORBIT · ON</div>
         <canvas id="structure-canvas" aria-label="Illustrative animated three-dimensional structural frame. Drag or use the arrow keys to rotate. Home resets the view." data-i18n-aria="modelAlt"></canvas>
         <div class="model-label"><span class="model-dot" aria-hidden="true"></span><span data-i18n="modelLabel">Give your ideas structure.</span></div>
-        <div class="model-controls" role="group" aria-label="Model view" data-i18n-aria="modelView"><button data-model-view="structure" aria-pressed="true" data-i18n="structure">Structure</button><button data-model-view="deformed" aria-pressed="false" data-i18n="deformed">Deformed</button><button data-model-view="forces" aria-pressed="false" data-i18n="forces">Forces</button><button id="rotate-model" class="icon-button" aria-pressed="true" aria-label="Automatic rotation" data-i18n-aria="rotate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 6a8 8 0 0 1 14 6M4 12a8 8 0 0 0 14 6"/></svg></button></div>
+        <div class="model-controls" role="group" aria-label="Model view" data-i18n-aria="modelView"><button data-model-view="structure" aria-pressed="true" data-i18n="structure">Structure</button><button data-model-view="deformed" aria-pressed="false" data-i18n="deformed">Deformed</button><button data-model-view="forces" aria-pressed="false" data-i18n="forces">Forces</button><button id="rotate-model" class="icon-button" aria-pressed="true" aria-label="Automatic rotation" data-i18n-aria="rotate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 6a8 8 0 0 1 14 6M4 12a8 8 0 0 0 14 6"/></svg></button><button id="reset-model" class="icon-button model-reset" type="button" aria-label="Reset 3D view" data-i18n-aria="resetView" title="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" aria-hidden="true"><path d="M3 11a9 9 0 1 1 3.2 7M3 4v7h7"/></svg></button></div>
         <p class="model-origin">Preliminary mixed RC + steel model · no numerical checks or structural optimization</p><p class="model-disclaimer" data-i18n="modelDisclaimer">Illustrative visualization · no analysis results</p>
       </div>
       <div class="hero-bottom"><a href="#app" class="scroll-prompt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 4v16m-5-5 5 5 5-5"/></svg><span data-i18n="scrollDiscover">Scroll. Explore the project.</span></a><span class="development-note"><span aria-hidden="true"></span><span data-i18n="development">Project in development</span></span></div>
@@ -146,6 +147,31 @@
   <div class="genius-command-cases">
     <div class="genius-command-heading"><span class="eyebrow">EXAMPLES FROM IMPLEMENTED GENIUS COMMANDS</span><h3>One project, many engineering operations</h3><p>The strategic potential is a model-aware interaction layer that brings creation, selection, properties, loads and analysis commands closer together — while preserving the validated DÈLGHEM data model.</p></div>
     <div class="genius-command-list"><div class="genius-command-row"><span>01 / MODEL</span><code>Create a node at 0 0 4</code></div><div class="genius-command-row"><span>02 / CATALOG</span><code>Replace beam B4 with IPE400 S355</code></div><div class="genius-command-row"><span>03 / EDIT</span><code>Split beam B4 into 4 equal parts</code></div><div class="genius-command-row"><span>04 / LOAD</span><code>Apply load Fz=-10 kN My=2 kNm to node N4 in case G</code></div><div class="genius-command-row"><span>05 / ANALYSIS</span><code>Configure Pushover</code></div></div>
+  </div>
+  <div class="genius-journey" id="genius-journey" aria-label="Interactive guide to Genius operations">
+    <div class="genius-journey-heading">
+      <div><span class="eyebrow">FROM ENGINEERING INTENT TO EDITABLE MODEL</span><h3>See what a single command can prepare.</h3></div>
+      <p>Choose an example and follow the connection from technical language to a precisely identified model operation — with a human review gate.</p>
+    </div>
+    <div class="genius-journey-grid">
+      <div class="genius-case-pickers" role="group" aria-label="Genius command examples">
+        <button type="button" data-genius-case="node" aria-pressed="true"><span>01 / GEOMETRY</span><strong>Create a node</strong><small>Coordinates become a model entity</small></button>
+        <button type="button" data-genius-case="section" aria-pressed="false"><span>02 / MATERIALS</span><strong>Modify a beam</strong><small>Section and material together</small></button>
+        <button type="button" data-genius-case="load" aria-pressed="false"><span>03 / ACTIONS</span><strong>Assign a nodal load</strong><small>Vector components, units, case</small></button>
+        <button type="button" data-genius-case="analysis" aria-pressed="false"><span>04 / EXPERIMENTAL</span><strong>Request an analysis</strong><small>Workflow routing, not a solver result</small></button>
+      </div>
+      <div class="genius-preview-panel">
+        <div class="genius-preview-heading"><span>GENIUS / COMMAND-TO-MODEL EXPLAINER</span><span class="genius-example-state" id="genius-demo-status" data-qualified="true">GEOMETRY · SUPPORTED</span></div>
+        <div class="genius-preview-command"><span>01 / YOUR ENGINEERING INSTRUCTION</span><code id="genius-demo-command">Create a node at 0 0 4</code></div>
+        <div class="genius-preview-detail" aria-live="polite">
+          <div><span>02 / STRUCTURAL ENTITY</span><strong id="genius-demo-target">A new node at X = 0 m · Y = 0 m · Z = 4 m</strong></div>
+          <div><span>03 / PREVIEWED CHANGE</span><strong id="genius-demo-change">Prepare a geometric entity with exact coordinates and units.</strong></div>
+          <div><span>04 / ENGINEER'S REVIEW</span><strong id="genius-demo-review">Review the reference system and possible duplicate nodes before applying.</strong></div>
+        </div>
+        <div class="genius-preview-footer"><span>DESCRIBE</span><span aria-hidden="true">→</span><span>PREVIEW</span><span aria-hidden="true">→</span><span>APPLY IN DÈLGHEM</span></div>
+      </div>
+    </div>
+    <p class="genius-journey-note">Illustrative walkthrough — this website does not execute Genius commands or FEM analysis. Actual edits require confirmation inside the development application; advanced analysis remains subject to validation.</p>
   </div>
   <p class="genius-trust-note">Genius is a bounded, deterministic local command interface. It is not an autonomous structural designer: previewed changes and analysis workflows still require professional validation. A command does not constitute a certified structural check.</p>
 </section>
@@ -211,6 +237,7 @@
   <noscript><p class="noscript-note" data-i18n="noScript">Italian and English pages are available without JavaScript. Enable it to explore all screenshots and use the animations.</p></noscript>
 <dialog id="photo-dialog" aria-label="Real application screenshot"><button id="photo-dialog-close" class="photo-dialog-close" type="button" aria-label="Close photo">✕</button><img id="photo-image" alt="Schermata DÈLGHEM"><p id="photo-dialog-caption"></p></dialog>
   <script type="module" src="./app.js"></script>
+  <script type="module" src="./genius-demo.js"></script>
   <script type="module" src="./social.js"></script>
 <script defer src="./visitor-counter.js"></script>
 <script defer src="./support-actions.js"></script>

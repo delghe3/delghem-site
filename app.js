@@ -126,14 +126,23 @@ window.addEventListener('resize', () => { if (innerWidth > 600) closeMenu(); }, 
 
 function renderMotion() {
   const enabled = motion && !mediaPreference.matches;
+  const running = enabled && modelRotation;
   document.documentElement.classList.toggle('motion-reduced', !enabled);
   $('#motion-toggle').setAttribute('aria-pressed', String(enabled));
   $('#motion-toggle').disabled = mediaPreference.matches;
   $('#motion-label').textContent = t(mediaPreference.matches ? 'motionSystem' : enabled ? 'motionOn' : 'motionOff');
-  $('#rotate-model').disabled = !enabled;
-  modelStage?.setMotion(enabled && modelRotation);
+  $('#rotate-model').disabled = mediaPreference.matches;
+  $('#rotate-model').setAttribute('aria-pressed', String(running));
+  $('#rotate-model').title = t(running ? 'orbitPause' : 'orbitResume');
+  $('#model-motion-status').textContent = t(mediaPreference.matches ? 'modelMotionReduced' : running ? 'modelMotionOn' : 'modelMotionOff');
+  modelStage?.setMotion(running);
 }
-$('#rotate-model').addEventListener('click', () => { modelRotation = !modelRotation; renderMotion(); });
+$('#rotate-model').addEventListener('click', () => {
+  if(mediaPreference.matches)return;
+  if(!motion){motion=true;storage.set('delghem-motion','on');modelRotation=true;}
+  else modelRotation=!modelRotation;
+  renderMotion();
+});
 $('#motion-toggle').addEventListener('click', () => {
   if (mediaPreference.matches) return;
   motion = !motion;

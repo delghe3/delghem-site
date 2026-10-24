@@ -5,6 +5,10 @@
  */
 import {mixedDemo} from './assets/real-d2/mixed-demo-geometry.mjs';
 
+// 360° in about 18.5 seconds, perceptible without abrupt motion.
+export const DEFAULT_ORBIT_SPEED = 0.34;
+const FRAME_INTERVAL = 1000/24;
+
 const TAU=Math.PI*2, clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const plus=(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]];
 const minus=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]];
@@ -173,8 +177,15 @@ export function initModelStage(){
     }
   }
   function axisTriad(){
-    const x=38,y=height-49;
-    for(const [dx,dy,color,label] of [[27,8,'#b96b50','X'],[-17,10,'#367da7','Y'],[0,-29,'#39977d','Z']]){
+    const x=38,y=height-49,origin=[9,5,7.2];
+    const pivot=project(origin,true);
+    // Project the global basis with the very same camera as the structural model.
+    for(const [vector,color,label] of [
+      [[1,0,0],'#b96b50','X'],[[0,1,0],'#367da7','Y'],[[0,0,1],'#39977d','Z']
+    ]){
+      const end=project(plus(origin,vector),true);
+      const length=26/(Math.hypot(end.x-pivot.x,end.y-pivot.y)||1);
+      const dx=(end.x-pivot.x)*length,dy=(end.y-pivot.y)*length;
       ctx.strokeStyle=color;ctx.lineWidth=2;
       ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+dx,y+dy);ctx.stroke();
       ctx.fillStyle=color;ctx.font='700 10px system-ui';ctx.fillText(label,x+dx+4,y+dy);
@@ -208,10 +219,15 @@ export function initModelStage(){
   function tick(timestamp){
     raf=0;
     if(disposed||!motion||!visible||document.hidden||reduced.matches)return;
-    if(timestamp-last>65){
-      const dt=last?Math.min(.07,(timestamp-last)/1000):.046;
-      last=timestamp;if(!dragging)yaw+=dt*.045;
-      phase+=dt;render();
+    if(!last)last=timestamp;
+    const elapsed=timestamp-last;
+    if(elapsed>=FRAME_INTERVAL){
+      const dt=Math.min(.10,elapsed/1000);
+      last=timestamp;
+      if(!dragging)yaw+=dt*DEFAULT_ORBIT_SPEED;
+      if(yaw>TAU)yaw-=TAU;
+      phase+=dt;
+      render();
     }
     raf=requestAnimationFrame(tick);
   }
@@ -254,6 +270,7 @@ export function initModelStage(){
     if(e.key==='ArrowDown')pitch=clamp(pitch+.08,-.05,.95);
     render();
   });
+  document.getElementById('reset-model')?.addEventListener('click',()=>{yaw=-.59;pitch=.46;render();canvas.focus({preventScroll:true});});
   const observer=new ResizeObserver(resize);observer.observe(canvas);
   const intersection=new IntersectionObserver(entries=>{
     visible=entries.some(e=>e.isIntersecting);

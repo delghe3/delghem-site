@@ -98,9 +98,10 @@
       <div class="structure-stage">
         <img class="model-poster" src="../assets/real-d2/mixed-frame-poster.webp" width="792" height="643" alt="Visualizzazione del modello misto concettuale DÈLGHEM D2 in calcestruzzo armato e acciaio, da geometria validata D2" decoding="async">
         <div class="model-concept-label" aria-label="DÈLGHEM D2: 60 nodi, 124 aste, 30 shell, 8 controventi; C30/37; dimostrazione concettuale mista C.A./acciaio">DÈLGHEM D2 · C.A. + ACCIAIO · 8 CONTROVENTI</div>
+        <div class="model-motion-status" id="model-motion-status" role="status" aria-live="polite">⟳ ROTAZIONE 3D · ATTIVA</div>
         <canvas id="structure-canvas" aria-label="Visualizzazione dimostrativa di un telaio strutturale tridimensionale. Trascina o usa le frecce per ruotare. Home ripristina la vista." data-i18n-aria="modelAlt"></canvas>
         <div class="model-label"><span class="model-dot" aria-hidden="true"></span><span data-i18n="modelLabel">L’idea prende struttura.</span></div>
-        <div class="model-controls" role="group" aria-label="Vista del modello" data-i18n-aria="modelView"><button data-model-view="structure" aria-pressed="true" data-i18n="structure">Struttura</button><button data-model-view="deformed" aria-pressed="false" data-i18n="deformed">Deformata</button><button data-model-view="forces" aria-pressed="false" data-i18n="forces">Sollecitazioni</button><button id="rotate-model" class="icon-button" aria-pressed="true" aria-label="Rotazione automatica" data-i18n-aria="rotate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 6a8 8 0 0 1 14 6M4 12a8 8 0 0 0 14 6"/></svg></button></div>
+        <div class="model-controls" role="group" aria-label="Vista del modello" data-i18n-aria="modelView"><button data-model-view="structure" aria-pressed="true" data-i18n="structure">Struttura</button><button data-model-view="deformed" aria-pressed="false" data-i18n="deformed">Deformata</button><button data-model-view="forces" aria-pressed="false" data-i18n="forces">Sollecitazioni</button><button id="rotate-model" class="icon-button" aria-pressed="true" aria-label="Rotazione automatica" data-i18n-aria="rotate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 6a8 8 0 0 1 14 6M4 12a8 8 0 0 0 14 6"/></svg></button><button id="reset-model" class="icon-button model-reset" type="button" aria-label="Reset 3D view" data-i18n-aria="resetView" title="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" aria-hidden="true"><path d="M3 11a9 9 0 1 1 3.2 7M3 4v7h7"/></svg></button></div>
         <p class="model-origin">Modello misto C.A. + acciaio preliminare · non ottimizzato né verificato</p><p class="model-disclaimer" data-i18n="modelDisclaimer">Visualizzazione dimostrativa · nessun risultato di calcolo</p>
       </div>
       <div class="hero-bottom"><a href="#app" class="scroll-prompt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 4v16m-5-5 5 5 5-5"/></svg><span data-i18n="scrollDiscover">Scorri. Entra nel progetto.</span></a><span class="development-note"><span aria-hidden="true"></span><span data-i18n="development">Progetto in sviluppo</span></span></div>
@@ -146,6 +147,31 @@
   <div class="genius-command-cases">
     <div class="genius-command-heading"><span class="eyebrow">ESEMPI TRATTI DAI COMANDI GENIUS IMPLEMENTATI</span><h3>Un solo modello, molte operazioni di ingegneria</h3><p>La potenzialità strategica è un’interfaccia consapevole del modello che unisce creazione, selezione, proprietà, carichi e comandi di analisi, mantenendo le verifiche e i vincoli del modello dati DÈLGHEM.</p></div>
     <div class="genius-command-list"><div class="genius-command-row"><span>01 / MODELLO</span><code>Inserisci un nuovo nodo in 0 0 4</code></div><div class="genius-command-row"><span>02 / CATALOGO</span><code>Sostituisci la trave B4 con una IPE400 S355</code></div><div class="genius-command-row"><span>03 / MODIFICA</span><code>Suddividi la trave B4 in 4 parti</code></div><div class="genius-command-row"><span>04 / CARICO</span><code>Applica carico Fz=-10 kN My=2 kNm al nodo N4 nel caso G</code></div><div class="genius-command-row"><span>05 / ANALISI</span><code>Configura Pushover</code></div></div>
+  </div>
+  <div class="genius-journey" id="genius-journey" aria-label="Guida interattiva alle operazioni Genius">
+    <div class="genius-journey-heading">
+      <div><span class="eyebrow">DALL'ISTRUZIONE TECNICA AL MODELLO MODIFICABILE</span><h3>Scopri cosa prepara un singolo comando.</h3></div>
+      <p>Scegli un esempio e osserva come un’istruzione tecnica diventa un’operazione precisa sul modello, sempre soggetta al controllo del progettista.</p>
+    </div>
+    <div class="genius-journey-grid">
+      <div class="genius-case-pickers" role="group" aria-label="Esempi di comandi Genius">
+        <button type="button" data-genius-case="node" aria-pressed="true"><span>01 / GEOMETRIA</span><strong>Crea un nodo</strong><small>Coordinate trasformate in entità</small></button>
+        <button type="button" data-genius-case="section" aria-pressed="false"><span>02 / MATERIALI</span><strong>Modifica una trave</strong><small>Sezione e materiale insieme</small></button>
+        <button type="button" data-genius-case="load" aria-pressed="false"><span>03 / AZIONI</span><strong>Assegna un carico nodale</strong><small>Componenti, unità, condizione</small></button>
+        <button type="button" data-genius-case="analysis" aria-pressed="false"><span>04 / SPERIMENTALE</span><strong>Richiedi un’analisi</strong><small>Configurazione, non risultati di calcolo</small></button>
+      </div>
+      <div class="genius-preview-panel">
+        <div class="genius-preview-heading"><span>GENIUS / DAL COMANDO AL MODELLO</span><span class="genius-example-state" id="genius-demo-status" data-qualified="true">GEOMETRIA · SUPPORTATA</span></div>
+        <div class="genius-preview-command"><span>01 / LA TUA ISTRUZIONE TECNICA</span><code id="genius-demo-command">Inserisci un nodo in 0 0 4</code></div>
+        <div class="genius-preview-detail" aria-live="polite">
+          <div><span>02 / ENTITÀ STRUTTURALE</span><strong id="genius-demo-target">Nuovo nodo: X = 0 m · Y = 0 m · Z = 4 m</strong></div>
+          <div><span>03 / MODIFICA IN ANTEPRIMA</span><strong id="genius-demo-change">Prepara un’entità geometrica con coordinate e unità esplicite.</strong></div>
+          <div><span>04 / CONTROLLO DEL PROGETTISTA</span><strong id="genius-demo-review">Controlla il sistema di riferimento e gli eventuali nodi coincidenti prima di applicare.</strong></div>
+        </div>
+        <div class="genius-preview-footer"><span>DESCRIVI</span><span aria-hidden="true">→</span><span>CONTROLLA</span><span aria-hidden="true">→</span><span>APPLICA IN DÈLGHEM</span></div>
+      </div>
+    </div>
+    <p class="genius-journey-note">Dimostrazione illustrativa: questo sito non esegue comandi Genius né analisi FEM. Nell’applicazione di sviluppo le modifiche richiedono conferma; le analisi avanzate restano soggette a validazione.</p>
   </div>
   <p class="genius-trust-note">Genius è un’interfaccia locale a comandi deterministici, non un progettista autonomo. Ogni modifica e analisi richiede verifica professionale. Un comando non costituisce una verifica strutturale certificata.</p>
 </section>
@@ -211,6 +237,7 @@
   <noscript><p class="noscript-note" data-i18n="noScript">Le pagine in italiano e inglese sono disponibili anche senza JavaScript. Abilitalo per esplorare tutte le schermate e attivare le animazioni.</p></noscript>
 <dialog id="photo-dialog" aria-label="Schermata reale dell’applicazione"><button id="photo-dialog-close" class="photo-dialog-close" type="button" aria-label="Chiudi immagine">✕</button><img id="photo-image" alt="Schermata DÈLGHEM"><p id="photo-dialog-caption"></p></dialog>
   <script type="module" src="../app.js"></script>
+  <script type="module" src="../genius-demo.js"></script>
   <script type="module" src="../social.js"></script>
 <script defer src="../visitor-counter.js"></script>
 <script defer src="../support-actions.js"></script>
