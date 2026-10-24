@@ -1,0 +1,7 @@
+DÈLGHEM D2: actual app capture provenance (24 October 2026)
+All images are crops of saved, genuine screenshots from the user-controlled DÈLGHEM D2 source project's evidence directories.
+No generative imagery, invented calculations, or synthetic data was used. The crops preserve the underlying screenshot pixels.
+floor-plan.webp <= evidence/member-plate-gui/.../complex-floor-drawing.png (steel floor plan, preliminary demo)
+floor-assembly.webp <= evidence/member-plate-gui/.../complex-floor-dossier-all-198.png (steel floor dossier, preliminary demo)
+fem-results.webp <= verification/guided-dynamics-.../C-pushover-real-results.png (nonlinear-path UI prototype; not a certified seismic or safety verification)
+The demonstration drawing is expressly marked preliminary/non-executive. Screenshots are not solver validation or engineering design approvals.

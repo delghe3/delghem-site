@@ -55,7 +55,7 @@ function updateLanguage(next) {
   $('meta[property="og:title"]').content = document.title;
   $('meta[property="og:description"]').content = $('meta[name="description"]').content;
   $('meta[property="og:locale"]').content = language === 'it' ? 'it_IT' : 'en_GB';
-  $$('.contact-email').forEach(link => { link.href = 'mailto:ildelghe3@gmail.com?subject=' + encodeURIComponent(language === 'it' ? 'Informazioni su DÈLGHEM' : 'DÈLGHEM enquiry'); });
+  $$('.contact-email').forEach(link => { link.href = 'mailto:delghem@proton.me?subject=' + encodeURIComponent(language === 'it' ? 'Informazioni su DÈLGHEM' : 'DÈLGHEM enquiry'); });
   $('#genius-image').src = assetUrl(language === 'en' ? './assets/app-genius-en.png' : './assets/app-genius-large.png');
   renderGallery();
   renderMotion();

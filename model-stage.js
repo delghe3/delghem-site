@@ -19,6 +19,21 @@ function createFrame() {
     if(k>0&&i<X.length-1)edges.push({a:from,b:idx(i+1,j,k),kind:'beam',level:k});
     if(k>0&&j<Y.length-1)edges.push({a:from,b:idx(i,j+1,k),kind:'beam',level:k});
   }
+  // Perimeter steel bracing. Every diagonal uses the same FEM grid vertices as the frame.
+  // X pairs are in perimeter bays only; interior bays remain unobstructed.
+  for(let k=0;k<Z.length-1;k++){
+    for(const j of [0,Y.length-1]){
+      for(const i of (k%2===0?[0,2]:[1])){
+        edges.push({a:idx(i,j,k),b:idx(i+1,j,k+1),kind:'brace',level:k});
+        edges.push({a:idx(i+1,j,k),b:idx(i,j,k+1),kind:'brace',level:k});
+      }
+    }
+    for(const i of [0,X.length-1]){
+      const j=k%2;
+      edges.push({a:idx(i,j,k),b:idx(i,j+1,k+1),kind:'brace',level:k});
+      edges.push({a:idx(i,j+1,k),b:idx(i,j,k+1),kind:'brace',level:k});
+    }
+  }
   return {nodes,edges};
 }
 const frame=createFrame();
@@ -55,6 +70,47 @@ export function initModelStage() {
     ctx.strokeStyle=style;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';
     ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();ctx.globalAlpha=1;
   };
+  // Screen-space projection of solid I-section flanges and web. This is a
+  // qualitative 3D presentation, not a fabrication-dimensioned profile.
+  function ribbon(a,b,nx,ny,offsetA,offsetB,fill,stroke=null){
+    const ux=b.x-a.x,uy=b.y-a.y,ln=Math.hypot(ux,uy)||1;
+    const extend=.45,ex=ux/ln*extend,ey=uy/ln*extend;
+    ctx.fillStyle=fill;ctx.beginPath();
+    ctx.moveTo(a.x+nx*offsetA-ex,a.y+ny*offsetA-ey);
+    ctx.lineTo(b.x+nx*offsetA+ex,b.y+ny*offsetA+ey);
+    ctx.lineTo(b.x+nx*offsetB+ex,b.y+ny*offsetB+ey);
+    ctx.lineTo(a.x+nx*offsetB-ex,a.y+ny*offsetB-ey);
+    ctx.closePath();ctx.fill();
+    if(stroke){ctx.lineWidth=.55;ctx.strokeStyle=stroke;ctx.stroke();}
+  }
+  function drawIProfile(a,b,width,color){
+    const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1;
+    const nx=-dy/len,ny=dx/len,half=width*.53;
+    const flangeBand=Math.max(1.1,width*.23),webBand=Math.max(.9,width*.18);
+    // Profile face, contrasting web, two visible flanges and light metallic edges.
+    ribbon(a,b,nx,ny,-half,half,'rgba(23,53,66,.35)');
+    ribbon(a,b,nx,ny,-half,-half+flangeBand,color,'rgba(15,42,56,.25)');
+    ribbon(a,b,nx,ny,half-flangeBand,half,color,'rgba(15,42,56,.25)');
+    ribbon(a,b,nx,ny,-webBand*.5,webBand*.5,'rgba(227,242,243,.78)');
+    ribbon(a,b,nx,ny,-half+flangeBand*.3,-half+flangeBand*.52,'rgba(251,255,255,.66)');
+    ctx.strokeStyle='rgba(18,49,60,.48)';ctx.lineWidth=.8;
+    ctx.beginPath();
+    ctx.moveTo(a.x+nx*half,a.y+ny*half);ctx.lineTo(b.x+nx*half,b.y+ny*half);
+    ctx.moveTo(a.x-nx*half,a.y-ny*half);ctx.lineTo(b.x-nx*half,b.y-ny*half);
+    ctx.stroke();
+  }
+  function drawBrace(a,b,width,color){
+    const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1;
+    const nx=-dy/len,ny=dx/len;
+    ribbon(a,b,nx,ny,-width*.5,width*.5,color,'rgba(45,50,55,.30)');
+    ribbon(a,b,nx,ny,-width*.20,-width*.04,'rgba(255,244,227,.76)');
+    // Gusset/connector endpoints keep the diagonal visually attached to nodes.
+    for(const p of [a,b]){
+      ctx.beginPath();ctx.arc(p.x,p.y,Math.max(2.1,width*.55),0,TAU);
+      ctx.fillStyle='rgba(190,113,59,.90)';ctx.fill();
+      ctx.lineWidth=.8;ctx.strokeStyle='rgba(41,55,65,.35)';ctx.stroke();
+    }
+  }
   function backdrop(){
     ctx.clearRect(0,0,w,h);
     const haze=ctx.createRadialGradient(w*.58,h*.45,0,w*.5,h*.44,Math.max(w,h)*.59);
@@ -81,13 +137,13 @@ export function initModelStage() {
       for(const e of sorted)segment(undeformed[e.a],undeformed[e.b],'#98acb2',1.45,.30);
     }
     for(const e of sorted){
-      const a=pts[e.a],b=pts[e.b],width=e.kind==='column'?clamp(a.scale*.074,3.2,7.1):clamp(a.scale*.061,2.9,6.3);
+      const a=pts[e.a],b=pts[e.b];
+      const width=e.kind==='column'?clamp(a.scale*.125,7,15):e.kind==='brace'?clamp(a.scale*.072,3.5,7.2):clamp(a.scale*.108,6.5,12.5);
       const n=clamp(.5+Math.sin(e.level*.85+e.order*.21)*.34+(e.kind==='column'?.13:0),0,1);
-      const color=view==='forces'?heat(n):e.kind==='column'?'#377f96':e.level%2?'#dd925c':'#55b4bd';
-      // Edge aura and edge highlight create a technical 3D member effect.
-      segment(a,b,'rgba(27,48,60,.17)',width+5,.54);
-      segment(a,b,color,width,.97);
-      segment({x:a.x-1,y:a.y-1,depth:a.depth},{x:b.x-1,y:b.y-1,depth:b.depth},'#e9f2ee',Math.max(1,width*.16),.42);
+      const color=view==='forces'?heat(n):e.kind==='column'?'#277a94':e.kind==='brace'?'#be764d':e.level%2?'#dd925c':'#43a4b2';
+      segment(a,b,'rgba(24,48,64,.14)',width+5,.33);
+      if(e.kind==='brace')drawBrace(a,b,width,color);
+      else drawIProfile(a,b,width,color);
     }
     for(let i=0;i<pts.length;i++){
       const p=pts[i],n=frame.nodes[i],r=clamp(p.scale*.038,2.5,4);

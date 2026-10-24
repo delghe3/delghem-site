@@ -452,3 +452,50 @@ body.photo-open{overflow:hidden}
  .steel-story-footer a{display:block;margin-top:12px}
 }
 @media(prefers-reduced-motion:reduce){.steel-story-card{transition:none}.steel-story-card:hover{transform:none}}
+
+/* Real DÈLGHEM D2 evidence: floor-level drawing previews and analysis graphs */
+.floor-carpentry-section{background:#e7f0ed;color:#18323c;padding:clamp(78px,8vw,126px) var(--gutter);border-top:1px solid #c8dcdb;scroll-margin-top:80px}
+.floor-carpentry-inner{max-width:1500px;margin:0 auto}
+.floor-carpentry-heading{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(20px,5vw,90px);align-items:end}
+.floor-carpentry-heading .eyebrow{font-size:11px;font-weight:900;letter-spacing:.16em;color:#2d7b89}
+.floor-carpentry-heading h2{font-size:clamp(33px,4.2vw,61px);letter-spacing:-.055em;line-height:1.12;max-width:15ch}
+.floor-carpentry-heading>p{color:#47636b;line-height:1.77;max-width:65ch;font-size:clamp(13px,1.2vw,17px)}
+.floor-captures-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:45px 0 27px}
+.floor-capture-card{background:#fffefa;border:1px solid #c9dcda;border-radius:11px;overflow:hidden;box-shadow:0 16px 35px rgba(26,66,79,.07);margin:0;display:flex;flex-direction:column}
+.floor-capture-card>a{position:relative;display:block;background:#f2f5f4;overflow:hidden}
+.floor-capture-card img{width:100%;aspect-ratio:1.5;object-fit:contain;object-position:center;transition:transform .25s ease}
+.floor-capture-card>a:hover img{transform:scale(1.035)}
+.floor-capture-open{position:absolute;right:13px;bottom:13px;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#153845;color:#fff;font-size:17px}
+.floor-capture-card figcaption{padding:21px 21px 25px;display:flex;flex-direction:column;gap:11px;line-height:1.6}
+.floor-capture-card figcaption strong{font-size:clamp(15px,1.5vw,19px);letter-spacing:-.03em}
+.floor-capture-card figcaption span{font-size:12px;color:#526a6f}
+.floor-carpentry-footer{display:flex;align-items:center;justify-content:space-between;gap:22px;padding-top:16px;border-top:1px solid #c1d4d3}
+.floor-carpentry-footer p{font-size:11px;color:#596f73;max-width:82ch;line-height:1.7}
+.floor-carpentry-footer a{font-size:12px;font-weight:800;color:#1f7180;text-decoration:underline;text-underline-offset:6px;flex-shrink:0}
+@media(max-width:950px){.floor-carpentry-heading{grid-template-columns:1fr;gap:16px}.floor-captures-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.floor-capture-card:last-child{grid-column:1/-1;max-width:600px}.floor-carpentry-footer{flex-wrap:wrap}}
+@media(max-width:650px){.floor-carpentry-section{padding:65px 23px}.floor-captures-grid{grid-template-columns:1fr;gap:15px;margin:28px 0 24px}.floor-capture-card:last-child{grid-column:auto;max-width:none}.floor-capture-card img{aspect-ratio:1.65}.floor-carpentry-footer{align-items:flex-start;flex-direction:column}.floor-carpentry-heading h2{font-size:clamp(36px,9.5vw,47px)}}
+@media(prefers-reduced-motion:reduce){.floor-capture-card img{transition:none}.floor-capture-card>a:hover img{transform:none}}
+
+/* Public professional contact, distinct from the separate PayPal personal recipient */
+.contact-strip{padding:18px var(--gutter);background:#f4f9f5;border-bottom:1px solid #c4d9d5;scroll-margin-top:80px}
+.contact-strip-inner{max-width:1510px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:26px}
+.contact-strip-copy{display:flex;flex-direction:column;gap:3px;min-width:0}
+.contact-strip-kicker{font-size:9px;letter-spacing:.16em;color:#39808a;font-weight:900}
+.contact-strip-title{font-size:clamp(17px,1.5vw,22px);letter-spacing:-.035em;color:#163747}
+.contact-strip-note{font-size:11px;line-height:1.6;color:#536c72}
+.contact-strip-action{display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+.contact-strip-link{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 15px;border:1px solid #b7d0cc;background:#fffefa;color:#17647a;border-radius:7px;font-size:clamp(14px,1.3vw,18px);font-weight:850;white-space:nowrap;overflow-wrap:anywhere;box-shadow:0 8px 22px #122f4110}
+.contact-strip-link:hover{background:#e5f2ec;border-color:#6ca39e}
+.contact-strip-link span{color:#b65a39;font-weight:900}
+.contact-strip-instruction{color:#667f83;font-size:10px;font-weight:650}
+.site-footer .footer-contact.contact-email{font-size:clamp(11px,1vw,13px);font-weight:850;color:#205f72;white-space:nowrap}
+.closing-section .contact-address.contact-email{font-weight:850;color:#226b7f}
+@media(max-width:650px){
+ .contact-strip{padding:17px 23px}
+ .contact-strip-inner{flex-direction:column;align-items:stretch;gap:12px}
+ .contact-strip-action{align-items:stretch}
+ .contact-strip-link{min-height:43px;width:100%;font-size:clamp(13px,3.8vw,17px);padding:10px 13px}
+ .contact-strip-instruction{display:none}
+ .contact-strip-title{font-size:18px}
+ .contact-strip-note{font-size:11px}
+}
