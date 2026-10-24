@@ -4,16 +4,28 @@
  * by D2. Geotechnical / structural design has NOT been performed or certified.
  */
 import {complexDemo} from './assets/real-d2/complex-demo-geometry.mjs?v=20261024-8floor-d2a';
-const mixedDemo=complexDemo;
-const mid=(complexDemo.bbox.min.map((v,i)=>(v+complexDemo.bbox.max[i])/2));
-const extent=complexDemo.bbox.max.map((v,i)=>v-complexDemo.bbox.min[i]);
-const towerHeight=complexDemo.levels.at(-1);
-const roofHeight=complexDemo.bbox.max[2];
-const isTallConcept=complexDemo.storeyCount>=8;
+import {showcaseModels} from './assets/real-d2/showcase-geometry.mjs?v=20261025-showcase5';
+export const MODEL_SHOWCASE_DURATION_MS=5000;
+const models=[complexDemo,...showcaseModels];
+const towerShowcase={
+ id:'eight-storey',titleIt:'Torre mista a otto piani',titleEn:'Eight-storey mixed tower',
+ subtitleIt:'212 nodi · 514 aste · 24 plinti · struttura non verificata',
+ subtitleEn:'212 nodes · 514 members · 24 pad footings · unverified concept',
+ tagIt:'8 PIANI · S355 / C30/37 / GL24h',
+ tagEn:'8 STOREYS · S355 / C30/37 / GL24h',
+ materials:['S355','C30/37','GL24h']
+};
+const showcaseMeta=[towerShowcase,...showcaseModels];
+let mixedDemo=complexDemo;
+let mid=complexDemo.bbox.min.map((v,i)=>(v+complexDemo.bbox.max[i])/2);
+let extent=complexDemo.bbox.max.map((v,i)=>v-complexDemo.bbox.min[i]);
+let towerHeight=complexDemo.levels.at(-1);
+let roofHeight=complexDemo.bbox.max[2];
+let isTallConcept=complexDemo.storeyCount>=8;
 
 // 360° in about 18.5 seconds, perceptible without abrupt motion.
 export const DEFAULT_ORBIT_SPEED = 0.34;
-const FRAME_INTERVAL = 1000/(isTallConcept?19:24);
+const FRAME_INTERVAL=1000/19;
 
 const TAU=Math.PI*2, clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const plus=(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]];
@@ -45,7 +57,42 @@ const colors={
   'wood-post':[183,118,61],
   'wood-beam':[199,138,64],
   'wood-truss':[250,170,73],
-  'wood-purlin':[253,199,110]
+  'wood-purlin':[253,199,110],
+  'stadium-arch':[26,94,181],
+  'stadium-bottom-chord':[26,124,187],
+  'stadium-diagonal':[71,136,186],
+  'stadium-web':[62,148,180],
+  'stadium-purlin':[83,178,212],
+  'stadium-roof':[116,198,220],
+  'stadium-roof-brace':[237,131,64],
+  'stadium-ring-beam':[43,139,194],
+  'football-pitch':[57,151,101],
+  'arch-upper-rib':[22,86,161],
+  'arch-lower-rib':[35,116,192],
+  'arch-lattice':[64,143,214],
+  'arch-web':[64,148,204],
+  'arch-hanger':[232,140,59],
+  'arch-transverse-tie':[66,176,198],
+  'deck-tie':[28,98,174],
+  'deck-crossbeam':[42,161,205],
+  'deck-centre-girder':[75,167,208],
+  'deck-lateral-brace':[216,117,62],
+  'bridge-rail-post':[223,155,93],
+  'bridge-rail':[222,174,112],
+  'rc-bridge-deck':[161,204,210],
+  'glulam-vault':[237,156,65],
+  'glulam-bottom-chord':[194,117,54],
+  'glulam-diagonal':[205,128,63],
+  'glulam-web':[209,138,71],
+  'glulam-purlin':[247,182,93],
+  'glulam-secondary':[237,180,112],
+  'glulam-roof':[235,194,138],
+  'rc-terminal-mezzanine':[166,191,202],
+  'terminal-mezzanine-beam':[30,132,204],
+  'terminal-edge-beam':[42,158,206],
+  'terminal-ring-beam':[65,151,198],
+  'terminal-cantilever':[38,172,200],
+  'terminal-steel-canopy':[129,203,213]
 };
 
 function crossSection(section){
@@ -118,7 +165,8 @@ function makeGeometry(){
   }
   return faces;
 }
-const faces=makeGeometry();
+let faces=makeGeometry();
+const geometryCache=new Map([['eight-storey',faces]]);
 
 export function initModelStage(){
   const canvas=document.getElementById('structure-canvas');
@@ -131,6 +179,99 @@ export function initModelStage(){
   let width=1,height=1,dpr=1,scale=1,yaw=-.97,pitch=.60,mode='structure';
   let camera={cs:1,sn:0,cp:1,sp:0};
   let motion=false,visible=true,dragging=false,pointer=null,start=null,phase=0,last=0,raf=0,disposed=false;
+  let modelIndex=0,slideElapsed=0,clockLast=0;
+  const showcaseRoot=document.getElementById('model-showcase');
+  const dots=[...document.querySelectorAll('[data-showcase-index]')];
+  const counter=document.getElementById('model-showcase-counter');
+  const headline=document.getElementById('model-showcase-title');
+  const origin=document.querySelector('.model-origin');
+  const modelLabel=document.querySelector('.model-concept-label');
+  const pauseBtn=document.getElementById('model-showcase-pause');
+  const modelMaterialKey=document.querySelector('.model-material-key');
+  let carouselReducedMotion=reduced.matches;
+  let carouselPaused=carouselReducedMotion;
+  const titleFor=meta=>italian?meta.titleIt:meta.titleEn;
+  const detailFor=meta=>italian?meta.subtitleIt:meta.subtitleEn;
+  function progressUI(){
+    const ratio=clamp(slideElapsed/MODEL_SHOWCASE_DURATION_MS,0,1);
+    for(const button of dots){
+      const key=Number(button.dataset.showcaseIndex);
+      const selected=key===modelIndex;
+      button.setAttribute('aria-current',String(selected));
+      const fill=button.querySelector('.model-showcase-fill');
+      if(fill)fill.style.transform='scaleX('+(selected?ratio:0)+')';
+    }
+  }
+  function refreshShowcase(){
+    const meta=showcaseMeta[modelIndex],source=models[modelIndex];
+    stage.dataset.modelIndex=String(modelIndex);
+    stage.dataset.modelId=meta.id;
+    if(counter)counter.textContent=String(modelIndex+1).padStart(2,'0')+' / '+String(models.length).padStart(2,'0');
+    if(headline){headline.textContent=titleFor(meta);headline.title=titleFor(meta);}
+    if(origin)origin.textContent=detailFor(meta);
+    if(modelLabel)modelLabel.textContent=modelIndex===0
+       ?(italian?towerShowcase.tagIt:towerShowcase.tagEn)
+       :modelIndex===1
+       ?(italian?'COPERTURA · 114 × 84 M':'FOOTBALL ROOF · 114 × 84 M')
+       :modelIndex===2
+       ?(italian?'PONTE AD ARCO · LUCE 96 M':'TIED-ARCH BRIDGE · 96 M')
+       :(italian?'VOLTE GL24h · 84 × 54 M':'GLULAM VAULTS · 84 × 54 M');
+    if(modelMaterialKey){
+      const materials=new Set(source.materials);
+      for(const label of modelMaterialKey.querySelectorAll('span')){
+        const grade=label.textContent.trim();
+        label.hidden=!materials.has(grade);
+      }
+    }
+    if(pauseBtn){
+      pauseBtn.setAttribute('aria-pressed',String(carouselPaused));
+      pauseBtn.textContent=carouselPaused?'▶':'Ⅱ';
+      const label=carouselReducedMotion
+        ?(italian?'Avanzamento manuale: movimento ridotto':'Manual navigation: reduced motion')
+        :carouselPaused?(italian?'Riprendi la sequenza':'Resume slideshow')
+         :(italian?'Metti in pausa la sequenza':'Pause slideshow');
+      pauseBtn.title=label;pauseBtn.setAttribute('aria-label',label);
+      pauseBtn.disabled=carouselReducedMotion;
+    }
+    progressUI();
+  }
+  function setModelIndex(next){
+    const count=models.length;
+    if(!Number.isFinite(Number(next)))return;
+    const target=((Math.trunc(Number(next))%count)+count)%count;
+    modelIndex=target;
+    const nextModel=models[target];
+    // Each new specimen begins in its honest native geometry, not in a
+    // qualitative "deformed" or "forces" view inherited from a prior slide.
+    mode='structure';
+    legend.hidden=true;
+    controls.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.modelView==='structure')));
+    mixedDemo=nextModel;
+    mid=mixedDemo.bbox.min.map((v,i)=>(v+mixedDemo.bbox.max[i])/2);
+    extent=mixedDemo.bbox.max.map((v,i)=>v-mixedDemo.bbox.min[i]);
+    towerHeight=nextModel.levels?.at(-1)??Math.max(1,extent[2]);
+    roofHeight=mixedDemo.bbox.max[2];
+    isTallConcept=target===0&&nextModel.storeyCount>=8;
+    yaw=[-.97,-.77,-.94,-.88][target]??-.97;
+    pitch=[.60,.60,.47,.62][target]??.60;
+    const key=showcaseMeta[target].id;
+    if(!geometryCache.has(key))geometryCache.set(key,makeGeometry());
+    faces=geometryCache.get(key);
+    slideElapsed=0;
+    clockLast=0;
+    refreshShowcase();
+    resize();
+  }
+  dots.forEach(b=>b.addEventListener('click',()=>setModelIndex(b.dataset.showcaseIndex)));
+  document.getElementById('model-showcase-prev')?.addEventListener('click',()=>setModelIndex(modelIndex-1));
+  document.getElementById('model-showcase-next')?.addEventListener('click',()=>setModelIndex(modelIndex+1));
+  pauseBtn?.addEventListener('click',()=>{
+    if(carouselReducedMotion)return;
+    carouselPaused=!carouselPaused;
+    clockLast=0;
+    refreshShowcase();schedule();
+  });
+
   canvas.style.touchAction='pan-y';
   canvas.tabIndex=0;
   const legend=document.createElement('div');
@@ -191,13 +332,67 @@ export function initModelStage(){
       ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
     }
   }
+  // Nonstructural playing-surface FINISH lines, laid over the actual native
+  // on-grade slab (105 × 68 m). These white paint markings are never claimed
+  // as FEM elements or computed structural results.
+  function paintFootballMarkings(){
+    if(modelIndex!==1||mode!=='structure')return;
+    const Z=.11,plot=(x,y)=>project([x,y,Z],true);
+    const path=(points,close=false)=>{
+      ctx.beginPath();
+      points.forEach(([x,y],i)=>{
+        const p=plot(x,y);
+        if(i===0)ctx.moveTo(p.x,p.y);
+        else ctx.lineTo(p.x,p.y);
+      });
+      if(close)ctx.closePath();
+      ctx.stroke();
+    };
+    ctx.save();
+    ctx.strokeStyle='rgba(248,255,246,.93)';
+    ctx.lineWidth=Math.max(1.05,Math.min(2.2,width/450));
+    ctx.lineCap='round';
+    path([[-52.5,-34],[52.5,-34],[52.5,34],[-52.5,34]],true);
+    path([[0,-34],[0,34]]);
+    const circle=Array.from({length:49},(_,i)=>{
+      const a=i*Math.PI*2/48;
+      return [9.15*Math.cos(a),9.15*Math.sin(a)];
+    });
+    path(circle,true);
+    for(const side of [-1,1]){
+      const x0=side*52.5,x1=side*(52.5-16.5),x2=side*(52.5-5.5);
+      path([[x0,-20.16],[x1,-20.16],[x1,20.16],[x0,20.16]]);
+      path([[x0,-9.16],[x2,-9.16],[x2,9.16],[x0,9.16]]);
+      const penalty=plot(side*(52.5-11),0);
+      ctx.fillStyle='rgba(248,255,246,.93)';
+      ctx.beginPath();ctx.arc(penalty.x,penalty.y,Math.max(1.3,width/500),0,Math.PI*2);ctx.fill();
+    }
+    ctx.restore();
+  }
   function paintFaces(){
     // Depth-sort faces rather than overpainting member centerlines: real I flanges/web are visible.
     const projected=faces.map(face=>{
       const points=face.vertices.map(p=>project(p));
       return {face,points,depth:points.reduce((sum,p)=>sum+p.depth,0)/points.length};
-    }).sort((a,b)=>b.depth-a.depth);
+    }).sort((a,b)=>{
+      // The green football pitch is an actual on-grade QUAD4 panel.
+      // Always draw it BEHIND the steel canopy rather than painting it
+      // across the roof. Footer pedestals likewise remain below the shell.
+      // Do not alter sorting of the original eight-storey D2 model.
+      if(modelIndex!==0){
+        const priority=x=>x.face.kind==='football-pitch'?-2:
+          x.face.kind==='rc-footing'?-1:0;
+        const delta=priority(a)-priority(b);
+        if(delta)return delta;
+      }
+      return b.depth-a.depth;
+    });
+    let pitchMarked=false;
     for(const item of projected){
+      if(modelIndex===1&&!pitchMarked&&item.face.kind!=='football-pitch'){
+        paintFootballMarkings();
+        pitchMarked=true;
+      }
       const {face,points}=item;
       const lighting=clamp(.78+dot(face.normal,light)*.25,.48,1.10);
       const base=colors[face.kind]??colors.primary;
@@ -208,10 +403,14 @@ export function initModelStage(){
         pigment=[Math.round(30+173*heightRatio),Math.round(128+19*Math.sin(heightRatio*Math.PI)),Math.round(203-122*heightRatio)];
       }
       // Semi-transparent concrete floors expose the contrasting structural skeleton.
-      const opacity=['rc-floor','rc-roof','rc-balcony'].includes(face.kind)?.22:
+      const opacity=['rc-floor','rc-roof','rc-balcony','rc-bridge-deck','rc-terminal-mezzanine'].includes(face.kind)?.22:
+        face.kind==='football-pitch'?.86:
+        face.kind==='stadium-roof'?.22:
+        face.kind==='glulam-roof'?.48:
+        face.kind==='terminal-steel-canopy'?.26:
         face.kind==='wood-roof'?.64:face.kind==='wood-deck'?.28:
         face.kind==='steel-roof'?.43:face.kind==='rc-wall'?.74:1;
-      const border=['rc-floor','rc-roof','rc-balcony','wood-deck','wood-roof','steel-roof'].includes(face.kind)?'rgba(39,95,123,.23)':'rgba(22,49,70,.23)';
+      const border=['rc-floor','rc-roof','rc-balcony','wood-deck','wood-roof','steel-roof','stadium-roof','glulam-roof','football-pitch','rc-bridge-deck','terminal-steel-canopy','rc-terminal-mezzanine'].includes(face.kind)?'rgba(39,95,123,.23)':'rgba(22,49,70,.23)';
       poly(points,rgba(pigment,lighting,opacity),border);
     }
   }
@@ -233,7 +432,10 @@ export function initModelStage(){
   function labels(){
     ctx.textAlign='left';ctx.fillStyle='rgba(29,76,93,.83)';
     ctx.font='700 10px Manrope,system-ui,sans-serif';
-    if(width>480)ctx.fillText('DÈLGHEM D2 · '+complexDemo.storeyCount+' STOREYS · C30/37 / S355 / GL24h',Math.max(15,width*.045),height*.10);
+    if(width>480)ctx.fillText(modelIndex===0
+      ?'DÈLGHEM D2 · '+complexDemo.storeyCount+' STOREYS · C30/37 / S355 / GL24h'
+      :'DÈLGHEM D2 · '+showcaseMeta[modelIndex].id.toUpperCase().replaceAll('-',' '),
+      Math.max(15,width*.045),height*.10);
   }
   function render(){
     if(disposed||width<2||height<2)return;
@@ -254,28 +456,53 @@ export function initModelStage(){
     scale=Math.min(width/(orbitDiameter*1.13),height/(orbitDiameter*.68+extent[2]*.78));
     render();
   }
+  // One clock drives the 5-second slideshow and the existing 3D orbit.
+  // When the hero is offscreen or the page is backgrounded, BOTH pause.
+  // A manual "stop rotating" click does NOT stop the slideshow.
   function tick(timestamp){
     raf=0;
-    if(disposed||!motion||!visible||document.hidden||reduced.matches)return;
-    if(!last)last=timestamp;
-    const elapsed=timestamp-last;
-    if(elapsed>=FRAME_INTERVAL*(width<480?1.27:1)){
-      const dt=Math.min(.10,elapsed/1000);
-      last=timestamp;
-      if(!dragging)yaw+=dt*DEFAULT_ORBIT_SPEED;
-      if(yaw>TAU)yaw-=TAU;
-      phase+=dt;
-      render();
+    // Some embedded browsers deliver reduced-motion change events only after
+    // a further media update. A running frame therefore rechecks the actual
+    // preference before displaying or advancing the next animation.
+    if(reduced.matches!==carouselReducedMotion){
+      carouselReducedMotion=reduced.matches;
+      carouselPaused=carouselReducedMotion;
+      refreshShowcase();
     }
-    raf=requestAnimationFrame(tick);
+    if(disposed||!visible||document.hidden||reduced.matches){clockLast=0;last=0;return;}
+    if(!clockLast)clockLast=timestamp;
+    const dtMs=Math.min(100,Math.max(0,timestamp-clockLast));
+    clockLast=timestamp;
+    if(!carouselPaused&&!dragging){
+      slideElapsed+=dtMs;
+      if(slideElapsed>=MODEL_SHOWCASE_DURATION_MS){
+        setModelIndex(modelIndex+1);
+        clockLast=timestamp;
+      }
+      progressUI();
+    }
+    if(motion){
+      if(!last)last=timestamp;
+      const elapsed=timestamp-last;
+      if(elapsed>=FRAME_INTERVAL*(width<480?1.27:1)){
+        const dt=Math.min(.10,elapsed/1000);
+        last=timestamp;
+        if(!dragging)yaw+=dt*DEFAULT_ORBIT_SPEED;
+        if(yaw>TAU)yaw-=TAU;
+        phase+=dt;
+        render();
+      }
+    }else last=0;
+    if(motion||!carouselPaused)raf=requestAnimationFrame(tick);
   }
   function schedule(){
-    if(disposed||raf||!motion||!visible||document.hidden||reduced.matches)return;
-    last=0;raf=requestAnimationFrame(tick);
+    if(disposed||raf||!visible||document.hidden||reduced.matches)return;
+    if(!motion&&carouselPaused)return;
+    clockLast=0;last=0;raf=requestAnimationFrame(tick);
   }
   function setMotion(value){
     motion=!!value;
-    if(motion)schedule();
+    if(motion||!carouselPaused)schedule();
     else if(raf){cancelAnimationFrame(raf);raf=0;render();}
   }
   function setView(next){
@@ -301,28 +528,40 @@ export function initModelStage(){
   canvas.addEventListener('keydown',e=>{
     if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;
     e.preventDefault();
-    if(e.key==='Home'){yaw=-.97;pitch=.60;}
+    if(e.key==='Home'){yaw=[-.97,-.77,-.94,-.88][modelIndex];pitch=[.60,.60,.47,.62][modelIndex];}
     if(e.key==='ArrowLeft')yaw-=.12;
     if(e.key==='ArrowRight')yaw+=.12;
     if(e.key==='ArrowUp')pitch=clamp(pitch-.08,-.05,.95);
     if(e.key==='ArrowDown')pitch=clamp(pitch+.08,-.05,.95);
     render();
   });
-  document.getElementById('reset-model')?.addEventListener('click',()=>{yaw=-.97;pitch=.60;render();canvas.focus({preventScroll:true});});
+  document.getElementById('reset-model')?.addEventListener('click',()=>{
+    yaw=[-.97,-.77,-.94,-.88][modelIndex];pitch=[.60,.60,.47,.62][modelIndex];
+    render();canvas.focus({preventScroll:true});
+  });
   const observer=new ResizeObserver(resize);observer.observe(canvas);
   const intersection=new IntersectionObserver(entries=>{
     visible=entries.some(e=>e.isIntersecting);
-    if(!visible&&raf){cancelAnimationFrame(raf);raf=0;}
+    if(!visible&&raf){cancelAnimationFrame(raf);raf=0;clockLast=0;last=0;}
     if(visible)schedule();
   });
   intersection.observe(canvas);
-  const visibility=()=>{if(document.hidden&&raf){cancelAnimationFrame(raf);raf=0;}else schedule();};
-  const preference=()=>{if(reduced.matches&&raf){cancelAnimationFrame(raf);raf=0;}else schedule();};
+  const visibility=()=>{
+    if(document.hidden&&raf){cancelAnimationFrame(raf);raf=0;clockLast=0;last=0;}
+    else preference();
+  };
+  const preference=()=>{
+    carouselReducedMotion=reduced.matches;
+    carouselPaused=reduced.matches;
+    refreshShowcase();
+    if(reduced.matches&&raf){cancelAnimationFrame(raf);raf=0;clockLast=0;last=0;}
+    else schedule();
+  };
   document.addEventListener('visibilitychange',visibility);
   reduced.addEventListener?.('change',preference);
-  resize();schedule();
+  refreshShowcase();resize();schedule();
   return {
-    setMotion,setView,
+    setMotion,setView,setModelIndex,
     destroy(){
       disposed=true;if(raf)cancelAnimationFrame(raf);
       observer.disconnect();intersection.disconnect();

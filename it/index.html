@@ -36,7 +36,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.delghe.com/#organization","name":"DELGHE","url":"https://www.delghe.com/","brand":{"@type":"Brand","name":"DÈLGHEM"}},{"@type":"WebSite","@id":"https://www.delghe.com/#website","name":"DÈLGHEM","url":"https://www.delghe.com/","inLanguage":["en","it"],"about":{"@id":"https://www.delghe.com/#software"},"publisher":{"@id":"https://www.delghe.com/#organization"}},{"@type":"SoftwareApplication","@id":"https://www.delghe.com/#software","name":"DÈLGHEM","url":"https://www.delghe.com/","description":"Scopri DÈLGHEM, il software di calcolo strutturale in sviluppo per macOS e Apple Silicon: modelli 3D, analisi FEM, Genius e documentazione di progetto.","applicationCategory":"ScienceApplication","operatingSystem":"macOS","processorRequirements":"Apple Silicon","inLanguage":["en","it"],"creativeWorkStatus":"In sviluppo","screenshot":"https://www.delghe.com/assets/app-model.png","author":{"@type":"Person","name":"DELGHE"},"publisher":{"@id":"https://www.delghe.com/#organization"},"brand":{"@type":"Brand","name":"DELGHE"},"alternateName":["DELGHE FEM","DÈLGHEM","DELGHEM"]}]}</script>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../assets/Manrope.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="../style.css?v=20261024-kratos-only1">
+  <link rel="stylesheet" href="../style.css?v=20261025-showcase5">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Vai al contenuto</a>
@@ -105,6 +105,18 @@
         <div class="model-motion-status" id="model-motion-status" role="status" aria-live="polite">⟳ ROTAZIONE 3D · ATTIVA</div>
         <canvas id="structure-canvas" aria-label="Visualizzazione dimostrativa di un telaio strutturale tridimensionale. Trascina o usa le frecce per ruotare. Home ripristina la vista." data-i18n-aria="modelAlt"></canvas>
         <div class="model-label"><span class="model-dot" aria-hidden="true"></span><span data-i18n="modelLabel">L’idea prende struttura.</span></div>
+        <div class="model-showcase" id="model-showcase" role="group" aria-label="Modelli strutturali nativi DÈLGHEM D2, cambio ogni cinque secondi">
+    <div class="model-showcase-heading">
+      <span id="model-showcase-counter" class="model-showcase-counter" aria-hidden="true">01 / 04</span>
+      <strong id="model-showcase-title">Torre mista a otto piani</strong>
+      <div class="model-showcase-actions">
+        <button type="button" id="model-showcase-prev" aria-label="Modello precedente" title="Modello precedente">‹</button>
+        <button type="button" id="model-showcase-pause" aria-pressed="false" aria-label="Pausa avanzamento" title="Pausa">Ⅱ</button>
+        <button type="button" id="model-showcase-next" aria-label="Modello successivo" title="Modello successivo">›</button>
+      </div>
+    </div>
+    <div class="model-showcase-progress" id="model-showcase-progress"><button type="button" class="model-showcase-step" data-showcase-index="0" aria-label="Torre mista a otto piani" aria-current="true"><span class="showcase-step-label">Torre</span><span class="model-showcase-track"><span class="model-showcase-fill"></span></span></button><button type="button" class="model-showcase-step" data-showcase-index="1" aria-label="Copertura per campo da calcio" aria-current="false"><span class="showcase-step-label">Stadio</span><span class="model-showcase-track"><span class="model-showcase-fill"></span></span></button><button type="button" class="model-showcase-step" data-showcase-index="2" aria-label="Ponte ad arco in acciaio" aria-current="false"><span class="showcase-step-label">Ponte</span><span class="model-showcase-track"><span class="model-showcase-fill"></span></span></button><button type="button" class="model-showcase-step" data-showcase-index="3" aria-label="Terminal a volte lamellari" aria-current="false"><span class="showcase-step-label">Terminal</span><span class="model-showcase-track"><span class="model-showcase-fill"></span></span></button></div>
+  </div>
         <div class="model-controls" role="group" aria-label="Vista del modello" data-i18n-aria="modelView"><button data-model-view="structure" aria-pressed="true" data-i18n="structure">Struttura</button><button data-model-view="deformed" aria-pressed="false" data-i18n="deformed">Deformata</button><button data-model-view="forces" aria-pressed="false" data-i18n="forces">Sollecitazioni</button><button id="rotate-model" class="icon-button" aria-pressed="true" aria-label="Rotazione automatica" data-i18n-aria="rotate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 6a8 8 0 0 1 14 6M4 12a8 8 0 0 0 14 6"/></svg></button><button id="reset-model" class="icon-button model-reset" type="button" aria-label="Reset 3D view" data-i18n-aria="resetView" title="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" aria-hidden="true"><path d="M3 11a9 9 0 1 1 3.2 7M3 4v7h7"/></svg></button></div>
         <p class="model-origin">Torre nativa DÈLGHEM D2 · 8 piani · 24 plinti · 3 coperture differenti · geometria non verificata</p><p class="model-disclaimer" data-i18n="modelDisclaimer">Visualizzazione dimostrativa · nessun risultato di calcolo</p>
       </div>
@@ -321,9 +333,9 @@
   <dialog id="image-dialog" aria-label="Schermata ingrandita" data-i18n-aria="imageDialog"><button id="close-dialog" class="icon-button" aria-label="Chiudi schermata" data-i18n-aria="closeImage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button><img id="dialog-image" alt="Schermata DÈLGHEM"><p id="dialog-caption"></p></dialog>
   <noscript><p class="noscript-note" data-i18n="noScript">Le pagine in italiano e inglese sono disponibili anche senza JavaScript. Abilitalo per esplorare tutte le schermate e attivare le animazioni.</p></noscript>
 <dialog id="photo-dialog" aria-label="Schermata reale dell’applicazione"><button id="photo-dialog-close" class="photo-dialog-close" type="button" aria-label="Chiudi immagine">✕</button><img id="photo-image" alt="Schermata DÈLGHEM"><p id="photo-dialog-caption"></p></dialog>
-  <script type="module" src="../app.js?v=20261024-8floor-d2a"></script>
+  <script type="module" src="../app.js?v=20261025-showcase5"></script>
   <script type="module" src="../genius-demo.js"></script>
-  <script type="module" src="../fem-lab.js?v=20261024-kratos-only1"></script>
+  <script type="module" src="../fem-lab.js?v=20261025-showcase5"></script>
   <script type="module" src="../social.js"></script>
 <script defer src="../visitor-counter.js"></script>
 <script defer src="../support-actions.js"></script>
