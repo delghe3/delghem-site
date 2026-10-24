@@ -8,3 +8,28 @@ Pushover: Kratos nonlinear-static protocol but ELASTIC material. It is NOT a val
 IDA: 2 analytic diagnostic acceleration histories and 2 scaled completed runs each. NO collapse, NO observed plasticity and NO statistical fragility curve.
 Every dataset belongs to a separate verified software benchmark fixture, NOT the asymmetric homepage building model.
 These charts are NOT certified structural checks, not proof of whole-product qualification, and not authorized for executive structural design.
+
+
+DÈLGHEM D2 FEM LAB V2 · READ-ONLY SOLVER-EVIDENCE BUNDLE
+Advanced shell: script scripts/build-showcase-shell.mjs derived from actual D2 B01 benchmark, 176 real QUAD4 shell responses, coupled physical beams and wall opening.
+Nonlinear X/Y pushover: scripts/build-advanced-pushover.mjs, real OpenSeesPy steel-fiber IPE300 S235 displacement control, 32 converged states/direction, observed plastic strain.
+IDA X/Y: scripts/build-advanced-ida.mjs, real KratosMultiphysics steel-fiber Newmark dynamics, 8 discrete intensity levels for each of two diagnostic orientations, 16 completed actual solves.
+No collapse or numerical failure is reclassified as a limit state; no statistical fragility is inferred from two oriented analytical diagnostic models.
+Website 3D stress colors subdivide shell panels using bilinear interpolation BETWEEN existing shell Gauss values, solely for visualization, not a solver-derived continuous nodal stress field.
+Gallery images are actual Chrome captures of the D2-data-fed website visualization, not native application screenshots; UI proof screenshots have their independent source files.
+CAVEAT: These are separate benchmark fixtures. None is the conceptual complex building on the homepage. NOT certified structural checks.
+
+V2 asset source: assets/fem-lab/advanced-shell-results.json | SHA256: 498e86ac4dfd57f102b65e63ca6dcba4335cbec42acc79af35d78e1e3c7a4d34 | bytes: 307015
+V2 asset source: assets/fem-lab/native-plastic-pushover.json | SHA256: 5dfb526461708537d93c78cb2cb8aeca42cfff7c57119b3d245d61297172f15e | bytes: 12349
+V2 asset source: assets/fem-lab/native-nonlinear-ida.json | SHA256: b1dde5facebd6172ef3615fb623be76326b45e8b1d85205e69d0f4678f0f2c5d | bytes: 749212
+V2 asset source: assets/fem-lab/d2-ida-original-ui.png | SHA256: 603961008601ec9e18f1a7696e4ee11c5e3f2729260903d8a03e141efc5b4507 | bytes: 351141
+V2 asset source: assets/fem-lab/d2-pushover-original-ui.png | SHA256: 01183a6318bcb5bc0d32aafad5471902cfbcbd04a45929e9c38da059d3190eff | bytes: 311857
+V2 asset source: assets/fem-lab/d2-ida-settings-ui.webp | SHA256: d34b8c2c2d5a0ed9859a4cb1d9e71ef5792a8a999daba9e9ac8d226e81341c1d | bytes: 41536
+V2 asset source: assets/fem-lab/d2-ida-input-ui.webp | SHA256: e070b7d1a30dc3df3fc125cd84f8f2867b2a0bbe4aedd3d772ff30e82208c846 | bytes: 41388
+V2 asset source: assets/fem-lab/d2-pushover-settings-ui.webp | SHA256: 1536ce7c4e65ca82e8f815301b8df9c7068d4999919d0549b4e661dab4d8da7e | bytes: 42124
+V2 asset source: assets/fem-lab/gallery/stress-actual-solver.webp | SHA256: 9b96f2be1f8114c37f812dcb3b2ae1690e75bedf7ef7e8646a45dd8a2df4d8fc | bytes: 42228
+V2 asset source: assets/fem-lab/gallery/pushover-plastic-x-actual-solver.webp | SHA256: f2914ef0d3d122d7946490cb4582377ef951846f83fbf13dcdd7c6407ce6113c | bytes: 24396
+V2 asset source: assets/fem-lab/gallery/pushover-fiber-plastic-actual-solver.webp | SHA256: d9e8a478f30b7146c5fb8187ec09e7fd3808988f9990c2b1463bd6344b8e0f78 | bytes: 31220
+V2 asset source: assets/fem-lab/gallery/ida-nonlinear-x-actual-solver.webp | SHA256: f2e5220b9813c124f270163ed74c74d2dc8e605f74e9390aabb8b375375ca28d | bytes: 21752
+V2 asset source: assets/fem-lab/gallery/ida-hysteresis-actual-solver.webp | SHA256: 1e303a5f3a388f389ed5fb061c99b15cddfaeef6333b22c9d2dd42a7f0f3aa81 | bytes: 14704
+V2 asset source: assets/fem-lab/gallery/accelerogram-x-actual-solver.webp | SHA256: 6df017a2aaef526a8640c48d4e6fff2c0c22bcd48d2c69e9503655dbd02d7f56 | bytes: 25040

@@ -25,26 +25,27 @@ test('Lab data comes from D2 solver result records with explicit source hashes a
  for(const x of [d.stress,d.pushover,d.ida])assert.match(x.sourceSha256,/^[a-f0-9]{64}$/);
  assert.ok(!file('assets/fem-lab/actual-analysis-results.json').includes('/Users/'));
 });
-test('All four visualizations are available in English and Italian with selectable data and proper caveats',()=>{
+test('Four source-backed analyses remain visible in both languages without click-to-reveal tabs',()=>{
  for(const p of ['index.html','it/index.html']){
-  const html=file(p),section=html.slice(html.indexOf('<section class="fem-lab-section'),html.indexOf('<section class="genius-section'));
-  assert.ok(section.length>1000,p);
-  for(const tab of ['stress','pushover','ida','accelerograms'])assert.match(section,new RegExp('data-lab-tab="'+tab+'"'));
-  assert.match(section,/id="lab-stress-canvas"/);
-  assert.match(section,/id="lab-stress-field"/);
-  assert.match(section,/id="lab-stress-face"/);
-  assert.match(section,/id="lab-pushover-svg"/);
-  assert.match(section,/id="lab-ida-svg"/);
-  assert.match(section,/id="lab-accelerograms-svg"/);
-  assert.match(section,/diagnostic|diagnostici/i);
+  const html=file(p),start=html.indexOf('<section class="fem-lab-section'),end=html.indexOf('<section class="genius-section',start),section=html.slice(start,end);
+  assert.ok(section.length>5000,p);
+  assert.match(section,/class="lab-scroll-index"/);
+  assert.doesNotMatch(section,/data-lab-tab/);
+  assert.doesNotMatch(section,/role="tabpanel"/);
+  for(const id of ['stress','pushover','ida','accelerograms']){
+   assert.match(section,new RegExp('id="lab-panel-'+id+'"'));
+   assert.doesNotMatch(section,new RegExp('id="lab-panel-'+id+'"[^>]*hidden'));
+  }
+  for(const id of ['lab-stress-canvas','lab-stress-field','lab-stress-face','lab-pushover-svg','lab-ida-svg','lab-accelerograms-svg','lab-response-svg'])assert.match(section,new RegExp('id="'+id+'"'));
+  assert.match(section,/diagnostic|diagnostici|diagnostiche/i);
   assert.match(html,/fem-lab\.js/);
  }
  const js=file('fem-lab.js');
  assert.match(js,/requestAnimationFrame|addEventListener/);
  assert.match(js,/pointerdown/);
- assert.match(js,/data-lab-tab/);
- assert.match(js,/stress/);
- assert.match(js,/false|fragilityAvailable/);
+ assert.match(js,/native-nonlinear-ida\.json/);
+ assert.match(js,/advanced-shell-results\.json/);
+ assert.match(js,/maxPlasticStrain/);
  assert.match(file('style.css'),/\.fem-lab-section/);
 });
 test('Exporter ships with D2 reproducibility provenance, not arbitrary hand-authored chart rows',()=>{
