@@ -18,6 +18,15 @@ Sito web statico bilingue (italiano / inglese) pubblicato tramite GitHub Pages s
 - Supporto PayPal: collegamento al flusso ufficiale di invio e copia dell'indirizzo destinatario. Il conto e il link di donazione non sono verificati; non trattiamo pagamenti nel sito.
 - Contatore **VISITORS / VISITATORI**: valore iniziale dichiarato dal titolare 87.600 (24/10/2026), al quale si aggiungono le nuove visualizzazioni del servizio; **non** rappresenta il numero verificato di visitatori unici. Se il servizio non risponde, resta il valore iniziale.
 
+## SEO e promozione gratuita (24/10/2026)
+
+- Sei articoli tematici nuovi, indexable, con canonical e hreflang reciproci: Pushover/IDA; mappe tensionali FEM 3D; licenza industriale del codice per software house, ciascuno in IT/EN. La licenza viene proposta direttamente tramite delghem@proton.me; nessun checkout.
+- Sitemap.xml ampliata da 10 a 16 URL canonici; markup TechArticle, WebPage e BreadcrumbList; collegamenti contestuali dalla homepage, dal kit stampa e dalle note su Apple Silicon.
+- Anteprime social PNG 1200×630 IT/EN da geometrie originali D2 e benchmark reali ma indipendenti, incluse nei metadati Open Graph/Twitter e nel media kit; non sono screenshot fittizi dell'app.
+- RSS pubblici IT/EN su /it/rss.xml e /rss.xml per aggregatori editoriali volontari.
+- Indicizzazione: robots.txt consente la scansione, ma sitemap e IndexNow sono suggerimenti ai motori e non garantiscono l'inclusione in Google o posizioni specifiche.
+- Directory: nessuna pubblicazione esterna si considera riuscita finché la piattaforma non restituisce una ricevuta o una pagina effettivamente raggiungibile. Nessuna registrazione a pagamento, recensione inventata o backlink manipolativo.
+
 ## Sviluppo e test
 
 Avvio senza build: `python3 -m http.server 8765 --bind 127.0.0.1` nella directory principale. Visitare `http://127.0.0.1:8765/` e `/it/`.

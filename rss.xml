@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss version="2.0">
+  <channel>
+    <title>DÈLGHEM · Apple Silicon structural FEM insights</title>
+    <link>https://www.delghe.com/</link>
+    <description>DÈLGHEM engineering development and technical benchmark updates</description>
+    <language>en-GB</language>
+    <lastBuildDate>Sat, 24 Oct 2026 07:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Nonlinear Pushover and IDA on Mac | DÈLGHEM FEM</title>
+      <link>https://www.delghe.com/en/nonlinear-pushover-ida-mac/</link>
+      <description>Explore real S235 steel-fiber Pushover curves, 16 Kratos IDA runs, accelerograms and hysteresis results from DÈLGHEM D2 on Apple Silicon, with documented model limits.</description>
+      <pubDate>Sat, 24 Oct 2026 07:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://www.delghe.com/en/nonlinear-pushover-ida-mac/</guid>
+    </item>
+    <item>
+      <title>3D FEM Stress Contours and QUAD4 Shells | DÈLGHEM</title>
+      <link>https://www.delghe.com/en/3d-fem-stress-contours/</link>
+      <description>Inspect genuine OpenSeesPy Von Mises, σ11, σ22 and τ12 contour maps on 176 QUAD4 shells and 66 frame members in DÈLGHEM for native Apple Silicon Macs.</description>
+      <pubDate>Sat, 24 Oct 2026 07:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://www.delghe.com/en/3d-fem-stress-contours/</guid>
+    </item>
+    <item>
+      <title>FEM Source Code Licensing for Apple Silicon | DÈLGHEM</title>
+      <link>https://www.delghe.com/en/apple-silicon-fem-software-licensing/</link>
+      <description>DÈLGHEM is seeking an engineering software-house partner for exclusive industrial source-code licensing on Apple Silicon, with upfront compensation and future-sales royalties.</description>
+      <pubDate>Sat, 24 Oct 2026 07:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://www.delghe.com/en/apple-silicon-fem-software-licensing/</guid>
+    </item>
+  </channel>
+</rss>

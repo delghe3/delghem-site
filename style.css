@@ -1019,3 +1019,50 @@ body.photo-open{overflow:hidden}
  .model-material-key>span{font-size:7px;padding:4px 5px}
  .model-material-key .mat-rc{display:block}
 }
+
+/* Discoverable editorial engineering articles and industrial licensing pages. */
+.seo-article .seo-main{max-width:1480px}
+.seo-article .seo-hero{max-width:1100px}
+.seo-article .seo-hero>h1{max-width:22ch;text-wrap:balance}
+.seo-article .seo-hero>.guide-lead{max-width:72ch}
+.seo-article .seo-article-meta{display:flex;flex-wrap:wrap;gap:9px 22px;color:#397282;font-size:11px;font-weight:850;letter-spacing:.055em;margin:23px 0}
+.seo-article .seo-cover{background:#e1f2ee;border:1px solid #d0e7e1;border-radius:12px;overflow:hidden}
+.seo-article .seo-cover img{display:block;width:100%;height:auto;max-height:610px;object-fit:contain;object-position:center}
+.seo-article .seo-cover figcaption{color:#466b73;font-size:11px;line-height:1.65;padding:14px 20px}
+.seo-article .seo-reading{max-width:1100px}
+.seo-article .seo-reading .seo-part{scroll-margin-top:110px;margin:0 0 52px}
+.seo-article .seo-reading .seo-part h2{margin:0 0 19px;font-size:clamp(25px,2.75vw,35px)}
+.seo-article .seo-reading .seo-part p{font-size:15px;line-height:1.95;margin:0 0 17px}
+.seo-article .seo-reading a:not(.button){text-decoration:underline;text-underline-offset:3px;color:#216f86;font-weight:780}
+.seo-article .seo-internal-toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 23px;border-top:1px solid #cadcda;border-bottom:1px solid #cadcda;padding:19px 0;margin:8px 0 54px}
+.seo-article .seo-internal-toc strong{grid-column:1/-1;font-size:11px;letter-spacing:.09em;color:#255b66}
+.seo-article .seo-internal-toc a{font-size:12px!important;font-weight:800;line-height:1.5}
+.seo-article .seo-result-figure{margin:28px 0 35px;border:1px solid #cadee0;border-radius:10px;background:#edf7f3;overflow:hidden}
+.seo-article .seo-result-figure a{display:block}
+.seo-article .seo-result-figure img{display:block;width:100%;height:auto;max-height:620px;object-fit:contain}
+.seo-article .seo-result-figure figcaption{padding:13px 18px;font-size:11px;line-height:1.65;color:#436c75}
+.seo-article .seo-faq{margin-top:53px;border-top:1px solid #c6dcda;padding-top:30px}
+.seo-article .seo-faq-entry{margin:20px 0 25px}
+.seo-article .seo-faq-entry h3{font-size:18px;letter-spacing:-.025em;color:#244f5b}
+.seo-article .seo-faq-entry p{font-size:13px;line-height:1.8}
+.seo-article .seo-related-links{padding:31px 0;margin:30px 0;border-top:1px solid #cadeda}
+.seo-article .seo-related-links h2{font-size:21px;margin-bottom:19px}
+.seo-article .seo-related-links>div{display:grid;grid-template-columns:1fr 1fr;gap:9px 18px}
+.seo-article .seo-related-links a{display:block;background:#e5f2ed;border-radius:6px;padding:13px;font-size:12px}
+.fem-lab-deep-links,.seo-media-resource-links{display:flex;flex-wrap:wrap;gap:11px;margin:25px 0}
+.fem-lab-deep-links a{border:1px solid #71aeb2;border-radius:8px;color:#e7f9f5;padding:13px 16px;font-size:11px;font-weight:850;background:#214e5e}
+.fem-lab-deep-links a:hover{background:#2b6c7c}
+.seo-media-resource-links{padding:20px;margin:0 auto;max-width:1350px}
+.seo-media-resource-links a{font-size:12px;font-weight:850;color:#267788;background:#e7f4f0;border-radius:5px;padding:12px 14px}
+.seo-footer-business{display:inline-block;font-size:10px;text-decoration:underline;text-underline-offset:3px;color:#649aa6}
+@media(max-width:720px){.seo-article .seo-reading .seo-part p{font-size:13px;line-height:1.85}.seo-article .seo-internal-toc,.seo-article .seo-related-links>div{grid-template-columns:1fr}.seo-article .seo-cover img{max-height:430px}.seo-footer-business{font-size:9px}}
+
+/* Bilingual, source-backed promotional media tile */
+.seo-media-promo{display:grid;grid-template-columns:minmax(0,.77fr) minmax(0,1.23fr);gap:clamp(20px,4vw,64px);align-items:center;max-width:1380px;margin:38px auto;padding:34px var(--gutter);background:#e4f2ed;border-top:1px solid #c7dfd9;border-bottom:1px solid #c7dfd9}
+.seo-media-promo h2{font-size:clamp(25px,3vw,37px);line-height:1.17;color:#173d4b;margin:15px 0}
+.seo-media-promo p:not(.eyebrow){font-size:13px;line-height:1.8;color:#45666d}
+.seo-media-promo a{font-size:12px;font-weight:840;color:#266c7b}
+.seo-media-promo div>a{display:inline-block;margin-top:21px;text-decoration:underline;text-underline-offset:3px}
+.seo-media-promo>a{display:block;border-radius:11px;overflow:hidden;border:1px solid #acd5cf;box-shadow:0 13px 29px #18445c19}
+.seo-media-promo img{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:contain}
+@media(max-width:850px){.seo-media-promo{grid-template-columns:1fr;padding:24px}.seo-media-promo img{max-width:750px}}

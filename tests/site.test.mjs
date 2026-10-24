@@ -50,9 +50,9 @@ test('Payment section never claims verified PayPal.Me destination',()=>{
  assert.ok(html.includes('ildelghe3@gmail.com'));
  assert.ok(!html.includes('paypal.me/'));
 });
-test('Ten canonical URLs, six technical pages and two media pages are published locally',()=>{
+test('Sixteen canonical destinations now cover engineering B2B and technical articles',()=>{
  const xml=read('sitemap.xml');
- assert.equal((xml.match(/<loc>/g)||[]).length,10);
+ assert.equal((xml.match(/<loc>/g)||[]).length,16);
  for(const [file,url] of [
   ['tecnologia-fem-mac/index.html','https://www.delghe.com/tecnologia-fem-mac/'],
   ['en/mac-fem-technology/index.html','https://www.delghe.com/en/mac-fem-technology/'],

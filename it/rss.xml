@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss version="2.0">
+  <channel>
+    <title>DÈLGHEM · approfondimenti FEM per Apple Silicon</title>
+    <link>https://www.delghe.com/it/</link>
+    <description>Aggiornamenti tecnici sui benchmark FEM e sul progetto DÈLGHEM in sviluppo</description>
+    <language>it-IT</language>
+    <lastBuildDate>Sat, 24 Oct 2026 07:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Analisi Pushover e IDA su Mac | DÈLGHEM FEM nativo</title>
+      <link>https://www.delghe.com/analisi-pushover-ida-mac/</link>
+      <description>Curve Pushover X/Y con plasticizzazione S235, 16 analisi IDA Kratos e accelerogrammi reali del solver DÈLGHEM D2 per Apple Silicon. Benchmark con limiti espliciti.</description>
+      <pubDate>Sat, 24 Oct 2026 07:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://www.delghe.com/analisi-pushover-ida-mac/</guid>
+    </item>
+    <item>
+      <title>Mappe di tensione FEM 3D su Mac | DÈLGHEM D2</title>
+      <link>https://www.delghe.com/mappe-tensioni-fem-3d/</link>
+      <description>Mappe colorate Von Mises, σ11, σ22 e τ12 su 176 shell QUAD4 e 66 aste da analisi OpenSeesPy reale. Scopri il visualizzatore FEM 3D DÈLGHEM per Apple Silicon.</description>
+      <pubDate>Sat, 24 Oct 2026 07:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://www.delghe.com/mappe-tensioni-fem-3d/</guid>
+    </item>
+    <item>
+      <title>Licenza codice sorgente software FEM Apple Silicon | DÈLGHEM</title>
+      <link>https://www.delghe.com/licenza-software-fem-apple-silicon/</link>
+      <description>DÈLGHEM ricerca una software house partner per licenza industriale esclusiva del codice FEM nativo Apple Silicon: corrispettivo iniziale e royalty sulle vendite, contatto diretto.</description>
+      <pubDate>Sat, 24 Oct 2026 07:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://www.delghe.com/licenza-software-fem-apple-silicon/</guid>
+    </item>
+  </channel>
+</rss>
