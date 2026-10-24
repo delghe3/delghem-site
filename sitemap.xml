@@ -1,57 +1,57 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.delghe.com/</loc>
     <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/" />
   </url>
   <url>
     <loc>https://www.delghe.com/en/</loc>
     <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/" />
   </url>
   <url>
     <loc>https://www.delghe.com/tecnologia-fem-mac/</loc>
     <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/tecnologia-fem-mac/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/mac-fem-technology/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/tecnologia-fem-mac/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/tecnologia-fem-mac/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/mac-fem-technology/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/tecnologia-fem-mac/" />
   </url>
   <url>
     <loc>https://www.delghe.com/en/mac-fem-technology/</loc>
     <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/tecnologia-fem-mac/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/mac-fem-technology/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/tecnologia-fem-mac/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/tecnologia-fem-mac/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/mac-fem-technology/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/tecnologia-fem-mac/" />
   </url>
   <url>
     <loc>https://www.delghe.com/disegni-officina-acciaio/</loc>
     <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/disegni-officina-acciaio/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/steel-workshop-drawings/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/disegni-officina-acciaio/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/disegni-officina-acciaio/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/steel-workshop-drawings/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/disegni-officina-acciaio/" />
   </url>
   <url>
     <loc>https://www.delghe.com/en/steel-workshop-drawings/</loc>
     <lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/disegni-officina-acciaio/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/steel-workshop-drawings/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/disegni-officina-acciaio/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/disegni-officina-acciaio/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/steel-workshop-drawings/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/disegni-officina-acciaio/" />
   </url>
   <url>
     <loc>https://www.delghe.com/software-fem-mac/</loc><lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/software-fem-mac/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/native-structural-analysis-mac/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/software-fem-mac/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/software-fem-mac/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/native-structural-analysis-mac/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/software-fem-mac/" />
   </url>
   <url>
     <loc>https://www.delghe.com/en/native-structural-analysis-mac/</loc><lastmod>2026-10-24</lastmod>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/software-fem-mac/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/native-structural-analysis-mac/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/software-fem-mac/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/software-fem-mac/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/native-structural-analysis-mac/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/software-fem-mac/" />
   </url>
-</urlset>
+<url><loc>https://www.delghe.com/media-kit/</loc><lastmod>2026-10-24</lastmod><xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/media-kit/" /><xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/media-kit/" /><xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/media-kit/" /></url><url><loc>https://www.delghe.com/en/media-kit/</loc><lastmod>2026-10-24</lastmod><xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/media-kit/" /><xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/media-kit/" /><xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/media-kit/" /></url></urlset>

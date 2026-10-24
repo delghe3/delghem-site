@@ -1,19 +1,18 @@
-/* Optional convenience: copy the publicly disclosed project PayPal email. */
+/* Copy payment details. Sending a payment always takes place at PayPal. */
 (() => {
   'use strict';
   const button = document.querySelector('.copy-paypal');
-  if (!button) return;
+  const status = document.getElementById('paypal-copy-status');
+  if (!button || !status) return;
   button.addEventListener('click', async () => {
     const email = button.dataset.email;
     if (email !== 'ildelghe3@gmail.com') return;
     try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
       await navigator.clipboard.writeText(email);
-      const initial = button.textContent;
-      button.textContent = button.dataset.copyDone || 'Copied';
-      setTimeout(() => { button.textContent = initial; }, 2200);
+      status.textContent = button.dataset.copyDone || 'Copied';
     } catch (_) {
-      button.focus();
-      button.title = email;
+      status.textContent = button.dataset.copyError || 'Select and copy the displayed email';
     }
   });
 })();

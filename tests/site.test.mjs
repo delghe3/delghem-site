@@ -50,16 +50,18 @@ test('Payment section never claims verified PayPal.Me destination',()=>{
  assert.ok(html.includes('ildelghe3@gmail.com'));
  assert.ok(!html.includes('paypal.me/'));
 });
-test('Eight canonical URLs and six stand-alone technical pages are published locally',()=>{
+test('Ten canonical URLs, six technical pages and two media pages are published locally',()=>{
  const xml=read('sitemap.xml');
- assert.equal((xml.match(/<loc>/g)||[]).length,8);
+ assert.equal((xml.match(/<loc>/g)||[]).length,10);
  for(const [file,url] of [
   ['tecnologia-fem-mac/index.html','https://www.delghe.com/tecnologia-fem-mac/'],
   ['en/mac-fem-technology/index.html','https://www.delghe.com/en/mac-fem-technology/'],
   ['disegni-officina-acciaio/index.html','https://www.delghe.com/disegni-officina-acciaio/'],
   ['en/steel-workshop-drawings/index.html','https://www.delghe.com/en/steel-workshop-drawings/'],
   ['software-fem-mac/index.html','https://www.delghe.com/software-fem-mac/'],
-  ['en/native-structural-analysis-mac/index.html','https://www.delghe.com/en/native-structural-analysis-mac/']]){
+  ['en/native-structural-analysis-mac/index.html','https://www.delghe.com/en/native-structural-analysis-mac/'],
+  ['media-kit/index.html','https://www.delghe.com/media-kit/'],
+  ['en/media-kit/index.html','https://www.delghe.com/en/media-kit/']]){
   assert.ok(read(file).includes('rel="canonical" href="'+url+'"'));
   assert.ok(xml.includes('<loc>'+url+'</loc>'));
   assert.match(read(file),/<h1>/);
@@ -81,6 +83,6 @@ test('No injected challenge script or dummy charitable payment claim remains',()
  for(const name of ['index.html','en/index.html']){
   assert.doesNotMatch(read(name),/__CF\$cv/);
   assert.doesNotMatch(read(name),/paypal\.me\//i);
-  assert.match(read(name),/https:\/\/www\.paypal\.com\/myaccount\/transfer\/homepage/);
+  assert.match(read(name),/https:\/\/www\.paypal\.com\/myaccount\/transfer\/(send|homepage)/);
  }
 });
