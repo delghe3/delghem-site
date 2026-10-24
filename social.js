@@ -1,7 +1,7 @@
 // Opt-in sharing, real screenshot lightbox, and secure PayPal handoff.
 // Never posts, tracks or processes payments automatically.
 const lang=document.documentElement.lang==='en'?'en':'it';
-const site='https://www.delghe.com/';
+const site=lang==='it'?'https://www.delghe.com/it/':'https://www.delghe.com/';
 const title=lang==='it'
  ? 'DÈLGHEM — software FEM nativo per Mac Apple Silicon, alpha prevista gennaio 2027'
  : 'DÈLGHEM — native Apple Silicon structural FEM software, alpha planned January 2027';

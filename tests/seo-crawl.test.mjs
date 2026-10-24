@@ -5,7 +5,7 @@ import {resolve,dirname,relative,extname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const paths = [
-  'index.html','en/index.html','software-fem-mac/index.html',
+  'index.html','it/index.html','software-fem-mac/index.html',
   'en/native-structural-analysis-mac/index.html',
   'tecnologia-fem-mac/index.html','en/mac-fem-technology/index.html',
   'disegni-officina-acciaio/index.html','en/steel-workshop-drawings/index.html',
@@ -17,7 +17,7 @@ const attrRefs=(h)=>[...h.matchAll(/<(?:a|img|script|link)\b[^>]*?\s(?:href|src)
 function resolvedAsset(from,url) {
   if(!url || /^(#|https?:|mailto:|tel:|data:|javascript:)/.test(url)) return null;
   const val=url.split(/[?#]/)[0];
-  const abs=resolve(root,dirname(from),val);
+  const abs=val.startsWith('/') ? resolve(root,val.replace(/^\/+/,'')) : resolve(root,dirname(from),val);
   if(abs!==root && !abs.startsWith(root+'/')) throw new Error('Escapes site root: '+from+' -> '+url);
   if(existsSync(abs) && statSync(abs).isDirectory()) return resolve(abs,'index.html');
   if(val.endsWith('/')) return resolve(abs,'index.html');
@@ -58,7 +58,7 @@ test('Real model images all exist and are non-empty',()=>{
  for (const file of files) assert.ok(statSync(resolve(root,'assets/screenshots',file)).size>100,'empty '+file);
 });
 test('Official support email copy is the same in both language versions',()=>{
- for(const file of ['index.html','en/index.html']){
+ for(const file of ['index.html','it/index.html']){
   const html=read(file);
   assert.equal((html.match(/class="paypal-send-link"/g)||[]).length,1);
   assert.match(html,/https:\/\/www\.paypal\.com\/myaccount\/transfer\/send/);

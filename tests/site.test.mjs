@@ -9,7 +9,7 @@ test('Every referenced ES module is present',()=>{
   assert.ok(fs.statSync(path.join(root,file)).isFile(),file);
 });
 test('Both languages have semantic technical feature catalogue and alpha launch notice',()=>{
- for(const name of ['index.html','en/index.html']){
+ for(const name of ['index.html','it/index.html']){
   const html=read(name);
   assert.match(html,/id="capabilities"/);
   assert.ok((html.match(/class="capability-card"/g)||[]).length>=12);
@@ -25,7 +25,7 @@ test('Photo gallery is explicitly based on actual app screenshots',()=>{
  assert.match(html,/data-gallery-filter="all"/);
 });
 test('SEO and open graph reference existing assets',()=>{
- for(const name of ['index.html','en/index.html']){
+ for(const name of ['index.html','it/index.html']){
   const html=read(name);
   assert.match(html,/rel="canonical"/);
   assert.match(html,/hreflang="it"/);
@@ -80,7 +80,7 @@ test('All 16 actual screenshot sources have full and thumbnail WebP assets',()=>
  }
 });
 test('No injected challenge script or dummy charitable payment claim remains',()=>{
- for(const name of ['index.html','en/index.html']){
+ for(const name of ['index.html','it/index.html']){
   assert.doesNotMatch(read(name),/__CF\$cv/);
   assert.doesNotMatch(read(name),/paypal\.me\//i);
   assert.match(read(name),/https:\/\/www\.paypal\.com\/myaccount\/transfer\/(send|homepage)/);

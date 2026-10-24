@@ -6,12 +6,12 @@ import {dirname,resolve} from 'node:path';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const read=(p)=>readFileSync(resolve(root,p),'utf8');
-const pages=[['Italiano',read('index.html')],['English',read('en/index.html')]];
+const pages=[['Italiano',read('it/index.html')],['English',read('index.html')]];
 const css=read('style.css');
 
 test('La frase richiesta compare accanto al pagamento in entrambe le lingue',()=>{
-  assert.match(read('index.html'),/Delghem è un progetto indipendente, se vuoi supportarlo con una donazione aiuteresti concretamente il progetto a prendere vita/);
-  assert.match(read('en/index.html'),/Delghem is an independent project/i);
+  assert.match(read('it/index.html'),/Delghem è un progetto indipendente, se vuoi supportarlo con una donazione aiuteresti concretamente il progetto a prendere vita/);
+  assert.match(read('index.html'),/Delghem is an independent project/i);
   for(const [,html] of pages){
     assert.ok(html.indexOf('class="paypal-personal-appeal"')>0);
     assert.ok(html.indexOf('class="paypal-personal-appeal"')<html.indexOf('class="paypal-send-link"'));
@@ -79,7 +79,7 @@ test('il pulsante di copia presenta stato accessibile',()=>{
   const js=read('support-actions.js');
   assert.match(js,/paypal-copy-status/);
   assert.match(js,/navigator\.clipboard/);
-  assert.match(read('index.html'),/aria-live="polite"/);
+  assert.match(read('it/index.html'),/aria-live="polite"/);
 });
 
 
@@ -87,7 +87,7 @@ test('frase di invito richiesta compare immediatamente accanto al pulsante PayPa
   const italian='Delghem è un progetto indipendente, se vuoi supportarlo con una donazione aiuteresti concretamente il progetto a prendere vita';
   const english='Delghem is an independent project. If you choose to support it with a donation, you will help bring the project to life.';
   for(const [language,html] of pages){
-    const section=html.split('<section class="support-section chapter"')[1].split('</section>')[0];
+    const section=html.split('<section class="support-banner"')[1].split('</section>')[0];
     const expected=language==='Italiano'?italian:english;
     assert.ok(section.includes(expected),language+': missing invitation');
     const position=section.indexOf(expected);

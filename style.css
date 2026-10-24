@@ -358,3 +358,60 @@ body.photo-open{overflow:hidden}
  .native-note{margin-top:12px!important}
  .hero .structure-stage{margin-top:5px;height:390px}
 }
+
+/* Primary PayPal CTA moved to the first screen: personal-account transfer, not a charity widget */
+.support-banner{position:relative;background:linear-gradient(120deg,#0d2d3a 0%,#164a57 82%);color:#f1f8f6;padding:17px var(--gutter);border-top:2px solid #c98956}
+.support-banner-inner{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(275px,.8fr);align-items:center;gap:clamp(20px,4vw,64px);max-width:1510px;margin:0 auto}
+.support-banner-copy{min-width:0;border-left:3px solid #ef9e68;padding-left:19px}
+.support-banner-kicker{display:block;font-size:10px;letter-spacing:.16em;font-weight:850;color:#acdadd;margin-bottom:8px}
+.support-banner .paypal-personal-appeal{color:#f6f9f7;font-size:clamp(13px,1.15vw,17px);font-weight:690;line-height:1.5;letter-spacing:-.018em;margin:0;max-width:72ch}
+.support-banner-action{display:grid;gap:5px;min-width:0;align-items:center}
+.support-banner .paypal-send-link{display:flex;align-items:center;justify-content:space-between;gap:18px;color:white;background:#0869b7;font-size:13px;font-weight:850;text-decoration:none;padding:12px 17px;min-height:46px;border:1px solid #55a0d4;border-radius:7px;box-shadow:0 5px 21px #00172245;transition:background .15s}
+.support-banner .paypal-send-link:hover{background:#0980dc}
+.support-banner .paypal-send-link:focus-visible{outline:3px solid #fba66b;outline-offset:2px}
+.support-banner-recipient{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:11px;color:#c0d8dc}
+.support-banner-recipient strong{color:#fff;overflow-wrap:anywhere}
+.support-banner .copy-paypal{cursor:pointer;min-height:32px;background:transparent;color:#ecf7f6;border:1px solid #7fa2a9;border-radius:4px;padding:5px 10px;font-size:11px;font-weight:750}
+.support-banner .copy-paypal:hover{background:#ffffff1f}
+.support-banner .copy-feedback{font-size:11px;color:#b6f5cb;min-height:1px;margin:0}
+.support-banner-action small{color:#b1ced2;line-height:1.5;font-size:10px}
+.support-back-to-top{display:inline-flex;align-items:center;gap:8px;padding:10px 0;margin:12px 0;color:#0b6084;text-decoration:underline;text-underline-offset:4px;font-size:13px;font-weight:800}
+.support-back-to-top:hover{color:#b25c3a}
+@media(max-width:850px){.support-banner-inner{grid-template-columns:1fr;gap:12px}.support-banner{padding:16px var(--gutter)}.support-banner-copy{padding-left:13px}.support-banner .paypal-personal-appeal{font-size:13px}.support-banner-action{max-width:100%}}
+@media(max-width:650px){.support-banner{padding:12px 23px}.support-banner-kicker{font-size:9px;margin-bottom:5px}.support-banner .paypal-personal-appeal{font-size:12.5px;line-height:1.4}.support-banner-inner{gap:9px}.support-banner .paypal-send-link{min-height:45px;font-size:13px;padding:10px 14px}.support-banner-recipient{font-size:10px}.support-banner-action small{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.support-banner .paypal-send-link{transition:none}}
+
+/* Authentic DÈLGHEM screenshots: zoomed UI captures, no synthetic renders */
+.real-fabrication-gallery{margin:40px 0 75px;padding:28px 0 8px;border-top:1px solid #c6d4d1}
+.real-fabrication-gallery h2{font-size:clamp(26px,3.3vw,43px);letter-spacing:-.05em;max-width:21ch}
+.real-fabrication-gallery>p{font-size:13px;line-height:1.75;color:#5e7277;margin:12px 0 27px;max-width:75ch}
+.real-fabrication-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.fabrication-gallery-item{margin:0;background:#fffefa;border:1px solid #c8d8d6;box-shadow:0 10px 27px #102e3910;border-radius:9px;overflow:hidden}
+.fabrication-gallery-item>a{display:block;overflow:hidden}
+.fabrication-gallery-item img{width:100%;height:clamp(180px,17.5vw,250px);object-fit:cover;background:#e7f0ef;transition:transform .2s ease}
+.fabrication-gallery-item>a:hover img{transform:scale(1.045)}
+.fabrication-gallery-item figcaption{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:15px 18px;font-size:12px;font-weight:780;color:#163944}
+.fabrication-gallery-item figcaption span{font-size:19px;color:#c56d47}
+@media(max-width:900px){.real-fabrication-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.real-fabrication-grid{grid-template-columns:1fr}.fabrication-gallery-item img{height:225px}.real-fabrication-gallery{margin:26px 0 55px}}
+@media(prefers-reduced-motion:reduce){.fabrication-gallery-item img{transition:none}.fabrication-gallery-item>a:hover img{transform:none}}
+
+/* Persistent visitor count, displayed beside the PayPal support CTA at the very top */
+.support-banner .visitor-counter--top{display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto;column-gap:12px;align-items:center;justify-content:start;max-width:100%;padding:9px 14px;border:1px solid #557c83;background:#ffffff10;border-radius:7px;margin-top:5px}
+.support-banner .visitor-counter__eyebrow{color:#c7dee1;letter-spacing:.13em;font-weight:850;font-size:10px;grid-column:1;grid-row:1}
+.support-banner .visitor-counter__number{font-size:clamp(20px,1.6vw,27px);font-weight:800;color:white;line-height:1.15;grid-column:2;grid-row:1/3;justify-self:end;font-variant-numeric:tabular-nums}
+.support-banner .visitor-counter__note{font-size:10px;line-height:1.3;color:#aecdd1;grid-column:1;grid-row:2}
+@media(max-width:650px){.support-banner .visitor-counter--top{padding:8px 12px;grid-template-columns:auto 1fr;margin-top:4px}.support-banner .visitor-counter__number{font-size:23px}}
+
+/* Prominent and accessible language switcher. Identical on desktop and mobile. */
+.header-controls .language-control{display:flex;align-items:center;justify-content:center;gap:7px;border:0;min-width:0}
+.language-control>svg{display:none}
+.header-controls .language-control .language-link{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;font-size:12px;font-weight:850;opacity:1;text-decoration:none;min-height:42px;padding:7px 12px;border:1px solid #bbd5d4;border-radius:8px;background:#f4fbf9;color:#244653;letter-spacing:-.02em;box-shadow:0 3px 8px #173a470d;transition:background .2s,border-color .2s,transform .2s}
+.header-controls .language-control .language-link:hover{background:#d7e9e7;border-color:#4c8f96;transform:translateY(-1px)}
+.header-controls .language-control .language-link[aria-current="page"]{background:#183a47;color:#f9ffff;border-color:#183a47;font-weight:850;text-decoration:none}
+.language-control .lang-flag{font-size:19px;line-height:1.1;font-family:system-ui,"Apple Color Emoji","Segoe UI Emoji",sans-serif}
+.header-controls .language-control .language-link:focus-visible{outline:3px solid #dc9664;outline-offset:2px}
+@media(max-width:850px){.site-header{gap:9px}.header-controls{gap:6px}.wordmark{flex:none}.language-control .lang-flag{font-size:18px}}
+@media(max-width:600px){.site-header{padding-left:13px;padding-right:13px;gap:5px}.wordmark{font-size:clamp(18px,5.5vw,22px);letter-spacing:-1px}.header-controls{gap:4px}.header-controls .language-control{gap:4px}.header-controls .language-control .language-link{font-size:10px;gap:3px;min-height:38px;padding:6px 7px;border-radius:6px}.language-control .lang-flag{font-size:16px}.site-header .menu-toggle{min-width:34px;width:34px;min-height:38px;padding:6px}}
+@media(max-width:365px){.wordmark{font-size:17px}.header-controls .language-control .language-link{font-size:9px;padding:5px}.language-control .lang-flag{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.header-controls .language-control .language-link{transition:none}.header-controls .language-control .language-link:hover{transform:none}}
