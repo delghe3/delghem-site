@@ -1,0 +1,6 @@
+.DS_Store
+.openai/site-package-transfer/
+tests/*.log
+tests/results/
+*.pyc
+__pycache__/

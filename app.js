@@ -192,4 +192,4 @@ onScroll();
 $('#structure-canvas').tabIndex = 0;
 import('./model-stage.js').then(({ initModelStage }) => { modelStage = initModelStage(); renderMotion(); }).catch(error => { console.error('Unable to initialize the illustrative model', error); });
 
-// Static, trusted dictionaries only. No analytics, forms or visitor data transmission.
+// Trusted static translations. A separate opt-in-free visit counter requests an external aggregate counter; no cookies are set by this module.
