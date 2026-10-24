@@ -345,3 +345,16 @@ body.photo-open{overflow:hidden}
 @media(max-width:650px){.release-inline{display:flex;gap:6px 10px;align-items:center;flex-wrap:wrap}.release-inline>span:nth-child(2){flex:1;min-width:175px;line-height:1.6}.hero-support-link{display:inline-flex;margin:11px 0 5px;font-size:12px}.personal-paypal-card .paypal-personal-appeal{padding:15px 16px 15px 17px;font-size:14px}}
 
 .paypal-impact-statement{display:block}
+
+/* Handset-first hero: present the actual FEM model earlier without hiding content. */
+@media(max-width:650px){
+ .hero{padding-top:20px;padding-bottom:53px}
+ .hero-spec{margin-bottom:10px}
+ .hero h1{font-size:clamp(39px,11.2vw,47px);line-height:1.075}
+ .hero h1 .accent-text{margin-top:2px}
+ .hero-description{font-size:13px;line-height:1.58;margin-top:13px}
+ .hero-actions{margin-top:18px}
+ .release-inline{margin-top:12px;padding:9px 0}
+ .native-note{margin-top:12px!important}
+ .hero .structure-stage{margin-top:5px;height:390px}
+}
