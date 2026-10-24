@@ -68,8 +68,8 @@ export const messages = {
     "motionOn": "Animazioni attive",
     "endPresentation": "Esci",
     "noScript": "Le pagine in italiano e inglese sono disponibili anche senza JavaScript. Abilitalo per esplorare tutte le schermate e attivare le animazioni.",
-    "seoTitle": "DÈLGHEM | Software FEM e calcolo strutturale per Mac Apple Silicon",
-    "seoDescription": "DÈLGHEM: software di calcolo strutturale nativo per Apple Silicon. FEM 3D, analisi, acciaio, cemento armato, fondazioni, disegni DXF e Genius. Alpha prevista gennaio 2027.",
+    "seoTitle": "DELGHE — DÈLGHEM | Software FEM e calcolo strutturale per Mac Apple Silicon",
+    "seoDescription": "DELGHE presenta DÈLGHEM: software di calcolo strutturale nativo per Apple Silicon. FEM 3D, analisi, acciaio, cemento armato, fondazioni, disegni DXF e Genius. Alpha prevista gennaio 2027.",
     "modelImageAlt": "Modello strutturale tridimensionale mostrato nell’app reale DÈLGHEM.",
     "resultsImageAlt": "Risultati di analisi nell’interfaccia reale di DÈLGHEM.",
     "drawingsImageAlt": "Tavole e dettagli nell’applicazione reale DÈLGHEM.",
@@ -92,7 +92,7 @@ export const messages = {
     "language": "Lingua",
     "enlarge": "Ingrandisci la schermata",
     "enlargeGenius": "Ingrandisci la schermata Genius",
-    "modelAlt": "Struttura mista concettuale D2 in cemento armato C30/37 e acciaio HEB/IPE, con 8 controventi e solai/pannelli reali del modello. Frecce o mouse ruotano la vista. Deformata e colori non sono risultati di calcolo."
+    "modelAlt": "Modello nativo D2 asimmetrico con sbalzi, fondazioni superficiali, capriate S355 e GL24h, solai e C.A. Le frecce e il mouse ruotano la vista. Deformata e colori sono dimostrativi, non calcolati."
   },
   "en": {
     "skip": "Skip to content",
@@ -162,8 +162,8 @@ export const messages = {
     "motionOn": "Animations on",
     "endPresentation": "Exit",
     "noScript": "Italian and English pages are available without JavaScript. Enable it to explore all screenshots and use the animations.",
-    "seoTitle": "DÈLGHEM | Native FEM and structural engineering software for Mac",
-    "seoDescription": "DÈLGHEM: native Apple Silicon structural engineering software in development. FEM 3D, steel, reinforced concrete, foundations, DXF drawings and Genius. Alpha planned January 2027.",
+    "seoTitle": "DELGHE — DÈLGHEM | Native FEM and structural engineering software for Mac",
+    "seoDescription": "DELGHE presents DÈLGHEM: native Apple Silicon structural engineering software in development. FEM 3D, steel, reinforced concrete, foundations, DXF drawings and Genius. Alpha planned January 2027.",
     "modelImageAlt": "Real DÈLGHEM application screenshot showing a 3D structural model.",
     "resultsImageAlt": "Analysis results shown in the real DÈLGHEM application.",
     "drawingsImageAlt": "Detail drawings shown in the real DÈLGHEM application.",
@@ -186,6 +186,6 @@ export const messages = {
     "language": "Language",
     "enlarge": "Enlarge screenshot",
     "enlargeGenius": "Enlarge Genius screenshot",
-    "modelAlt": "Conceptual D2 mixed reinforced concrete C30/37 and HEB/IPE steel structure, 8 braces and real geometry of floor and wall shells. Drag or use arrows to orbit. Deformed and colors are not computed results."
+    "modelAlt": "Native D2 asymmetric reinforced concrete and steel S355 model with timber GL24h and steel trusses, foundations and cantilevers. Orbit with mouse or arrow keys. Deformed and colors are illustrative, not calculated."
   }
 };

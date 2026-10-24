@@ -666,3 +666,51 @@ body.photo-open{overflow:hidden}
 @media(max-width:1000px){.genius-journey-heading{grid-template-columns:1fr;gap:10px}.genius-journey-grid{grid-template-columns:1fr}.genius-case-pickers{grid-template-columns:repeat(2,minmax(0,1fr))}.genius-preview-detail>div{grid-template-columns:140px minmax(0,1fr)}}
 @media(max-width:550px){.genius-journey{padding:18px 14px!important;border-radius:12px}.genius-journey-heading h3{font-size:30px}.genius-case-pickers{grid-template-columns:1fr;gap:6px}.genius-case-pickers>button{padding:13px 14px}.genius-case-pickers>button>strong{font-size:15px}.genius-case-pickers>button>small{font-size:10px}.genius-preview-panel{padding:19px 15px}.genius-preview-heading{align-items:start;flex-direction:column;gap:12px}.genius-preview-detail>div{grid-template-columns:1fr;gap:8px;padding:13px 0}.genius-preview-command>code{font-size:14px}.genius-preview-footer{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.genius-case-pickers>button{transition:none}.genius-case-pickers>button:hover{transform:none}}
+
+/* Real native D2 concrete reinforcement drawings — visible engineering provenance. */
+.rc-drawings-section{padding:clamp(76px,8vw,124px) var(--gutter);background:linear-gradient(135deg,#eef5f3,#e1ece9);border-top:1px solid #c8ded9;border-bottom:1px solid #c8ded9;scroll-margin-top:80px}
+.rc-drawings-section>*{max-width:1490px;margin-left:auto;margin-right:auto}
+.rc-drawings-head{display:grid;grid-template-columns:minmax(0,1.17fr) minmax(0,.83fr);align-items:end;gap:clamp(28px,6vw,110px)}
+.rc-drawings-head .eyebrow{font-weight:900;font-size:11px;letter-spacing:.14em;color:#32818b}
+.rc-drawings-head h2{font-size:clamp(38px,5vw,70px);line-height:1.08;letter-spacing:-.07em;color:#163746;margin-top:20px}
+.rc-drawings-head h2 em{font-style:normal;color:#327f89}
+.rc-drawings-head>p{max-width:59ch;color:#4c6b74;font-size:15px;line-height:1.8}
+.rc-showcase{display:grid;grid-template-columns:minmax(0,1.13fr) minmax(0,.87fr);gap:clamp(20px,4vw,67px);margin-top:48px;align-items:stretch}
+.rc-sheet-feature{display:block;position:relative;min-width:0;overflow:hidden;border:1px solid #bed6d3;border-radius:13px;background:#fff;box-shadow:0 20px 48px rgba(11,59,72,.1)}
+.rc-sheet-feature img{display:block;width:100%;height:auto;aspect-ratio:1.43;object-fit:cover;object-position:top left;background:white}
+.rc-sheet-open{position:absolute;bottom:15px;right:15px;z-index:2;font-size:10px;font-weight:900;letter-spacing:.07em;color:#fff;background:#143e4a;padding:11px 15px;border-radius:6px}
+.rc-sheet-feature:hover .rc-sheet-open{background:#248994}
+.rc-showcase-copy{border-radius:12px;background:#123845;color:#eaf7f3;display:flex;flex-direction:column;justify-content:center;gap:23px;padding:clamp(27px,4vw,57px)}
+.rc-micro-label{color:#95d6d6;letter-spacing:.14em;font-size:10px;font-weight:900}
+.rc-showcase-copy h3{font-size:clamp(24px,3vw,39px);letter-spacing:-.055em;line-height:1.14}
+.rc-showcase-copy p{font-size:13px;line-height:1.85;color:#bed5d5}
+.rc-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border-top:1px solid #36616b;border-bottom:1px solid #36616b;padding:21px 0}
+.rc-stats>div{display:flex;flex-direction:column;gap:7px}
+.rc-stats strong{font-size:clamp(27px,3vw,41px);color:#f6f8f5;font-weight:850;letter-spacing:-.04em}
+.rc-stats span{color:#b7d6d5;font-size:10px;line-height:1.5}
+.rc-return-link{font-size:12px;color:#9adcdc;font-weight:800;text-decoration:underline;text-underline-offset:4px;min-height:32px}
+.rc-details-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:22px}
+.rc-details-gallery>a{display:flex;min-width:0;flex-direction:column;background:#fbfdfc;border:1px solid #c4dcd7;border-radius:11px;overflow:hidden;box-shadow:0 12px 25px rgba(27,79,82,.05);transition:transform .2s,box-shadow .2s}
+.rc-details-gallery>a:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(27,79,82,.10)}
+.rc-details-gallery img{display:block;width:100%;height:auto;aspect-ratio:1.77;object-fit:cover;object-position:center 0%;background:white}
+.rc-details-gallery>a>span{display:flex;flex-direction:column;gap:8px;padding:19px 20px 21px}
+.rc-details-gallery strong{font-size:13px;font-weight:900;letter-spacing:.07em;color:#24596a}
+.rc-details-gallery small{font-size:11px;color:#6a7e83;line-height:1.5}
+.rc-drawings-limit{font-size:11px;color:#546e73;line-height:1.8;padding:16px 20px;border-left:3px solid #5fa49e;background:#eaf3f0;margin-top:25px}
+.rc-sheet-feature:focus-visible,.rc-details-gallery>a:focus-visible{outline:3px solid #2e8591;outline-offset:2px}
+@media(max-width:980px){.rc-drawings-head,.rc-showcase{grid-template-columns:1fr;gap:28px}.rc-showcase-copy{padding:32px}.rc-drawings-head h2{font-size:clamp(38px,6vw,62px)}}
+@media(max-width:720px){.rc-drawings-section{padding:67px 23px}.rc-details-gallery{grid-template-columns:1fr}.rc-details-gallery>a{display:grid;grid-template-columns:1fr 1fr;align-items:center}.rc-details-gallery img{height:100%;min-height:125px;aspect-ratio:1.65}.rc-details-gallery>a>span{padding:15px}.rc-sheet-open{font-size:9px;padding:9px 11px}.rc-stats{gap:8px}.rc-stats strong{font-size:28px}.rc-stats span{font-size:9px}}
+@media(max-width:400px){.rc-drawings-head h2{font-size:34px}.rc-drawings-head>p{font-size:13px}.rc-showcase-copy{padding:25px 20px}.rc-stats strong{font-size:24px}.rc-details-gallery>a{grid-template-columns:1fr}.rc-details-gallery img{height:auto;min-height:0;aspect-ratio:2.1}.rc-details-gallery>a>span{padding:15px 18px}.rc-sheet-open{bottom:7px;right:7px;font-size:8px}}
+@media(prefers-reduced-motion:reduce){.rc-details-gallery>a{transition:none}.rc-details-gallery>a:hover{transform:none}}
+
+/* Keep the source-grounded complex D2 model large and visually clean in Safari/Chrome. */
+.model-concept-label{font-size:8px;letter-spacing:.06em;max-width:46%;line-height:1.5}
+.model-origin{bottom:75px;max-width:50%;font-size:9px}
+#structure-canvas{-webkit-user-select:none;user-select:none;touch-action:pan-y}
+@supports not (overflow:clip){.structure-stage{overflow:hidden}}
+@media(max-width:650px){.model-origin{max-width:51%;font-size:7px}.model-concept-label{max-width:49%;font-size:7px}}
+
+/* Enlarged native rebar DXF crops, with original full drawings preserved in link. */
+.rc-details-gallery img{aspect-ratio:3.30;object-fit:contain;background:#fff}
+@media(max-width:720px){.rc-details-gallery img{height:auto;min-height:0;aspect-ratio:2.8;object-fit:contain}}
+@media(max-width:400px){.rc-details-gallery img{aspect-ratio:3.3}}

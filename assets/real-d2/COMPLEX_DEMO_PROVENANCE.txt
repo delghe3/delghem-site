@@ -1,0 +1,12 @@
+DÈLGHEM D2 — MODELLO NATIVO DIMOSTRATIVO DI STRUTTURA ASIMMETRICA
+Sorgente: complex-demonstration.hfm.json (schema hyperfem-1, file apribile in DÈLGHEM D2).
+Validazioni reali: D2 validateEditableModel() e d2-foundation-system upsertFoundationElement().
+Cataloghi reali D2: S355 OPEN; C30/37; legno lamellare GL24h; profili IPE, HEA, HEB.
+Geometria: corpo principale a C.A. e acciaio su quote diverse; 2 corpi laterali, capriate legno GL24h e capriate acciaio S355;
+due gruppi di sbalzi liberi, fondazioni superficiali DIRECT con archivio foundationSystem e travi di collegamento.
+Dimensioni plinti e suolo SONO IPOTESI DIMOSTRATIVE: non derivano da indagini né dimensionamenti.
+Stratigrafia: sabbia assunta per sola validazione del tipo FOUNDATION DIRECT; gamma 18, phi 30, Es 25 MPa, ks 18000 kN/m³.
+La fonte degli elementi 3D è esclusivamente il file nativo .hfm.json validato, inclusi i plinti.
+NON sono state eseguite analisi, verifiche geotecniche, dimensionamenti, controlli sismici o progetto esecutivo.
+Originale esempio D2 SHA256 12abb9dabdb9c9c87c323f57de527edbf96311b76dfd487eb36f6944d4abf735
+Nuovo file nativo SHA256 ef475951a7e678bf0a505653da88452fec7cb027bfba17744eebb5111f951b85

@@ -1,23 +1,35 @@
-/* DÈLGHEM: real, server-persisted page-view count.
-   No cookies, localStorage, synthetic initial values, or private API keys.
-   Counts start when this integration is published. One page load = one view.
-   Provider: countapi.mileshilliard.com; the shared key is public by design. */
-(()=> {
+/* DÈLGHEM visitatori / visitors — owner-supplied baseline.
+   Base reported by the site owner: 87,600 visits on 24 October 2026.
+   Real counter reading at that transition (GET, no increment): 2,671.
+   Increment is MAX(0, subsequent page-views - that snapshot).
+   The counter is not a verified count of unique people. */
+(() => {
   'use strict';
   const el=document.getElementById('visitor-counter-total');
   if(!el)return;
-  // Keep test-site and production visits separate.
-  const hostname=location.hostname.toLowerCase();
-  const key=hostname==='delghe.com'||hostname==='www.delghe.com'
-    ? 'delghe_com_pageviews_20261023'
-    : hostname==='delghe3.github.io' ? 'delghem_github_preview_pageviews_20261023' : '';
-  if(!key)return;
-  const endpoint='https://countapi.mileshilliard.com/api/v1/hit/'+key;
+  const INITIAL_REPORTED_VISITS = 87600;
+  const RECORDED_AT_BASELINE = 2671;
+  const format=value=>new Intl.NumberFormat(document.documentElement.lang||'it').format(value);
+  el.textContent=format(INITIAL_REPORTED_VISITS);
+  const host=location.hostname.toLowerCase();
+  if(host!=='www.delghe.com' && host!=='delghe.com')return;
   const controller=new AbortController();
   const cancel=setTimeout(()=>controller.abort(),8000);
-  fetch(endpoint,{method:'GET',cache:'no-store',mode:'cors',credentials:'omit',referrerPolicy:'no-referrer',signal:controller.signal})
-   .then(response=>{ if(!response.ok)throw new Error('Counter request failed'); return response.json(); })
-   .then(data=>{ const count=Number(data.value); if(!Number.isSafeInteger(count)||count<0)throw new Error('Invalid counter value'); el.textContent=new Intl.NumberFormat(document.documentElement.lang||'it').format(count); })
-   .catch(()=>{el.textContent='—';el.title=document.documentElement.lang==='en'?'Count temporarily unavailable':'Conteggio temporaneamente non disponibile';})
-   .finally(()=>clearTimeout(cancel));
+  const endpoint='https://countapi.mileshilliard.com/api/v1/hit/delghe_com_pageviews_20261023';
+  fetch(endpoint,{method:'GET',cache:'no-store',mode:'cors',credentials:'omit',
+    referrerPolicy:'no-referrer',signal:controller.signal})
+    .then(r=>{if(!r.ok)throw Error('Counter temporarily unavailable');return r.json()})
+    .then(data=>{
+      const count=Number(data.value);
+      if(!Number.isSafeInteger(count)||count<0)throw Error('Invalid counter count');
+      const newViews=Math.max(0,count - RECORDED_AT_BASELINE);
+      el.textContent=format(INITIAL_REPORTED_VISITS + newViews);
+      el.title=document.documentElement.lang==='it'
+        ? 'Base di visite dichiarata: 87.600. Nuove visualizzazioni: '+format(newViews)
+        : 'Owner-reported visit baseline: 87,600. New page views: '+format(newViews);
+    })
+    .catch(()=>{el.title=document.documentElement.lang==='it'
+      ? 'Valore iniziale dichiarato; aggiornamento automatico temporaneamente non disponibile'
+      : 'Reported baseline; live update temporarily unavailable'})
+    .finally(()=>clearTimeout(cancel));
 })();

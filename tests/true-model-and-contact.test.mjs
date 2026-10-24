@@ -25,7 +25,7 @@ test('model originates in actual DÈLGHEM D2 geometry, with nonexecutive mixed-R
 });
 test('3D viewer uses real RC shell and member dimensions and retains keyboard orbit',()=>{
  const js=file('model-stage.js');
- assert.match(js,/mixed-demo-geometry\.mjs/);
+ assert.match(js,/complex-demo-geometry\.mjs/);
  assert.match(js,/const \{b,h,tw,tf\}=section/);
  assert.match(js,/crossSection/);
  assert.match(js,/paintFaces/);
@@ -40,8 +40,8 @@ test('both homepages show loading poster and accurately qualified mixed-model la
  for(const name of homes){
   const h=file(name);
   assert.match(h,/class="model-poster"/);
-  assert.match(h,/assets\/real-d2\/mixed-frame-poster\.webp/);
-  assert.match(h,/D2.*60.*124|60.*124.*D2/);
+  assert.match(h,/assets\/real-d2\/complex-frame-poster\.webp/);
+  assert.match(h,/D2.*122.*246|122.*246.*D2/);
   assert.match(h,/id="structure-canvas"/);
   assert.match(h,/model-disclaimer/);
  }

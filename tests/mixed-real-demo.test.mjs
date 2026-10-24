@@ -39,7 +39,7 @@ test('section hierarchy matches real catalog families and realistic story taperi
 });
 test('mixed demo viewer extrudes concrete walls, floors and true I-profiles; does not invent FEA results',()=>{
  const source=read('model-stage.js');
- assert.match(source,/mixed-demo-geometry\.mjs/);
+ assert.match(source,/complex-demo-geometry\.mjs/);
  assert.match(source,/mixedDemo\.shells/);
  assert.match(source,/mixedDemo\.members/);
  assert.match(source,/crossSection/);
@@ -58,7 +58,7 @@ test('website labels model as proposed concept not an optimized verified structu
   const s=read(path);
   assert.match(s,/class="model-poster"/);
   assert.match(s,/conceptual|concettuale/i);
-  assert.match(s,/8 brac|8 controventi/i);
+  assert.match(s,/capriat|truss/i);
   assert.match(s,/C30\/37/);
   assert.match(s,/class="contact-copy-button"/);
  }

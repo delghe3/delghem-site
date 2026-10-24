@@ -1,9 +1,12 @@
 /**
- * DÈLGHEM D2 validated mixed steel/RC conceptual demo: 60 nodes, 124 members, 30 shells.
- * Pure browser-side 3D projection of actual declared member geometry and roll orientations.
- * Preliminary demonstrative MODEL INPUT: no FEM stress/displacement result or safety check.
+ * Real native DÈLGHEM D2 structural input: uneven RC/steel building, steel/GL24h
+ * trusses and foundationSystem DIRECT pad footings. Validated as EDITABLE model
+ * by D2. Geotechnical / structural design has NOT been performed or certified.
  */
-import {mixedDemo} from './assets/real-d2/mixed-demo-geometry.mjs';
+import {complexDemo} from './assets/real-d2/complex-demo-geometry.mjs';
+const mixedDemo=complexDemo;
+const mid=(complexDemo.bbox.min.map((v,i)=>(v+complexDemo.bbox.max[i])/2));
+const extent=complexDemo.bbox.max.map((v,i)=>v-complexDemo.bbox.min[i]);
 
 // 360° in about 18.5 seconds, perceptible without abrupt motion.
 export const DEFAULT_ORBIT_SPEED = 0.34;
@@ -18,19 +21,31 @@ const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]
 const norm=v=>times(v,1/(Math.hypot(...v)||1));
 const light=norm([-.50,-.35,1.2]);
 const colors={
-  'steel-column':[40,86,111],
-  'rc-column':[184,190,191],
-  'main-beam':[26,128,154],
-  'secondary-beam':[83,166,180],
-  'brace':[218,122,64],
-  'rc-wall':[172,183,183],
-  'rc-floor':[135,204,206]
+  'steel-column':[22,88,165],
+  'rc-column':[176,194,205],
+  'main-beam':[15,149,197],
+  'secondary-beam':[49,179,214],
+  'brace':[234,94,56],
+  'rc-wall':[168,182,195],
+  'rc-floor':[100,197,219],
+  'rc-roof':[81,187,207],
+  'rc-balcony':[100,205,209],
+  'rc-beam':[183,198,210],
+  'rc-footing':[197,214,224],
+  'foundation-tie':[130,169,192],
+  'steel-truss':[58,100,234],
+  'steel-purlin':[47,140,197],
+  'cantilever':[20,174,217],
+  'wood-post':[167,113,53],
+  'wood-beam':[184,123,56],
+  'wood-truss':[228,147,63],
+  'wood-purlin':[247,180,77]
 };
 
 function crossSection(section){
   const {b,h,tw,tf}=section,B=b/2,H=h/2;
-  if(section.material==='rc'){
-    // Concrete square/prismatic column, true D2 RC section extents.
+  if(section.material==='rc'||section.material==='wood'||section.shape==='rect'){
+    // Real rectangular native D2 reinforced concrete and GL24h sections.
     return [[-B,-H],[B,-H],[B,H],[-B,H]];
   }
   const T=tw/2;
@@ -80,6 +95,21 @@ function makeGeometry(){
       faces.push({vertices,normal,kind:shell.kind,side:32+i,height:z});
     }
   }
+  // Foundations are not decorative: geometry comes from the D2
+  // foundationSystem.items of type DIRECT and belongs to native support IDs.
+  for(const footing of mixedDemo.footings){
+    const {x,y,z,widthM,lengthM,thicknessM}=footing;
+    const X=widthM/2,Y=lengthM/2,Z=thicknessM/2;
+    const corners=[
+      [x-X,y-Y,z-Z],[x+X,y-Y,z-Z],[x+X,y+Y,z-Z],[x-X,y+Y,z-Z],
+      [x-X,y-Y,z+Z],[x+X,y-Y,z+Z],[x+X,y+Y,z+Z],[x-X,y+Y,z+Z]
+    ];
+    for(const indices of [[0,3,2,1],[4,5,6,7],[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7]]){
+      const vertices=indices.map(i=>corners[i]);
+      const normal=norm(cross(minus(vertices[1],vertices[0]),minus(vertices[3],vertices[0])));
+      faces.push({vertices,normal,kind:footing.kind,side:34,height:z});
+    }
+  }
   return faces;
 }
 const faces=makeGeometry();
@@ -92,7 +122,8 @@ export function initModelStage(){
   const stage=canvas.closest('.structure-stage'),controls=[...document.querySelectorAll('[data-model-view]')];
   const italian=document.documentElement.lang==='it';
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  let width=1,height=1,dpr=1,scale=1,yaw=-.59,pitch=.46,mode='structure';
+  let width=1,height=1,dpr=1,scale=1,yaw=-.73,pitch=.58,mode='structure';
+  let camera={cs:1,sn:0,cp:1,sp:0};
   let motion=false,visible=true,dragging=false,pointer=null,start=null,phase=0,last=0,raf=0,disposed=false;
   canvas.style.touchAction='pan-y';
   canvas.tabIndex=0;
@@ -105,18 +136,18 @@ export function initModelStage(){
 
   function displaced(p){
     if(mode!=='deformed')return p;
-    const z=clamp(p[2]/14.4,0,1),k=z*z;
+    const z=clamp(p[2]/12.65,0,1),k=z*z;
     return [p[0]+k*(.55+.04*Math.sin(phase+p[1]*.1)),
       p[1]+k*(.15+.03*Math.cos(phase+p[0]*.1)),p[2]];
   }
   function project(p,original=false){
     const q=original?p:displaced(p);
-    const x=q[0]-9,y=q[1]-5,z=q[2]-7.2;
-    const cs=Math.cos(yaw),sn=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+    const x=q[0]-mid[0],y=q[1]-mid[1],z=q[2]-mid[2];
+    const {cs,sn,cp,sp}=camera;
     const xx=x*cs-y*sn,depth=(x*sn+y*cs)*cp+z*sp;
     const yy=(x*sn+y*cs)*sp-z*cp;
-    const persp=clamp(1-depth*.012,.77,1.23);
-    return {x:width*.50+xx*scale*persp,y:height*.525+yy*scale*persp,depth};
+    const persp=clamp(1-depth*.008,.79,1.21);
+    return {x:width*.50+xx*scale*persp,y:height*.53+yy*scale*persp,depth};
   }
   function poly(points,color,border='rgba(18,54,66,.12)'){
     ctx.beginPath();
@@ -137,11 +168,11 @@ export function initModelStage(){
     ctx.fillStyle=bg;ctx.fillRect(0,0,width,height);
     ctx.strokeStyle='rgba(42,93,115,.12)';ctx.lineWidth=.85;
     for(const x of mixedDemo.gridX){
-      const a=project([x,-2,0],true),b=project([x,12,0],true);
+      const a=project([x,mixedDemo.bbox.min[1]-1,0],true),b=project([x,mixedDemo.bbox.max[1]+1,0],true);
       ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
     }
     for(const y of mixedDemo.gridY){
-      const a=project([-2,y,0],true),b=project([20,y,0],true);
+      const a=project([mixedDemo.bbox.min[0]-1,y,0],true),b=project([mixedDemo.bbox.max[0]+1,y,0],true);
       ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
     }
   }
@@ -167,17 +198,17 @@ export function initModelStage(){
       let pigment=base;
       if(mode==='forces'&&face.kind!=='rc-floor'&&face.kind!=='rc-wall'){
         // Qualitative gradient only: NOT calculated forces or a solver result.
-        const heightRatio=clamp(face.height/14.4,0,1);
+        const heightRatio=clamp(face.height/12.65,0,1);
         pigment=[Math.round(30+173*heightRatio),Math.round(128+19*Math.sin(heightRatio*Math.PI)),Math.round(203-122*heightRatio)];
       }
       // Semi-transparent concrete floors expose the contrasting structural skeleton.
-      const opacity=face.kind==='rc-floor'?.28:face.kind==='rc-wall'?.88:1;
-      const border=face.kind==='rc-floor'?'rgba(63,126,136,.2)':'rgba(20,56,68,.16)';
+      const opacity=['rc-floor','rc-roof','rc-balcony'].includes(face.kind)?.22:face.kind==='rc-wall'?.80:1;
+      const border=['rc-floor','rc-roof','rc-balcony'].includes(face.kind)?'rgba(44,110,143,.32)':'rgba(22,49,70,.23)';
       poly(points,rgba(pigment,lighting,opacity),border);
     }
   }
   function axisTriad(){
-    const x=38,y=height-49,origin=[9,5,7.2];
+    const x=38,y=height-49,origin=mid;
     const pivot=project(origin,true);
     // Project the global basis with the very same camera as the structural model.
     for(const [vector,color,label] of [
@@ -194,26 +225,25 @@ export function initModelStage(){
   function labels(){
     ctx.textAlign='left';ctx.fillStyle='rgba(29,76,93,.83)';
     ctx.font='700 10px Manrope,system-ui,sans-serif';
-    ctx.fillText('DÈLGHEM D2 · MIXED STRUCTURAL DEMO',Math.max(15,width*.045),27);
-    ctx.font='600 9px Manrope,system-ui,sans-serif';
-    ctx.fillText('C30/37  /  HEB340–280  /  IPE400–270',Math.max(15,width*.045),43);
-    if(width>480)ctx.fillText('60 NODES  ·  124 MEMBERS  ·  8 BRACES',Math.max(15,width*.045),57);
+    if(width>480)ctx.fillText('DÈLGHEM D2 · C30/37 / S355 / GL24h',Math.max(15,width*.045),height*.10);
   }
   function render(){
     if(disposed||width<2||height<2)return;
     ctx.setTransform(dpr,0,0,dpr,0,0);
     ctx.clearRect(0,0,width,height);
+    camera={cs:Math.cos(yaw),sn:Math.sin(yaw),cp:Math.cos(pitch),sp:Math.sin(pitch)};
     drawBackdrop();drawGhost();paintFaces();axisTriad();
     stage.classList.add('model-ready');
   }
   function resize(){
     const r=canvas.getBoundingClientRect();
     width=Math.max(1,r.width);height=Math.max(1,r.height);
-    dpr=Math.min(window.devicePixelRatio||1,2);
+    dpr=Math.min(window.devicePixelRatio||1,width<480?1.4:1.8);
     canvas.width=Math.max(1,Math.round(width*dpr));
     canvas.height=Math.max(1,Math.round(height*dpr));
-    // Keep the true 18 x 10 x 14.4 m model inside the Chrome viewport.
-    scale=Math.min(width/25,height/22)*.95;
+    // Fit the native D2 model bounding volume through a 360-degree camera orbit.
+    const orbitDiameter=Math.hypot(extent[0],extent[1]);
+    scale=Math.min(width/(orbitDiameter*1.13),height/(orbitDiameter*.68+extent[2]*.78));
     render();
   }
   function tick(timestamp){
@@ -221,7 +251,7 @@ export function initModelStage(){
     if(disposed||!motion||!visible||document.hidden||reduced.matches)return;
     if(!last)last=timestamp;
     const elapsed=timestamp-last;
-    if(elapsed>=FRAME_INTERVAL){
+    if(elapsed>=FRAME_INTERVAL*(width<480?1.33:1)){
       const dt=Math.min(.10,elapsed/1000);
       last=timestamp;
       if(!dragging)yaw+=dt*DEFAULT_ORBIT_SPEED;
@@ -263,14 +293,14 @@ export function initModelStage(){
   canvas.addEventListener('keydown',e=>{
     if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;
     e.preventDefault();
-    if(e.key==='Home'){yaw=-.59;pitch=.46;}
+    if(e.key==='Home'){yaw=-.73;pitch=.58;}
     if(e.key==='ArrowLeft')yaw-=.12;
     if(e.key==='ArrowRight')yaw+=.12;
     if(e.key==='ArrowUp')pitch=clamp(pitch-.08,-.05,.95);
     if(e.key==='ArrowDown')pitch=clamp(pitch+.08,-.05,.95);
     render();
   });
-  document.getElementById('reset-model')?.addEventListener('click',()=>{yaw=-.59;pitch=.46;render();canvas.focus({preventScroll:true});});
+  document.getElementById('reset-model')?.addEventListener('click',()=>{yaw=-.73;pitch=.58;render();canvas.focus({preventScroll:true});});
   const observer=new ResizeObserver(resize);observer.observe(canvas);
   const intersection=new IntersectionObserver(entries=>{
     visible=entries.some(e=>e.isIntersecting);
