@@ -43,7 +43,7 @@
     <nav class="desktop-nav" aria-label="Main navigation" data-i18n-aria="navLabel">
       <a href="#app" data-i18n="navApp">The application</a>
       <a href="#native">Apple Silicon</a>
-      <a href="#genius">Genius</a>
+      <a href="#fem-lab">FEM Lab</a><a href="#genius">Genius</a>
       <a href="#workflow" data-i18n="navFeatures">Features</a>
       <a href="#capabilities">Technical areas</a><a href="#gallery">Screenshots</a><a href="#release">vAlpha1</a>
     </nav>
@@ -55,7 +55,7 @@
       <button class="menu-toggle icon-button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" data-i18n-aria="openMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
     </div>
   </header>
-  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-i18n-aria="mobileNav" hidden><a href="#app" data-i18n="navApp">The application</a><a href="#native">Apple Silicon</a><a href="#genius">Genius</a><a href="#workflow" data-i18n="navFeatures">Features</a><a href="#capabilities">Technical areas</a><a href="#gallery">Screenshots</a><a href="#release">vAlpha1</a><a href="#support">Support</a></nav>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-i18n-aria="mobileNav" hidden><a href="#app" data-i18n="navApp">The application</a><a href="#native">Apple Silicon</a><a href="#fem-lab">FEM Lab</a><a href="#genius">Genius</a><a href="#workflow" data-i18n="navFeatures">Features</a><a href="#capabilities">Technical areas</a><a href="#gallery">Screenshots</a><a href="#release">vAlpha1</a><a href="#support">Support</a></nav>
 
   <main id="main">
     <section class="support-banner" id="support-top" aria-label="Support DÈLGHEM with PayPal">
@@ -122,6 +122,34 @@
       <div class="benchmark-block"><h3 data-i18n="benchmarkTitle">Performance deserves real numbers.</h3><div><p data-i18n="benchmarkBody">Solution time, memory and responsiveness: comparisons with other environments will be published with their models and test conditions.</p><details><summary data-i18n="benchmarkMethod">How we will compare performance</summary><p data-i18n="benchmarkProtocol">The same Mac and an equivalent structural problem, with software versions specified and comparable numerical results. At least five repetitions, median and variability; separate startup, solution and export times. Application memory and total environment memory measured separately.</p><p class="benchmark-status" data-i18n="benchmarkStatus">Verified comparative benchmarks are not yet available for this presentation.</p></details></div></div>
     </section>
 
+<section class="fem-lab-section chapter" id="fem-lab" aria-labelledby="fem-lab-title" data-chapter="fem-lab">
+  <div class="fem-lab-inner">
+    <div class="fem-lab-heading"><div><span class="eyebrow">ENGINEERING / SOURCE-BASED RESULTS</span><h2 id="fem-lab-title">Real solvers.<br><em>Real data to explore.</em></h2></div><p>Explore DÈLGHEM outputs from independent, traceable solver benchmarks. Each view states the actual engine, model and limits. These are <strong>separate test cases</strong>, not analysis results of the asymmetric homepage building.</p></div>
+    <div class="lab-tabs" role="tablist" aria-label="DÈLGHEM FEM Lab"><button id="lab-tab-stress" type="button" class="lab-tab" role="tab" aria-controls="lab-panel-stress" aria-selected="true" tabindex="0" data-lab-tab="stress"><span>01 / Stress contours</span><small>OpenSeesPy • QUAD shells • 128 elements</small></button>
+<button id="lab-tab-pushover" type="button" class="lab-tab" role="tab" aria-controls="lab-panel-pushover" aria-selected="false" tabindex="-1" data-lab-tab="pushover"><span>02 / Pushover</span><small>Kratos • elastic incremental response</small></button>
+<button id="lab-tab-ida" type="button" class="lab-tab" role="tab" aria-controls="lab-panel-ida" aria-selected="false" tabindex="-1" data-lab-tab="ida"><span>03 / IDA curves</span><small>Kratos • 2 analytic diagnostics</small></button>
+<button id="lab-tab-accelerograms" type="button" class="lab-tab" role="tab" aria-controls="lab-panel-accelerograms" aria-selected="false" tabindex="-1" data-lab-tab="accelerograms"><span>04 / Accelerograms</span><small>Analytic input records • g versus time</small></button></div>
+    <div id="lab-data-error" class="lab-error" role="status" aria-live="polite" hidden>Unable to load benchmark data. The explanatory sections remain available.</div>
+    <div class="lab-panel" id="lab-panel-stress" role="tabpanel" aria-labelledby="lab-tab-stress">
+      <div class="lab-panel-heading"><div><span class="lab-kicker">01 / OPENSeesPY • SHELL QUAD4</span><h3>Shell stress field</h3><p>Actual upper/lower face stresses from 4 Gauss points per element. Colors represent the average for display only; this is not a nodal-smoothed continuous field.</p></div><div class="lab-controls"><label class="lab-select"><span>Stress component</span><select id="lab-stress-field"><option value="vonMisesMPa">Von Mises · σVM [MPa]</option><option value="sigma11MPa">σ11 [MPa]</option><option value="sigma22MPa">σ22 [MPa]</option><option value="tau12MPa">τ12 [MPa]</option></select></label><label class="lab-select"><span>Shell face</span><select id="lab-stress-face"><option value="top">Top face</option><option value="bottom">Bottom face</option></select></label></div></div>
+      <div class="lab-stress-layout"><div class="lab-visual-box lab-contour"><canvas id="lab-stress-canvas" tabindex="0" role="img" aria-label="Shell stress field • 3D" width="1000" height="580"></canvas><div class="lab-contour-footer"><span>Drag to orbit • arrow keys • Home to reset</span><span id="lab-stress-count">128 QUAD</span></div></div>
+        <aside class="lab-contour-side"><strong>σ / FEM</strong><div class="lab-value-scale"><span id="lab-stress-max">—</span><div class="lab-heat-bar"></div><span id="lab-stress-min">—</span></div><small>Source values · MPa</small><div class="lab-selected-info"><span>Inspect a shell</span><strong id="lab-stress-selected">—</strong><p id="lab-stress-readout">Select a panel to view its values.</p></div></aside></div>
+    </div>
+    <div class="lab-panel" id="lab-panel-pushover" role="tabpanel" aria-labelledby="lab-tab-pushover" hidden>
+      <div class="lab-panel-heading"><div><span class="lab-kicker">02 / KRATOSMULTIPHYSICS • ELASTIC PROTOCOL</span><h3>Base shear and control displacement</h3><p>Incremental results generated by Kratos in elastic material mode. This is <strong>not a verified plastic capacity curve</strong>; no yield point, bilinearization or collapse is inferred.</p></div></div>
+      <div class="lab-chart-layout"><div class="lab-visual-box lab-graph-surface"><svg id="lab-pushover-svg" role="img" aria-label="Base shear and control displacement" viewBox="0 0 900 470"></svg></div><aside class="lab-result-stats"><span>Measured steps</span><strong id="lab-pushover-count">—</strong><span>Material model</span><strong>Elastic only</strong><p>Not a complete structural verification</p></aside></div>
+    </div>
+    <div class="lab-panel" id="lab-panel-ida" role="tabpanel" aria-labelledby="lab-tab-ida" hidden>
+      <div class="lab-panel-heading"><div><span class="lab-kicker">03 / KRATOSMULTIPHYSICS • DIAGNOSTIC IDA</span><h3>Incremental dynamic response</h3><p>Two real diagnostic analysis records with two scale factors each. No collapse was observed; four result points do not establish a fragility curve.</p></div></div>
+      <div class="lab-chart-layout"><div class="lab-visual-box lab-graph-surface"><svg id="lab-ida-svg" role="img" aria-label="Incremental dynamic response" viewBox="0 0 900 470"></svg><div class="lab-series-key"><span>● GUI A</span><span>● GUI B</span></div></div><aside class="lab-result-stats"><span>Computed runs</span><strong id="lab-ida-count">4</strong><span>All runs: completed</span><strong>No collapse observed</strong><p>No statistical fragility curve is claimed.</p></aside></div>
+    </div>
+    <div class="lab-panel" id="lab-panel-accelerograms" role="tabpanel" aria-labelledby="lab-tab-accelerograms" hidden>
+      <div class="lab-panel-heading"><div><span class="lab-kicker">04 / DYNAMIC INPUT • ANALYTIC SIGNALS</span><h3>Input accelerograms</h3><p>Actual analytic time histories supplied to the diagnostic D2 IDA suite, <strong>not recorded earthquakes</strong>. Choose a record and a scale factor to inspect the applied ground acceleration.</p></div><div class="lab-controls"><label class="lab-select"><span>Record</span><select id="lab-record"><option value="GUI_A">GUI A</option><option value="GUI_B">GUI B</option></select></label><label class="lab-select"><span>Scale factor</span><select id="lab-scale"><option value="0.5">0.5</option><option value="1.25">1.25</option></select></label></div></div>
+      <div class="lab-chart-layout"><div class="lab-visual-box lab-graph-surface"><svg id="lab-accelerograms-svg" role="img" aria-label="Input accelerograms" viewBox="0 0 900 470"></svg></div><aside class="lab-result-stats"><span>Peak ground acceleration</span><strong id="lab-accelerogram-pga">—</strong><span>Time step</span><strong id="lab-accelerogram-dt">—</strong><span>Samples</span><strong id="lab-accelerogram-samples">—</strong></aside></div>
+    </div>
+    <div class="fem-lab-source"><span>TRACEABLE DATA / DÈLGHEM D2</span><p>Data lineage: actual DÈLGHEM D2 OpenSeesPy and KratosMultiphysics outputs, 24 October 2026. Charts are illustrative views of computed benchmark results, not certified engineering checks. No invented stresses, collapse states or plastic capacities.</p><p>The benchmark curves above belong to different native test models. Structural analysis of a new project requires its own calculations, load cases, boundary conditions and verification.</p></div>
+  </div>
+</section>
     <section class="genius-section chapter" id="genius" aria-labelledby="genius-title" data-chapter="genius">
   <div class="genius-topline"><span class="eyebrow">GENIUS / HUMAN-IN-CONTROL ENGINEERING</span><span class="genius-technology">DÈLGHEM D2 / GENIUS</span></div>
   <div class="genius-hero-layout">
@@ -272,6 +300,7 @@
 <dialog id="photo-dialog" aria-label="Real application screenshot"><button id="photo-dialog-close" class="photo-dialog-close" type="button" aria-label="Close photo">✕</button><img id="photo-image" alt="Schermata DÈLGHEM"><p id="photo-dialog-caption"></p></dialog>
   <script type="module" src="./app.js"></script>
   <script type="module" src="./genius-demo.js"></script>
+  <script type="module" src="./fem-lab.js"></script>
   <script type="module" src="./social.js"></script>
 <script defer src="./visitor-counter.js"></script>
 <script defer src="./support-actions.js"></script>

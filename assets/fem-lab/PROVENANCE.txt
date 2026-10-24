@@ -1,0 +1,10 @@
+DÈLGHEM D2 · FEM LAB: ACTUAL SOURCE BACKED RESULTS
+Read-only extraction from local D2 files; no source application code edited.
+STRESS source: work/reconciliation/core-cut-native-8.json | SHA256: 03369ca32bf26ad101a3b00f78b8fbe4826a362acb05347ac26439178bd155eb
+PUSHOVER source: work/continuous-20261022T231218Z-51b4fe/verification/guided-dynamics-source-first/guided-dynamics-ui-source-7IpeRs/pushover-engine-report.json | SHA256: 3813d37c3571cf0563783ac3ac66563310914a0e4b721a9b7cbc55c55ceb81dd
+IDA source: exports/Hyperfem_2026-10-23T00-58-03-164Z_a97f6b85.ida-suite.json | SHA256: d7eda747e36c42572ae0acb17ca974c5583a70fd3837b0987ea83bdaa54dbd23
+Stress: 128 real QUAD shell results, 4 Gauss points per element, front/back MPa; per-element color uses average, not a physical reconstruction of continuous contours.
+Pushover: Kratos nonlinear-static protocol but ELASTIC material. It is NOT a validated nonlinear capacity curve or a collapse computation.
+IDA: 2 analytic diagnostic acceleration histories and 2 scaled completed runs each. NO collapse, NO observed plasticity and NO statistical fragility curve.
+Every dataset belongs to a separate verified software benchmark fixture, NOT the asymmetric homepage building model.
+These charts are NOT certified structural checks, not proof of whole-product qualification, and not authorized for executive structural design.

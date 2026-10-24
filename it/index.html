@@ -43,7 +43,7 @@
     <nav class="desktop-nav" aria-label="Navigazione principale" data-i18n-aria="navLabel">
       <a href="#app" data-i18n="navApp">Il programma</a>
       <a href="#native">Apple Silicon</a>
-      <a href="#genius">Genius</a>
+      <a href="#fem-lab">Laboratorio FEM</a><a href="#genius">Genius</a>
       <a href="#workflow" data-i18n="navFeatures">Funzionalità</a>
       <a href="#capabilities">Aree tecniche</a><a href="#gallery">Schermate</a><a href="#release">vAlpha1</a>
     </nav>
@@ -55,7 +55,7 @@
       <button class="menu-toggle icon-button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Apri menu" data-i18n-aria="openMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
     </div>
   </header>
-  <nav class="mobile-menu" id="mobile-menu" aria-label="Navigazione mobile" data-i18n-aria="mobileNav" hidden><a href="#app" data-i18n="navApp">Il programma</a><a href="#native">Apple Silicon</a><a href="#genius">Genius</a><a href="#workflow" data-i18n="navFeatures">Funzionalità</a><a href="#capabilities">Aree tecniche</a><a href="#gallery">Schermate</a><a href="#release">vAlpha1</a><a href="#support">Sostieni</a></nav>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Navigazione mobile" data-i18n-aria="mobileNav" hidden><a href="#app" data-i18n="navApp">Il programma</a><a href="#native">Apple Silicon</a><a href="#fem-lab">Laboratorio FEM</a><a href="#genius">Genius</a><a href="#workflow" data-i18n="navFeatures">Funzionalità</a><a href="#capabilities">Aree tecniche</a><a href="#gallery">Schermate</a><a href="#release">vAlpha1</a><a href="#support">Sostieni</a></nav>
 
   <main id="main">
     <section class="support-banner" id="support-top" aria-label="Sostieni DÈLGHEM con PayPal">
@@ -122,6 +122,34 @@
       <div class="benchmark-block"><h3 data-i18n="benchmarkTitle">Le prestazioni meritano numeri veri.</h3><div><p data-i18n="benchmarkBody">Tempi di soluzione, memoria e fluidità: i confronti con altri ambienti saranno pubblicati insieme ai modelli e alle condizioni di prova.</p><details><summary data-i18n="benchmarkMethod">Come confronteremo le prestazioni</summary><p data-i18n="benchmarkProtocol">Stesso Mac e problema strutturale equivalente, software e versioni dichiarati, risultati numerici confrontabili. Almeno cinque ripetizioni, mediana e variabilità; tempi di avvio, soluzione ed esportazione separati. Memoria dell’app e dell’intero ambiente misurate distintamente.</p><p class="benchmark-status" data-i18n="benchmarkStatus">Non sono ancora disponibili benchmark comparativi verificati per questa presentazione.</p></details></div></div>
     </section>
 
+<section class="fem-lab-section chapter" id="fem-lab" aria-labelledby="fem-lab-title" data-chapter="fem-lab">
+  <div class="fem-lab-inner">
+    <div class="fem-lab-heading"><div><span class="eyebrow">INGEGNERIA / RISULTATI DOCUMENTATI</span><h2 id="fem-lab-title">Solutori reali.<br><em>Risultati da esplorare.</em></h2></div><p>Esplora i risultati di DÈLGHEM provenienti da benchmark numerici distinti e tracciabili. Ogni grafico riporta motore, modello e limiti. Sono <strong>casi di prova diversi</strong>, non risultati dell’edificio asimmetrico della prima pagina.</p></div>
+    <div class="lab-tabs" role="tablist" aria-label="DÈLGHEM FEM Lab"><button id="lab-tab-stress" type="button" class="lab-tab" role="tab" aria-controls="lab-panel-stress" aria-selected="true" tabindex="0" data-lab-tab="stress"><span>01 / Mappe di tensione</span><small>OpenSeesPy • shell QUAD • 128 elementi</small></button>
+<button id="lab-tab-pushover" type="button" class="lab-tab" role="tab" aria-controls="lab-panel-pushover" aria-selected="false" tabindex="-1" data-lab-tab="pushover"><span>02 / Pushover</span><small>Kratos • risposta incrementale elastica</small></button>
+<button id="lab-tab-ida" type="button" class="lab-tab" role="tab" aria-controls="lab-panel-ida" aria-selected="false" tabindex="-1" data-lab-tab="ida"><span>03 / Curve IDA</span><small>Kratos • 2 segnali diagnostici</small></button>
+<button id="lab-tab-accelerograms" type="button" class="lab-tab" role="tab" aria-controls="lab-panel-accelerograms" aria-selected="false" tabindex="-1" data-lab-tab="accelerograms"><span>04 / Accelerogrammi</span><small>Record analitici • g nel tempo</small></button></div>
+    <div id="lab-data-error" class="lab-error" role="status" aria-live="polite" hidden>Impossibile caricare i dati dei benchmark. Rimangono disponibili le descrizioni.</div>
+    <div class="lab-panel" id="lab-panel-stress" role="tabpanel" aria-labelledby="lab-tab-stress">
+      <div class="lab-panel-heading"><div><span class="lab-kicker">01 / OPENSeesPY • SHELL QUAD4</span><h3>Campo di tensione nelle shell</h3><p>Tensioni reali delle facce superiore/inferiore ai 4 punti di Gauss. Il colore rappresenta la media per elemento: non è un campo continuo levigato ai nodi.</p></div><div class="lab-controls"><label class="lab-select"><span>Componente tensionale</span><select id="lab-stress-field"><option value="vonMisesMPa">Von Mises · σVM [MPa]</option><option value="sigma11MPa">σ11 [MPa]</option><option value="sigma22MPa">σ22 [MPa]</option><option value="tau12MPa">τ12 [MPa]</option></select></label><label class="lab-select"><span>Faccia della shell</span><select id="lab-stress-face"><option value="top">Faccia superiore</option><option value="bottom">Faccia inferiore</option></select></label></div></div>
+      <div class="lab-stress-layout"><div class="lab-visual-box lab-contour"><canvas id="lab-stress-canvas" tabindex="0" role="img" aria-label="Campo di tensione nelle shell • 3D" width="1000" height="580"></canvas><div class="lab-contour-footer"><span>Trascina per ruotare • frecce • Home per ripristinare</span><span id="lab-stress-count">128 QUAD</span></div></div>
+        <aside class="lab-contour-side"><strong>σ / FEM</strong><div class="lab-value-scale"><span id="lab-stress-max">—</span><div class="lab-heat-bar"></div><span id="lab-stress-min">—</span></div><small>Valori del solutore · MPa</small><div class="lab-selected-info"><span>Esamina elemento</span><strong id="lab-stress-selected">—</strong><p id="lab-stress-readout">Seleziona una piastra per leggere i valori.</p></div></aside></div>
+    </div>
+    <div class="lab-panel" id="lab-panel-pushover" role="tabpanel" aria-labelledby="lab-tab-pushover" hidden>
+      <div class="lab-panel-heading"><div><span class="lab-kicker">02 / KRATOSMULTIPHYSICS • ELASTIC PROTOCOL</span><h3>Taglio alla base e spostamento del nodo di controllo</h3><p>Incrementi calcolati da Kratos con materiale elastico. <strong>Non è una curva di capacità plastica verificata</strong>: non si deducono snervamento, bilinearizzazione o collasso.</p></div></div>
+      <div class="lab-chart-layout"><div class="lab-visual-box lab-graph-surface"><svg id="lab-pushover-svg" role="img" aria-label="Taglio alla base e spostamento del nodo di controllo" viewBox="0 0 900 470"></svg></div><aside class="lab-result-stats"><span>Incrementi calcolati</span><strong id="lab-pushover-count">—</strong><span>Modello materiale</span><strong>Solo elastico</strong><p>Non è una verifica strutturale completa</p></aside></div>
+    </div>
+    <div class="lab-panel" id="lab-panel-ida" role="tabpanel" aria-labelledby="lab-tab-ida" hidden>
+      <div class="lab-panel-heading"><div><span class="lab-kicker">03 / KRATOSMULTIPHYSICS • DIAGNOSTIC IDA</span><h3>Risposta dinamica incrementale</h3><p>Due record di analisi diagnostici reali, con due fattori di scala ciascuno. Nessun collasso osservato; quattro punti non costituiscono una curva di fragilità.</p></div></div>
+      <div class="lab-chart-layout"><div class="lab-visual-box lab-graph-surface"><svg id="lab-ida-svg" role="img" aria-label="Risposta dinamica incrementale" viewBox="0 0 900 470"></svg><div class="lab-series-key"><span>● GUI A</span><span>● GUI B</span></div></div><aside class="lab-result-stats"><span>Analisi eseguite</span><strong id="lab-ida-count">4</strong><span>Tutte concluse</span><strong>Nessun collasso osservato</strong><p>Nessuna fragilità statistica dedotta.</p></aside></div>
+    </div>
+    <div class="lab-panel" id="lab-panel-accelerograms" role="tabpanel" aria-labelledby="lab-tab-accelerograms" hidden>
+      <div class="lab-panel-heading"><div><span class="lab-kicker">04 / DYNAMIC INPUT • ANALYTIC SIGNALS</span><h3>Accelerogrammi di ingresso</h3><p>Storie temporali analitiche effettivamente fornite alla suite IDA D2: <strong>non sono registrazioni di terremoti reali</strong>. Seleziona il record e la scala per visualizzare l’accelerazione applicata al terreno.</p></div><div class="lab-controls"><label class="lab-select"><span>Record</span><select id="lab-record"><option value="GUI_A">GUI A</option><option value="GUI_B">GUI B</option></select></label><label class="lab-select"><span>Fattore di scala</span><select id="lab-scale"><option value="0.5">0.5</option><option value="1.25">1.25</option></select></label></div></div>
+      <div class="lab-chart-layout"><div class="lab-visual-box lab-graph-surface"><svg id="lab-accelerograms-svg" role="img" aria-label="Accelerogrammi di ingresso" viewBox="0 0 900 470"></svg></div><aside class="lab-result-stats"><span>Accelerazione massima PGA</span><strong id="lab-accelerogram-pga">—</strong><span>Passo temporale</span><strong id="lab-accelerogram-dt">—</strong><span>Campioni</span><strong id="lab-accelerogram-samples">—</strong></aside></div>
+    </div>
+    <div class="fem-lab-source"><span>DATI TRACCIABILI / DÈLGHEM D2</span><p>Origine dei dati: risultati reali DÈLGHEM D2 con OpenSeesPy e KratosMultiphysics, 24 ottobre 2026. Le immagini rappresentano risultati di benchmark calcolati, non verifiche strutturali certificate. Nessun valore inventato di tensione, collasso o capacità plastica.</p><p>Le analisi dei diversi grafici riguardano modelli di prova distinti. Ogni nuovo progetto richiede calcoli, condizioni di vincolo, carichi e verifiche specifici.</p></div>
+  </div>
+</section>
     <section class="genius-section chapter" id="genius" aria-labelledby="genius-title" data-chapter="genius">
   <div class="genius-topline"><span class="eyebrow">GENIUS / L’INGEGNERE MANTIENE IL CONTROLLO</span><span class="genius-technology">DÈLGHEM D2 / GENIUS</span></div>
   <div class="genius-hero-layout">
@@ -272,6 +300,7 @@
 <dialog id="photo-dialog" aria-label="Schermata reale dell’applicazione"><button id="photo-dialog-close" class="photo-dialog-close" type="button" aria-label="Chiudi immagine">✕</button><img id="photo-image" alt="Schermata DÈLGHEM"><p id="photo-dialog-caption"></p></dialog>
   <script type="module" src="../app.js"></script>
   <script type="module" src="../genius-demo.js"></script>
+  <script type="module" src="../fem-lab.js"></script>
   <script type="module" src="../social.js"></script>
 <script defer src="../visitor-counter.js"></script>
 <script defer src="../support-actions.js"></script>
