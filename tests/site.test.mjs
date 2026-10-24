@@ -50,14 +50,16 @@ test('Payment section never claims verified PayPal.Me destination',()=>{
  assert.ok(html.includes('ildelghe3@gmail.com'));
  assert.ok(!html.includes('paypal.me/'));
 });
-test('Six canonical URLs and four stand-alone technical pages are published locally',()=>{
+test('Eight canonical URLs and six stand-alone technical pages are published locally',()=>{
  const xml=read('sitemap.xml');
- assert.equal((xml.match(/<loc>/g)||[]).length,6);
+ assert.equal((xml.match(/<loc>/g)||[]).length,8);
  for(const [file,url] of [
   ['tecnologia-fem-mac/index.html','https://www.delghe.com/tecnologia-fem-mac/'],
   ['en/mac-fem-technology/index.html','https://www.delghe.com/en/mac-fem-technology/'],
   ['disegni-officina-acciaio/index.html','https://www.delghe.com/disegni-officina-acciaio/'],
-  ['en/steel-workshop-drawings/index.html','https://www.delghe.com/en/steel-workshop-drawings/']]){
+  ['en/steel-workshop-drawings/index.html','https://www.delghe.com/en/steel-workshop-drawings/'],
+  ['software-fem-mac/index.html','https://www.delghe.com/software-fem-mac/'],
+  ['en/native-structural-analysis-mac/index.html','https://www.delghe.com/en/native-structural-analysis-mac/']]){
   assert.ok(read(file).includes('rel="canonical" href="'+url+'"'));
   assert.ok(xml.includes('<loc>'+url+'</loc>'));
   assert.match(read(file),/<h1>/);

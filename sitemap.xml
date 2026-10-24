@@ -42,4 +42,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/steel-workshop-drawings/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/disegni-officina-acciaio/"/>
   </url>
+  <url>
+    <loc>https://www.delghe.com/software-fem-mac/</loc><lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/software-fem-mac/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/native-structural-analysis-mac/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/software-fem-mac/"/>
+  </url>
+  <url>
+    <loc>https://www.delghe.com/en/native-structural-analysis-mac/</loc><lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.delghe.com/software-fem-mac/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.delghe.com/en/native-structural-analysis-mac/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.delghe.com/software-fem-mac/"/>
+  </url>
 </urlset>
