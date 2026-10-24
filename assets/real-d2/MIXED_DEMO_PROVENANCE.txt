@@ -1,0 +1,12 @@
+DÈLGHEM D2: modello dimostrativo misto c.a./acciaio, derivato da 60 nodi e 148 aste reali di un fixture D2.
+48 colonne originali: 16 colonne centrali in c.a. C30/37 (650×650 mm piani 1–2, 500×500 mm piani 3–4), 32 colonne in acciaio HEB340 inferiori e HEB280 superiori.
+Travi principali IPE400 inferiori, IPE360 superiori; secondarie IPE300 inferiori, IPE270 superiori.
+Sono conservate 8 diagonali originarie HEA160, con controventi X soltanto su quattro campi esterni distribuiti tra X e Y.
+Nucleo a L con 8 pannelli c.a. (28 cm piani bassi, 24 cm piani alti), e pannelli di solaio c.a. 16 cm; vuoto di patio ai piani superiori.
+SOLO SELEZIONE GEOMETRICA PRELIMINARE: dimensioni scelte per una visualizzazione tecnica plausibile, non dimensionate da carichi, norme, analisi FEM, punzonamento, instabilità o gerarchia resistenze.
+Connessioni acciaio-c.a., diaframmi, armature, fessurazione, rigidezze reali, deformabilità e verifica sismica ancora da progettare.
+Questo modello NON E’ ESECUTIVO e non deve essere usato come progetto realizzabile.
+Original SHA256: b4899423b0a87624b01f5cf75a2153f40c07f5fb59374481d545041342bb0ddc
+Derived project SHA256: bafbab72bcd83786175ac59901c38894ea6542a79f9be0757ffb7a1174d26ff2
+
+mixed-frame-poster.webp: captured directly from the website Canvas renderer loading the D2 validated conceptual mixed-model geometry, Chrome 1440 px viewport, 24 October 2026. It is a screenshot of the declared preliminary geometry, not a FEM result.

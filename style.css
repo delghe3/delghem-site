@@ -499,3 +499,128 @@ body.photo-open{overflow:hidden}
  .contact-strip-title{font-size:18px}
  .contact-strip-note{font-size:11px}
 }
+
+/* 24 October: DÈLGHEM D2 source-grounded mixed steel/RC 3D presentation */
+.hero .structure-stage{position:relative;isolation:isolate;background:linear-gradient(150deg,#edf7f5 0%,#e2efed 55%,#e9f3f1 100%);box-shadow:0 25px 67px rgba(10,71,83,.12);border:1px solid #bed9d5}
+.model-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;opacity:.58;filter:saturate(.85);transition:opacity .28s ease;pointer-events:none}
+.model-ready .model-poster{opacity:0}
+#structure-canvas{position:relative;z-index:1}
+.model-concept-label{position:absolute;top:19px;right:17px;z-index:2;max-width:53%;font-size:9px;font-weight:900;letter-spacing:.10em;color:#31667a;background:rgba(248,254,253,.92);padding:8px 11px;border-radius:6px;border:1px solid rgba(142,188,192,.30);pointer-events:none}
+.hero .structure-stage>.model-label{display:none}
+.model-origin{position:absolute;z-index:2;bottom:76px;left:18px;max-width:51%;font-size:9px;line-height:1.55;color:#3b6570;padding:9px 10px;background:rgba(249,254,251,.90);border-radius:5px;border-left:2px solid #3a9d9a;pointer-events:none}
+.model-controls{z-index:5}
+.model-disclaimer{z-index:5}
+.model-legend{z-index:6}
+@media(max-width:850px){.model-origin{font-size:8px;max-width:54%}.model-concept-label{font-size:8px;max-width:57%}}
+@media(max-width:650px){.model-concept-label{font-size:7px;top:12px;right:8px;padding:6px;letter-spacing:.055em}.model-origin{font-size:7px;bottom:72px;left:9px;max-width:48%;padding:6px 7px}.hero .structure-stage{background:#e6f1ef}}
+
+/* Chrome-friendly B2B contact: mailto + a real in-page copy action */
+.contact-strip{background:#eaf4f1;padding-top:22px;padding-bottom:22px}
+.contact-strip-inner{gap:22px}
+.contact-strip-title{font-size:clamp(19px,1.8vw,26px)}
+.contact-strip-kicker{color:#237b86}
+.contact-strip-action{flex-direction:row;flex-wrap:wrap;gap:9px 12px;align-items:center;justify-content:flex-end}
+.contact-strip-link{font-size:clamp(14px,1.25vw,18px);min-height:49px;background:#fff;box-shadow:0 11px 23px rgba(13,73,88,.11)}
+.contact-copy-button{min-height:49px;padding:11px 16px;border:1px solid #b8d3d2;background:#16485b;color:#f8fffe;border-radius:7px;font-size:12px;font-weight:850;white-space:nowrap;transition:background .18s ease}
+.contact-copy-button:hover{background:#256d7c}
+.contact-copy-button:focus-visible{outline-offset:3px}
+.contact-copy-status{color:#1e7469;min-height:16px;font-size:11px;font-weight:750;width:100%;text-align:right}
+.contact-strip-instruction{display:none}
+@media(max-width:650px){
+ .contact-strip-action{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:stretch;gap:8px;width:100%}
+ .contact-strip-link{min-width:0;max-width:100%;font-size:clamp(12px,3.45vw,16px);padding:10px 12px}
+ .contact-copy-button{padding:8px 11px;min-height:43px;font-size:11px}
+ .contact-copy-status{grid-column:1/-1;text-align:left}
+ .contact-strip-copy{gap:5px}
+}
+@media(max-width:365px){.contact-strip{padding-left:16px;padding-right:16px}.contact-strip-link{font-size:12px}.contact-copy-button{font-size:10px;padding:7px}}
+
+/* GENIUS: editorial, authentic native macOS screenshots and real command families */
+.genius-section{display:block!important;max-width:none!important;padding:clamp(77px,8vw,125px) var(--gutter)!important;background:linear-gradient(135deg,#e1ebe7 0%,#ebf1ee 62%,#dae8e3 100%)!important;color:#17343e;border-top:1px solid #c3d9d6;border-bottom:1px solid #c3d9d6}
+.genius-section>*{max-width:1510px;margin-left:auto;margin-right:auto}
+.genius-topline{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:33px}
+.genius-topline .eyebrow{font-size:11px;font-weight:900;color:#287983;letter-spacing:.16em}
+.genius-technology{font-size:10px;font-weight:800;letter-spacing:.1em;color:#50747a}
+.genius-hero-layout{display:grid;grid-template-columns:minmax(0,.90fr) minmax(0,1.10fr);gap:clamp(32px,5vw,90px);align-items:start}
+.genius-copy{padding:0!important;max-width:none}
+.genius-copy h2{font-size:clamp(48px,5.5vw,83px);line-height:1.035;letter-spacing:-.07em;max-width:14ch;margin:0}
+.genius-copy h2>span{color:#2a7e8b!important}
+.genius-copy .large-body{font-size:clamp(14px,1.28vw,18px);line-height:1.8;max-width:52ch!important;color:#48646c;margin:27px 0 0}
+.genius-tagline{margin-top:26px;font-size:10px;font-weight:900;letter-spacing:.17em;color:#c26742}
+.genius-copy .text-link{margin-top:18px;font-size:12px;min-height:44px;border-bottom:1px solid #91b7b7}
+.genius-workflow{margin:29px 0 0;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid #b5ccca}
+.genius-workflow-step{display:grid;grid-template-columns:76px minmax(0,1fr);align-items:start;gap:1px 10px;padding:15px 0;border-bottom:1px solid #b5ccca}
+.genius-step-index{font-size:10px;letter-spacing:.08em;font-weight:850;color:#bd7152;grid-row:span 2;padding-top:3px}
+.genius-workflow-step strong{font-size:14px;letter-spacing:-.025em}
+.genius-workflow-step p{font-size:11px;line-height:1.65;color:#577077;margin-top:4px}
+.genius-visual-stack{min-width:0;display:flex;flex-direction:column;gap:15px}
+.genius-figure{margin:0!important;min-width:0}
+.genius-image-button{border-radius:13px!important;background:#102e3b!important;padding:8px!important;border:1px solid #335568!important;box-shadow:0 29px 65px rgba(15,54,66,.22)!important}
+.genius-image-button>img{border-radius:8px;width:100%;height:auto;aspect-ratio:1.76;object-fit:contain;background:#102c3b}
+.genius-figure figcaption{font-size:10px;color:#53696f;margin:13px 1px 0;text-align:left}
+.genius-supporting-visuals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.genius-supporting-visuals a{display:block;min-width:0;background:#f9fcfa;border:1px solid #c2d7d4;border-radius:9px;overflow:hidden;box-shadow:0 13px 25px rgba(18,61,71,.08);transition:transform .22s}
+.genius-supporting-visuals a:hover{transform:translateY(-3px)}
+.genius-supporting-visuals a img{width:100%;height:auto;aspect-ratio:1.77;object-fit:cover;object-position:center}
+.genius-supporting-visuals a>span{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;color:#315966;font-weight:780;font-size:11px}
+.genius-supporting-visuals a>span>span{color:#ba6547;font-size:16px}
+.genius-feature-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:clamp(50px,6vw,94px)}
+.genius-feature{background:rgba(255,255,252,.85);border:1px solid #c2d6d3;border-radius:10px;padding:23px 20px;min-width:0;box-shadow:0 13px 29px rgba(9,62,73,.045)}
+.genius-feature>span{display:block;font-size:9px;font-weight:900;letter-spacing:.13em;color:#2b8990;min-height:28px}
+.genius-feature h3{font-size:clamp(17px,1.6vw,23px);line-height:1.25;margin:4px 0 11px;letter-spacing:-.04em}
+.genius-feature p{font-size:12px;color:#536c71;line-height:1.75}
+.genius-command-cases{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:clamp(24px,5vw,85px);background:#13333f;color:#edf8f5;padding:clamp(29px,4vw,61px);border-radius:13px;margin-top:25px;box-shadow:0 25px 65px rgba(17,55,68,.13)}
+.genius-command-heading .eyebrow{font-size:10px;letter-spacing:.14em;font-weight:900;color:#a5d1d4}
+.genius-command-heading h3{margin:17px 0 16px;color:#f4f9f7;font-size:clamp(28px,3vw,43px);line-height:1.15}
+.genius-command-heading p{max-width:53ch;color:#bdd4d4;font-size:13px;line-height:1.8}
+.genius-command-list{display:flex;flex-direction:column;gap:8px;min-width:0}
+.genius-command-row{border:1px solid #315563;border-radius:7px;background:#1b414e;display:grid;grid-template-columns:115px minmax(0,1fr);align-items:center;gap:10px;padding:12px 13px}
+.genius-command-row>span{color:#e0a17d;font-size:9px;font-weight:900;letter-spacing:.09em}
+.genius-command-row code{font-size:clamp(10px,.93vw,12px);font-weight:620;color:#f3fcf9;white-space:normal;overflow-wrap:anywhere;line-height:1.6}
+.genius-trust-note{font-size:11px;line-height:1.75;color:#566e72;border-left:3px solid #a8c1bf;padding:14px 18px;margin-top:28px;max-width:1500px}
+@media(max-width:1160px){
+ .genius-hero-layout{grid-template-columns:1fr;gap:37px}
+ .genius-copy h2{max-width:20ch}
+ .genius-workflow{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border-top:0}
+ .genius-workflow-step{grid-template-columns:1fr;border-top:1px solid #b5ccca;padding-top:15px}
+ .genius-step-index{grid-row:auto;margin-bottom:3px}
+ .genius-visual-stack{max-width:960px}
+ .genius-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ .genius-copy h2{font-size:clamp(44px,8vw,69px)}
+ .genius-command-cases{grid-template-columns:1fr;gap:27px}
+ .genius-feature-grid{gap:12px}
+}
+@media(max-width:650px){
+ .genius-section{padding:72px 23px!important}
+ .genius-topline{align-items:flex-start;flex-direction:column;gap:9px;margin-bottom:20px}
+ .genius-copy h2{font-size:clamp(42px,10.5vw,57px)}
+ .genius-copy .large-body{font-size:14px;margin-top:19px}
+ .genius-workflow{grid-template-columns:1fr;gap:0;border-top:1px solid #b5ccca}
+ .genius-workflow-step{grid-template-columns:70px minmax(0,1fr);border-top:0}
+ .genius-step-index{grid-row:span 2}
+ .genius-supporting-visuals a>span{font-size:9px;padding:8px}
+ .genius-feature-grid{grid-template-columns:1fr;gap:11px;margin-top:50px}
+ .genius-feature{padding:20px}
+ .genius-feature>span{min-height:0}
+ .genius-command-cases{padding:24px 17px}
+ .genius-command-row{grid-template-columns:86px minmax(0,1fr);gap:5px;padding:11px 9px}
+ .genius-command-row>span{font-size:8px}
+ .genius-command-row code{font-size:10px}
+ .genius-trust-note{margin-top:18px;padding:12px}
+}
+@media(prefers-reduced-motion:reduce){.genius-supporting-visuals a{transition:none}.genius-supporting-visuals a:hover{transform:none}.model-poster{transition:none}}
+
+/* Final field-of-view and editorial refinements after Chrome QA */
+.model-concept-label{font-size:8px;max-width:43%;top:15px;right:15px}
+.model-origin{font-size:8px;max-width:45%;line-height:1.48;bottom:79px;background:rgba(249,254,251,.92)}
+@media(max-width:650px){
+ .model-concept-label{font-size:7px;max-width:54%;line-height:1.3;top:12px;right:10px}
+ .model-origin{font-size:7px;line-height:1.38;bottom:72px;max-width:46%;padding:7px}
+ .genius-copy h2{font-size:clamp(35px,9vw,46px);line-height:1.075}
+ .genius-topline .eyebrow{font-size:9px}
+}
+
+/* Browser fallback is a real Canvas render of the D2-validated mixed conceptual model */
+.model-poster{object-fit:contain;opacity:.9;background:linear-gradient(145deg,#e9f4f2,#deeeeb)}

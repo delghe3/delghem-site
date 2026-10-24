@@ -1,0 +1,9 @@
+All assets are actual DÈLGHEM D2 saved UI screenshots (22–23 October 2026).
+Images are downsampled WebP derivatives only, preserving the original application UI.
+No image generation or invented Genius command output.
+genius-workflow-en.webp <= work/genius-refine-20261022T091359Z-c2815c/fixed-bundle-worz701o/genius-zoom-ui-bundle-9cyLLt/genius-1408x800-dark-en.png
+genius-workflow-it.webp <= same folder/genius-1408x800-light-it.png
+genius-steel.webp <= work/chat-ui-dxf-20261023T025416Z/evidence/member-plate-gui/complex-steel-member-dossier-ui-YTQPtl/complex-genius-assisted-preview.png
+genius-help.webp <= work/continuous-20261022T231218Z-51b4fe/verification/selection-fixed/continuous-editor-ui-source-3GGX8q/B-genius-help.png
+Genius is a bounded deterministic language-to-model translator and contextual interface.
+It does not perform autonomous, unreviewed or certified structural engineering design.
