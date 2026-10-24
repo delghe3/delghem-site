@@ -199,6 +199,6 @@ window.addEventListener('scroll', onScroll, { passive: true });
 updateLanguage(language);
 onScroll();
 $('#structure-canvas').tabIndex = 0;
-import('./model-stage.js').then(({ initModelStage }) => { modelStage = initModelStage(); renderMotion(); }).catch(error => { console.error('Unable to initialize the illustrative model', error); });
+import('./model-stage.js?v=20261024-8floor-d2a').then(({ initModelStage }) => { modelStage = initModelStage(); renderMotion(); }).catch(error => { console.error('Unable to initialize the illustrative model', error); });
 
 // Trusted static translations. A separate opt-in-free visit counter requests an external aggregate counter; no cookies are set by this module.

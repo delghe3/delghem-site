@@ -41,7 +41,8 @@ test('both homepages show loading poster and accurately qualified mixed-model la
   const h=file(name);
   assert.match(h,/class="model-poster"/);
   assert.match(h,/assets\/real-d2\/complex-frame-poster\.webp/);
-  assert.match(h,/D2.*122.*246|122.*246.*D2/);
+  assert.match(h,/212.*514|514.*212/);
+  assert.match(h,/8\s*(?:STOREYS|PIANI)/i);
   assert.match(h,/id="structure-canvas"/);
   assert.match(h,/model-disclaimer/);
  }

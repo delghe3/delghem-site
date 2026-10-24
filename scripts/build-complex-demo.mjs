@@ -61,8 +61,17 @@ const S={
   woodWeb:addRect('S_GWEB','GL24h 140×180 mm',.14,.18,'wood'),
   woodPurlin:addRect('S_GPURLIN','GL24h 120×200 mm',.12,.20,'wood')
 };
-const model={schema:template.schema,title:'DELGHEM D2 | Studio dimostrativo asimmetrico: acciaio, CA, capriate GL24h, plinti',units:template.units,
-  materials:baseMaterials,sections,nodes:[],members:[],shells:[],loadCases:[{id:'G',name:'Scenario dimostrativo senza carichi imposti',loads:[],memberLoads:[],shellLoads:[]}],combinations:[]};
+
+S.rc70=addRect('S_RC70','C.A. 700×700 mm',.70,.70,'rc');
+S.rc60=addRect('S_RC60','C.A. 600×600 mm',.60,.60,'rc');
+S.rcBeamHigh=addRect('S_RCB45','C.A. 300×450 mm',.30,.45,'rc');
+S.steelLower=addSteel('S_HEB400','HEB400');
+S.steelMid=addSteel('S_HEB340','HEB340');
+S.steelRoofPost=addSteel('S_HEA200','HEA200');
+S.beamLower=addSteel('S_IPE450','IPE450');
+S.beamTop=addSteel('S_IPE360','IPE360');
+const model={schema:template.schema,title:'DÈLGHEM D2 | Torre asimmetrica otto piani S355 + CA C30/37 + GL24h, 3 coperture e plinti',units:template.units,
+  materials:baseMaterials,sections,nodes:[],members:[],shells:[],laminates:[],loadCases:[{id:'G',name:'Scenario dimostrativo senza carichi imposti',loads:[],memberLoads:[],shellLoads:[]}],combinations:[]};
 const nodeIds=new Map(),pairs=new Set();
 const fixed=[true,true,true,true,true,true];
 const free=[false,false,false,false,false,false];
@@ -92,118 +101,246 @@ function add(a,b,section,material,kind,barType='beam'){
  if(barType==='beam')member.orientation=orient(a,b);
  model.members.push(member);partKind.set(id,kind);
 }
+// Native D2 expressly disallows isotropic wooden shells. Give GL24h
+// panel skins a real orthotropic one-ply laminate record, as required by
+// validateShells(). Stiffness/density assumptions are demonstrative inputs.
+const woodLaminateByThickness=new Map();
+function woodLaminate(thickness){
+ const key=round(thickness);
+ if(woodLaminateByThickness.has(key))return woodLaminateByThickness.get(key);
+ const id='LAM_GL24_'+Math.round(key*1000);
+ model.laminates.push({
+  id,name:'GL24h orthotropic single-ply concept panel '+Math.round(key*1000)+' mm',
+  layers:[{thicknessM:key,angleDeg:0,ExMPa:11000,EyMPa:370,EzMPa:370,
+   nuxy:.02,nuyz:.2,nuzx:.02,GxyMPa:650,GyzMPa:65,GzxMPa:650,
+   densityKgM3:420}]
+ });
+ woodLaminateByThickness.set(key,id);return id;
+}
 function shell(coords,material,thickness,kind){
  const id='F'+(model.shells.length+1);
- model.shells.push({id,nodes:coords.map(p=>node(...p)),material,thickness});
+ const panel={id,nodes:coords.map(p=>node(...p)),material,thickness};
+ if(material==='M_WOOD')panel.laminate=woodLaminate(thickness);
+ model.shells.push(panel);
  partKind.set(id,kind);
 }
 function column(x,y,z1,z2,material,section,kind){
  add([x,y,z1],[x,y,z2],section,material,kind);
  if(z1===0)baseSupports.set(node(x,y,0),{material,x,y});
 }
-const rows=[0,6,12],cols=[0,6,12,18];
-// L-shaped concrete/steel podium. Third storey retires from east wing.
-for(const x of cols)for(const y of rows){
- const rc=(x===6||x===12)&&(y===6||y===12),material=rc?'M_RC':'M_STEEL';
- column(x,y,0,3.8,material,rc?S.rc55:S.steelCol,rc?'rc-column':'steel-column');
- column(x,y,3.8,7.6,material,rc?S.rc55:S.steelCol,rc?'rc-column':'steel-column');
- if(x<=12){
-  const tiers=y===12?[[7.6,10.2],[10.2,11.35]]:[[7.6,11.35]];
-  for(const [z1,z2] of tiers)column(x,y,z1,z2,material,rc?S.rc45:S.steelUpper,rc?'rc-column':'steel-column');
+// Main tower: exactly EIGHT occupied storeys above foundation level 0.
+// Steel S355 facade columns taper HE B400 -> HE B340 -> HE B260.
+// Central C30/37 reinforced-concrete core stays continuous for all 8 floors.
+const STOREY_Z=[0,4.2,7.9,11.55,15.2,18.85,22.5,26.15,29.8];
+const ROWS=[0,6,12],COLS=[0,6,12,18];
+const FLOOR_COUNT=8;
+const FLOOR_TOP=STOREY_Z[FLOOR_COUNT];
+const roofHeights=new Set();
+function rcCore(x,y){
+ return (x===6&&y===6)||(x===12&&y===6)||(x===6&&y===12);
+}
+function towerColumnSection(storey,rc){
+ return rc?(storey<=3?S.rc70:storey<=6?S.rc60:S.rc45):
+   (storey<=3?S.steelLower:storey<=6?S.steelMid:S.steelUpper);
+}
+function beamSection(storey){
+ return storey<=3?S.beamLower:storey<=6?S.beamMain:S.beamTop;
+}
+function floorBeams(z,count,material='M_STEEL',secondary=S.beamSecondary){
+ for(let i=0;i<count;i++)for(const y of ROWS){
+  const rc=(COLS[i]===6&&COLS[i+1]===12&&y===6&&material==='M_STEEL');
+  add([COLS[i],y,z],[COLS[i+1],y,z],rc?(z>22?S.rcBeamHigh:S.rcBeam):beamSection(STOREY_Z.indexOf(z)),
+    rc?'M_RC':material,rc?'rc-beam':'main-beam');
+ }
+ for(let i=0;i<=count;i++)for(let j=0;j<2;j++){
+  add([COLS[i],ROWS[j],z],[COLS[i],ROWS[j+1],z],secondary,material,'secondary-beam');
  }
 }
-const slabs=(z,limit)=>{
-  for(let i=0;i<limit;i++)for(let j=0;j<2;j++){
-   // Atrium and setbacks are not clad with fictitious opaque floors.
-   if(z>10&&(i===1&&j===1))continue;
-   if(z===7.6&&i===2&&j===1)continue;
-   const x=cols[i],y=rows[j],X=cols[i+1],Y=rows[j+1];
-   shell([[x,y,z],[X,y,z],[X,Y,z],[x,Y,z]],'M_RC',.17,z>10?'rc-roof':'rc-floor');
-  }
-};
-for(const level of [3.8,7.6,11.35]){
- const xLim=level>10?2:3;
- for(let i=0;i<=xLim;i++)for(let j=0;j<rows.length;j++){
-  if(i<xLim){
-   const kind=(i===1&&j>0)?'rc-beam':(level>10?'main-beam':'main-beam');
-   add([cols[i],rows[j],level],[cols[i+1],rows[j],level],kind==='rc-beam'?S.rcBeam:(level>10?S.beamUpper:S.beamMain),kind==='rc-beam'?'M_RC':'M_STEEL',kind);
-  }
-  if(j<rows.length-1)add([cols[i],rows[j],level],[cols[i],rows[j+1],level],S.beamSecondary,'M_STEEL','secondary-beam');
+function mainSlab(z,storey,count){
+ for(let i=0;i<count;i++)for(let j=0;j<2;j++){
+  // Deliberate mechanical shaft/atrium opening at level 6–7: omitted
+  // slabs are real model voids, never faked by transparent texture.
+  if(storey>=6&&storey<=7&&i===1&&j===1)continue;
+  shell([[COLS[i],ROWS[j],z],[COLS[i+1],ROWS[j],z],
+   [COLS[i+1],ROWS[j+1],z],[COLS[i],ROWS[j+1],z]],
+   'M_RC',storey===8?.20:.18,
+   storey===8?'rc-roof':'rc-floor');
  }
- slabs(level,xLim);
 }
-// Real shell panels for only the structural core, visibly exposing the framing.
-for(const [z0,z1] of [[0,3.8],[3.8,7.6],[7.6,11.35]]){
- shell([[6,6,z0],[6,12,z0],[6,12,z1],[6,6,z1]],'M_RC',.25,'rc-wall');
- shell([[6,6,z0],[12,6,z0],[12,6,z1],[6,6,z1]],'M_RC',.25,'rc-wall');
+for(const x of COLS)for(const y of ROWS){
+ const rc=rcCore(x,y);
+ const topStorey=x===18?5:8; // East setback after level five; north/west tower rises to 8.
+ for(let n=1;n<=topStorey;n++)
+  column(x,y,STOREY_Z[n-1],STOREY_Z[n],rc?'M_RC':'M_STEEL',
+   towerColumnSection(n,rc),rc?'rc-column':'steel-column');
 }
-// Two truly unsupported exposed balcony slabs (negative X and Y).
-for(const z of [3.8,7.6]){
- for(const y of rows){
-  add([0,y,z],[-2.8,y,z],S.beamMain,'M_STEEL','cantilever');
- }
+for(let n=1;n<=FLOOR_COUNT;n++){
+ const z=STOREY_Z[n],count=n<=5?3:2;
+ floorBeams(z,count);
+ mainSlab(z,n,count);
+}
+// The core has two orthogonal C.A. shear-wall planes for all 8 storeys.
+for(let n=1;n<=FLOOR_COUNT;n++){
+ const a=STOREY_Z[n-1],b=STOREY_Z[n];
+ shell([[6,6,a],[6,12,a],[6,12,b],[6,6,b]],'M_RC',n<=4?.30:.25,'rc-wall');
+ shell([[6,6,a],[12,6,a],[12,6,b],[6,6,b]],'M_RC',n<=4?.30:.25,'rc-wall');
+}
+// West-side exposed balconies with physically native cantilever steel beams.
+for(const n of [2,4,6]){
+ const z=STOREY_Z[n],tip=-2.6;
+ for(const y of ROWS)add([0,y,z],[tip,y,z],S.beamMain,'M_STEEL','cantilever');
  for(let j=0;j<2;j++){
-  add([-2.8,rows[j],z],[-2.8,rows[j+1],z],S.beamSecondary,'M_STEEL','cantilever');
-  shell([[-2.8,rows[j],z],[0,rows[j],z],[0,rows[j+1],z],[-2.8,rows[j+1],z]],'M_RC',.16,'rc-balcony');
+  add([tip,ROWS[j],z],[tip,ROWS[j+1],z],S.beamSecondary,'M_STEEL','cantilever');
+  shell([[tip,ROWS[j],z],[0,ROWS[j],z],[0,ROWS[j+1],z],[tip,ROWS[j+1],z]],
+   'M_RC',.16,'rc-balcony');
  }
 }
-for(const x of [12,18])add([x,0,7.6],[x,-2.4,7.6],S.beamMain,'M_STEEL','cantilever');
-add([12,-2.4,7.6],[18,-2.4,7.6],S.beamSecondary,'M_STEEL','cantilever');
-shell([[12,-2.4,7.6],[18,-2.4,7.6],[18,0,7.6],[12,0,7.6]],'M_RC',.16,'rc-balcony');
-// Steel east wing: 12 m span, 3 offset Pratt-style roof trusses at 9.25/11.9m.
-const steelX=[18,25,32],steelY=[3,6,9,12,15],steelTop=[9.25,10.53,11.9,10.53,9.25],steelEave=9.25;
-for(const x of steelX)for(const y of [3,15]){
- column(x,y,0,4.65,'M_STEEL',S.steelCol,'steel-column');
- column(x,y,4.65,steelEave,'M_STEEL',S.steelUpper,'steel-column');
+// At level seven a shallow northern sky terrace projects out from the core.
+{
+ const z=STOREY_Z[7],y=14.2;
+ for(const x of [0,6,12])add([x,12,z],[x,y,z],S.beamTop,'M_STEEL','cantilever');
+ for(const x of [0,6])shell([[x,12,z],[x+6,12,z],[x+6,y,z],[x,y,z]],'M_RC',.16,'rc-balcony');
+ add([0,y,z],[6,y,z],S.beamSecondary,'M_STEEL','cantilever');
+ add([6,y,z],[12,y,z],S.beamSecondary,'M_STEEL','cantilever');
 }
-for(const z of [4.65,steelEave])for(const y of [3,15])
- for(let k=0;k<2;k++)add([steelX[k],y,z],[steelX[k+1],y,z],S.beamUpper,'M_STEEL','main-beam');
-for(const x of steelX){
- for(let i=0;i<4;i++){
-  add([x,steelY[i],steelEave],[x,steelY[i+1],steelEave],S.steelChord,'M_STEEL','steel-truss','truss');
-  add([x,steelY[i],steelTop[i]],[x,steelY[i+1],steelTop[i+1]],S.steelChord,'M_STEEL','steel-truss','truss');
+// East annex at three storeys: double-height steel gallery and full pitched
+// roof. Physical steel framing is connected at x=18 to tower level three.
+const ANNEX_X=[18,24,30],ANNEX_Y=[0,6,12];
+for(const x of [24,30])for(const y of ANNEX_Y)for(let n=1;n<=3;n++){
+ column(x,y,STOREY_Z[n-1],STOREY_Z[n],'M_STEEL',
+  n<=2?S.steelLower:S.steelMid,'steel-column');
+}
+for(let n=1;n<=3;n++){
+ const z=STOREY_Z[n];
+ for(let i=0;i<2;i++)for(const y of ANNEX_Y)
+  add([ANNEX_X[i],y,z],[ANNEX_X[i+1],y,z],
+   n<3?S.beamMain:S.beamUpper,'M_STEEL','main-beam');
+ for(const x of ANNEX_X)for(let j=0;j<2;j++)
+  add([x,ANNEX_Y[j],z],[x,ANNEX_Y[j+1],z],S.beamSecondary,'M_STEEL','secondary-beam');
+ for(let i=0;i<2;i++)for(let j=0;j<2;j++)
+  shell([[ANNEX_X[i],ANNEX_Y[j],z],[ANNEX_X[i+1],ANNEX_Y[j],z],
+   [ANNEX_X[i+1],ANNEX_Y[j+1],z],[ANNEX_X[i],ANNEX_Y[j+1],z]],
+  'M_RC',.16,n===3?'rc-roof':'rc-floor');
+}
+// East steel gable: three real Pratt roof truss planes in model, purlins,
+// real shell roof cladding and a high roof ridge.
+const SX=[18,24,30],SY=[0,3,6,9,12],SEAVE=STOREY_Z[3],
+ SZ=[SEAVE,SEAVE+1.5,SEAVE+2.9,SEAVE+1.5,SEAVE];
+roofHeights.add(SEAVE);roofHeights.add(SEAVE+2.9);
+for(const x of SX){
+ for(let j=0;j<4;j++){
+  add([x,SY[j],SEAVE],[x,SY[j+1],SEAVE],S.steelChord,'M_STEEL','steel-truss','truss');
+  add([x,SY[j],SZ[j]],[x,SY[j+1],SZ[j+1]],S.steelChord,'M_STEEL','steel-truss','truss');
  }
- for(let i=1;i<4;i++)add([x,steelY[i],steelEave],[x,steelY[i],steelTop[i]],S.steelWeb,'M_STEEL','steel-truss','truss');
- for(const [bottom,top] of [[0,1],[1,2],[3,2],[4,3]])
-  add([x,steelY[bottom],steelEave],[x,steelY[top],steelTop[top]],S.steelWeb,'M_STEEL','steel-truss','truss');
+ for(let j=1;j<4;j++)add([x,SY[j],SEAVE],[x,SY[j],SZ[j]],S.steelWeb,'M_STEEL','steel-truss','truss');
+ for(const [bottom,top] of [[0,1],[1,2],[4,3],[3,2]])
+  add([x,SY[bottom],SEAVE],[x,SY[top],SZ[top]],S.steelWeb,'M_STEEL','steel-truss','truss');
 }
-for(let k=0;k<2;k++)for(let i=0;i<5;i++){
- add([steelX[k],steelY[i],steelTop[i]],[steelX[k+1],steelY[i],steelTop[i]],S.purlin,'M_STEEL','steel-purlin');
+for(let i=0;i<2;i++)for(let j=0;j<5;j++)
+ add([SX[i],SY[j],SZ[j]],[SX[i+1],SY[j],SZ[j]],S.purlin,'M_STEEL','steel-purlin');
+for(let i=0;i<2;i++)for(let j=0;j<4;j++)
+ shell([[SX[i],SY[j],SZ[j]],[SX[i+1],SY[j],SZ[j]],
+  [SX[i+1],SY[j+1],SZ[j+1]],[SX[i],SY[j+1],SZ[j+1]]],
+  'M_STEEL',.027,'steel-roof');
+// North wing with light GL24h post-and-beam structure on genuine native
+// wood shell decks; visually distinct from steel east wing and RC core.
+const WX=[0,6,12],WY=[12,18,24];
+for(const x of WX)for(const y of [18,24])for(let n=1;n<=3;n++)
+ column(x,y,STOREY_Z[n-1],STOREY_Z[n],'M_WOOD',S.woodPost,'wood-post');
+for(let n=1;n<=3;n++){
+ const z=STOREY_Z[n];
+ for(const x of WX)for(let j=0;j<2;j++)
+  add([x,WY[j],z],[x,WY[j+1],z],S.woodBottom,'M_WOOD','wood-beam');
+ for(let i=0;i<2;i++)for(const y of WY)
+  add([WX[i],y,z],[WX[i+1],y,z],S.woodChord,'M_WOOD','wood-beam');
+ for(let i=0;i<2;i++)for(let j=0;j<2;j++)
+  shell([[WX[i],WY[j],z],[WX[i+1],WY[j],z],
+   [WX[i+1],WY[j+1],z],[WX[i],WY[j+1],z]],
+   'M_WOOD',.14,n===3?'wood-roof':'wood-deck');
 }
-// Timber north wing: GL24h Howe/Fink trusses, offset ridge at 12.65m.
-const woodX=[0,6,12],woodY=[12,15,18,21,24],woodTop=[10.2,11.43,12.65,11.43,10.2],woodEave=10.2;
-for(const x of woodX){
- column(x,24,0,4,'M_WOOD',S.woodPost,'wood-post');
- column(x,24,4,8,'M_WOOD',S.woodPost,'wood-post');
- column(x,24,8,woodEave,'M_WOOD',S.woodPost,'wood-post');
-}
-for(const x of woodX){
- for(let i=0;i<4;i++){
-  add([x,woodY[i],woodEave],[x,woodY[i+1],woodEave],S.woodBottom,'M_WOOD','wood-truss','truss');
-  add([x,woodY[i],woodTop[i]],[x,woodY[i+1],woodTop[i+1]],S.woodChord,'M_WOOD','wood-truss','truss');
+// Three glulam gable trusses and four roof panels at 3rd-floor elevation.
+const NORTH_TOP=[STOREY_Z[3],STOREY_Z[3]+1.55,STOREY_Z[3]+3.0,STOREY_Z[3]+1.55,STOREY_Z[3]];
+const GY=[12,15,18,21,24],N_EAVE=STOREY_Z[3];
+roofHeights.add(N_EAVE+3);
+for(const x of WX){
+ for(let j=0;j<4;j++){
+  add([x,GY[j],N_EAVE],[x,GY[j+1],N_EAVE],S.woodBottom,'M_WOOD','wood-truss','truss');
+  add([x,GY[j],NORTH_TOP[j]],[x,GY[j+1],NORTH_TOP[j+1]],S.woodChord,'M_WOOD','wood-truss','truss');
  }
- for(let i=1;i<4;i++)add([x,woodY[i],woodEave],[x,woodY[i],woodTop[i]],S.woodWeb,'M_WOOD','wood-truss','truss');
- for(const [bottom,top] of [[0,1],[1,2],[3,2],[4,3]])
-  add([x,woodY[bottom],woodEave],[x,woodY[top],woodTop[top]],S.woodWeb,'M_WOOD','wood-truss','truss');
+ for(let j=1;j<4;j++)add([x,GY[j],N_EAVE],[x,GY[j],NORTH_TOP[j]],S.woodWeb,'M_WOOD','wood-truss','truss');
+ for(const [bottom,top] of [[0,1],[1,2],[4,3],[3,2]])
+  add([x,GY[bottom],N_EAVE],[x,GY[top],NORTH_TOP[top]],S.woodWeb,'M_WOOD','wood-truss','truss');
 }
-for(let k=0;k<2;k++)for(let i=0;i<5;i++){
- add([woodX[k],woodY[i],woodTop[i]],[woodX[k+1],woodY[i],woodTop[i]],S.woodPurlin,'M_WOOD','wood-purlin');
+for(let i=0;i<2;i++)for(let j=0;j<5;j++)
+ add([WX[i],GY[j],NORTH_TOP[j]],[WX[i+1],GY[j],NORTH_TOP[j]],S.woodPurlin,'M_WOOD','wood-purlin');
+for(let i=0;i<2;i++)for(let j=0;j<4;j++)
+ shell([[WX[i],GY[j],NORTH_TOP[j]],[WX[i+1],GY[j],NORTH_TOP[j]],
+  [WX[i+1],GY[j+1],NORTH_TOP[j+1]],[WX[i],GY[j+1],NORTH_TOP[j+1]]],
+  'M_WOOD',.115,'wood-roof');
+// Rooftop glulam landmark above the EIGHTH storey: separate, higher,
+// pitched roof over the central tower, visible above its setbacks.
+{
+ const PX=[0,6,12],PY=[0,3,6,9,12],z=FLOOR_TOP;
+ const PZ=[z,z+1.7,z+3.35,z+1.7,z];
+ roofHeights.add(z);roofHeights.add(z+3.35);
+ for(const x of PX){
+  for(let j=0;j<4;j++){
+   add([x,PY[j],z],[x,PY[j+1],z],S.woodBottom,'M_WOOD','wood-truss','truss');
+   add([x,PY[j],PZ[j]],[x,PY[j+1],PZ[j+1]],S.woodChord,'M_WOOD','wood-truss','truss');
+  }
+  for(let j=1;j<4;j++)add([x,PY[j],z],[x,PY[j],PZ[j]],S.woodWeb,'M_WOOD','wood-truss','truss');
+  for(const [bottom,top] of [[0,1],[1,2],[4,3],[3,2]])
+   add([x,PY[bottom],z],[x,PY[top],PZ[top]],S.woodWeb,'M_WOOD','wood-truss','truss');
+ }
+ for(let i=0;i<2;i++)for(let j=0;j<5;j++)
+  add([PX[i],PY[j],PZ[j]],[PX[i+1],PY[j],PZ[j]],S.woodPurlin,'M_WOOD','wood-purlin');
+ for(let i=0;i<2;i++)for(let j=0;j<4;j++){
+  if(i===1&&j===2)continue; // recessed skylight reveals actual truss interior
+  shell([[PX[i],PY[j],PZ[j]],[PX[i+1],PY[j],PZ[j]],
+   [PX[i+1],PY[j+1],PZ[j+1]],[PX[i],PY[j+1],PZ[j+1]]],
+   'M_WOOD',.105,'wood-roof');
+ }
 }
-for(let k=0;k<2;k++)add([woodX[k],24,4],[woodX[k+1],24,4],S.woodBottom,'M_WOOD','wood-beam');
-// Few lateral steel braces, concentrated in realistic facade bays.
+// Exposed west and east structural tie-bays carry selected genuine truss
+// braces. Keep facade visually clear: only four steel X pairs overall.
 const braces=[
- [[0,0,0],[6,0,3.8]],[[6,0,0],[0,0,3.8]],
- [[25,3,0],[32,3,4.65]],[[32,3,0],[25,3,4.65]]
+ [[0,0,0],[6,0,STOREY_Z[1]]],[[6,0,0],[0,0,STOREY_Z[1]]],
+ [[24,0,0],[30,0,STOREY_Z[1]]],[[30,0,0],[24,0,STOREY_Z[1]]],
+ [[0,0,STOREY_Z[5]],[6,0,STOREY_Z[6]]],
+ [[6,0,STOREY_Z[5]],[0,0,STOREY_Z[6]]],
+ [[24,12,STOREY_Z[1]],[30,12,STOREY_Z[2]]],
+ [[30,12,STOREY_Z[1]],[24,12,STOREY_Z[2]]]
 ];
 for(const [a,b] of braces)add(a,b,S.steelWeb,'M_STEEL','brace','truss');
-// Grade beams join the foundations; visually and structurally native beam records.
-for(const y of [0,6,12])for(let i=0;i<3;i++)
- add([cols[i],y,0],[cols[i+1],y,0],S.tie,'M_RC','foundation-tie');
-for(const x of [0,6,12])for(let j=0;j<2;j++)
- add([x,rows[j],0],[x,rows[j+1],0],S.tie,'M_RC','foundation-tie');
-for(let i=0;i<2;i++)for(const y of [3,15])add([steelX[i],y,0],[steelX[i+1],y,0],S.tie,'M_RC','foundation-tie');
-for(const x of woodX)add([x,12,0],[x,24,0],S.tie,'M_RC','foundation-tie');
-
+// Partial steel roof pergola above level-five setback terrace.
+{
+ const z=STOREY_Z[5],canopy=z+2.5;
+ roofHeights.add(canopy);
+ for(const x of [12,18])for(const y of [0,12])
+  add([x,y,z],[x,y,canopy],S.steelRoofPost,'M_STEEL','steel-column');
+ for(const y of [0,12])
+  add([12,y,canopy],[18,y,canopy],S.beamTop,'M_STEEL','main-beam');
+ for(const x of [12,18])
+  add([x,0,canopy],[x,12,canopy],S.purlin,'M_STEEL','steel-purlin');
+ for(const y of [4,8])
+  add([12,y,canopy],[18,y,canopy],S.purlin,'M_STEEL','steel-purlin');
+ shell([[12,0,canopy],[18,0,canopy],[18,12,canopy],[12,12,canopy]],
+  'M_STEEL',.02,'steel-roof');
+}
+// Native concrete footing tie beams explicitly connect actual ground
+// support nodes in the main building and both annexes.
+for(const y of ROWS)for(let i=0;i<3;i++)
+ add([COLS[i],y,0],[COLS[i+1],y,0],S.tie,'M_RC','foundation-tie');
+for(const x of COLS)for(let j=0;j<2;j++)
+ add([x,ROWS[j],0],[x,ROWS[j+1],0],S.tie,'M_RC','foundation-tie');
+for(const y of ROWS)for(let i=0;i<2;i++)
+ add([ANNEX_X[i],y,0],[ANNEX_X[i+1],y,0],S.tie,'M_RC','foundation-tie');
+for(const x of ANNEX_X)for(let j=0;j<2;j++)
+ add([x,ROWS[j],0],[x,ROWS[j+1],0],S.tie,'M_RC','foundation-tie');
+for(const x of WX)for(let j=0;j<2;j++)
+ add([x,WY[j],0],[x,WY[j+1],0],S.tie,'M_RC','foundation-tie');
+for(const y of WY)for(let i=0;i<2;i++)
+ add([WX[i],y,0],[WX[i+1],y,0],S.tie,'M_RC','foundation-tie');
 validateEditableModel(model);
 // Native D2 foundation engine: generates consistent soil springs and stores
 // DIRECT individual footing geometry attached to real node IDs at grade.
@@ -248,10 +385,11 @@ const demo={
  },
  status:'native_d2_editable_concept_unverified',
  nodes:points,members,shells,footings,sections:exportSections,
- gridX:[-2.8,0,6,12,18,25,32],
- gridY:[-2.4,0,3,6,9,12,15,18,24],
- levels:[0,3.8,4.65,7.6,9.25,10.2,11.35,11.9,12.65],
- roofLevels:[7.6,9.25,10.2,11.35,11.9,12.65],
+ gridX:[-2.6,0,6,12,18,24,30],
+ gridY:[0,3,6,9,12,15,18,21,24],
+ storeyCount:FLOOR_COUNT,
+ levels:STOREY_Z,
+ roofLevels:[...roofHeights].sort((a,b)=>a-b),
  bbox,materials:['S355','C30/37','GL24h'],
  qualifications:{solved:false,designed:false,executive:false}
 };
@@ -262,15 +400,21 @@ writeFileSync(resolve(baseDir,'COMPLEX_DEMO_PROVENANCE.txt'),[
  'Sorgente: '+demo.source.projectFile+' (schema hyperfem-1, file apribile in DÈLGHEM D2).',
  'Validazioni reali: D2 validateEditableModel() e d2-foundation-system upsertFoundationElement().',
  'Cataloghi reali D2: S355 OPEN; C30/37; legno lamellare GL24h; profili IPE, HEA, HEB.',
- 'Geometria: corpo principale a C.A. e acciaio su quote diverse; 2 corpi laterali, capriate legno GL24h e capriate acciaio S355;',
- 'due gruppi di sbalzi liberi, fondazioni superficiali DIRECT con archivio foundationSystem e travi di collegamento.',
+ 'Geometria: torre principale di OTTO piani fuori terra (h=29.80 m), struttura mista con nucleo in C.A. e colonne in acciaio rastremate;',
+ 'corpo laterale est con copertura a capriate S355; ala nord e copertura sommitale in GL24h; pergolato metallico alla quota 21.35 m; balconi aggettanti su 3 livelli; fondazioni DIRECT.',
  'Dimensioni plinti e suolo SONO IPOTESI DIMOSTRATIVE: non derivano da indagini né dimensionamenti.',
  'Stratigrafia: sabbia assunta per sola validazione del tipo FOUNDATION DIRECT; gamma 18, phi 30, Es 25 MPa, ks 18000 kN/m³.',
  'La fonte degli elementi 3D è esclusivamente il file nativo .hfm.json validato, inclusi i plinti.',
+ 'I pannelli lignei hanno laminati espliciti MONOSTRATO ortotropi GL24h (Ex 11000 MPa, Ey/Ez 370 MPa, Gxy/Gzx 650 MPa, Gyz 65 MPa, densita 420 kg/m3): valori ipotetici ai soli fini della validazione del formato nativo D2, NON progetto strutturale.',
+ 'L edificio ha otto impalcati fuori terra a z 4.2, 7.9, 11.55, 15.2, 18.85, 22.5, 26.15 e 29.8 m, con colmo ligneo sommitale a quota 33.15 m.',
+ 'Il modello include una facciata con pochi controventi e terrazzi: nessuna verifica di stabilita laterale o duttilita eseguita.',
+ 'La vista web mostra estrusioni con dimensioni di catalogo effettive e pannelli alleggeriti visivamente. Deformata/sollecitazioni sono illustrative, NON risultati D2 calcolati.',
+ 'L anteprima WebP nasce da un immagine Canvas del modello nativo D2, senza immagini generative: cattura cromatica del browser e composizione sopra un fondo neutro.',
+
  'NON sono state eseguite analisi, verifiche geotecniche, dimensionamenti, controlli sismici o progetto esecutivo.',
  'Originale esempio D2 SHA256 '+demo.source.baseSha256,
  'Nuovo file nativo SHA256 '+demo.source.derivedModelSha256
  ].join('\n')+'\n');
-console.log('D2 native validation successful',{nodes:points.length,members:members.length,shells:shells.length,footings:footings.length,
+console.log('D2 native validation successful',{storeys:FLOOR_COUNT,nodes:points.length,members:members.length,shells:shells.length,footings:footings.length,
  steelTruss:members.filter(m=>m.kind==='steel-truss').length,woodTruss:members.filter(m=>m.kind==='wood-truss').length,
  cantilevers:members.filter(m=>m.kind==='cantilever').length,bbox,hash:demo.source.derivedModelSha256});

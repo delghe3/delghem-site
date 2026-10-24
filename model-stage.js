@@ -1,16 +1,19 @@
 /**
- * Real native DÈLGHEM D2 structural input: uneven RC/steel building, steel/GL24h
- * trusses and foundationSystem DIRECT pad footings. Validated as EDITABLE model
+ * Real native DÈLGHEM D2 EIGHT-storey tower + asymmetric annexes: RC core,
+ * S355 steel frames, GL24h pitched roofs and DIRECT pad footings. Validated as EDITABLE model
  * by D2. Geotechnical / structural design has NOT been performed or certified.
  */
-import {complexDemo} from './assets/real-d2/complex-demo-geometry.mjs';
+import {complexDemo} from './assets/real-d2/complex-demo-geometry.mjs?v=20261024-8floor-d2a';
 const mixedDemo=complexDemo;
 const mid=(complexDemo.bbox.min.map((v,i)=>(v+complexDemo.bbox.max[i])/2));
 const extent=complexDemo.bbox.max.map((v,i)=>v-complexDemo.bbox.min[i]);
+const towerHeight=complexDemo.levels.at(-1);
+const roofHeight=complexDemo.bbox.max[2];
+const isTallConcept=complexDemo.storeyCount>=8;
 
 // 360° in about 18.5 seconds, perceptible without abrupt motion.
 export const DEFAULT_ORBIT_SPEED = 0.34;
-const FRAME_INTERVAL = 1000/24;
+const FRAME_INTERVAL = 1000/(isTallConcept?19:24);
 
 const TAU=Math.PI*2, clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const plus=(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]];
@@ -21,14 +24,17 @@ const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]
 const norm=v=>times(v,1/(Math.hypot(...v)||1));
 const light=norm([-.50,-.35,1.2]);
 const colors={
-  'steel-column':[22,88,165],
-  'rc-column':[176,194,205],
-  'main-beam':[15,149,197],
-  'secondary-beam':[49,179,214],
-  'brace':[234,94,56],
+  'steel-column':[23,85,168],
+  'rc-column':[182,197,203],
+  'main-beam':[27,155,211],
+  'secondary-beam':[40,190,210],
+  'brace':[244,109,70],
   'rc-wall':[168,182,195],
   'rc-floor':[100,197,219],
-  'rc-roof':[81,187,207],
+  'rc-roof':[100,205,207],
+  'wood-deck':[218,174,103],
+  'wood-roof':[246,178,90],
+  'steel-roof':[92,185,222],
   'rc-balcony':[100,205,209],
   'rc-beam':[183,198,210],
   'rc-footing':[197,214,224],
@@ -36,10 +42,10 @@ const colors={
   'steel-truss':[58,100,234],
   'steel-purlin':[47,140,197],
   'cantilever':[20,174,217],
-  'wood-post':[167,113,53],
-  'wood-beam':[184,123,56],
-  'wood-truss':[228,147,63],
-  'wood-purlin':[247,180,77]
+  'wood-post':[183,118,61],
+  'wood-beam':[199,138,64],
+  'wood-truss':[250,170,73],
+  'wood-purlin':[253,199,110]
 };
 
 function crossSection(section){
@@ -122,7 +128,7 @@ export function initModelStage(){
   const stage=canvas.closest('.structure-stage'),controls=[...document.querySelectorAll('[data-model-view]')];
   const italian=document.documentElement.lang==='it';
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  let width=1,height=1,dpr=1,scale=1,yaw=-.73,pitch=.58,mode='structure';
+  let width=1,height=1,dpr=1,scale=1,yaw=-.97,pitch=.60,mode='structure';
   let camera={cs:1,sn:0,cp:1,sp:0};
   let motion=false,visible=true,dragging=false,pointer=null,start=null,phase=0,last=0,raf=0,disposed=false;
   canvas.style.touchAction='pan-y';
@@ -136,7 +142,7 @@ export function initModelStage(){
 
   function displaced(p){
     if(mode!=='deformed')return p;
-    const z=clamp(p[2]/12.65,0,1),k=z*z;
+    const z=clamp(p[2]/Math.max(1,towerHeight),0,1),k=z*z;
     return [p[0]+k*(.55+.04*Math.sin(phase+p[1]*.1)),
       p[1]+k*(.15+.03*Math.cos(phase+p[0]*.1)),p[2]];
   }
@@ -147,7 +153,7 @@ export function initModelStage(){
     const xx=x*cs-y*sn,depth=(x*sn+y*cs)*cp+z*sp;
     const yy=(x*sn+y*cs)*sp-z*cp;
     const persp=clamp(1-depth*.008,.79,1.21);
-    return {x:width*.50+xx*scale*persp,y:height*.53+yy*scale*persp,depth};
+    return {x:width*.50+xx*scale*persp,y:height*.52+yy*scale*persp,depth};
   }
   function poly(points,color,border='rgba(18,54,66,.12)'){
     ctx.beginPath();
@@ -198,12 +204,14 @@ export function initModelStage(){
       let pigment=base;
       if(mode==='forces'&&face.kind!=='rc-floor'&&face.kind!=='rc-wall'){
         // Qualitative gradient only: NOT calculated forces or a solver result.
-        const heightRatio=clamp(face.height/12.65,0,1);
+        const heightRatio=clamp(face.height/Math.max(1,roofHeight),0,1);
         pigment=[Math.round(30+173*heightRatio),Math.round(128+19*Math.sin(heightRatio*Math.PI)),Math.round(203-122*heightRatio)];
       }
       // Semi-transparent concrete floors expose the contrasting structural skeleton.
-      const opacity=['rc-floor','rc-roof','rc-balcony'].includes(face.kind)?.22:face.kind==='rc-wall'?.80:1;
-      const border=['rc-floor','rc-roof','rc-balcony'].includes(face.kind)?'rgba(44,110,143,.32)':'rgba(22,49,70,.23)';
+      const opacity=['rc-floor','rc-roof','rc-balcony'].includes(face.kind)?.22:
+        face.kind==='wood-roof'?.64:face.kind==='wood-deck'?.28:
+        face.kind==='steel-roof'?.43:face.kind==='rc-wall'?.74:1;
+      const border=['rc-floor','rc-roof','rc-balcony','wood-deck','wood-roof','steel-roof'].includes(face.kind)?'rgba(39,95,123,.23)':'rgba(22,49,70,.23)';
       poly(points,rgba(pigment,lighting,opacity),border);
     }
   }
@@ -225,7 +233,7 @@ export function initModelStage(){
   function labels(){
     ctx.textAlign='left';ctx.fillStyle='rgba(29,76,93,.83)';
     ctx.font='700 10px Manrope,system-ui,sans-serif';
-    if(width>480)ctx.fillText('DÈLGHEM D2 · C30/37 / S355 / GL24h',Math.max(15,width*.045),height*.10);
+    if(width>480)ctx.fillText('DÈLGHEM D2 · '+complexDemo.storeyCount+' STOREYS · C30/37 / S355 / GL24h',Math.max(15,width*.045),height*.10);
   }
   function render(){
     if(disposed||width<2||height<2)return;
@@ -251,7 +259,7 @@ export function initModelStage(){
     if(disposed||!motion||!visible||document.hidden||reduced.matches)return;
     if(!last)last=timestamp;
     const elapsed=timestamp-last;
-    if(elapsed>=FRAME_INTERVAL*(width<480?1.33:1)){
+    if(elapsed>=FRAME_INTERVAL*(width<480?1.27:1)){
       const dt=Math.min(.10,elapsed/1000);
       last=timestamp;
       if(!dragging)yaw+=dt*DEFAULT_ORBIT_SPEED;
@@ -293,14 +301,14 @@ export function initModelStage(){
   canvas.addEventListener('keydown',e=>{
     if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;
     e.preventDefault();
-    if(e.key==='Home'){yaw=-.73;pitch=.58;}
+    if(e.key==='Home'){yaw=-.97;pitch=.60;}
     if(e.key==='ArrowLeft')yaw-=.12;
     if(e.key==='ArrowRight')yaw+=.12;
     if(e.key==='ArrowUp')pitch=clamp(pitch-.08,-.05,.95);
     if(e.key==='ArrowDown')pitch=clamp(pitch+.08,-.05,.95);
     render();
   });
-  document.getElementById('reset-model')?.addEventListener('click',()=>{yaw=-.73;pitch=.58;render();canvas.focus({preventScroll:true});});
+  document.getElementById('reset-model')?.addEventListener('click',()=>{yaw=-.97;pitch=.60;render();canvas.focus({preventScroll:true});});
   const observer=new ResizeObserver(resize);observer.observe(canvas);
   const intersection=new IntersectionObserver(entries=>{
     visible=entries.some(e=>e.isIntersecting);

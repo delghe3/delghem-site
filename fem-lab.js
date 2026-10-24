@@ -312,6 +312,16 @@ if(labRoot){
   $('lab-stress-selected').textContent=chosen?.id??'—';
   $('lab-stress-readout').textContent=chosen?namesFrom(field)+' / '+(side==='top'?txt('top','superiore'):txt('bottom','inferiore'))+': '+num(faceMean(chosen,side,field),4)+' MPa · '+txt('mean of 4 real Gauss points','media di 4 punti di Gauss reali')
     :txt('Select a shell for actual stresses.','Seleziona una shell per leggere le tensioni reali.');
+  // Mark the canvas ready only when it actually contains non-black opaque
+  // pixels. Otherwise the actual FEM poster remains visible as a fallback,
+  // including if an older cached version of JavaScript crashes before init.
+  try{
+   const pixel=ctx.getImageData(Math.max(0,Math.min(canvas.width-1,Math.floor(canvas.width/2))),
+     Math.max(0,Math.min(canvas.height-1,Math.floor(canvas.height/2))),1,1).data;
+   if(pixel[3]>=240&&pixel[0]+pixel[1]+pixel[2]>65)
+    labRoot.dataset.labStressReady='true';
+  }catch(error){console.warn('FEM stress poster retained',error);}
+
  }
  function namesFrom(field){return {vonMisesMPa:'σVM',sigma11MPa:'σ11',sigma22MPa:'σ22',tau12MPa:'τ12'}[field]??field;}
  function scheduleStress(){
@@ -413,7 +423,10 @@ if(labRoot){
   const hi=[0,1,2].map(i=>Math.max(...points.map(p=>p[i])));
   frameBounds={center:lo.map((v,i)=>(v+hi[i])/2)};
   $('lab-scale').value='1.0';
-  renderPushover();renderIDA();renderAcceleration();scheduleStress();
+  renderPushover();renderIDA();renderAcceleration();
+  // Show interactive chart SVGs only after all 11 figures have rendered.
+  labRoot.dataset.labChartsReady='true';
+  scheduleStress();
   labRoot.dataset.labReady='true';
  }).catch(error=>{
   console.error('DÈLGHEM FEM LAB (real source data)',error);

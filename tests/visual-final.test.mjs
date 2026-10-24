@@ -13,11 +13,11 @@ test('opening hero uses genuine geometrical I-section flanges, web and concrete 
  assert.match(source,/rc-wall/);
  assert.match(source,/paintFaces/);
 });
-test('opening frame uses only eight retained D2 braces with actual endpoints',async ()=>{
+test('opening eight-storey frame uses only eight carefully placed D2 braces',async ()=>{
  const {complexDemo}=await import('../assets/real-d2/complex-demo-geometry.mjs');
- assert.equal(complexDemo.members.filter(x=>x.kind==='brace').length,4);
- assert.equal(complexDemo.members.length,246);
- assert.equal(complexDemo.nodes.length,122);
+ assert.equal(complexDemo.members.filter(x=>x.kind==='brace').length,8);
+ assert.equal(complexDemo.members.length,514);
+ assert.equal(complexDemo.nodes.length,212);
  assert.match(source,/mixedDemo.members/);
 });
 test('structure, deformation and color modes remain explicitly demonstrative',()=>{
