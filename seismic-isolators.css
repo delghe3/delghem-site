@@ -1,0 +1,92 @@
+/* Base isolation educational comparison: scoped; independent of core site styles. */
+.engineering-benchmarks .eng-isolation-card{
+ grid-column:1/-1;min-width:0;width:100%;
+ padding:clamp(17px,2.5vw,33px);
+ border:1px solid #93c9c3;
+ border-radius:14px;
+ background:linear-gradient(147deg,#f9fdf9 0%,#eaf6f1 90%);
+ box-shadow:0 17px 43px #28596617;
+}
+.eng-isolation-card>h3{font-size:clamp(25px,2.65vw,39px);line-height:1.15;letter-spacing:-.045em;color:#1a4f61;max-width:29ch;margin:15px 0 11px}
+.eng-isolation-card .isolation-intro{font-size:12px;line-height:1.7;color:#4f7680;max-width:98ch;margin:0 0 14px}
+.isolation-spec-line{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0 19px}
+.isolation-spec-line span{font:800 10px ui-monospace,SFMono-Regular,monospace;color:#286c79;border:1px solid #c1dcd4;background:#e6f5eb;padding:8px 11px;border-radius:6px}
+.isolation-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:11px 13px;margin:0 0 12px;border:1px solid #bddbd5;background:#fffefa;border-radius:8px}
+.isolation-live-led{display:flex;align-items:center;gap:10px;font-weight:880;color:#246e7d;font-size:10px;letter-spacing:.06em}
+.isolation-live-led i{width:8px;height:8px;border-radius:50%;background:#32a994;box-shadow:0 0 0 4px #56bd9f3d}
+.isolation-actions{display:flex;flex-wrap:wrap;gap:7px}
+.isolation-actions button{font-size:11px;font-weight:850;min-height:37px;color:#185a70;background:#ebf7f0;border:1px solid #9fcbc4;padding:9px 16px;border-radius:6px;cursor:pointer}
+.isolation-actions button:first-child{background:#226b81;border-color:#226b81;color:#fff}
+.isolation-actions button:hover{filter:brightness(.95)}
+.isolation-model-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.isolation-model-card{margin:0;min-width:0;padding:9px;background:#fefffd;border:1px solid #bcdbd6;border-radius:10px;overflow:hidden;box-shadow:0 6px 15px #1e647115}
+.isolation-model-card--fixed{border-top:4px solid #377fb0}
+.isolation-model-card--isolated{border-top:4px solid #d88757}
+.isolation-model-card figcaption{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:7px 7px 12px;font-size:11px;font-weight:850;color:#24566a}
+.isolation-model-card figcaption>span{display:flex;align-items:center;gap:7px;line-height:1.25}
+.isolation-model-card figcaption i{display:inline-block;width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#377fb0}
+.isolation-model-card--isolated figcaption i{background:#d88757}
+.isolation-model-card figcaption output{font:850 11px ui-monospace,SFMono-Regular,monospace;color:#246f7b;white-space:nowrap;font-variant-numeric:tabular-nums}
+.isolation-render{aspect-ratio:1.7;position:relative;overflow:hidden;background:#e4f2ec;border:1px solid #c5ded6;border-radius:8px;isolation:isolate}
+.isolation-render canvas,.isolation-render img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.isolation-render canvas{visibility:hidden;z-index:1}
+.eng-isolation-card[data-ready="true"] .isolation-render canvas{visibility:visible}
+.eng-isolation-card[data-ready="true"] .isolation-render img{display:none}
+.isolation-model-card>p{font-size:10px;line-height:1.65;color:#65818a;min-height:33px;margin:9px 6px 4px}
+.isolation-input-panel,.isolation-response-panel{padding:13px 16px;border:1px solid #c5dbd5;border-radius:10px;background:#fcfefa;margin-top:14px}
+.isolation-chart-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.isolation-chart-heading strong,.isolation-chart-heading label{font-size:10px;color:#235e73;font-weight:900;letter-spacing:.03em}
+.isolation-chart-heading output{font-size:11px;font-weight:860;color:#267280;font-variant-numeric:tabular-nums}
+.isolation-chart-heading label{display:flex;gap:11px;align-items:center;flex-wrap:wrap}
+.isolation-chart-heading select{min-height:34px;border:1px solid #acccc5;background:#ecf7f1;color:#205b71;font-weight:760;font-size:11px;padding:6px 8px;border-radius:6px;max-width:100%}
+.isolation-input-panel svg,.isolation-response-panel svg{width:100%;height:auto;display:block;overflow:visible}
+.isolation-input-panel svg{max-height:140px}
+.isolation-response-panel svg{max-height:256px}
+.isolation-timeline{display:flex;gap:10px;align-items:center;margin-top:8px;font-size:10px;font-weight:780;color:#527e85}
+.isolation-timeline input{flex:1;min-width:0;accent-color:#2287a2;cursor:pointer}
+.isolation-timeline output{min-width:60px;text-align:right;font-variant-numeric:tabular-nums;color:#1c6374}
+.isolation-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:13px 0}
+.isolation-metrics>div{background:#fffefa;border:1px solid #c7dfd8;padding:13px 12px;border-radius:8px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.isolation-metrics small{font-size:9px;font-weight:780;line-height:1.35;color:#5f8085;letter-spacing:.035em}
+.isolation-metrics strong{font-size:clamp(18px,2.2vw,28px);font-weight:900;color:#1b7282;font-variant-numeric:tabular-nums}
+.isolation-legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:9px;color:#456b75;font-size:10px;font-weight:800}
+.isolation-legend span{display:inline-flex;align-items:center;gap:7px}
+.isolation-legend i{height:4px;width:21px;display:inline-block;border-radius:4px}
+.isolation-key-fixed{background:#3685b7}.isolation-key-isolated{background:#d77c48}
+.eng-isolation-card .isolation-method-note{border-left:3px solid #cb946b;background:#fff9ec;color:#686057;border-radius:0 6px 6px 0;font-size:10px;line-height:1.75;margin:15px 0 0;padding:13px 15px;max-width:none}
+.eng-isolation-card button:focus-visible,.eng-isolation-card select:focus-visible,.eng-isolation-card input:focus-visible,.eng-isolation-card canvas:focus-visible{outline:3px solid #db984d;outline-offset:3px}
+@media(max-width:800px){
+ .isolation-model-grid{gap:8px}
+ .isolation-model-card figcaption{font-size:9px;flex-wrap:wrap}
+ .isolation-render{aspect-ratio:1.35}
+ .isolation-metrics strong{font-size:19px}
+}
+@media(max-width:620px){
+ .engineering-benchmarks .eng-isolation-card{padding:14px 10px}
+ .isolation-spec-line span{font-size:8px;padding:7px}
+ .isolation-model-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+ .isolation-model-card{padding:4px}
+ .isolation-model-card figcaption{min-height:59px;flex-direction:column;align-items:flex-start;gap:3px;font-size:8px}
+ .isolation-model-card figcaption output{font-size:8px}
+ .isolation-render{aspect-ratio:1.02;min-height:160px}
+ .isolation-model-card>p{font-size:9px;margin:8px 2px;min-height:60px}
+ .isolation-metrics{gap:4px}
+ .isolation-metrics>div{padding:10px 6px}
+ .isolation-metrics small{font-size:8px}
+ .isolation-metrics strong{font-size:16px}
+ .isolation-input-panel,.isolation-response-panel{padding:12px 8px}
+ .isolation-chart-heading label{align-items:flex-start;flex-direction:column}
+ .isolation-chart-heading select{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.isolation-live-led i{box-shadow:none}}
+
+.isolation-technical{margin:15px 0 0;border:1px solid #bedbd3;background:#f6fbf7;border-radius:9px;overflow:hidden}
+.isolation-technical summary{display:flex;justify-content:space-between;gap:10px;cursor:pointer;padding:12px 15px;font-size:11px;font-weight:900;color:#296b79}
+.isolation-technical summary span{font-size:18px}
+.isolation-technical[open] summary{background:#e7f2ed;border-bottom:1px solid #d1e5dc}
+.isolation-technical[open] summary span{transform:rotate(45deg)}
+.isolation-technical>div{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;padding:12px}
+.isolation-technical>div>span{font-size:10px;color:#507681;line-height:1.7;padding:7px 9px;border:1px solid #cde4d9;background:#fff;border-radius:5px}
+.isolation-technical>div strong{color:#23596b;white-space:nowrap}
+.isolation-technical>p{font-size:10px;line-height:1.7;color:#6f7373;margin:0;padding:0 13px 15px}
+@media(max-width:750px){.isolation-technical>div{grid-template-columns:repeat(2,minmax(0,1fr))}}

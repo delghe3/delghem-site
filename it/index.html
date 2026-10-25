@@ -38,6 +38,7 @@
   <link rel="preload" href="../assets/Manrope.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="../style.css?v=20261025-showcase15seo">
   <link rel="stylesheet" href="../fem-aliasing.css?v=20261025-smooth19">
+  <link rel="stylesheet" href="../seismic-isolators.css?v=20261025-isolation1">
   <link rel="stylesheet" href="../intro-neon.css?v=20261025-neonhold">
 <script type="module" src="../site-intro.js?v=20261025-neonhold"></script>
   <noscript><style>.site-intro{display:none!important}</style></noscript>
@@ -219,8 +220,57 @@
    <p class="eng-proof-note">Legge F = C · sgn(v) · |v|^α. Parametri illustrativi: C = 180, ampiezza 28 mm, frequenza 1,25 Hz. Non è un test qualificato del costruttore.</p>
   </details>
  </article>
+
+  <article class="eng-graph-card eng-isolation-card" id="seismic-isolation" aria-labelledby="isolation-title">
+   <div class="eng-proof-subhead"><span>02 / ISOLAMENTO SISMICO ALLA BASE</span><span>TELAIO 3D / CONFRONTO NEWMARK</span></div>
+   <h3 id="isolation-title">Lo stesso edificio in acciaio. Basi incastrate contro isolatori sismici.</h3>
+   <p class="isolation-intro">Due telai in acciaio multipli, a tre piani e quattro campate, animati con lo stesso accelerogramma sintetico. Confronta fondazioni incastrate e piattaforma di base mobile su isolatori sismici.</p>
+   <div class="isolation-spec-line"><span>04 × 02 CAMPATE</span><span>03 PIANI</span><span>HEB 300 / IPE 330 · S355</span><span>ELASTICO LINEARE / DIDATTICO</span></div>
+   <div class="isolation-toolbar">
+    <div class="isolation-live-led"><i aria-hidden="true"></i><span>RISPOSTA SISMICA SINCRONIZZATA</span></div>
+    <div class="isolation-actions"><button id="isolation-play" type="button" aria-pressed="true">Pausa</button><button id="isolation-restart" type="button">Ricomincia</button></div>
+   </div>
+   <div class="isolation-model-grid">
+    <figure class="isolation-model-card isolation-model-card--fixed">
+     <figcaption><span><i aria-hidden="true"></i>BASE INCASTRATA · PILASTRI INCASTRATI</span><output id="isolation-fixed-live" aria-live="off">— mm</output></figcaption>
+     <div class="isolation-render">
+      <canvas id="isolation-fixed-canvas" width="1060" height="590" role="img" tabindex="0" aria-label="Telaio tridimensionale in acciaio a quattro campate con fondazioni incastrate"></canvas>
+      <img class="isolation-fallback" src="../assets/engineering/isolation-fixed-preview.svg" alt="Telaio multiplo in acciaio con pilastri incastrati, schema" width="1060" height="590" loading="lazy">
+     </div><p>Basi incastrate. Le oscillazioni del terreno vengono trasmesse alla sovrastruttura.</p>
+    </figure>
+    <figure class="isolation-model-card isolation-model-card--isolated">
+     <figcaption><span><i aria-hidden="true"></i>BASE ISOLATA · APPOGGI ANTISISMICI</span><output id="isolation-isolated-live" aria-live="off">— mm</output></figcaption>
+     <div class="isolation-render">
+      <canvas id="isolation-isolated-canvas" width="1060" height="590" role="img" tabindex="0" aria-label="Telaio tridimensionale in acciaio a quattro campate su isolatori sismici"></canvas>
+      <img class="isolation-fallback" src="../assets/engineering/isolation-bearings-preview.svg" alt="Telaio multiplo in acciaio su isolatori sismici, schema" width="1060" height="590" loading="lazy">
+     </div><p>Lo strato isolante assorbe gli spostamenti orizzontali; in questo esempio semplificato si attenuano le deformazioni tra i piani.</p>
+    </figure>
+   </div>
+   <div class="isolation-input-panel">
+    <div class="isolation-chart-heading"><strong>ACCELEROGRAMMA SINTETICO IDENTICO</strong><output id="isolation-input-live" aria-live="off">a<sub>g</sub> = 0.00 m/s²</output></div>
+    <svg id="isolation-input-chart" viewBox="0 0 960 165" role="img" aria-label="Accelerogramma sintetico di ingresso sincronizzato"></svg>
+    <div class="isolation-timeline"><span>0 s</span><input id="isolation-time" type="range" min="0" max="1000" value="0" step="1" aria-label="Tempo animazione isolamento sismico"><output id="isolation-time-label" aria-live="off">0.00 s</output></div>
+   </div>
+   <div class="isolation-metrics">
+    <div><small>RIDUZIONE ACCELERAZIONE DI COPERTURA</small><strong id="isolation-accel-reduction">—</strong></div>
+    <div><small>RIDUZIONE DRIFT MASSIMO DI PIANO</small><strong id="isolation-drift-reduction">—</strong></div>
+    <div><small>CORSA MASSIMA ISOLATORI</small><strong id="isolation-base-travel">—</strong></div>
+   </div>
+   <div class="isolation-response-panel">
+    <div class="isolation-chart-heading"><label for="isolation-metric">STORIA DELLA RISPOSTA <select id="isolation-metric"><option value="acceleration">Accelerazione assoluta in copertura [m/s²]</option><option value="drift">Drift interpiano massimo [mm]</option><option value="displacement">Spostamento copertura rispetto al terreno [mm]</option></select></label><output id="isolation-response-live" aria-live="off">—</output></div>
+    <svg id="isolation-response-chart" viewBox="0 0 960 255" role="img" aria-label="Grafici di risposta temporale dei telai incastrato e isolato"></svg>
+    <div class="isolation-legend"><span><i class="isolation-key-fixed"></i>Telaio incastrato</span><span><i class="isolation-key-isolated"></i>Telaio isolato</span></div>
+   </div>
+   <details class="isolation-technical">
+    <summary>Parametri adottati e limiti del confronto <span aria-hidden="true">+</span></summary>
+    <div><span>Massa per piano: <strong>160 t</strong></span><span>Massa del basamento isolato: <strong>90 t</strong></span><span>Rigidezza interpiano: <strong>55 MN/m</strong></span><span>Smorzamento interpiano: <strong>185 kN·s/m</strong></span><span>Rigidezza orizzontale totale degli isolatori: <strong>4,5 MN/m</strong></span><span>Smorzamento isolatori: <strong>850 kN·s/m</strong></span><span>Passo d'integrazione: <strong>0,015 s</strong></span><span>Durata ingresso: <strong>15 s</strong></span></div>
+    <p>Le riduzioni percentuali riguardano unicamente questa configurazione e questo ingresso sintetico, non la prestazione attesa in un edificio reale. Corsa degli isolatori da verificare a progetto.</p>
+   </details>
+   <p class="isolation-method-note">MODELLO PARAMETRICO ILLUSTRATIVO — NON UN RISULTATO FEM DÈLGHEM: i disegni mostrano un telaio in acciaio a 4 × 2 campate e tre piani con isolatori schematici. Le risposte dinamiche sono calcolate con due modelli semplificati distinti a masse concentrate (3 GDL incastrato; 4 GDL con grado di libertà di base), integrati con Newmark β = 1/4 e γ = 1/2. Gli isolatori sono molle e smorzatori orizzontali lineari; non vengono modellate isteresi non lineare, torsione, sollevamento, verifica degli appoggi o progettazione sismica dell’edificio. Le deformate animate sono amplificate e non costituiscono una simulazione FEM 3D. Accelerogramma sintetico, non registrato.</p>
+  </article>
+
 <article class="eng-graph-card eng-pile-card">
-   <div class="eng-proof-subhead"><span>02 / PALI, TERRENO E CEDIMENTI</span><span>D2 / t–z + q–z</span></div>
+   <div class="eng-proof-subhead"><span>03 / PALI, TERRENO E CEDIMENTI</span><span>D2 / t–z + q–z</span></div>
    <h3>Palo Ø60 nella stratigrafia: forze e tensioni</h3>
    <p>Confronta due profili ipotetici di terreno stratificato: calcolo assiale non lineare t–z/q–z, reazione di fusto, resistenza di punta mobilitata e cedimento di testa.</p>
    <label class="eng-select">TERRENO <select id="pile-soil-select"><option value="layered-sand">Sabbia stratificata</option><option value="layered-clay">Argilla stratificata</option></select></label>
@@ -568,6 +618,7 @@
 <script defer src="../contact-actions.js"></script>
 <script type="module" src="../surface-studio.js?v=20261025-smooth19"></script>
 <script type="module" src="../engineering-benchmarks.js?v=20261025-showcase15seo"></script>
+<script type="module" src="../seismic-isolators.js?v=20261025-isolation1"></script>
 <script type="module" src="../engineering-simulations.js?v=20261025-showcase15seo"></script>
 </body>
 </html>

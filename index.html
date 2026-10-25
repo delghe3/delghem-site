@@ -38,6 +38,7 @@
   <link rel="preload" href="./assets/Manrope.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="./style.css?v=20261025-showcase15seo">
   <link rel="stylesheet" href="./fem-aliasing.css?v=20261025-smooth19">
+  <link rel="stylesheet" href="./seismic-isolators.css?v=20261025-isolation1">
   <link rel="stylesheet" href="./intro-neon.css?v=20261025-neonhold">
 <script type="module" src="./site-intro.js?v=20261025-neonhold"></script>
   <noscript><style>.site-intro{display:none!important}</style></noscript>
@@ -219,8 +220,57 @@
    <p class="eng-proof-note">Constitutive relation F = C · sgn(v) · |v|^α. Example parameters C = 180, amplitude 28 mm, frequency 1.25 Hz. Not a manufacturer-qualified device test.</p>
   </details>
  </article>
+
+  <article class="eng-graph-card eng-isolation-card" id="seismic-isolation" aria-labelledby="isolation-title">
+   <div class="eng-proof-subhead"><span>02 / SEISMIC BASE ISOLATION</span><span>3D FRAME / NEWMARK COMPARISON</span></div>
+   <h3 id="isolation-title">The same steel building. Fixed bases versus seismic isolators.</h3>
+   <p class="isolation-intro">Two synchronized three-storey, four-bay steel frames under the identical synthetic earthquake input. Compare rigid foundations against a moving base diaphragm supported by seismic bearings.</p>
+   <div class="isolation-spec-line"><span>04 × 02 BAYS</span><span>03 STOREYS</span><span>HEB 300 / IPE 330 · S355</span><span>LINEAR ELASTIC / EDUCATIONAL</span></div>
+   <div class="isolation-toolbar">
+    <div class="isolation-live-led"><i aria-hidden="true"></i><span>SYNCHRONIZED SEISMIC RESPONSE</span></div>
+    <div class="isolation-actions"><button id="isolation-play" type="button" aria-pressed="true">Pause</button><button id="isolation-restart" type="button">Restart</button></div>
+   </div>
+   <div class="isolation-model-grid">
+    <figure class="isolation-model-card isolation-model-card--fixed">
+     <figcaption><span><i aria-hidden="true"></i>FIXED BASE · BUILT-IN COLUMNS</span><output id="isolation-fixed-live" aria-live="off">— mm</output></figcaption>
+     <div class="isolation-render">
+      <canvas id="isolation-fixed-canvas" width="1060" height="590" role="img" tabindex="0" aria-label="Three-dimensional four-bay steel frame with fixed column foundations"></canvas>
+      <img class="isolation-fallback" src="./assets/engineering/isolation-fixed-preview.svg" alt="Four-bay steel structure with fixed column foundations, schematic" width="1060" height="590" loading="lazy">
+     </div><p>Rigid fixed-base diaphragms. Ground motion transmitted into the steel superstructure.</p>
+    </figure>
+    <figure class="isolation-model-card isolation-model-card--isolated">
+     <figcaption><span><i aria-hidden="true"></i>BASE ISOLATED · SEISMIC BEARINGS</span><output id="isolation-isolated-live" aria-live="off">— mm</output></figcaption>
+     <div class="isolation-render">
+      <canvas id="isolation-isolated-canvas" width="1060" height="590" role="img" tabindex="0" aria-label="Three-dimensional four-bay steel frame on base isolation bearings"></canvas>
+      <img class="isolation-fallback" src="./assets/engineering/isolation-bearings-preview.svg" alt="Four-bay steel building supported by seismic isolation bearings, schematic" width="1060" height="590" loading="lazy">
+     </div><p>Isolator layer takes horizontal travel; the steel-frame interstorey response is attenuated in this simplified example.</p>
+    </figure>
+   </div>
+   <div class="isolation-input-panel">
+    <div class="isolation-chart-heading"><strong>IDENTICAL SYNTHETIC ACCELEROGRAM</strong><output id="isolation-input-live" aria-live="off">a<sub>g</sub> = 0.00 m/s²</output></div>
+    <svg id="isolation-input-chart" viewBox="0 0 960 165" role="img" aria-label="Synchronized synthetic ground acceleration history"></svg>
+    <div class="isolation-timeline"><span>0 s</span><input id="isolation-time" type="range" min="0" max="1000" value="0" step="1" aria-label="Seismic isolation animation time"><output id="isolation-time-label" aria-live="off">0.00 s</output></div>
+   </div>
+   <div class="isolation-metrics">
+    <div><small>ROOF ACCELERATION REDUCTION</small><strong id="isolation-accel-reduction">—</strong></div>
+    <div><small>MAX INTERSTOREY DRIFT REDUCTION</small><strong id="isolation-drift-reduction">—</strong></div>
+    <div><small>MAXIMUM ISOLATOR TRAVEL</small><strong id="isolation-base-travel">—</strong></div>
+   </div>
+   <div class="isolation-response-panel">
+    <div class="isolation-chart-heading"><label for="isolation-metric">RESPONSE HISTORY <select id="isolation-metric"><option value="acceleration">Absolute roof acceleration [m/s²]</option><option value="drift">Maximum interstorey drift [mm]</option><option value="displacement">Roof displacement relative to ground [mm]</option></select></label><output id="isolation-response-live" aria-live="off">—</output></div>
+    <svg id="isolation-response-chart" viewBox="0 0 960 255" role="img" aria-label="Synchronized fixed-base and isolated-frame response time histories"></svg>
+    <div class="isolation-legend"><span><i class="isolation-key-fixed"></i>Fixed-base frame</span><span><i class="isolation-key-isolated"></i>Base-isolated frame</span></div>
+   </div>
+   <details class="isolation-technical">
+    <summary>Assumed model parameters and limits <span aria-hidden="true">+</span></summary>
+    <div><span>Mass per storey: <strong>160 t</strong></span><span>Isolated base mass: <strong>90 t</strong></span><span>Interstorey lateral stiffness: <strong>55 MN/m</strong></span><span>Interstorey damping: <strong>185 kN·s/m</strong></span><span>Total isolator horizontal stiffness: <strong>4.5 MN/m</strong></span><span>Isolator damping: <strong>850 kN·s/m</strong></span><span>Integration step: <strong>0.015 s</strong></span><span>Input duration: <strong>15 s</strong></span></div>
+    <p>Percent reductions are specific to this assumed configuration and synthetic input; they do not predict performance of an actual building. Isolation bearing travel requires project-specific verification.</p>
+   </details>
+   <p class="isolation-method-note">ILLUSTRATIVE PARAMETRIC MODEL — NOT A DÈLGHEM FEM RESULT: the drawings represent a 4 × 2 bay steel frame with three storeys and schematic isolation devices. The plotted dynamics are computed here from two separate linear lumped-mass shear-building models (3 DOF fixed base; 4 DOF with an isolation-floor coordinate), integrated by Newmark β = 1/4, γ = 1/2. Bearings are idealized as linear horizontal springs and dashpots; there is no nonlinear hysteresis, torsion, uplift, shear-bearing verification or building-specific seismic design. Animations exaggerate displacement and do not reproduce full 3D frame deformation. Synthetic input, not a recorded accelerogram.</p>
+  </article>
+
 <article class="eng-graph-card eng-pile-card">
-   <div class="eng-proof-subhead"><span>02 / PALI, TERRENO E CEDIMENTI</span><span>D2 / t–z + q–z</span></div>
+   <div class="eng-proof-subhead"><span>03 / PALI, TERRENO E CEDIMENTI</span><span>D2 / t–z + q–z</span></div>
    <h3>Pile Ø600 in layered soil: forces and stress influence</h3>
    <p>Compare two assumed layered soil profiles: actual native D2 nonlinear t–z/q–z pile response with computed shaft reaction, mobilized toe force and head settlement.</p>
    <label class="eng-select">SOIL <select id="pile-soil-select"><option value="layered-sand">Layered sand</option><option value="layered-clay">Layered clay</option></select></label>
@@ -568,6 +618,7 @@
 <script defer src="./contact-actions.js"></script>
 <script type="module" src="./surface-studio.js?v=20261025-smooth19"></script>
 <script type="module" src="./engineering-benchmarks.js?v=20261025-showcase15seo"></script>
+<script type="module" src="./seismic-isolators.js?v=20261025-isolation1"></script>
 <script type="module" src="./engineering-simulations.js?v=20261025-showcase15seo"></script>
 </body>
 </html>
