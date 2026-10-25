@@ -2225,3 +2225,244 @@ body{background:var(--canvas-paper);color:var(--canvas-ink)}
  .technical-library-details>summary,.technical-summary-arrow{transition:none}
  .technical-library-details[open] .technical-summary-arrow{transform:none}
 }
+
+/* Strata & seismic device showcase — real DÈLGHEM D2 pile solve / reduced
+   dynamic time histories, with explicitly named approximate soil overlay. */
+.eng-graph-card{min-width:0}
+.eng-scene-topline{
+ display:flex;align-items:center;justify-content:space-between;gap:12px;
+ margin:19px 0 12px;
+ font-size:9px;letter-spacing:.085em;font-weight:850;color:#366879
+}
+.eng-scene-topline strong{font-size:10px;color:#176d84}
+.eng-scene-topline>span{font-size:9px;color:#68858e;text-align:right}
+.soil-stress-scene{
+ margin:11px 0 18px;padding:12px;
+ border:1px solid #c7deda;border-radius:12px;
+ background:linear-gradient(165deg,#f3faf4,#dceee8);min-width:0
+}
+.soil-stress-selector{display:flex;align-items:center;gap:10px;margin:0 0 10px;flex-wrap:wrap}
+.soil-stress-selector>label{font-size:9px;color:#507780;font-weight:880;letter-spacing:.075em}
+.soil-stress-selector select{
+ min-height:36px;padding:6px 11px;border:1px solid #afd5cc;
+ background:#fffefa;color:#1c6475;border-radius:7px;
+ font-size:11px;font-weight:790;min-width:185px;max-width:100%;cursor:pointer
+}
+.soil-canvas-wrap{
+ width:100%;position:relative;aspect-ratio:1.42;
+ overflow:hidden;border:1px solid #c2dcd5;border-radius:9px;
+ background:#e5f1ed;isolation:isolate
+}
+.soil-canvas-wrap canvas,.soil-scene-fallback{
+ display:block;width:100%;height:100%;position:absolute;inset:0;object-fit:cover;
+}
+.soil-canvas-wrap canvas{z-index:2;visibility:hidden;cursor:crosshair}
+.soil-stress-scene[data-ready="true"] .soil-canvas-wrap canvas{visibility:visible}
+.soil-stress-scene[data-ready="true"] .soil-scene-fallback{display:none}
+.soil-stress-legend{display:flex;align-items:center;gap:9px;margin:12px 0 7px}
+.soil-stress-legend strong{font-size:10px;font-weight:875;
+ white-space:nowrap;color:#3d6673;font-variant-numeric:tabular-nums}
+.soil-stress-legend i{
+ display:block;flex:1;height:11px;min-width:0;border-radius:9px;
+ border:1px solid #b5d7d3;background:linear-gradient(90deg,
+ #183d7a,#2457a6,#247ebf,#34afbe,#6fc9a7,#e2d875,#ef9a50,#dd5b4c,#922d50)
+}
+.soil-stress-probe{min-height:32px;margin:0 0 7px!important;
+ font-size:10px!important;font-weight:740;color:#285b71!important}
+.eng-stress-qualification{
+ padding:11px 12px!important;margin:11px 0 0!important;
+ border-left:2px solid #c6945e;
+ background:#fffaee!important;color:#6b645e!important;
+ border-radius:0 5px 5px 0;
+ line-height:1.65!important;font-size:9px!important;
+}
+.eng-technical-details{
+ display:block;margin:17px 0 13px;min-width:0;border:1px solid #c9e0da;
+ border-radius:8px;background:#f9fcf9;overflow:hidden;
+}
+.eng-technical-details>summary{
+ display:flex;align-items:center;justify-content:space-between;gap:13px;
+ list-style:none;cursor:pointer;padding:13px 14px;
+ font-size:11px;font-weight:830;color:#2d697b
+}
+.eng-technical-details>summary::-webkit-details-marker{display:none}
+.eng-technical-details>summary>span{font-size:19px;font-weight:650;color:#417b85}
+.eng-technical-details[open]>summary{border-bottom:1px solid #cadecf;background:#e9f5ed}
+.eng-technical-details[open]>summary>span{transform:rotate(45deg)}
+.eng-technical-details>summary:hover{background:#e9f3ed}
+.eng-technical-details>.eng-graph-visual{
+ margin:12px 12px 15px
+}
+.eng-technical-details>.eng-device-charts,.eng-technical-details>.eng-mini-values,
+.eng-technical-details>.eng-proof-note{
+ margin-inline:13px
+}
+.eng-technical-details>.eng-proof-note{padding-bottom:12px}
+.steel-frame-scene{
+ margin:10px 0 15px;padding:12px;border-radius:12px;
+ border:1px solid #c3d9d9;background:linear-gradient(160deg,#f5faf6,#e3efee)
+}
+.steel-frame-toolbar{
+ display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 13px
+}
+.steel-frame-toolbar>label{
+ display:flex;align-items:center;gap:7px;flex:1;min-width:190px;
+ font-weight:840;font-size:9px;color:#436e7a;letter-spacing:.035em
+}
+.steel-frame-toolbar select{
+ min-height:36px;max-width:100%;padding:7px 10px;
+ background:#fffefa;border:1px solid #b6d4d0;
+ font-size:11px;font-weight:780;color:#1b6173;border-radius:6px;cursor:pointer
+}
+.steel-frame-toolbar>button{
+ flex:none;min-height:36px;border:1px solid #a5cfca;
+ border-radius:6px;padding:8px 12px;
+ color:#17576c;background:#f5fbf7;font-size:11px;font-weight:870
+}
+.steel-frame-toolbar>button:hover{background:#d9f3ea}
+.steel-frame-toolbar #steel-frame-play{background:#206f86;color:white;border-color:#206f86}
+.steel-frame-toolbar #steel-frame-play:hover{background:#135c70}
+.steel-frame-canvas-wrap{
+ width:100%;aspect-ratio:1.75;min-height:240px;max-height:420px;
+ position:relative;border:1px solid #c4dcd6;border-radius:9px;
+ overflow:hidden;background:#e8f4ef;isolation:isolate;
+}
+.steel-frame-canvas-wrap canvas,.steel-frame-fallback{
+ display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+}
+.steel-frame-canvas-wrap canvas{visibility:hidden;cursor:grab;z-index:2;touch-action:none}
+.steel-frame-canvas-wrap canvas:active{cursor:grabbing}
+.steel-frame-scene[data-ready="true"] .steel-frame-canvas-wrap canvas{visibility:visible}
+.steel-frame-scene[data-ready="true"] .steel-frame-fallback{display:none}
+.steel-timeline{display:flex;align-items:center;gap:9px;margin:12px 0 3px;
+ font-size:10px;font-variant-numeric:tabular-nums;color:#436f77}
+.steel-timeline>span{white-space:nowrap}
+.steel-timeline input{flex:1;min-width:0;accent-color:#187d92;cursor:pointer}
+.steel-timeline output{min-width:47px;text-align:right;font-weight:850;white-space:nowrap}
+.eng-3d-status{min-height:26px;color:#376573!important;
+ font-variant-numeric:tabular-nums;font-size:10px!important;line-height:1.6!important}
+.steel-comparison-summary{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:7px;margin:11px 0 17px
+}
+.steel-comparison-summary>div{
+ min-width:0;display:flex;flex-direction:column;gap:7px;
+ padding:11px 9px 12px;background:#fffefa;
+ border:1px solid #d0e3dd;border-radius:7px
+}
+.steel-comparison-summary small{font-size:9px;font-weight:760;color:#64838b;line-height:1.3}
+.steel-comparison-summary strong{font-size:clamp(13px,1.2vw,19px);
+ color:#146b7e;font-weight:890;white-space:nowrap;font-variant-numeric:tabular-nums}
+.steel-response-panel{
+ padding:14px 11px 13px;border:1px solid #c8ded9;
+ background:#f9fcf9;border-radius:9px;overflow:hidden
+}
+.steel-response-title{display:flex;justify-content:space-between;align-items:flex-start;gap:9px}
+.steel-response-title strong{font-size:12px;color:#1b5267}
+.steel-response-title span{font-size:9px;color:#5a8187;max-width:47%;text-align:right}
+.steel-response-panel svg{
+ display:block;width:100%;height:auto;max-height:315px;overflow:visible
+}
+.steel-curve-key{display:flex;flex-wrap:wrap;gap:16px;align-items:center;
+ font-size:10px;font-weight:810;color:#466b79;margin-top:8px}
+.steel-curve-key>span{display:flex;align-items:center;gap:7px}
+.steel-curve-key i{display:block;width:20px;height:4px;border-radius:4px}
+.steel-key-bare{background:#286eab}
+.steel-key-damped{background:#c9774b}
+@media(max-width:1100px){
+ .steel-frame-toolbar>label{min-width:135px}
+ .steel-frame-toolbar select{font-size:10px}
+ .steel-frame-toolbar>button{padding:7px 9px}
+ .eng-scene-topline{flex-wrap:wrap}
+}
+@media(max-width:650px){
+ .soil-stress-scene,.steel-frame-scene{padding:10px}
+ .soil-canvas-wrap{aspect-ratio:1.36}
+ .soil-stress-selector select{min-width:0;width:100%;font-size:10px}
+ .soil-stress-selector>label{width:100%}
+ .steel-frame-canvas-wrap{aspect-ratio:1.45;min-height:240px;max-height:none}
+ .steel-frame-toolbar{gap:7px}
+ .steel-frame-toolbar>label{width:100%;flex:1 1 100%;justify-content:space-between}
+ .steel-frame-toolbar select{font-size:10px}
+ .steel-frame-toolbar>button{flex:1;min-height:35px}
+ .steel-response-title{display:block}
+ .steel-response-title span{display:block;text-align:left;margin-top:5px;max-width:100%}
+ .steel-comparison-summary small{font-size:8px}
+ .steel-comparison-summary strong{font-size:12px}
+ .eng-stress-qualification{font-size:9px!important}
+}
+@media(max-width:355px){
+ .steel-comparison-summary{grid-template-columns:1fr 1fr}
+ .steel-comparison-summary>div:nth-child(3){grid-column:1/-1}
+}
+@media(prefers-reduced-motion:reduce){
+ .steel-frame-toolbar>button,.steel-frame-canvas-wrap{transition:none}
+}
+
+/* Real DÈLGHEM sourced pile/damper images in media-kit: keeps actual solver
+   results separate from program screenshots and from unverifiable claims. */
+.media-engineering-section{max-width:1510px;margin:25px auto 83px;
+ padding:35px clamp(20px,3.5vw,54px) 45px;
+ background:linear-gradient(153deg,#f5faf6,#e5f3ed);
+ border:1px solid #c8e0d8;border-radius:14px}
+.media-engineering-section .media-assets-head{margin-bottom:28px}
+.media-engineering-section .media-assets-head h2{
+ font-size:clamp(27px,3.2vw,45px);letter-spacing:-.05em;max-width:24ch
+}
+.media-engineering-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.media-engineering-card{min-width:0;margin:0;
+ background:#fffefa;border:1px solid #d0e2dc;border-radius:10px;overflow:hidden;
+ box-shadow:0 7px 22px #2a657312}
+.media-engineering-card>a{display:block;overflow:hidden;background:#e5f2ed}
+.media-engineering-card>a>img{display:block;width:100%;height:260px;object-fit:contain}
+.media-engineering-card figcaption{padding:13px 16px 17px;
+ display:flex;flex-direction:column;gap:6px}
+.media-engineering-card strong{font-size:14px;font-weight:850;color:#174c5e;line-height:1.4}
+.media-engineering-card span{font-size:11px;line-height:1.6;color:#547680}
+.media-engineering-note{margin:20px 0 17px!important;
+ font-size:11px;line-height:1.75;color:#536d77;max-width:110ch}
+@media(max-width:650px){
+ .media-engineering-section{padding:27px 15px 34px;margin:15px 12px 47px}
+ .media-engineering-grid{grid-template-columns:1fr;gap:10px}
+ .media-engineering-card>a>img{height:190px}
+ .media-engineering-card figcaption{padding:11px 13px 14px}
+ .media-engineering-card strong{font-size:13px}
+ .media-engineering-card span{font-size:10px}
+}
+.eng-response-select{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:10px}
+.eng-response-select>span{font-size:9px;font-weight:870;color:#497782;letter-spacing:.025em}
+.eng-response-select select{background:#edf7f2;border:1px solid #b9d5d0;
+ color:#1b5a70;border-radius:5px;font-size:10px;font-weight:780;padding:7px 9px;
+ cursor:pointer;min-height:33px}
+.eng-response-select select:focus-visible{outline:2px solid #297f91;outline-offset:2px}
+@media(max-width:650px){
+ .eng-response-select{width:100%;justify-content:space-between;margin-bottom:6px}
+ .eng-response-select select{max-width:100%;font-size:10px}
+}
+
+/* True DÈLGHEM native pile t-z/q-z results remain visible outside optional
+   technical details, separately from approximate surrounding-stress colours. */
+.soil-reaction-strip{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:7px;margin:10px 0 12px
+}
+.soil-reaction-strip>div{
+ display:flex;flex-direction:column;justify-content:center;min-width:0;
+ gap:5px;padding:11px 9px;border:1px solid #c9dfda;
+ border-radius:7px;background:#fafff9
+}
+.soil-reaction-strip small{
+ font-size:9px;font-weight:850;letter-spacing:.035em;color:#5d7c86;
+ white-space:nowrap
+}
+.soil-reaction-strip output{
+ display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+ font-size:clamp(12px,1.2vw,18px);font-weight:900;color:#186c7d;
+ font-variant-numeric:tabular-nums
+}
+@media(max-width:650px){
+ .soil-reaction-strip{gap:4px;margin:8px 0 9px}
+ .soil-reaction-strip>div{padding:8px 5px;gap:4px}
+ .soil-reaction-strip small{font-size:7px}
+ .soil-reaction-strip output{font-size:11px}
+}

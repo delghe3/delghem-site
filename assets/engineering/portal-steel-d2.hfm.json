@@ -1,0 +1,163 @@
+{
+  "schema": "hyperfem-1",
+  "title": "DÈLGHEM benchmark: geometria portale S355 HEB260 IPE330 (non verificata)",
+  "units": "kN-m",
+  "materials": [
+    {
+      "id": "M_STEEL",
+      "name": "S355 · Acciaio aperto",
+      "E": 210000000,
+      "nu": 0.3,
+      "G": 80769230.76923077,
+      "weightDensity": 78.5,
+      "catalog": {
+        "key": "OPEN_S355",
+        "grade": "S355",
+        "family": "Acciaio aperto",
+        "source": {
+          "title": "D.M. 17 gennaio 2018 — NTC, tabelle 4.1.I, 4.2.I–II e §11.2.10",
+          "url": "https://www.cni.it/images/eventi/2018/NCT2018.pdf",
+          "edition": "2018"
+        },
+        "units": "resistenze/moduli in MPa; densità kg/m³",
+        "properties": {
+          "fy": 355,
+          "fu": 510,
+          "thicknessMm": 20
+        },
+        "notes": [
+          "Valori nominali NTC tab. 4.2.I/II per prodotto e intervallo di spessore selezionati. Nessuna extrapolazione.",
+          "La classe di resilienza e i requisiti di accettazione non sono determinati dal solo limite di snervamento."
+        ]
+      }
+    }
+  ],
+  "sections": [
+    {
+      "id": "S_HEB260",
+      "name": "HEB260",
+      "A": 0.0118,
+      "Iy": 0.000149,
+      "Iz": 0.0000514,
+      "J": 0.0000012700000000000001
+    },
+    {
+      "id": "S_IPE330",
+      "name": "IPE330",
+      "A": 0.006260000000000001,
+      "Iy": 0.00011800000000000001,
+      "Iz": 0.00000788,
+      "J": 2.8100000000000004e-7
+    }
+  ],
+  "nodes": [
+    {
+      "id": "BL",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "fixed": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "BR",
+      "x": 6,
+      "y": 0,
+      "z": 0,
+      "fixed": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "TL",
+      "x": 0,
+      "y": 0,
+      "z": 4,
+      "fixed": [
+        false,
+        true,
+        false,
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "id": "TR",
+      "x": 6,
+      "y": 0,
+      "z": 4,
+      "fixed": [
+        false,
+        true,
+        false,
+        true,
+        false,
+        true
+      ]
+    }
+  ],
+  "members": [
+    {
+      "id": "COL-L",
+      "n1": "BL",
+      "n2": "TL",
+      "material": "M_STEEL",
+      "type": "beam",
+      "section": "S_HEB260",
+      "orientation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "COL-R",
+      "n1": "BR",
+      "n2": "TR",
+      "material": "M_STEEL",
+      "type": "beam",
+      "section": "S_HEB260",
+      "orientation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "BEAM-TOP",
+      "n1": "TL",
+      "n2": "TR",
+      "material": "M_STEEL",
+      "type": "beam",
+      "section": "S_IPE330",
+      "orientation": [
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "shells": [],
+  "loadCases": [
+    {
+      "id": "CONCEPT",
+      "name": "Geometria telaio per riduzione modale illustrativa",
+      "loads": [],
+      "memberLoads": [],
+      "shellLoads": []
+    }
+  ],
+  "combinations": []
+}

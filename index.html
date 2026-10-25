@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f3ee">
   <title>DELGHE — DÈLGHEM | Native FEM software for Mac and Apple Silicon</title>
-  <meta name="description" content="DELGHE presents DÈLGHEM: Genius command previews, Kratos 2D FEM stress results and D2 pile/damper benchmarks for Apple Silicon. Alpha in development.">
+  <meta name="description" content="DELGHE presents DÈLGHEM: Genius, Kratos 2D FEM, stratified pile stress maps and steel-frame viscous damper comparison for Apple Silicon.">
   <meta name="color-scheme" content="light">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
   <link rel="alternate" type="application/rss+xml" title="DÈLGHEM structural FEM updates" href="/rss.xml">
@@ -19,7 +19,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="DELGHE · DÈLGHEM">
   <meta property="og:title" content="DÈLGHEM | Native FEM software for Mac and Apple Silicon">
-  <meta property="og:description" content="DELGHE presents DÈLGHEM: Genius command previews, Kratos 2D FEM stress results and D2 pile/damper benchmarks for Apple Silicon. Alpha in development.">
+  <meta property="og:description" content="DELGHE presents DÈLGHEM: Genius, Kratos 2D FEM, stratified pile stress maps and steel-frame viscous damper comparison for Apple Silicon.">
   <meta property="og:url" content="https://www.delghe.com/">
   <meta property="og:locale" content="en_GB">
   <meta property="og:locale:alternate" content="it_IT">
@@ -30,13 +30,13 @@
   <meta property="og:image:alt" content="Authentic DÈLGHEM D2 Genius interface and independent solver-derived Kratos QUAD4 FEM stress map">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DÈLGHEM | Native FEM software for Mac and Apple Silicon">
-  <meta name="twitter:description" content="DELGHE presents DÈLGHEM: Genius command previews, Kratos 2D FEM stress results and D2 pile/damper benchmarks for Apple Silicon. Alpha in development.">
+  <meta name="twitter:description" content="DELGHE presents DÈLGHEM: Genius, Kratos 2D FEM, stratified pile stress maps and steel-frame viscous damper comparison for Apple Silicon.">
   <meta name="twitter:image" content="https://www.delghe.com/assets/social/delghem-apple-silicon-en.png">
   <meta name="twitter:image:alt" content="Authentic DÈLGHEM D2 Genius interface and independent solver-derived Kratos QUAD4 FEM stress map">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.delghe.com/#organization","name":"DELGHE","url":"https://www.delghe.com/","brand":{"@type":"Brand","name":"DÈLGHEM"}},{"@type":"WebSite","@id":"https://www.delghe.com/#website","name":"DÈLGHEM","url":"https://www.delghe.com/","inLanguage":["it","en"],"about":{"@id":"https://www.delghe.com/#software"},"publisher":{"@id":"https://www.delghe.com/#organization"},"description":"DELGHE presents DÈLGHEM: Genius command previews, Kratos 2D FEM stress results and D2 pile/damper benchmarks for Apple Silicon. Alpha in development."},{"@type":"SoftwareApplication","@id":"https://www.delghe.com/#software","name":"DÈLGHEM","url":"https://www.delghe.com/","description":"DELGHE presents DÈLGHEM: Genius command previews, Kratos 2D FEM stress results and D2 pile/damper benchmarks for Apple Silicon. Alpha in development.","applicationCategory":"ScienceApplication","operatingSystem":"macOS","processorRequirements":"Apple Silicon","inLanguage":["en","it"],"creativeWorkStatus":"In development","screenshot":"https://www.delghe.com/assets/app-model.png","author":{"@type":"Person","name":"DELGHE"},"publisher":{"@id":"https://www.delghe.com/#organization"},"brand":{"@type":"Brand","name":"DELGHE"},"alternateName":["DELGHE FEM","DÈLGHEM","DELGHEM"]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.delghe.com/#organization","name":"DELGHE","url":"https://www.delghe.com/","brand":{"@type":"Brand","name":"DÈLGHEM"}},{"@type":"WebSite","@id":"https://www.delghe.com/#website","name":"DÈLGHEM","url":"https://www.delghe.com/","inLanguage":["it","en"],"about":{"@id":"https://www.delghe.com/#software"},"publisher":{"@id":"https://www.delghe.com/#organization"},"description":"DELGHE presents DÈLGHEM: Genius, Kratos 2D FEM, stratified pile stress maps and steel-frame viscous damper comparison for Apple Silicon."},{"@type":"SoftwareApplication","@id":"https://www.delghe.com/#software","name":"DÈLGHEM","url":"https://www.delghe.com/","description":"DELGHE presents DÈLGHEM: Genius, Kratos 2D FEM, stratified pile stress maps and steel-frame viscous damper comparison for Apple Silicon.","applicationCategory":"ScienceApplication","operatingSystem":"macOS","processorRequirements":"Apple Silicon","inLanguage":["en","it"],"creativeWorkStatus":"In development","screenshot":"https://www.delghe.com/assets/app-model.png","author":{"@type":"Person","name":"DELGHE"},"publisher":{"@id":"https://www.delghe.com/#organization"},"brand":{"@type":"Brand","name":"DELGHE"},"alternateName":["DELGHE FEM","DÈLGHEM","DELGHEM"]}]}</script>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="./assets/Manrope.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=20261025-showcase9">
+  <link rel="stylesheet" href="./style.css?v=20261025-showcase11">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -276,37 +276,86 @@
 <section class="engineering-benchmarks chapter" id="engineering-benchmarks" aria-labelledby="engineering-proof-title">
  <header class="eng-proof-heading">
   <div><span class="eyebrow">FONDAZIONI / GEOTECNICA / DISPOSITIVI ANTISISMICI</span>
-    <h2 id="engineering-proof-title">Soil, piles and viscous dampers. Source-backed evidence.</h2>
-    <p>Separate solved nonlinear pile responses from illustrated damper laws. Every chart states what its numerical model can—and cannot—establish.</p></div>
+    <h2 id="engineering-proof-title">A pile in layered soil. Steel frame with and without viscous damping.</h2>
+    <p>Explore actual DÈLGHEM D2 pile reactions and two solved reduced-order steel-frame histories. The layered stress influence is approximate, and the device is represented by equivalent linear damping.</p></div>
   <a href="/en/mac-fem-technology/" class="eng-native-link">Explore Mac-native FEM ↗</a>
  </header>
  <div class="eng-proof-grid">
   <article class="eng-graph-card eng-pile-card">
    <div class="eng-proof-subhead"><span>01 / PALI, TERRENO E CEDIMENTI</span><span>D2 / t–z + q–z</span></div>
-   <h3>Ø600 mm piles: load–settlement response</h3>
+   <h3>Pile Ø600 in layered soil: forces and stress influence</h3>
    <p>Compare two assumed layered soil profiles: actual native D2 nonlinear t–z/q–z pile response with computed shaft reaction, mobilized toe force and head settlement.</p>
    <label class="eng-select">SOIL <select id="pile-soil-select"><option value="layered-sand">Layered sand</option><option value="layered-clay">Layered clay</option></select></label>
-   <div class="eng-graph-visual"><svg id="pile-curve" role="img" aria-label="Real pile head load-settlement curve" viewBox="0 0 900 475"></svg>
-      <img class="eng-graph-fallback" src="./assets/engineering/pile-curves.webp" width="1240" height="660" loading="lazy" alt="Real DÈLGHEM numerical axial pile response" decoding="async"></div>
+   <div class="soil-stress-scene" id="soil-stress-scene">
+  <div class="eng-scene-topline"><strong>LAYERED SOIL SECTION / STRESS</strong><span id="soil-profile-depth">Ø0,60 m · L15 m · 2 STRATI + ESTENSIONE</span></div>
+  <div class="soil-stress-selector">
+    <label for="soil-stress-field">FIELD</label>
+    <select id="soil-stress-field">
+      <option value="influence">Δσz · approximate influence</option>
+      <option value="lithostatic">σ′v,0 · exact self-weight stress</option>
+    </select>
+  </div>
+  <div class="soil-canvas-wrap">
+    <canvas id="soil-stress-canvas" width="960" height="640" tabindex="0" aria-label="Layered soil section with Ø600 mm pile, load transfer and stress influence map"></canvas>
+    <img class="soil-scene-fallback" src="./assets/engineering/pile-stratigraphy-en.webp" loading="lazy" width="1100" height="720" decoding="async" alt="Real benchmark pile stress-section preview">
+  </div>
+  <div class="soil-stress-legend" id="soil-stress-legend" aria-live="polite">
+   <strong>0 kPa</strong><i aria-hidden="true"></i><strong>— kPa</strong>
+  </div>
+  <div class="soil-reaction-strip" role="group" aria-label="DÈLGHEM D2 calculated pile shaft, toe and head settlement"><div><small>SHAFT t–z</small><output id="soil-shaft-force" aria-live="polite">—</output></div><div><small>TOE q–z</small><output id="soil-tip-force" aria-live="polite">—</output></div><div><small>SETTLEMENT</small><output id="soil-head-settlement" aria-live="polite">—</output></div></div>
+    <p class="soil-stress-probe" id="soil-stress-probe" aria-live="polite">Move the pointer over the section to inspect depth and stress.</p>
+  <p class="eng-stress-qualification">Δσz is an explicitly approximate elastic stress-influence proxy from real D2 pile shaft/toe reactions, NOT a soil continuum FEM stress field. Vertical arrows represent soilward load transfer through shaft friction. σ′v,0 is the exact self-weight integral for the assumed stratigraphy. Bottom layer is an illustrative extension below the pile toe. The colour map uses a nonlinear gamma 0.35 display scale to reveal low-intensity gradients; the numerical values remain unchanged.</p>
+</div>
+   <details class="eng-technical-details" id="eng-pile-load-details"><summary>Native D2 t–z/q–z pile load–settlement curve<span aria-hidden="true">+</span></summary><div class="eng-graph-visual"><svg id="pile-curve" role="img" aria-label="Real pile head load-settlement curve" viewBox="0 0 900 475"></svg>
+      <img class="eng-graph-fallback" src="./assets/engineering/pile-curves.webp" width="1240" height="660" loading="lazy" alt="Real DÈLGHEM numerical axial pile response" decoding="async"></div></details>
    <div class="eng-mini-values"><div><span>SETTLEMENT AT 700 kN</span><strong id="pile-settlement">—</strong></div>
      <div><span>TOE REACTION</span><strong id="pile-tip-load">—</strong></div><div><span>SHAFT REACTION</span><strong id="pile-shaft-load">—</strong></div></div>
    <p class="eng-proof-note">L = 15 m, Ø = 0.60 m, E = 30 GPa. Assumed soil parameters; not a completed NTC pile bearing-capacity check.</p>
   </article>
   <article class="eng-graph-card eng-device-card">
    <div class="eng-proof-subhead"><span>02 / DISSIPATORI VISCOSI</span><span>D2 / C · |v|<sup>α</sup></span></div>
-   <h3>Force, velocity and energy dissipation</h3>
-   <p>Switch α to compare D2-validated viscous constitutive laws. These analytical device-only diagrams are not dynamic simulations of a building.</p>
-   <label class="eng-select">ESONENTE α <select id="damper-alpha-select"><option value="0.5">Non lineare · α = 0,5</option><option value="1">Lineare · α = 1</option></select></label>
-   <div class="eng-device-charts">
+   <h3>3D steel portal: with and without seismic damping</h3>
+   <p>A real numerical time-history comparison from the D2 reduced-order Newmark engine. The visible damper is a projected equivalent device; the optional detailed charts distinguish viscous α=0.5/1 constitutive laws.</p>
+
+   <div class="steel-frame-scene" id="steel-frame-scene">
+ <div class="eng-scene-topline"><strong>STEEL PORTAL FRAME · RESPONSE WITH/WITHOUT DEVICE</strong><span>D2 · NEWMARK / 1 GDL RIDOTTO</span></div>
+ <div class="steel-frame-toolbar">
+  <label>CONFIGURATION
+   <select id="steel-frame-toggle"><option value="with">With viscous damper</option><option value="without">Without damper</option></select>
+  </label>
+  <button type="button" id="steel-frame-camera">Reset camera</button>
+  <button type="button" id="steel-frame-play" aria-pressed="false">Play</button>
+ </div>
+ <div class="steel-frame-canvas-wrap">
+  <canvas id="steel-damper-canvas" width="1060" height="550" tabindex="0" role="img" aria-label="3D steel portal frame with visible diagonal viscous cylinder and magnified structural roof drift"></canvas>
+  <img class="steel-frame-fallback" src="./assets/engineering/steel-viscous-frame-en.webp" width="1280" height="760" loading="lazy" decoding="async" alt="Source-backed steel portal comparative dynamic response with a projected equivalent viscous device">
+ </div>
+ <div class="steel-timeline"><span>0,0 s</span><input type="range" id="steel-frame-time" min="0" max="1800" step="1" value="0" aria-label="Frame response time"><output id="steel-frame-time-label">0,00 s</output></div>
+ <p id="steel-frame-description" class="eng-3d-status">Drag to orbit. Visually displayed deformations are intentionally magnified.</p>
+ <div class="steel-comparison-summary">
+  <div><small>PEAK DRIFT REDUCTION</small><strong id="steel-drift-reduction">—</strong></div>
+  <div><small>DAMPER ENERGY</small><strong id="steel-damper-energy">—</strong></div>
+  <div><small id="steel-peak-drift-label">DRIFT WITH DEVICE</small><strong id="steel-peak-drift">—</strong></div>
+ </div>
+ <div class="steel-response-panel">
+  <div class="steel-response-title"><label class="eng-response-select" for="steel-frame-metric"><span>DYNAMIC RESPONSE</span><select id="steel-frame-metric"><option value="displacement">Roof displacement</option><option value="acceleration">Roof absolute acceleration</option></select></label><span>Comparison of two real D2 numerical time-history solutions</span></div>
+  <svg id="steel-frame-response" viewBox="0 0 900 390" role="img" aria-label="Roof displacement histories solved by DÈLGHEM D2 equivalent MDOF engine"></svg>
+  <div class="steel-curve-key"><span><i class="steel-key-bare"></i>No device</span><span><i class="steel-key-damped"></i>With device</span></div>
+ </div>
+ <p class="eng-stress-qualification">S355 one-bay 6×4 m steel portal (HEB260/IPE330): stiffness from 2D Euler–Bernoulli frame matrices; two real numerical D2 MDOF one-DOF time histories. The 3D diagonal/cylinder illustrates the viscous element. Linear damper α=1 represented by projected equivalent C; no native Kratos separate-node damper connection is claimed. Analytical—not recorded—input motion. Not an NTC seismic check.</p>
+</div>
+   <details class="eng-technical-details" id="eng-device-law-details"><summary>Damper constitutive F = C · |v|^α and force–displacement loop<span aria-hidden="true">+</span></summary>
+   <label class="eng-select">ESONENTE α <select id="damper-alpha-select"><option value="0.5">Non lineare · α = 0,5</option><option value="1">Lineare · α = 1</option></select></label><div class="eng-device-charts">
     <div class="eng-graph-visual"><span class="eng-chart-name">FORCE–VELOCITY</span><svg id="damper-velocity-curve" viewBox="0 0 900 475" role="img" aria-label="Viscous damper force-velocity law"></svg><img class="eng-graph-fallback" src="./assets/engineering/damper-velocity.webp" width="1280" height="680" loading="lazy" decoding="async" alt="DÈLGHEM source-validated viscous force-velocity diagram"></div>
     <div class="eng-graph-visual"><span class="eng-chart-name">CONSTITUTIVE LOOP</span><svg id="damper-loop-curve" viewBox="0 0 900 475" role="img" aria-label="Viscous damper force-displacement loop"></svg><img class="eng-graph-fallback" src="./assets/engineering/damper-cycle.webp" width="1280" height="680" loading="lazy" decoding="async" alt="Viscous device constitutive displacement-force loop, not a building FEM response"></div>
    </div>
    <div class="eng-mini-values"><div><span>PEAK FORCE</span><strong id="damper-max-force">—</strong></div>
       <div><span>ENERGY PER CYCLE</span><strong id="damper-energy">—</strong></div></div>
    <p class="eng-proof-note">Constitutive relation F = C · sgn(v) · |v|^α. Example parameters C = 180, amplitude 28 mm, frequency 1.25 Hz. Not a manufacturer-qualified device test.</p>
-  </article>
+  </details>
+ </article>
  </div>
- <div class="eng-proof-limit"><p><strong>Real DÈLGHEM D2 numerical pile results</strong> for two t–z/q–z models; device loops only represent source-validated constitutive laws. No certified geotechnical or global seismic safety verification.</p><span>NUMERICAL SCOPE / NOT CERTIFIED DESIGN</span></div>
+ <div class="eng-proof-limit"><p>Native D2 t–z/q–z pile reactions and both reduced-order steel-frame histories are numerical results. The soil influence map is an explicitly approximate reconstruction; the viscous diagonal is equivalent damping, not a fully modelled spatial Kratos device. No site-specific geotechnical or NTC seismic safety verification has been performed.</p><span>NUMERICAL SCOPE / NOT CERTIFIED DESIGN</span></div>
  <div class="eng-proof-screen"><img src="./assets/app-foundation-real.png" width="1200" height="700" loading="lazy" decoding="async" alt="Actual DÈLGHEM native pile cap screen"><p>Authentic application screenshot · separate from the two numerical benchmark models above.</p></div>
 </section>
 
@@ -442,14 +491,15 @@
   <dialog id="image-dialog" aria-label="Enlarged screenshot" data-i18n-aria="imageDialog"><button id="close-dialog" class="icon-button" aria-label="Close screenshot" data-i18n-aria="closeImage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button><img id="dialog-image" alt="Schermata DÈLGHEM"><p id="dialog-caption"></p></dialog>
   <noscript><p class="noscript-note" data-i18n="noScript">Italian and English pages are available without JavaScript. Enable it to explore all screenshots and use the animations.</p></noscript>
 <dialog id="photo-dialog" aria-label="Real application screenshot"><button id="photo-dialog-close" class="photo-dialog-close" type="button" aria-label="Close photo">✕</button><img id="photo-image" alt="Schermata DÈLGHEM"><p id="photo-dialog-caption"></p></dialog>
-  <script type="module" src="./app.js?v=20261025-showcase9"></script>
-  <script type="module" src="./genius-demo.js?v=20261025-showcase9"></script>
-  <script type="module" src="./fem-lab.js?v=20261025-showcase9"></script>
+  <script type="module" src="./app.js?v=20261025-showcase11"></script>
+  <script type="module" src="./genius-demo.js?v=20261025-showcase11"></script>
+  <script type="module" src="./fem-lab.js?v=20261025-showcase11"></script>
   <script type="module" src="./social.js"></script>
 <script defer src="./visitor-counter.js"></script>
 <script defer src="./support-actions.js"></script>
 <script defer src="./contact-actions.js"></script>
-<script type="module" src="./surface-studio.js?v=20261025-showcase9"></script>
-<script type="module" src="./engineering-benchmarks.js?v=20261025-showcase9"></script>
+<script type="module" src="./surface-studio.js?v=20261025-showcase11"></script>
+<script type="module" src="./engineering-benchmarks.js?v=20261025-showcase11"></script>
+<script type="module" src="./engineering-simulations.js?v=20261025-showcase11"></script>
 </body>
 </html>

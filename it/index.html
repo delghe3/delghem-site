@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f3ee">
   <title>DELGHE — DÈLGHEM | Software FEM nativo per Mac Apple Silicon</title>
-  <meta name="description" content="DELGHE presenta DÈLGHEM: Genius a comandi, risultati FEM Kratos 2D e benchmark pali/dissipatori per Apple Silicon. Versione alpha in sviluppo.">
+  <meta name="description" content="DELGHE presenta DÈLGHEM: Genius, Kratos FEM 2D, palo in stratigrafia e telaio con e senza dissipatore viscoso per Apple Silicon.">
   <meta name="color-scheme" content="light">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
   <link rel="alternate" type="application/rss+xml" title="DÈLGHEM aggiornamenti FEM" href="/it/rss.xml">
@@ -19,7 +19,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="DELGHE · DÈLGHEM">
   <meta property="og:title" content="DÈLGHEM | Software FEM nativo per Mac Apple Silicon">
-  <meta property="og:description" content="DELGHE presenta DÈLGHEM: Genius a comandi, risultati FEM Kratos 2D e benchmark pali/dissipatori per Apple Silicon. Versione alpha in sviluppo.">
+  <meta property="og:description" content="DELGHE presenta DÈLGHEM: Genius, Kratos FEM 2D, palo in stratigrafia e telaio con e senza dissipatore viscoso per Apple Silicon.">
   <meta property="og:url" content="https://www.delghe.com/it/">
   <meta property="og:locale" content="it_IT">
   <meta property="og:locale:alternate" content="en_GB">
@@ -30,13 +30,13 @@
   <meta property="og:image:alt" content="Schermata autentica del Genius Assistant DÈLGHEM D2 e mappa tensionale QUAD4 realmente risolta con Kratos">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DÈLGHEM | Software FEM nativo per Mac Apple Silicon">
-  <meta name="twitter:description" content="DELGHE presenta DÈLGHEM: Genius a comandi, risultati FEM Kratos 2D e benchmark pali/dissipatori per Apple Silicon. Versione alpha in sviluppo.">
+  <meta name="twitter:description" content="DELGHE presenta DÈLGHEM: Genius, Kratos FEM 2D, palo in stratigrafia e telaio con e senza dissipatore viscoso per Apple Silicon.">
   <meta name="twitter:image" content="https://www.delghe.com/assets/social/delghem-apple-silicon-it.png">
   <meta name="twitter:image:alt" content="Schermata autentica del Genius Assistant DÈLGHEM D2 e mappa tensionale QUAD4 realmente risolta con Kratos">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.delghe.com/#organization","name":"DELGHE","url":"https://www.delghe.com/","brand":{"@type":"Brand","name":"DÈLGHEM"}},{"@type":"WebSite","@id":"https://www.delghe.com/#website","name":"DÈLGHEM","url":"https://www.delghe.com/","inLanguage":["en","it"],"about":{"@id":"https://www.delghe.com/#software"},"publisher":{"@id":"https://www.delghe.com/#organization"},"description":"DELGHE presenta DÈLGHEM: Genius a comandi, risultati FEM Kratos 2D e benchmark pali/dissipatori per Apple Silicon. Versione alpha in sviluppo."},{"@type":"SoftwareApplication","@id":"https://www.delghe.com/#software","name":"DÈLGHEM","url":"https://www.delghe.com/","description":"DELGHE presenta DÈLGHEM: Genius a comandi, risultati FEM Kratos 2D e benchmark pali/dissipatori per Apple Silicon. Versione alpha in sviluppo.","applicationCategory":"ScienceApplication","operatingSystem":"macOS","processorRequirements":"Apple Silicon","inLanguage":["en","it"],"creativeWorkStatus":"In sviluppo","screenshot":"https://www.delghe.com/assets/app-model.png","author":{"@type":"Person","name":"DELGHE"},"publisher":{"@id":"https://www.delghe.com/#organization"},"brand":{"@type":"Brand","name":"DELGHE"},"alternateName":["DELGHE FEM","DÈLGHEM","DELGHEM"]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.delghe.com/#organization","name":"DELGHE","url":"https://www.delghe.com/","brand":{"@type":"Brand","name":"DÈLGHEM"}},{"@type":"WebSite","@id":"https://www.delghe.com/#website","name":"DÈLGHEM","url":"https://www.delghe.com/","inLanguage":["en","it"],"about":{"@id":"https://www.delghe.com/#software"},"publisher":{"@id":"https://www.delghe.com/#organization"},"description":"DELGHE presenta DÈLGHEM: Genius, Kratos FEM 2D, palo in stratigrafia e telaio con e senza dissipatore viscoso per Apple Silicon."},{"@type":"SoftwareApplication","@id":"https://www.delghe.com/#software","name":"DÈLGHEM","url":"https://www.delghe.com/","description":"DELGHE presenta DÈLGHEM: Genius, Kratos FEM 2D, palo in stratigrafia e telaio con e senza dissipatore viscoso per Apple Silicon.","applicationCategory":"ScienceApplication","operatingSystem":"macOS","processorRequirements":"Apple Silicon","inLanguage":["en","it"],"creativeWorkStatus":"In sviluppo","screenshot":"https://www.delghe.com/assets/app-model.png","author":{"@type":"Person","name":"DELGHE"},"publisher":{"@id":"https://www.delghe.com/#organization"},"brand":{"@type":"Brand","name":"DELGHE"},"alternateName":["DELGHE FEM","DÈLGHEM","DELGHEM"]}]}</script>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../assets/Manrope.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="../style.css?v=20261025-showcase9">
+  <link rel="stylesheet" href="../style.css?v=20261025-showcase11">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Vai al contenuto</a>
@@ -276,37 +276,86 @@
 <section class="engineering-benchmarks chapter" id="engineering-benchmarks" aria-labelledby="engineering-proof-title">
  <header class="eng-proof-heading">
   <div><span class="eyebrow">FONDAZIONI / GEOTECNICA / DISPOSITIVI ANTISISMICI</span>
-    <h2 id="engineering-proof-title">Dal terreno ai dissipatori. Con modelli verificabili.</h2>
-    <p>Pali e interazione terreno–struttura non si riducono a un’immagine. Questi grafici distinguono ciò che DÈLGHEM calcola da ciò che resta un’ipotesi di progetto.</p></div>
+    <h2 id="engineering-proof-title">Un palo nella stratigrafia. Telaio con e senza dissipatore.</h2>
+    <p>Esplora reazioni del palo realmente calcolate in D2 e due storie dinamiche di un telaio ridotto. La mappa di influenza è approssimata e il dispositivo entra come smorzamento viscoso equivalente.</p></div>
   <a href="/tecnologia-fem-mac/" class="eng-native-link">Tecnologia FEM per Mac ↗</a>
  </header>
  <div class="eng-proof-grid">
   <article class="eng-graph-card eng-pile-card">
    <div class="eng-proof-subhead"><span>01 / PALI, TERRENO E CEDIMENTI</span><span>D2 / t–z + q–z</span></div>
-   <h3>Pali Ø60: risposta carico–cedimento</h3>
+   <h3>Palo Ø60 nella stratigrafia: forze e tensioni</h3>
    <p>Confronta due profili ipotetici di terreno stratificato: calcolo assiale non lineare t–z/q–z, reazione di fusto, resistenza di punta mobilitata e cedimento di testa.</p>
    <label class="eng-select">TERRENO <select id="pile-soil-select"><option value="layered-sand">Sabbia stratificata</option><option value="layered-clay">Argilla stratificata</option></select></label>
-   <div class="eng-graph-visual"><svg id="pile-curve" role="img" aria-label="Curva carico cedimento palo DÈLGHEM" viewBox="0 0 900 475"></svg>
-      <img class="eng-graph-fallback" src="../assets/engineering/pile-curves.webp" width="1240" height="660" loading="lazy" alt="Risultato vero DÈLGHEM: curva assiale di un palo in terreno stratificato" decoding="async"></div>
+   <div class="soil-stress-scene" id="soil-stress-scene">
+  <div class="eng-scene-topline"><strong>SEZIONE STRATIGRAFICA / TENSIONI</strong><span id="soil-profile-depth">Ø0,60 m · L15 m · 2 STRATI + ESTENSIONE</span></div>
+  <div class="soil-stress-selector">
+    <label for="soil-stress-field">MAPPA</label>
+    <select id="soil-stress-field">
+      <option value="influence">Δσz · influenza approssimata</option>
+      <option value="lithostatic">σ′v,0 · geostatica esatta</option>
+    </select>
+  </div>
+  <div class="soil-canvas-wrap">
+    <canvas id="soil-stress-canvas" width="960" height="640" tabindex="0" aria-label="Sezione stratigrafica con palo Ø60, due strati, mappa tensiva e reazioni t-z q-z"></canvas>
+    <img class="soil-scene-fallback" src="../assets/engineering/pile-stratigraphy-it.webp" loading="lazy" width="1100" height="720" decoding="async" alt="Anteprima reale della mappa stratigrafica del palo">
+  </div>
+  <div class="soil-stress-legend" id="soil-stress-legend" aria-live="polite">
+   <strong>0 kPa</strong><i aria-hidden="true"></i><strong>— kPa</strong>
+  </div>
+  <div class="soil-reaction-strip" role="group" aria-label="Risultati di calcolo del palo DÈLGHEM D2: fusto, punta e cedimento"><div><small>FUSTO t–z</small><output id="soil-shaft-force" aria-live="polite">—</output></div><div><small>PUNTA q–z</small><output id="soil-tip-force" aria-live="polite">—</output></div><div><small>CEDIMENTO</small><output id="soil-head-settlement" aria-live="polite">—</output></div></div>
+    <p class="soil-stress-probe" id="soil-stress-probe" aria-live="polite">Sposta il mouse sulla sezione per leggere tensione e profondità.</p>
+  <p class="eng-stress-qualification">Δσz = ricostruzione analitica semplificata dalle reazioni effettive D2 di fusto e punta; NON campo FEM continuo del terreno. Frecce verticali: trasferimento di forza al terreno per attrito laterale. σ′v,0 geostatico: integrazione esatta dei pesi specifici assunti. Il terzo strato è un’estensione ipotetica oltre la punta. Scala cromatica non lineare (γ = 0,35) per evidenziare i gradienti deboli; i valori numerici restano invariati.</p>
+</div>
+   <details class="eng-technical-details" id="eng-pile-load-details"><summary>Curva carico–cedimento assiale t–z/q–z (calcolo D2)<span aria-hidden="true">+</span></summary><div class="eng-graph-visual"><svg id="pile-curve" role="img" aria-label="Curva carico cedimento palo DÈLGHEM" viewBox="0 0 900 475"></svg>
+      <img class="eng-graph-fallback" src="../assets/engineering/pile-curves.webp" width="1240" height="660" loading="lazy" alt="Risultato vero DÈLGHEM: curva assiale di un palo in terreno stratificato" decoding="async"></div></details>
    <div class="eng-mini-values"><div><span>CEDIMENTO A 700 kN</span><strong id="pile-settlement">—</strong></div>
      <div><span>PUNTA</span><strong id="pile-tip-load">—</strong></div><div><span>FUSTO</span><strong id="pile-shaft-load">—</strong></div></div>
    <p class="eng-proof-note">Palo L = 15 m, Ø = 0,60 m, E = 30 GPa; parametri del terreno ipotetici, non verifiche di portanza NTC.</p>
   </article>
   <article class="eng-graph-card eng-device-card">
    <div class="eng-proof-subhead"><span>02 / DISSIPATORI VISCOSI</span><span>D2 / C · |v|<sup>α</sup></span></div>
-   <h3>Forza, velocità e dissipazione</h3>
-   <p>Varia l’esponente α per confrontare leggi viscose validate come input D2. I grafici sono un esempio analitico di dispositivo, non la risposta calcolata di un edificio.</p>
-   <label class="eng-select">ESONENTE α <select id="damper-alpha-select"><option value="0.5">Non lineare · α = 0,5</option><option value="1">Lineare · α = 1</option></select></label>
-   <div class="eng-device-charts">
+   <h3>Telaio 3D in acciaio: con e senza dissipatore</h3>
+   <p>Confronto di due risposte temporali numeriche D2 con Newmark a 1 GDL. La diagonale mostra il dispositivo equivalente; nell’approfondimento sono disponibili le leggi costitutive α=0,5/1.</p>
+
+   <div class="steel-frame-scene" id="steel-frame-scene">
+ <div class="eng-scene-topline"><strong>TELAIO IN ACCIAIO · RISPOSTA CON/SENZA DISPOSITIVO</strong><span>D2 · NEWMARK / 1 GDL RIDOTTO</span></div>
+ <div class="steel-frame-toolbar">
+  <label>CONFIGURAZIONE
+   <select id="steel-frame-toggle"><option value="with">Con dissipatore viscoso</option><option value="without">Senza dissipatore</option></select>
+  </label>
+  <button type="button" id="steel-frame-camera">Vista ISO</button>
+  <button type="button" id="steel-frame-play" aria-pressed="false">Riproduci</button>
+ </div>
+ <div class="steel-frame-canvas-wrap">
+  <canvas id="steel-damper-canvas" width="1060" height="550" tabindex="0" role="img" aria-label="Telaio tridimensionale in acciaio con diagonale e cilindro dissipatore viscoso, deformata amplificata"></canvas>
+  <img class="steel-frame-fallback" src="../assets/engineering/steel-viscous-frame-it.webp" width="1280" height="760" loading="lazy" decoding="async" alt="Telaio dimostrativo con dispositivo viscoso modellato come contributo equivalente al piano">
+ </div>
+ <div class="steel-timeline"><span>0,0 s</span><input type="range" id="steel-frame-time" min="0" max="1800" step="1" value="0" aria-label="Tempo della risposta strutturale"><output id="steel-frame-time-label">0,00 s</output></div>
+ <p id="steel-frame-description" class="eng-3d-status">Trascina per ruotare il telaio. La deformata visualizzata è amplificata rispetto agli spostamenti numerici.</p>
+ <div class="steel-comparison-summary">
+  <div><small>RIDUZIONE SPOSTAMENTO MAX</small><strong id="steel-drift-reduction">—</strong></div>
+  <div><small>ENERGIA DISPOSITIVO</small><strong id="steel-damper-energy">—</strong></div>
+  <div><small id="steel-peak-drift-label">DRIFT CON DISPOSITIVO</small><strong id="steel-peak-drift">—</strong></div>
+ </div>
+ <div class="steel-response-panel">
+  <div class="steel-response-title"><label class="eng-response-select" for="steel-frame-metric"><span>RISULTATO DINAMICO</span><select id="steel-frame-metric"><option value="displacement">Spostamento della copertura</option><option value="acceleration">Accelerazione assoluta copertura</option></select></label><span>Confronto di due soluzioni dinamiche D2</span></div>
+  <svg id="steel-frame-response" viewBox="0 0 900 390" role="img" aria-label="Storia temporale dello spostamento al tetto con e senza dissipatore, calcolata con il modulo MDOF DÈLGHEM"></svg>
+  <div class="steel-curve-key"><span><i class="steel-key-bare"></i>Senza dispositivo</span><span><i class="steel-key-damped"></i>Con dissipatore</span></div>
+ </div>
+ <p class="eng-stress-qualification">Telaio S355 a una campata 6×4 m, HEB260/IPE330: rigidezza derivata da asta Euler–Bernoulli 2D. Due soluzioni reali del modulo dinamico D2 ridotto a 1 GDL; diagonale e cilindro sono visualizzazione spaziale. Smorzatore α=1 integrato come C equivalente proiettato; il motore Kratos non risolve qui un dispositivo tra nodi spazialmente separati. Accelerogramma analitico, non terremoto registrato. Nessuna verifica sismica NTC.</p>
+</div>
+   <details class="eng-technical-details" id="eng-device-law-details"><summary>Legge F = C · |v|^α e ciclo costitutivo del dispositivo<span aria-hidden="true">+</span></summary>
+   <label class="eng-select">ESONENTE α <select id="damper-alpha-select"><option value="0.5">Non lineare · α = 0,5</option><option value="1">Lineare · α = 1</option></select></label><div class="eng-device-charts">
     <div class="eng-graph-visual"><span class="eng-chart-name">FORZA–VELOCITÀ</span><svg id="damper-velocity-curve" viewBox="0 0 900 475" role="img" aria-label="Curva viscosa analitica forza velocità"></svg><img class="eng-graph-fallback" src="../assets/engineering/damper-velocity.webp" width="1280" height="680" loading="lazy" decoding="async" alt="Legge viscosa forza velocità da parametri DÈLGHEM D2"></div>
     <div class="eng-graph-visual"><span class="eng-chart-name">CICLO COSTITUTIVO</span><svg id="damper-loop-curve" viewBox="0 0 900 475" role="img" aria-label="Ciclo forza spostamento dissipatore viscoso"></svg><img class="eng-graph-fallback" src="../assets/engineering/damper-cycle.webp" width="1280" height="680" loading="lazy" decoding="async" alt="Ciclo costitutivo dissipatore viscoso, non risposta FEM edificio"></div>
    </div>
    <div class="eng-mini-values"><div><span>FORZA MASSIMA</span><strong id="damper-max-force">—</strong></div>
       <div><span>ENERGIA PER CICLO</span><strong id="damper-energy">—</strong></div></div>
    <p class="eng-proof-note">Legge F = C · sgn(v) · |v|^α. Parametri illustrativi: C = 180, ampiezza 28 mm, frequenza 1,25 Hz. Non è un test qualificato del costruttore.</p>
-  </article>
+  </details>
+ </article>
  </div>
- <div class="eng-proof-limit"><p><strong>Numeri provenienti da calcoli DÈLGHEM D2</strong> per due pali t–z/q–z; i cicli dei dissipatori mostrano soltanto la legge costitutiva con parametri validati. Nessuna verifica geotecnica o sismica globale certificata.</p><span>NUMERICAL SCOPE / NOT CERTIFIED DESIGN</span></div>
+ <div class="eng-proof-limit"><p>Le reazioni del palo t–z/q–z e le due storie dinamiche del telaio ridotto sono risultati numerici D2. La mappa di influenza nel terreno è una ricostruzione approssimata; il dissipatore in diagonale è uno smorzamento equivalente, non un elemento spaziale Kratos completamente modellato. Nessuna verifica geotecnica o sismica NTC completa.</p><span>NUMERICAL SCOPE / NOT CERTIFIED DESIGN</span></div>
  <div class="eng-proof-screen"><img src="../assets/app-foundation-real.png" width="1200" height="700" loading="lazy" decoding="async" alt="Schermata originale di modello cappello pali DÈLGHEM"><p>Schermata autentica dell’applicazione · distinta dai due benchmark numerici soprastanti.</p></div>
 </section>
 
@@ -442,14 +491,15 @@
   <dialog id="image-dialog" aria-label="Schermata ingrandita" data-i18n-aria="imageDialog"><button id="close-dialog" class="icon-button" aria-label="Chiudi schermata" data-i18n-aria="closeImage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button><img id="dialog-image" alt="Schermata DÈLGHEM"><p id="dialog-caption"></p></dialog>
   <noscript><p class="noscript-note" data-i18n="noScript">Le pagine in italiano e inglese sono disponibili anche senza JavaScript. Abilitalo per esplorare tutte le schermate e attivare le animazioni.</p></noscript>
 <dialog id="photo-dialog" aria-label="Schermata reale dell’applicazione"><button id="photo-dialog-close" class="photo-dialog-close" type="button" aria-label="Chiudi immagine">✕</button><img id="photo-image" alt="Schermata DÈLGHEM"><p id="photo-dialog-caption"></p></dialog>
-  <script type="module" src="../app.js?v=20261025-showcase9"></script>
-  <script type="module" src="../genius-demo.js?v=20261025-showcase9"></script>
-  <script type="module" src="../fem-lab.js?v=20261025-showcase9"></script>
+  <script type="module" src="../app.js?v=20261025-showcase11"></script>
+  <script type="module" src="../genius-demo.js?v=20261025-showcase11"></script>
+  <script type="module" src="../fem-lab.js?v=20261025-showcase11"></script>
   <script type="module" src="../social.js"></script>
 <script defer src="../visitor-counter.js"></script>
 <script defer src="../support-actions.js"></script>
 <script defer src="../contact-actions.js"></script>
-<script type="module" src="../surface-studio.js?v=20261025-showcase9"></script>
-<script type="module" src="../engineering-benchmarks.js?v=20261025-showcase9"></script>
+<script type="module" src="../surface-studio.js?v=20261025-showcase11"></script>
+<script type="module" src="../engineering-benchmarks.js?v=20261025-showcase11"></script>
+<script type="module" src="../engineering-simulations.js?v=20261025-showcase11"></script>
 </body>
 </html>

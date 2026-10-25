@@ -12,6 +12,24 @@ const basename='assets/engineering';
 const digest=buffer=>crypto.createHash('sha256').update(buffer).digest('hex');
 const read=name=>fs.readFileSync(path.join(site,name));
 const report=JSON.parse(read(basename+'/soil-piles-and-dampers.json'));
+const profile=JSON.parse(read(basename+'/pile-stratigraphic-stress.json'));
+const frame=JSON.parse(read(basename+'/steel-frame-viscous-comparison.json'));
+if(profile.schema!=='delghem-d2-pile-stratigraphy-influence-1'||profile.cases.length!==2||
+ profile.cases.some(x=>x.isSoilFiniteElementStress!==false)||
+ frame.schema!=='delghem-steel-frame-viscous-comparison-1'||
+ frame.analysisDomain!=='calibrated-equivalent-SDOF'||
+ frame.comparison.usesKratosSeismicDeviceRoute!==false||
+ frame.comparison.driftReductionPercent<=0||frame.completeSeismicVerification!==false)
+ throw Error('Native stratigraphy or D2 reduced dynamic comparison outside qualified scope');
+for(const caseData of profile.cases){
+ if(caseData.sourceHashSha256!==digest(read(basename+'/'+caseData.nativeInputFile))||
+  Math.abs(caseData.shaftNodes.reduce((v,x)=>v+x.reactionKN,caseData.toeReactionKN)-caseData.loadKN)>1e-4)
+  throw Error('Pile section input/equilibrium mismatch '+caseData.id);
+}
+if(frame.geometry.nativeFrameSourceSha256!==digest(read(frame.geometry.nativeFrameSource))||
+  frame.cases.some(x=>x.energyAudit.maxNewtonResidual>1e-7))
+ throw Error('D2 source steel frame geometry or dynamic convergence is not proven');
+
 if(report.schema!=='delghem-d2-geo-and-viscous-benchmarks-1'||report.piles?.length!==2||report.devices?.length!==2
  ||report.completeGeotechnicalVerification!==false||report.completeStructuralVerification!==false)
  throw Error('Invalid DÈLGHEM D2 engineering source scope');
@@ -25,6 +43,20 @@ for(const d of report.devices){
  ![.5,1].includes(d.alpha))throw Error('Constitutive passivity incomplete');
 }
 const inputs=[
+ basename+'/pile-stratigraphic-stress.json',
+ basename+'/steel-frame-viscous-comparison.json',
+ frame.geometry.nativeFrameSource,
+ 'scripts/build-pile-stratigraphic-stress.mjs',
+ 'scripts/build-steel-viscous-comparison.mjs',
+ 'engineering-simulations.js',
+ ...['it','en'].flatMap(lang=>[
+  basename+'/pile-stratigraphy-'+lang+'.webp',
+  basename+'/pile-stratigraphy-clay-'+lang+'.webp',
+  basename+'/pile-lithostatic-'+lang+'.webp',
+  basename+'/steel-viscous-frame-'+lang+'.webp',
+  basename+'/steel-viscous-bare-'+lang+'.webp',
+  basename+'/steel-dynamic-response-'+lang+'.webp'
+ ]),
  basename+'/soil-piles-and-dampers.json',
  basename+'/pile-layered-sand-input.json',
  basename+'/pile-layered-clay-input.json',
@@ -55,6 +87,33 @@ const lines=[
   '    These are numerical diagnostic pile load–settlement responses, NOT full geotechnical NTC bearing checks or field-calibrated profiles.'
  ]),
  '',
+ 'PILE STRATIGRAPHY: EXACT SELF-WEIGHT AND APPROXIMATE LOAD INFLUENCE',
+ '  DÈLGHEM D2 pile axial t-z/q-z solves are real nonlinear first-party calculations (shaft and toe).',
+ '  EXACT layered vertical gravity effective lithostatic stress σ′v,0 is integrated using the native D2 geotech-piles.verticalStress module with ASSUMED layered unit weights.',
+ '  APPROXIMATE stress influence Δσz is a regularized Boussinesq-like load spreading proxy. Its point load sources are the real D2 t-z/q-z force reactions. It is NOT a 2D/3D continuum FEM solution of a soil mass.',
+ '  The computed σ0 map is valid ONLY for the declared hypothetical effective unit weights and layering. The stratum below 15 m toe is an assumed extension to 24 m.',
+ '  Visual gamma=0.35 changes only the nonlinear colour scale; underlying stress numbers remain unchanged.',
+ ...profile.cases.flatMap(p=>[
+  '  '+p.id+': 0.60 m pile, 15 m embedment, 700 kN head load, native solution settled '+p.pile.headSettlementMM+' mm.',
+  '    Tip reaction '+p.toeReactionKN+' kN and total shaft '+p.shaftNodes.reduce((a,b)=>a+b.reactionKN,0)+' kN. Balance residual '+p.pile.forceBalanceResidualKN+' kN.',
+  '    Grid '+p.grid.nx+'×'+p.grid.nz+', 0–'+p.grid.zMaxM+' m, induced approximate influence peak '+p.grid.maxInfluenceKPa+' kPa.',
+  '    Native pile input SHA256: '+p.sourceHashSha256+'.'
+ ]),
+ '',
+ 'FRAME TIME-HISTORY: STEEL PORTAL WITH AND WITHOUT LINEAR VISCOUS DEVICE',
+ '  A genuine editable DÈLGHEM D2 HEB260/IPE330 S355 portal source geometry was validated separately from its time history.',
+ '  Original native portal geometry SHA256: '+frame.geometry.nativeFrameSourceSha256+' ('+frame.geometry.nativeFrameSource+').',
+ '  Two completed DÈLGHEM D2 hystereticMDOF implicit Newmark runs, with equivalent SDOF lateral portal stiffness from assembled 2D Euler-Bernoulli frame finite elements.',
+ '  D2 mass '+frame.input.massT+' t, K '+frame.frameStiffness.lateralKNM+' kN/m, computed f₁ '+frame.input.modalFrequencyHz+' Hz.',
+ '  Both runs use the SAME explicitly synthetic analytical input accelerogram, not a recorded earthquake or calibrated design spectrum.',
+ '  Without damper: peak roof response '+frame.cases[0].peakDisplacementMM+' mm.',
+ '  With linear α=1 viscous device: peak roof response '+frame.cases[1].peakDisplacementMM+' mm.',
+ '  This particular diagnostic source yields '+frame.comparison.driftReductionPercent+'% drift reduction, not a universal guarantee.',
+ '  Equivalent dashpot Ceff=Caxial·cos²(theta), with source validated D2 Caxial=180 and α=1; equivalent Ceff='+frame.cases[1].effectiveDampingKNsM+' kN·s/m.',
+ '  Validated device parameter domain in current D2 requires geometrically coincident connector nodes. The 3D diagonal is a VISUAL embodiment of an equivalent single story damper direction, NOT a native D2 end-to-end beam device connection.',
+ '  NOT Kratos native 3D viscous device structural FEM and not a code-certified seismic check.',
+ '  Displayed deformation magnification is 12×, expressly labelled.',
+ '',
  'VISCOUS DAMPERS: CONSTITUTIVE LAW ONLY',
  ...report.devices.flatMap(d=>[
   '  '+d.id+' alpha '+d.alpha,
@@ -66,7 +125,12 @@ const lines=[
  ]),
  '',
  'DÈLGHEM D2 SOURCE MODULES (CODE BYTES HASHED, NOT COPIED)',
- ...report.sourceModules.map(rel=>{
+ ...[...report.sourceModules,
+  'D2/src/core/geotech-piles.mjs',
+  'D2/src/core/delghem-hysteretic-mdof.mjs',
+  'D2/src/core/catalog.mjs',
+  'D2/src/core/material-library.mjs'
+ ].map(rel=>{
    const fragment=rel.slice('D2/'.length);
    const filepath=path.join(d2,fragment);
    return '  '+rel+' SHA256 '+digest(fs.readFileSync(filepath));

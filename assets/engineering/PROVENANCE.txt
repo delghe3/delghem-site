@@ -23,6 +23,35 @@ PILE SCREENING CASES (ASSUMED SOIL AND GEOMETRY)
     Raw actual native input pile-layered-clay-input.json SHA256 d0019b68f3991275888a49b5d2d8b6da6e629d52b6b11477cb2079122dc3a811.
     These are numerical diagnostic pile load–settlement responses, NOT full geotechnical NTC bearing checks or field-calibrated profiles.
 
+PILE STRATIGRAPHY: EXACT SELF-WEIGHT AND APPROXIMATE LOAD INFLUENCE
+  DÈLGHEM D2 pile axial t-z/q-z solves are real nonlinear first-party calculations (shaft and toe).
+  EXACT layered vertical gravity effective lithostatic stress σ′v,0 is integrated using the native D2 geotech-piles.verticalStress module with ASSUMED layered unit weights.
+  APPROXIMATE stress influence Δσz is a regularized Boussinesq-like load spreading proxy. Its point load sources are the real D2 t-z/q-z force reactions. It is NOT a 2D/3D continuum FEM solution of a soil mass.
+  The computed σ0 map is valid ONLY for the declared hypothetical effective unit weights and layering. The stratum below 15 m toe is an assumed extension to 24 m.
+  Visual gamma=0.35 changes only the nonlinear colour scale; underlying stress numbers remain unchanged.
+  layered-sand: 0.60 m pile, 15 m embedment, 700 kN head load, native solution settled 5.943149320757216 mm.
+    Tip reaction 274.69737223572884 kN and total shaft 425.3026276957678 kN. Balance residual 6.85033683112124e-8 kN.
+    Grid 145×161, 0–24 m, induced approximate influence peak 409.6176 kPa.
+    Native pile input SHA256: 0c0b6b1478c9c34c51090db6bb9e81318e9146f2267f3fd8f4c1737c42d36b1a.
+  layered-clay: 0.60 m pile, 15 m embedment, 700 kN head load, native solution settled 3.9705174695334873 mm.
+    Tip reaction 39.05112702638843 kN and total shaft 660.9488729736001 kN. Balance residual 1.1425527191022411e-11 kN.
+    Grid 145×161, 0–24 m, induced approximate influence peak 107.8807 kPa.
+    Native pile input SHA256: d0019b68f3991275888a49b5d2d8b6da6e629d52b6b11477cb2079122dc3a811.
+
+FRAME TIME-HISTORY: STEEL PORTAL WITH AND WITHOUT LINEAR VISCOUS DEVICE
+  A genuine editable DÈLGHEM D2 HEB260/IPE330 S355 portal source geometry was validated separately from its time history.
+  Original native portal geometry SHA256: 0bf25979e69a95a87967f95d1d8d7582fbcb1eb7af00ee55fb5c854d8d3a1195 (assets/engineering/portal-steel-d2.hfm.json).
+  Two completed DÈLGHEM D2 hystereticMDOF implicit Newmark runs, with equivalent SDOF lateral portal stiffness from assembled 2D Euler-Bernoulli frame finite elements.
+  D2 mass 28 t, K 6813.091738758634 kN/m, computed f₁ 2.482637061449511 Hz.
+  Both runs use the SAME explicitly synthetic analytical input accelerogram, not a recorded earthquake or calibrated design spectrum.
+  Without damper: peak roof response 92.125286 mm.
+  With linear α=1 viscous device: peak roof response 20.145721 mm.
+  This particular diagnostic source yields 78.13225676173207% drift reduction, not a universal guarantee.
+  Equivalent dashpot Ceff=Caxial·cos²(theta), with source validated D2 Caxial=180 and α=1; equivalent Ceff=124.6153846153846 kN·s/m.
+  Validated device parameter domain in current D2 requires geometrically coincident connector nodes. The 3D diagonal is a VISUAL embodiment of an equivalent single story damper direction, NOT a native D2 end-to-end beam device connection.
+  NOT Kratos native 3D viscous device structural FEM and not a code-certified seismic check.
+  Displayed deformation magnification is 12×, expressly labelled.
+
 VISCOUS DAMPERS: CONSTITUTIVE LAW ONLY
   nonlinear-viscous alpha 0.5
     C 180 in force/(velocity^alpha) consistent units; F = C × sgn(v) × |v|^alpha.
@@ -41,8 +70,30 @@ DÈLGHEM D2 SOURCE MODULES (CODE BYTES HASHED, NOT COPIED)
   D2/src/core/pile-axial-geotech.mjs SHA256 4b22a1e29595b84fddeefcf5109138fe55c47be7801d61ac78351152525410a4
   D2/src/core/pile-axial-soil.mjs SHA256 30661319cfdfe6b46caec648451cc7faaa8259752bb2567bba9b3e3971553642
   D2/src/core/seismic-devices.mjs SHA256 1e9d0b5523ccee2cd7558022d7cf1ac5031747a6dd65cb96e3e82a0a79f6ea49
+  D2/src/core/geotech-piles.mjs SHA256 e5aaed14f3b5a62e2e282e9f641e52e0afcf96684aa1a2ba986d67ee933dbf7e
+  D2/src/core/delghem-hysteretic-mdof.mjs SHA256 66108097f1d6cd1a64b829f8cb548ec60a44767285e1a32d4d8fcd0f5827397c
+  D2/src/core/catalog.mjs SHA256 e389e3e14570156118c0b56a3f6ee80296e48ddb04ac6576c5cdccc1e9d104e4
+  D2/src/core/material-library.mjs SHA256 17475f226649711f2c3881d736712ba38f9a78345a1510eb030334881ddb3c49
 
 WEBSITE FILES (DATA, SOURCE-BASED CHART FALLBACKS AND GENERATORS)
+  assets/engineering/pile-stratigraphic-stress.json SHA256 277634c371f6b03b5f99eae8e7d54a006b9e916f5058450db9d6e912c53770cf | bytes 554406
+  assets/engineering/steel-frame-viscous-comparison.json SHA256 beae3c22c5a86820f806720e2a78e1b8fea7c7e8174246a5b2b1d30f149c6b39 | bytes 479829
+  assets/engineering/portal-steel-d2.hfm.json SHA256 0bf25979e69a95a87967f95d1d8d7582fbcb1eb7af00ee55fb5c854d8d3a1195 | bytes 3109
+  scripts/build-pile-stratigraphic-stress.mjs SHA256 0ced39a0ee9dc61e903afcbe333e84158e451773017cac1c436d5496b2947f22 | bytes 6428
+  scripts/build-steel-viscous-comparison.mjs SHA256 8961492b3e8884c4ae42b7c4e3d7c4a6653f567f69c17ba2ac7125917fb0b250 | bytes 12035
+  engineering-simulations.js SHA256 09b42b4819f8113727c619834834fe1ec6fb32ac34b22c7b586d86a0e4206042 | bytes 24961
+  assets/engineering/pile-stratigraphy-it.webp SHA256 ee95120e6952699f21bf6e4959c5c87d5c5afe40f1b7250108aeb65dfcaa3644 | bytes 34300
+  assets/engineering/pile-stratigraphy-clay-it.webp SHA256 9517610929bc0fc9169a28b6c0e2f82305e955b2f167a5ffd28653212c3595de | bytes 35888
+  assets/engineering/pile-lithostatic-it.webp SHA256 da119a38ed76f255cf164f7e5baa3ca14c17a1433179686aeab30b38f0759bbb | bytes 30820
+  assets/engineering/steel-viscous-frame-it.webp SHA256 945b0ad4af5e28100d2dd27a73d3488dec4869b24c6a2963bb5d4ac29b2bf6c3 | bytes 43870
+  assets/engineering/steel-viscous-bare-it.webp SHA256 2efd7a9842b6d38693664b055b0096ae6af59747c69662b88dc046c0c746dab5 | bytes 41952
+  assets/engineering/steel-dynamic-response-it.webp SHA256 ee843bd9b0ed6b02a506c6d4f686ed9d57ca290ffe3ac7ae2dfde99c778ba5ab | bytes 58248
+  assets/engineering/pile-stratigraphy-en.webp SHA256 9e771a030a5aca7161b96ea791aae2beb1ce33413580d8d14446cea83e915cd5 | bytes 31948
+  assets/engineering/pile-stratigraphy-clay-en.webp SHA256 875e2ea866179ffd898c978634c05a32944fd2d13d9656bf3f5f0b7e19fc55fc | bytes 33354
+  assets/engineering/pile-lithostatic-en.webp SHA256 87cd300125d21daa8e6dc404e85b30490e5c657064e654f500088007644cccdc | bytes 28714
+  assets/engineering/steel-viscous-frame-en.webp SHA256 a2dd7178259470ebb96542643cd0e117f2963700e0147fa6f5fc692d4c4301f2 | bytes 43602
+  assets/engineering/steel-viscous-bare-en.webp SHA256 b552bdc1de5db4b7ae243a7778fadd4c0240c6191815f98d8df613331071091b | bytes 40830
+  assets/engineering/steel-dynamic-response-en.webp SHA256 53e200d03b0b141cce0a8a178f10ae844e16207e49d5b3b8a31c65c2a22cb080 | bytes 55254
   assets/engineering/soil-piles-and-dampers.json SHA256 ecfd535804277c9a6c7c12b43542aa23a716eeffc5e2450b33e8d329bea52fe6 | bytes 78861
   assets/engineering/pile-layered-sand-input.json SHA256 0c0b6b1478c9c34c51090db6bb9e81318e9146f2267f3fd8f4c1737c42d36b1a | bytes 3648
   assets/engineering/pile-layered-clay-input.json SHA256 d0019b68f3991275888a49b5d2d8b6da6e629d52b6b11477cb2079122dc3a811 | bytes 3240
@@ -50,7 +101,7 @@ WEBSITE FILES (DATA, SOURCE-BASED CHART FALLBACKS AND GENERATORS)
   assets/engineering/damper-velocity.webp SHA256 bece2c09b19df03cd497f694f8c0213d7ca028452a13f70ff9955114f40188eb | bytes 10010
   assets/engineering/damper-cycle.webp SHA256 b18fd6a096ccc588c10bb709a7efb24ec59c572633930a0c3cb5775d6e4e28cd | bytes 10434
   scripts/build-native-geotech-damper-evidence.mjs SHA256 bd81a765e0bda2c6ada19a08be92965d9996c53359755af7bd60f3d1f1d1aa20 | bytes 6370
-  scripts/build-native-geotech-provenance.mjs SHA256 b4c5137500644f88b8cde3d596c086a9e236861f5a19ae24b24ac4865eba1222 | bytes 4866
+  scripts/build-native-geotech-provenance.mjs SHA256 2c1a8723a13a70973141a85dec461bd0597c71d8777aad9f63143004061a54b4 | bytes 9860
 
 LIMITATIONS AND INDEPENDENCE
   No foundation safety, settlement acceptance, seismic collapse limit state, damper qualification or building capacity has been certified.
