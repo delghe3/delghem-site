@@ -1,3 +1,4 @@
+import {sampleGaussScalar} from './contour-shading.mjs?v=20261025-aliasing17';
 /**
  * DÈLGHEM D2 • native solver FEM showcase.
  * ALL FOUR LAB CHAPTERS ARE SCROLLABLE/ALWAYS VISIBLE.
@@ -259,14 +260,10 @@ if(labRoot){
  }
  // ---- Spatial, gently shaded QUAD4 stress fields on B01 irregular building ----
  const canvas=$('lab-stress-canvas'),ctx=canvas?.getContext('2d',{alpha:false});
- const view={yaw:-.57,pitch:.48,mesh:false,deformed:false,auto:false,selected:null,hover:null,drag:null,polys:[],frame:0};
+ const view={yaw:-.57,pitch:.48,mesh:false,aliasing:false,deformed:false,auto:false,selected:null,hover:null,drag:null,polys:[],frame:0};
  let frameBounds=null;
  function faceMean(element,side,field){
   return element.gauss.reduce((a,g)=>a+g[side][field],0)/element.gauss.length;
- }
- function pointAt(el,u,v,face,field){
-  const g=el.gauss,v00=g[0][face][field],v10=g[1][face][field],v11=g[2][face][field],v01=g[3][face][field];
-  return (1-u)*(1-v)*v00+u*(1-v)*v10+u*v*v11+(1-u)*v*v01;
  }
  function heat(t){
   const x=clamp(t,0,1)*(palette.length-1),i=Math.min(palette.length-2,Math.floor(x)),f=x-i;
@@ -333,10 +330,13 @@ if(labRoot){
   }).sort((a,b)=>b.depth-a.depth);
   view.polys=colored;
   for(const item of colored){
-   const q=item.pts,N=5;
+   const q=item.pts,N=view.aliasing?9:2;
+   const samples=item.source.gauss.map(g=>g[side][field]);
    for(let j=0;j<N;j++)for(let i=0;i<N;i++){
     const u=i/N,v=j/N,u2=(i+1)/N,v2=(j+1)/N;
-    const value=pointAt(item.source,(u+u2)/2,(v+v2)/2,side,field);
+    const value=view.aliasing
+     ?sampleGaussScalar(samples,(u+u2)/2,(v+v2)/2)
+     :samples[j===0?(i===0?0:1):(i===0?3:2)];
     polygon([blerp(q,u,v),blerp(q,u2,v),blerp(q,u2,v2),blerp(q,u,v2)],heat((value-min)/span));
    }
    const focus=item.id===view.selected||item.id===view.hover;
@@ -395,7 +395,7 @@ if(labRoot){
   const rect=canvas.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;
   return [...view.polys].reverse().find(p=>inside(x,y,p.pts))?.id??null;
  }
- for(const [id,field] of [['lab-mesh-toggle','mesh'],['lab-deform-toggle','deformed'],['lab-motion-toggle','auto']]){
+ for(const [id,field] of [['lab-mesh-toggle','mesh'],['lab-aliasing-toggle','aliasing'],['lab-deform-toggle','deformed'],['lab-motion-toggle','auto']]){
   $(id).addEventListener('click',()=>{
    view[field]=!view[field];
    $(id).setAttribute('aria-pressed',String(view[field]));

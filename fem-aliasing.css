@@ -1,0 +1,34 @@
+/* Display-only Gauss-point smoothing on DÈLGHEM FEM stress maps. */
+.fem-aliasing-disclaimer{
+ margin:-6px 0 16px;
+ font-size:11px;
+ line-height:1.65;
+ color:#b9dce0;
+ max-width:95ch;
+}
+.surface-studio .fem-aliasing-disclaimer{
+ margin:0 0 13px;
+ color:#4f7078;
+}
+.lab-tool.aliasing-toggle,.surface-controls .aliasing-toggle{
+ font-weight:900;
+ letter-spacing:.08em;
+ border:1px solid #6fd2cf;
+}
+.lab-tool.aliasing-toggle[aria-pressed="true"]{
+ background:#74e4cd;
+ border-color:#bbfff2;
+ color:#113c49;
+ box-shadow:0 0 0 2px #70ebd33f,0 0 18px #64d9dc6b;
+}
+.surface-controls .aliasing-toggle[aria-pressed="true"]{
+ background:#22758d;
+ color:#fff;
+ border-color:#5ac8c9;
+ box-shadow:0 0 0 2px #3ca3aa30;
+}
+.lab-tool.aliasing-toggle:focus-visible,.surface-controls .aliasing-toggle:focus-visible{
+ outline:3px solid #f3b06b;
+ outline-offset:3px;
+}
+@media(max-width:600px){.fem-aliasing-disclaimer{font-size:10px}}

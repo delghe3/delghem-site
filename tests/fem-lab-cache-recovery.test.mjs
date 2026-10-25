@@ -13,9 +13,9 @@ const graphIds=[
 test('Both published homepages version their coupled CSS and FEM JavaScript to avoid blank/black canvas from a stale JS bundle',()=>{
  const versions=[];
  for(const name of ['index.html','it/index.html']){
-  const html=file(name),css=html.match(/href="(?:\.\.\/|\.\/)style\.css\?v=([^"]+)"/);
+  const html=file(name),css=html.match(/href="(?:\.\.\/|\.\/)fem-aliasing\.css\?v=([^"]+)"/);
   const js=html.match(/src="(?:\.\.\/|\.\/)fem-lab\.js\?v=([^"]+)"/);
-  assert.ok(css,name+': HTML must request fresh versioned stylesheet');
+  assert.ok(css,name+': HTML must request versioned FEM-specific visual stylesheet');
   assert.ok(js,name+': HTML must request fresh versioned FEM renderer');
   assert.equal(css[1],js[1],name+': CSS and JavaScript must have matching release identifier');
   assert.match(css[1],/^[\w.-]{8,80}$/);

@@ -1,3 +1,4 @@
+import {sampleGaussScalar} from './contour-shading.mjs?v=20261025-aliasing17';
 /**
  * DÈLGHEM native Kratos 2D surface studio — three separate completed
  * Kratos shell/QUAD4 benchmark solutions. Always-visible visualisation;
@@ -19,7 +20,7 @@ if(surfaceRoot){
   return 'rgb('+rgb[i].map((v,j)=>Math.round(lerp(v,rgb[i+1][j],delta))).join(',')+')';
  };
  const dataURL=new URL('./assets/fem-lab/kratos-2d-surfaces.json',import.meta.url);
- let dataset=null,currentField='vonMisesMPa',currentFace='top',showMesh=false,hovered=null;
+ let dataset=null,currentField='vonMisesMPa',currentFace='top',showMesh=false,aliasing=false,hovered=null;
  const cases=[...surfaceRoot.querySelectorAll('[data-surface]')];
  const byId=new Map(cases.map(e=>[e.dataset.surface,e]));
  const screen=[];
@@ -76,14 +77,18 @@ if(surfaceRoot){
   const cells=[];
   for(const el of caseData.elements){
    const q=el.vertices.map(p=>point(p,caseData)),outline=q.map(geo.screen);
-   const inside=[];
-   for(const g of el.gauss){
-    const col=g.xi<0?0:1,row=g.eta<0?0:1;
-    const uv=[[col*.5,row*.5],[(col+1)*.5,row*.5],[(col+1)*.5,(row+1)*.5],[col*.5,(row+1)*.5]];
-    const pts=uv.map(p=>geo.screen(worldQuad(q,...p)));
-    const value=g[currentFace][['vonMisesMPa','sigma11MPa','sigma22MPa','tau12MPa'].indexOf(currentField)];
+   // Never interpolate between distinct elements or through real voids.
+   // Numerical picking always reports the unchanged four Gauss values.
+   const inside=el.gauss.map(g=>g[currentFace][['vonMisesMPa','sigma11MPa','sigma22MPa','tau12MPa'].indexOf(currentField)]);
+   const steps=aliasing?8:2;
+   for(let row=0;row<steps;row++)for(let col=0;col<steps;col++){
+    const u=col/steps,v=row/steps,u2=(col+1)/steps,v2=(row+1)/steps;
+    const pts=[[u,v],[u2,v],[u2,v2],[u,v2]]
+     .map(uv=>geo.screen(worldQuad(q,...uv)));
+    const value=aliasing
+     ?sampleGaussScalar(inside,(u+u2)/2,(v+v2)/2)
+     :inside[row===0?(col===0?0:1):(col===0?3:2)];
     shadeCell(c,pts,heat((value-min)/range));
-    inside.push(value);
    }
    if(showMesh){
     c.beginPath();
@@ -180,6 +185,12 @@ if(surfaceRoot){
    $('surface-mesh-toggle')?.addEventListener('click',e=>{
     showMesh=!showMesh;
     e.currentTarget.setAttribute('aria-pressed',String(showMesh));
+    hovered=null;schedule();
+   });
+   $('surface-aliasing-toggle')?.addEventListener('click',e=>{
+    aliasing=!aliasing;
+    e.currentTarget.setAttribute('aria-pressed',String(aliasing));
+    surfaceRoot.dataset.aliasing=String(aliasing);
     hovered=null;schedule();
    });
    const observer=new ResizeObserver(()=>schedule());
