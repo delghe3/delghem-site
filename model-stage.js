@@ -4,7 +4,7 @@
  * by D2. Geotechnical / structural design has NOT been performed or certified.
  */
 import {complexDemo} from './assets/real-d2/complex-demo-geometry.mjs?v=20261024-8floor-d2a';
-import {showcaseModels} from './assets/real-d2/showcase-geometry.mjs?v=20261025-showcase6';
+import {showcaseModels} from './assets/real-d2/showcase-geometry.mjs?v=20261025-showcase8';
 export const MODEL_SHOWCASE_DURATION_MS=5000;
 const models=[complexDemo,...showcaseModels];
 const towerShowcase={
@@ -28,6 +28,19 @@ export const DEFAULT_ORBIT_SPEED = 0.34;
 const FRAME_INTERVAL=1000/19;
 
 const TAU=Math.PI*2, clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+// Seven physically meaningful camera orientations. Pitch is allowed to pass
+// over and under the structural model, for a genuine complete 360-degree orbit.
+export const CAMERA_PRESETS=Object.freeze({
+ iso:{yaw:-.92,pitch:.78},
+ top:{yaw:-.68,pitch:Math.PI/2},
+ bottom:{yaw:-.68,pitch:-Math.PI/2},
+ front:{yaw:0,pitch:0},
+ back:{yaw:Math.PI,pitch:0},
+ left:{yaw:-Math.PI/2,pitch:0},
+ right:{yaw:Math.PI/2,pitch:0}
+});
+export const normalizeAngle=value=>((value+Math.PI)%TAU+TAU)%TAU-Math.PI;
+
 const plus=(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]];
 const minus=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]];
 const times=(v,k)=>[v[0]*k,v[1]*k,v[2]*k];
@@ -95,6 +108,7 @@ const colors={
   'terminal-ring-beam':[65,151,198],
   'terminal-cantilever':[38,172,200],
   'terminal-steel-canopy':[129,203,213],
+  'terminal-winkler-grade-beam':[107,157,173],
   // Historic aggregate: real structural masonry wall shell faces, with
   // openings absent from the native QUAD4 mesh; seven genuine timber roofs.
   'masonry-wall':[211,174,126],
@@ -190,7 +204,8 @@ export function initModelStage(){
   const stage=canvas.closest('.structure-stage'),controls=[...document.querySelectorAll('[data-model-view]')];
   const italian=document.documentElement.lang==='it';
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  let width=1,height=1,dpr=1,scale=1,yaw=-.97,pitch=.60,mode='structure';
+  let width=1,height=1,dpr=1,scale=1,yaw=-.97,pitch=.72,mode='structure';
+  let projectionMode='perspective',zoomFactor=1,cameraPreset='iso';
   let camera={cs:1,sn:0,cp:1,sp:0};
   let motion=false,visible=true,dragging=false,pointer=null,start=null,phase=0,last=0,raf=0,disposed=false;
   let modelIndex=0,slideElapsed=0,clockLast=0;
@@ -202,9 +217,96 @@ export function initModelStage(){
   const modelLabel=document.querySelector('.model-concept-label');
   const pauseBtn=document.getElementById('model-showcase-pause');
   const modelMaterialKey=document.querySelector('.model-material-key');
+  const cameraButtons=[...document.querySelectorAll('[data-model-camera]')];
+  const cameraStatus=document.getElementById('model-view-readout');
+  const projectionButton=document.getElementById('model-projection-toggle');
+  const zoomLevel=document.getElementById('model-zoom-level');
+  const foundationButton=document.getElementById('model-foundations-toggle');
+  const cameraLabels=italian?{
+    iso:'Assonometrica',top:'Dall’alto',bottom:'Dal basso',front:'Frontale',
+    back:'Posteriore',left:'Laterale sinistra',right:'Laterale destra',
+    free:'Orbita libera'
+  }:{
+    iso:'Isometric',top:'Top',bottom:'Underside',front:'Front',
+    back:'Rear',left:'Left side',right:'Right side',free:'Free orbit'
+  };
+  function refreshCameraControls(){
+    for(const b of cameraButtons){
+      b.setAttribute('aria-pressed',String(cameraPreset===b.dataset.modelCamera));
+    }
+    if(cameraStatus)cameraStatus.textContent=mode==='foundations'
+      ?(italian?'Fondazioni D2':'Native foundations')
+      :(cameraLabels[cameraPreset]??cameraLabels.free);
+    if(foundationButton){
+      const supported=(mixedDemo.footings?.length??0)>0;
+      foundationButton.disabled=!supported;
+      foundationButton.hidden=!supported;
+      foundationButton.setAttribute('aria-pressed',String(mode==='foundations'));
+    }
+    if(projectionButton){
+      const orthographic=projectionMode==='orthographic';
+      projectionButton.setAttribute('aria-pressed',String(orthographic));
+      projectionButton.textContent=orthographic?'ORTO':'PROSP';
+      projectionButton.title=italian
+        ?(orthographic?'Proiezione ortogonale — attiva prospettica':'Proiezione prospettica — attiva ortogonale')
+        :(orthographic?'Orthographic projection — switch to perspective':'Perspective projection — switch to orthographic');
+    }
+    if(zoomLevel)zoomLevel.textContent=Math.round(zoomFactor*100)+'%';
+    stage.dataset.cameraYaw=String(Number(normalizeAngle(yaw).toFixed(4)));
+    stage.dataset.cameraPitch=String(Number(normalizeAngle(pitch).toFixed(4)));
+    stage.dataset.cameraPreset=cameraPreset;
+    stage.dataset.projection=projectionMode;
+    stage.dataset.zoom=String(Number(zoomFactor.toFixed(3)));
+  }
+  function pauseForInteraction(){
+    if(!carouselPaused&&!carouselReducedMotion){
+      carouselPaused=true;
+      refreshShowcase();
+    }
+    const rotate=document.getElementById('rotate-model');
+    if(rotate?.getAttribute('aria-pressed')==='true'&&!rotate.disabled){
+      rotate.click(); // use application's own state handler to keep UI in sync
+    }
+  }
+  function setCameraView(view,{interactive=true}={}){
+    if(!Object.hasOwn(CAMERA_PRESETS,view))return;
+    const target=CAMERA_PRESETS[view];
+    yaw=view==='iso'?[-.97,-.77,-.94,-.88,-.74][modelIndex]:target.yaw;
+    pitch=view==='iso'?[.76,.80,.66,.79,.78][modelIndex]:target.pitch;
+    cameraPreset=view;
+    if(interactive)pauseForInteraction();
+    refreshCameraControls();
+    render();
+  }
+  function toggleFoundations(){
+    if(!(mixedDemo.footings?.length>0))return;
+    mode=mode==='foundations'?'structure':'foundations';
+    legend.hidden=true;
+    controls.forEach(b=>b.setAttribute('aria-pressed',
+      String(mode==='structure'&&b.dataset.modelView==='structure')));
+    pauseForInteraction();
+    refreshCameraControls();
+    resize(); // camera framing accounts for foundation-only extents
+  }
+  function changeZoom(factor,{interactive=true}={}){
+    zoomFactor=clamp(zoomFactor*factor,.53,2.8);
+    if(interactive)pauseForInteraction();
+    refreshCameraControls();
+    resize();
+  }
+
   let carouselReducedMotion=reduced.matches;
   let carouselPaused=carouselReducedMotion;
   const titleFor=meta=>italian?meta.titleIt:meta.titleEn;
+  foundationButton?.addEventListener('click',toggleFoundations);
+  cameraButtons.forEach(b=>b.addEventListener('click',()=>setCameraView(b.dataset.modelCamera)));
+  document.getElementById('model-zoom-in')?.addEventListener('click',()=>changeZoom(1.2));
+  document.getElementById('model-zoom-out')?.addEventListener('click',()=>changeZoom(1/1.2));
+  projectionButton?.addEventListener('click',()=>{
+    projectionMode=projectionMode==='perspective'?'orthographic':'perspective';
+    pauseForInteraction();refreshCameraControls();render();
+  });
+
   const detailFor=meta=>italian?meta.subtitleIt:meta.subtitleEn;
   function progressUI(){
     const ratio=clamp(slideElapsed/MODEL_SHOWCASE_DURATION_MS,0,1);
@@ -271,13 +373,14 @@ export function initModelStage(){
     roofHeight=mixedDemo.bbox.max[2];
     isTallConcept=target===0&&nextModel.storeyCount>=8;
     yaw=[-.97,-.77,-.94,-.88,-.74][target]??-.97;
-    pitch=[.60,.60,.47,.62,.54][target]??.60;
+    pitch=[.76,.80,.66,.79,.78][target]??.76;
+    cameraPreset='iso';zoomFactor=1;
     const key=showcaseMeta[target].id;
     if(!geometryCache.has(key))geometryCache.set(key,makeGeometry());
     faces=geometryCache.get(key);
     slideElapsed=0;
     clockLast=0;
-    refreshShowcase();
+    refreshShowcase();refreshCameraControls();
     resize();
   }
   dots.forEach(b=>b.addEventListener('click',()=>setModelIndex(b.dataset.showcaseIndex)));
@@ -290,7 +393,7 @@ export function initModelStage(){
     refreshShowcase();schedule();
   });
 
-  canvas.style.touchAction='pan-y';
+  canvas.style.touchAction='none'; // unrestricted mouse, touch and stylus 3D orbit
   canvas.tabIndex=0;
   const legend=document.createElement('div');
   legend.className='model-legend';legend.hidden=true;
@@ -307,12 +410,18 @@ export function initModelStage(){
   }
   function project(p,original=false){
     const q=original?p:displaced(p);
-    const x=q[0]-mid[0],y=q[1]-mid[1],z=q[2]-mid[2];
+    const x=q[0]-mid[0],y=q[1]-mid[1],z=q[2]-(mode==='foundations'?0:mid[2]);
     const {cs,sn,cp,sp}=camera;
-    const xx=x*cs-y*sn,depth=(x*sn+y*cs)*cp+z*sp*(modelIndex===4?-1:1);
+    const xx=x*cs-y*sn;
+    // Real 3D camera direction: +pitch views the structure FROM ABOVE,
+    // -pitch views FROM BELOW. depth>0 denotes farther geometry, so the
+    // painter's descending depth order correctly exposes roof faces.
+    const depth=(x*sn+y*cs)*cp-z*sp;
     const yy=(x*sn+y*cs)*sp-z*cp;
-    const persp=clamp(1-depth*.008,.79,1.21);
-    return {x:width*.50+xx*scale*persp,y:height*(modelIndex===4?.42:modelIndex===1?.40:modelIndex===2?.385:.52)+yy*scale*persp,depth};
+    const radius=Math.max(1,Math.hypot(...extent));
+    const persp=projectionMode==='orthographic'?1:clamp(1-depth/(radius*2.5),.69,1.32);
+    const centering=mode==='foundations'?.35:modelIndex===4?.43:modelIndex===1?.43:modelIndex===2?.42:.52;
+    return {x:width*.50+xx*scale*persp,y:height*centering+yy*scale*persp,depth};
   }
   function poly(points,color,border='rgba(18,54,66,.12)'){
     ctx.beginPath();
@@ -394,7 +503,12 @@ export function initModelStage(){
     // Other four native D2 models preserve their established drawing order.
     const near=modelIndex===4?[-camera.sn*camera.cp,-camera.cs*camera.cp,camera.sp]:null;
     const solidKinds=new Set(['masonry-wall','stone-wall','timber-roof','timber-floor']);
-    const selected=near?faces.filter(face=>!solidKinds.has(face.kind)||dot(face.normal,near)>=-.001):faces;
+    const foundationKinds=new Set([
+      'rc-footing','foundation-tie','stadium-winkler-grade-beam','terminal-winkler-grade-beam'
+    ]);
+    const sourceFaces=mode==='foundations'
+      ?faces.filter(face=>foundationKinds.has(face.kind)):faces;
+    const selected=near?sourceFaces.filter(face=>!solidKinds.has(face.kind)||dot(face.normal,near)>=-.001):sourceFaces;
     // Depth-sort faces rather than overpainting member centerlines: real I flanges/web are visible.
     const projected=selected.map(face=>{
       const points=face.vertices.map(p=>project(p));
@@ -523,6 +637,8 @@ export function initModelStage(){
     if(modelIndex===4)scale*=.78; // seven actual masonry volumes and their courtyard
     if(modelIndex===1)scale*=.79; // 114x84 m stadium: keep edges above carousel controls
     if(modelIndex===2)scale*=.73; // 96 m bridge: both bearings and the complete arch visible above controls
+    if(mode==='foundations')scale*=.68; // entire pad/grade-beam network stays above the bottom controls
+    scale*=zoomFactor;
     render();
   }
   // One clock drives the 5-second slideshow and the existing 3D orbit.
@@ -556,8 +672,7 @@ export function initModelStage(){
       if(elapsed>=FRAME_INTERVAL*(width<480?1.27:1)){
         const dt=Math.min(.10,elapsed/1000);
         last=timestamp;
-        if(!dragging)yaw+=dt*DEFAULT_ORBIT_SPEED;
-        if(yaw>TAU)yaw-=TAU;
+        if(!dragging)yaw=normalizeAngle(yaw+dt*DEFAULT_ORBIT_SPEED);
         phase+=dt;
         render();
       }
@@ -578,35 +693,95 @@ export function initModelStage(){
     if(!['structure','deformed','forces'].includes(next))return;
     mode=next;legend.hidden=next!=='forces';
     controls.forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.modelView===next)));
-    render();
+    refreshCameraControls();
+    resize(); // restore stage framing when exiting isolated foundation view
   }
   controls.forEach(c=>c.addEventListener('click',()=>setView(c.dataset.modelView)));
+  // Pointer capture allows an arbitrarily long true 360 degree rotation in
+  // both azimuth and elevation; two touch pointers additionally pinch-zoom.
+  // No old +/-0.05 ... 0.95 elevation clamp: underside and top are reachable.
+  const pointers=new Map();
+  let pinchStartDistance=0,pinchStartZoom=1;
+  const pointDistance=()=>{
+    const values=[...pointers.values()];
+    return values.length<2?0:Math.hypot(values[0].x-values[1].x,values[0].y-values[1].y);
+  };
   canvas.addEventListener('pointerdown',e=>{
-    if(e.button!==0)return;
-    dragging=true;pointer=e.pointerId;start={x:e.clientX,y:e.clientY,yaw,pitch};
-    canvas.setPointerCapture(e.pointerId);canvas.focus({preventScroll:true});
+    if(e.pointerType==='mouse'&&e.button!==0)return;
+    pauseForInteraction();
+    pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    dragging=true;
+    pointer=e.pointerId;
+    if(pointers.size===1)start={x:e.clientX,y:e.clientY,yaw,pitch};
+    if(pointers.size===2){
+      pinchStartDistance=Math.max(1,pointDistance());
+      pinchStartZoom=zoomFactor;
+      start=null;
+    }
+    try{canvas.setPointerCapture(e.pointerId);}catch(_){}
+    canvas.focus({preventScroll:true});
   });
   canvas.addEventListener('pointermove',e=>{
-    if(!dragging||e.pointerId!==pointer)return;
-    yaw=start.yaw+(e.clientX-start.x)*.008;
-    pitch=clamp(start.pitch+(e.clientY-start.y)*.006,-.05,.95);render();
+    if(!pointers.has(e.pointerId))return;
+    pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pointers.size>=2){
+      zoomFactor=clamp(pinchStartZoom*(pointDistance()/pinchStartDistance),.53,2.8);
+      refreshCameraControls();resize();
+      return;
+    }
+    if(!dragging||!start)return;
+    yaw=normalizeAngle(start.yaw+(e.clientX-start.x)*.009);
+    pitch=normalizeAngle(start.pitch+(e.clientY-start.y)*.009);
+    cameraPreset='free';
+    refreshCameraControls();render();
   });
-  const stop=e=>{if(e.pointerId===pointer){dragging=false;pointer=null;start=null;}};
+  const stop=e=>{
+    if(!pointers.has(e.pointerId))return;
+    pointers.delete(e.pointerId);
+    if(canvas.hasPointerCapture(e.pointerId))
+      canvas.releasePointerCapture(e.pointerId);
+    if(pointers.size===1){
+      const [id,remaining]=[...pointers.entries()][0];
+      pointer=id;start={x:remaining.x,y:remaining.y,yaw,pitch};
+      dragging=true;
+    }else if(pointers.size===0){
+      dragging=false;pointer=null;start=null;
+    }
+  };
   canvas.addEventListener('pointerup',stop);
   canvas.addEventListener('pointercancel',stop);
-  canvas.addEventListener('keydown',e=>{
-    if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;
+  canvas.addEventListener('lostpointercapture',e=>{
+    if(pointers.has(e.pointerId))stop(e);
+  });
+  canvas.addEventListener('wheel',e=>{
+    // Inside the dedicated interactive model canvas, the wheel is a standard
+    // camera zoom rather than a scrolling action. Outside it page scrolls.
     e.preventDefault();
-    if(e.key==='Home'){yaw=[-.97,-.77,-.94,-.88,-.74][modelIndex];pitch=[.60,.60,.47,.62,.54][modelIndex];}
-    if(e.key==='ArrowLeft')yaw-=.12;
-    if(e.key==='ArrowRight')yaw+=.12;
-    if(e.key==='ArrowUp')pitch=clamp(pitch-.08,-.05,.95);
-    if(e.key==='ArrowDown')pitch=clamp(pitch+.08,-.05,.95);
-    render();
+    changeZoom(Math.exp(-clamp(e.deltaY,-240,240)*.0017));
+  },{passive:false});
+  canvas.addEventListener('keydown',e=>{
+    if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','+','-','=','0'].includes(e.key))return;
+    e.preventDefault();
+    if(e.key==='Home'||e.key==='0'){
+      zoomFactor=1;
+      setCameraView('iso');
+      resize();
+      return;
+    }
+    if(e.key==='+'||e.key==='='){changeZoom(1.2);return;}
+    if(e.key==='-'){changeZoom(1/1.2);return;}
+    pauseForInteraction();
+    if(e.key==='ArrowLeft')yaw=normalizeAngle(yaw-.17);
+    if(e.key==='ArrowRight')yaw=normalizeAngle(yaw+.17);
+    if(e.key==='ArrowUp')pitch=normalizeAngle(pitch-.16);
+    if(e.key==='ArrowDown')pitch=normalizeAngle(pitch+.16);
+    cameraPreset='free';refreshCameraControls();render();
   });
   document.getElementById('reset-model')?.addEventListener('click',()=>{
-    yaw=[-.97,-.77,-.94,-.88,-.74][modelIndex];pitch=[.60,.60,.47,.62,.54][modelIndex];
-    render();canvas.focus({preventScroll:true});
+    zoomFactor=1;projectionMode='perspective';
+    setCameraView('iso');
+    resize();
+    canvas.focus({preventScroll:true});
   });
   const observer=new ResizeObserver(resize);observer.observe(canvas);
   const intersection=new IntersectionObserver(entries=>{
@@ -628,9 +803,9 @@ export function initModelStage(){
   };
   document.addEventListener('visibilitychange',visibility);
   reduced.addEventListener?.('change',preference);
-  refreshShowcase();resize();schedule();
+  refreshShowcase();refreshCameraControls();resize();schedule();
   return {
-    setMotion,setView,setModelIndex,
+    setMotion,setView,setModelIndex,setCameraView,
     destroy(){
       disposed=true;if(raf)cancelAnimationFrame(raf);
       observer.disconnect();intersection.disconnect();

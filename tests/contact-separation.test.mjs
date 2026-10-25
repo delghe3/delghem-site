@@ -15,15 +15,15 @@ const publicPages=[
   'en/steel-workshop-drawings/index.html','disegni-officina-acciaio/index.html'
 ];
 
-test('new public contact email is prominent at the top of both homepages and in footer',()=>{
+test('public contact email is prominent after the engineering introduction and remains in footer',()=>{
  for(const page of homes){
   const html=read(page);
   const top=html.indexOf('class="contact-strip"');
   const hero=html.indexOf('class="hero chapter"');
   const footer=html.indexOf('<footer class="site-footer"');
-  assert.ok(top>0&&top<hero,page+' contact email must appear before hero');
-  assert.ok(html.slice(top,hero).includes('mailto:delghem@proton.me'),page+' missing public mail in top');
-  assert.ok(html.slice(top,hero).includes('delghem@proton.me'),page+' missing visible public mail at top');
+  assert.ok(top>hero&&top<footer,page+' contact must follow product/engineering hero, before closing footer');
+  assert.ok(html.slice(top,footer).includes('mailto:delghem@proton.me'),page+' missing direct business mail');
+  assert.ok(html.slice(top,footer).includes('delghem@proton.me'),page+' missing visible public business mail');
   assert.ok(html.slice(footer).includes('mailto:delghem@proton.me'),page+' public mail in footer');
   assert.ok(html.slice(footer).includes('delghem@proton.me'),page+' visible public mail in footer');
   assert.match(html,/class="contact-strip-link contact-email"/);
@@ -57,7 +57,7 @@ test('donation account is untouched on English and Italian pages and its JS acti
  assert.match(read('social.js'),/ildelghe3@gmail\.com/);
 });
 
-test('all new top contact blocks have mobile responsive design and visible calls to action',()=>{
+test('business contact section remains mobile responsive and accessible',()=>{
  const css=read('style.css');
  assert.match(css,/\.contact-strip\{/);
  assert.match(css,/\.contact-strip-link\{/);

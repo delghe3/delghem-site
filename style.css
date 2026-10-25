@@ -1179,3 +1179,505 @@ body.photo-open{overflow:hidden}
  .model-showcase-progress{gap:3px}
  .showcase-step-label{font-size:7px;letter-spacing:0}
 }
+
+/*
+ * DÈLGHEM 2026.10.25 — editorial engineering redesign.
+ * One coherent visual hierarchy: product hero → engineering evidence →
+ * workflow/application → technical chapters → optional support.
+ * Genuine Canvas FEM models and source-backed technical articles are retained.
+ */
+:root{
+ --canvas-ink:#122e3b;
+ --canvas-blue:#1a6578;
+ --canvas-teal:#3f9d9a;
+ --canvas-surface:#f3f7f4;
+ --canvas-paper:#fdfdfa;
+ --canvas-stroke:#d4e5e2;
+ --canvas-mute:#4a6570;
+ --canvas-navy:#0e2938;
+}
+body{background:var(--canvas-paper);color:var(--canvas-ink)}
+.site-header{
+ max-width:none;position:sticky;top:0;z-index:110;height:76px;
+ border-bottom:1px solid rgba(83,128,138,.22);
+ background:rgba(251,253,250,.94);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+ padding:0 clamp(18px,3.6vw,56px);
+}
+.site-header .wordmark{color:#113847;font-weight:900;letter-spacing:-.065em;font-size:27px}
+.site-header .desktop-nav{gap:clamp(15px,2.4vw,36px)}
+.site-header .desktop-nav a{font-size:12px;color:#365e69;font-weight:790;white-space:nowrap;letter-spacing:-.015em}
+.site-header .desktop-nav a:hover{color:#0d8491}
+.site-header .desktop-nav a:after{height:2px;background:#3b9994}
+.site-header .header-controls{gap:14px}
+.site-header .language-link{opacity:.75}
+.site-header .language-link[aria-current="page"]{color:#186b80;opacity:1}
+.hero{
+ background:
+  radial-gradient(ellipse 60% 68% at 81% 31%,#cbece548,transparent 76%),
+  linear-gradient(155deg,#fcfefa 0%,#f3f9f5 65%,#edf5f3 100%);
+ max-width:none;grid-template-columns:minmax(0,.93fr) minmax(0,1.07fr);
+ min-height:770px;gap:clamp(28px,3vw,65px);
+ padding:70px clamp(20px,4.2vw,72px) 85px;
+}
+.hero:before{display:none}
+.hero-copy{max-width:650px;padding:30px 0 20px;margin:0 0 0 auto}
+.hero .hero-spec{
+ color:#296c75;font-size:11px;letter-spacing:.135em;
+ margin-bottom:25px
+}
+.hero h1{font-size:clamp(56px,5.65vw,92px);letter-spacing:-.07em;line-height:1.05;max-width:10ch}
+.hero h1 .accent-text{color:#258396}
+.hero-description{max-width:43ch;margin-top:29px;line-height:1.75;font-size:clamp(14px,1.16vw,17px);color:#456671}
+.hero-proof{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;margin:26px 0 20px;max-width:550px}
+.hero-proof span{
+ border:1px solid #d3e6df;border-radius:7px;background:#f1f9f5;
+ color:#3f626a;font-weight:730;font-size:10px;line-height:1.45;
+ padding:10px 12px;display:flex;align-items:center;gap:6px;white-space:nowrap
+}
+.hero-proof strong{font-size:12px;font-weight:950;letter-spacing:.035em;color:#117588}
+.hero-actions{margin-top:18px;gap:17px}
+.hero-actions .primary{min-height:56px;background:#143849;border-radius:9px;font-size:13px;box-shadow:0 11px 27px #163e4a29}
+.hero-actions .primary:hover{background:#237a89}
+.hero-actions .text-button{font-size:12px;font-weight:790;color:#1a6377}
+.hero-actions .text-button:hover{color:#b26642}
+.hero .structure-stage{
+ width:100%;max-width:880px;height:clamp(545px,48vw,675px);
+ margin:0 auto;overflow:hidden;align-self:center;
+ border:1px solid #bcdad4;border-radius:17px;
+ background:
+  radial-gradient(ellipse 65% 63% at 59% 38%,#f3fcf9,#e6f4f0 72%,#ddecE9 100%),
+  repeating-linear-gradient(0deg,transparent 0 53px,#407c8012 54px);
+ box-shadow:0 31px 72px #1d5a6624,0 5px 15px #21576e0c;
+}
+.hero .structure-stage:before{opacity:.19}
+.structure-stage:after{opacity:.25}
+.hero .model-concept-label{
+ z-index:9;background:#f6fbf8ee;border:1px solid #b3d4d0;
+ border-radius:6px;max-width:52%;font-weight:870;
+}
+.hero .model-material-key{z-index:9}
+.hero .model-motion-status{z-index:9;background:#ecf9f4eb;color:#267281;border:1px solid #cee5df}
+.model-controls{
+ z-index:11;bottom:31px;border-radius:9px;
+ background:rgba(254,255,252,.96);border:1px solid #bad7d1;
+ padding:5px;box-shadow:0 12px 34px #1d526028
+}
+.model-controls>button[aria-pressed=true]{background:#d9f2e9;color:#1a6474}
+.model-showcase{
+ z-index:12;bottom:114px;left:13px;right:13px;
+ background:rgba(253,255,252,.97);border-radius:11px;
+ box-shadow:0 14px 39px #1444541f;
+}
+.model-showcase-counter{color:#156780}
+.model-showcase-heading>strong{font-size:12px}
+.model-showcase-step[aria-current="true"]{color:#116d82}
+.model-showcase-fill{background:linear-gradient(90deg,#0d758e,#5ac8ac)}
+.model-disclaimer{z-index:8;bottom:7px;color:#5d7780}
+.showcase-guide{
+ position:absolute;left:16px;top:11px;z-index:10;
+ display:flex;flex-direction:column;gap:2px;max-width:40%;
+ pointer-events:none;color:#255d6c;
+}
+.showcase-guide span{font-size:10px;font-weight:940;letter-spacing:.1em}
+.showcase-guide small{font-size:9px;letter-spacing:.01em;color:#5c8385}
+/* Actual 360-degree camera dock: visible controls with non-decorative actions. */
+.model-camera-dock{
+ position:absolute;left:14px;top:92px;z-index:13;width:228px;
+ padding:12px 12px 11px;border-radius:11px;
+ border:1px solid rgba(145,191,193,.66);
+ background:rgba(248,254,251,.92);color:#194252;
+ backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ box-shadow:0 15px 35px rgba(23,74,84,.15);
+}
+.model-camera-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px}
+.model-camera-heading>span{font-size:9px;font-weight:940;letter-spacing:.12em;color:#3d7b86}
+.model-camera-heading>strong{
+ font-size:10px;font-weight:880;color:#175a70;
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+}
+.model-camera-presets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.model-camera-presets>button{
+ min-width:0;min-height:45px;display:flex;align-items:center;justify-content:center;
+ flex-direction:column;gap:4px;padding:6px 1px;border:1px solid #caddd9;
+ background:#fafdFA;color:#456a72;border-radius:7px;
+ font-weight:850;font-size:8px;letter-spacing:.012em;
+ transition:background .16s,border-color .16s,transform .16s;
+}
+.model-camera-glyph{font-size:14px;line-height:1;color:#277488}
+.model-camera-presets>button:hover{background:#dff3ed;border-color:#88b8b5}
+.model-camera-presets>button[aria-pressed=true]{
+ background:#1b677b;border-color:#1b677b;color:white;
+ box-shadow:inset 0 -2px #95d5ca44
+}
+.model-camera-presets>button[aria-pressed=true] .model-camera-glyph{color:white}
+.model-camera-footer{
+ display:flex;align-items:center;justify-content:space-between;gap:9px;
+ border-top:1px solid #cddfda;margin-top:10px;padding-top:10px
+}
+.model-camera-footer>button{
+ background:#eff8f4;border:1px solid #b8d6d1;color:#22687d;
+ padding:9px 11px;border-radius:6px;font-size:9px;font-weight:950;
+ min-height:34px;letter-spacing:.035em;cursor:pointer
+}
+.model-camera-footer>button[aria-pressed=true]{background:#daf1e8;border-color:#429d9f}
+.model-camera-zoom{display:flex;align-items:center;gap:5px}
+.model-camera-zoom button{
+ width:33px;height:34px;font-size:18px;display:grid;place-items:center;
+ padding:0;background:#f7fcf9;border:1px solid #bdd9d6;
+ border-radius:6px;color:#216b7b;font-weight:850
+}
+.model-camera-zoom button:hover,.model-camera-footer>button:hover{background:#dff2eb}
+.model-camera-zoom output{display:block;min-width:39px;font-size:9px;
+ text-align:center;color:#1c5260;font-weight:850;font-variant-numeric:tabular-nums}
+.model-camera-hint{font-size:8px;line-height:1.5;color:#6a8b90;margin:9px 0 0}
+.model-camera-dock button:focus-visible{outline:3px solid #edaa77;outline-offset:2px}
+#structure-canvas{touch-action:none;cursor:grab;user-select:none}
+#structure-canvas:active{cursor:grabbing}
+/* Deliberately replace the old redundant promotional index with ONE
+   curated, content-rich engineering pathway. */
+.editorial-hub{
+ background:linear-gradient(145deg,#0e2b3a 0%,#144357 65%,#194859 100%);
+ color:#edf9f4;padding:64px clamp(22px,4.2vw,70px) 73px;
+ scroll-margin-top:75px;
+}
+.editorial-inner{max-width:1510px;margin:0 auto}
+.editorial-head{display:grid;grid-template-columns:1.15fr .85fr;align-items:end;gap:45px;margin-bottom:28px}
+.editorial-head .eyebrow{color:#91c9c6;font-weight:850;display:block}
+.editorial-head h2{
+ color:#f3faf6;font-size:clamp(27px,3.25vw,47px);
+ letter-spacing:-.058em;line-height:1.14;font-weight:850;max-width:20ch;margin:0
+}
+.editorial-head>p{color:#b9d8d9;font-size:13px;line-height:1.85;max-width:61ch}
+.editorial-hub .engineering-track{
+ padding:0;background:transparent;border:0;color:inherit;
+}
+.editorial-hub .engineering-track-inner{
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+ max-width:none;gap:12px;
+}
+.editorial-hub .engineering-track-item{
+ border:1px solid #51808a!important;border-radius:10px;
+ background:linear-gradient(160deg,rgba(244,255,253,.10),rgba(240,250,248,.025));
+ min-width:0;min-height:216px;padding:23px 23px 21px;
+ gap:11px;display:flex;flex-direction:column;
+ transition:transform .22s ease,border-color .2s ease,background .2s ease;
+}
+.editorial-hub .engineering-track-item:hover{
+ transform:translateY(-4px);background:#ffffff18;border-color:#b5e2d6!important
+}
+.editorial-hub .engineering-track-index{font-size:10px;letter-spacing:.09em;color:#89c8c8}
+.editorial-hub .engineering-track-item strong{
+ font-size:clamp(16px,1.35vw,21px);max-width:21ch;font-weight:830;
+ line-height:1.23;letter-spacing:-.038em;color:#f4fafa
+}
+.engineering-track-description{font-size:11px;color:#c0dadc;line-height:1.65}
+.editorial-hub .engineering-track-cta{margin-top:auto;color:#f2c49c;font-size:11px}
+.editorial-hub + .contact-strip{background:#f4f9f6;border-bottom:1px solid #d3e4e0;padding-block:15px}
+.editorial-hub + .contact-strip .contact-strip-inner{max-width:1500px}
+.editorial-hub + .contact-strip .contact-strip-title{font-size:18px}
+/* Donation is optional and secondary: after engineering proof/content, not
+   before the product. Preserve original owner-provided copy and links. */
+.support-banner{max-width:1480px;margin:67px auto 0;border-radius:12px;
+ border:1px solid #426b72;padding:25px 30px;background:linear-gradient(125deg,#102d3b,#205365 95%);
+}
+.support-banner .support-banner-inner{max-width:none}
+.support-banner .paypal-send-link{background:#277997;border-color:#7bb8bf;box-shadow:none}
+.support-banner .paypal-send-link:hover{background:#328b9e}
+.closing-section{margin-top:0}
+@media(min-width:1540px){
+ .hero{padding-inline:clamp(56px,5vw,100px)}
+ .hero-copy{max-width:690px}
+}
+@media(max-width:1120px){
+ .hero{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:16px}
+ .hero .structure-stage{height:600px}
+ .model-camera-dock{width:207px;padding:10px;top:89px}
+ .model-camera-presets>button{min-height:40px}
+ .editorial-hub .engineering-track-inner{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .editorial-hub .engineering-track-item{min-height:160px;padding:19px}
+}
+@media(max-width:850px){
+ .site-header{height:74px}
+ .hero{grid-template-columns:1fr;min-height:0;padding:42px 28px 75px;gap:20px}
+ .hero-copy{max-width:670px;margin:0 auto;width:100%;padding:12px 0 0}
+ .hero h1{font-size:clamp(51px,8vw,70px)}
+ .hero-description{max-width:63ch}
+ .hero .structure-stage{height:630px;width:100%;max-width:730px;margin:8px auto 0}
+ .hero-proof{gap:6px}
+ .editorial-hub{padding:56px 28px 65px}
+ .editorial-head{grid-template-columns:1fr;gap:16px}
+ .editorial-head>p{max-width:75ch}
+ .support-banner{margin-inline:24px}
+}
+@media(max-width:650px){
+ .site-header{height:70px;padding-inline:18px}
+ .hero{padding:30px 19px 60px;gap:10px}
+ .hero-copy{padding:6px 0 0}
+ .hero .hero-spec{font-size:9px;letter-spacing:.085em;margin-bottom:18px}
+ .hero h1{font-size:clamp(45px,10vw,58px);line-height:1.06}
+ .hero-description{font-size:13px;margin-top:18px;line-height:1.7}
+ .hero-proof{margin:16px 0 14px;gap:5px}
+ .hero-proof span{font-size:8px;padding:7px 8px;border-radius:5px}
+ .hero-proof strong{font-size:9px}
+ .hero-actions{margin-top:15px;gap:13px}
+ .hero-actions .primary{min-height:45px;font-size:11px;padding:11px 14px}
+ .hero-actions .text-button{font-size:10px}
+ .hero .structure-stage{
+   width:100%;max-width:none;margin:13px auto 0;height:570px;border-radius:13px;
+ }
+ .showcase-guide{top:9px;left:10px;max-width:47%}
+ .showcase-guide span{font-size:8px}
+ .showcase-guide small{font-size:7px;line-height:1.4}
+ .model-camera-dock{
+  top:auto;bottom:160px;left:9px;right:9px;width:auto;
+  border-radius:8px;padding:7px 9px 8px;box-shadow:0 7px 20px #174b581a
+ }
+ .model-camera-heading{margin:0 0 6px}
+ .model-camera-heading>span{font-size:8px}
+ .model-camera-heading>strong{font-size:9px}
+ .model-camera-presets{grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+ .model-camera-presets>button{min-height:37px;padding:4px 0;gap:2px;font-size:7px;border-radius:5px}
+ .model-camera-glyph{font-size:11px}
+ .model-camera-footer{margin-top:7px;padding-top:7px}
+ .model-camera-footer>button{min-height:28px;padding:5px 8px;font-size:8px}
+ .model-camera-zoom button{width:29px;height:28px;font-size:16px}
+ .model-camera-zoom output{font-size:9px}
+ .model-camera-hint{font-size:7px;margin:5px 0 0}
+ .model-showcase{bottom:76px;left:9px;right:9px;padding:9px 9px 10px}
+ .model-controls{bottom:26px;max-width:calc(100% - 18px);width:max-content;gap:2px;padding:3px}
+ .model-controls>button{font-size:9px;min-height:31px}
+ .model-disclaimer{bottom:4px}
+ .editorial-hub{padding:47px 19px 55px}
+ .editorial-head h2{font-size:clamp(28px,7vw,37px)}
+ .editorial-head>p{font-size:12px}
+ .editorial-hub .engineering-track-inner{grid-template-columns:1fr 1fr;gap:8px}
+ .editorial-hub .engineering-track-item{min-height:160px;padding:14px 12px 14px;gap:9px}
+ .editorial-hub .engineering-track-item strong{font-size:15px}
+ .editorial-hub .engineering-track-description{font-size:10px}
+ .editorial-hub .engineering-track-index{font-size:8px}
+ .support-banner{margin:40px 16px 0;padding:21px 16px}
+}
+@media(max-width:375px){
+ .hero{padding-inline:15px}
+ .hero .structure-stage{height:545px}
+ .model-camera-dock{bottom:158px;padding-inline:6px}
+ .model-camera-presets>button{font-size:6.5px}
+ .model-camera-heading>span{font-size:7px}
+ .model-showcase{bottom:72px}
+ .model-showcase-step .showcase-step-label{font-size:7px}
+ .editorial-hub .engineering-track-inner{grid-template-columns:1fr}
+ .editorial-hub .engineering-track-item{min-height:115px}
+}
+@media(prefers-reduced-motion:reduce){
+ .model-camera-presets>button,.editorial-hub .engineering-track-item{transition:none}
+ .editorial-hub .engineering-track-item:hover{transform:none}
+ .model-camera-dock{backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+
+/* Engineering preview redesigned as a physically separate viewer and control
+   rail: NO toolbars obscure steel trusses, roof shells, support glyphs or D2
+   stress visualisation. The original 3D Canvas remains 100% interactive. */
+.hero .model-visual-shell{
+ width:100%;max-width:900px;margin:0 auto;
+ display:grid;grid-template-columns:minmax(0,1fr);gap:11px;
+ align-self:center;min-width:0;isolation:isolate
+}
+.hero .model-visual-shell .structure-stage{
+ width:100%;height:clamp(525px,44vw,650px);max-width:none;
+ margin:0;align-self:auto;min-width:0;box-shadow:0 24px 65px #1749591b
+}
+.hero .model-visual-shell .model-camera-dock{
+ position:relative;inset:auto;left:auto;top:auto;right:auto;bottom:auto;
+ width:100%;max-width:none;z-index:2;padding:11px 15px;
+ border-radius:11px;border:1px solid #c6ded8;
+ background:#fafdF9;color:#1c4b5d;
+ display:grid;grid-template-columns:120px minmax(0,1fr) 210px;
+ gap:10px 13px;align-items:center;
+ box-shadow:0 12px 29px #15485612;backdrop-filter:none;
+}
+.hero .model-visual-shell .model-camera-heading{
+ margin:0;display:flex;flex-direction:column;align-items:flex-start;
+ justify-content:center;gap:5px
+}
+.hero .model-visual-shell .model-camera-heading>span{font-size:9px}
+.hero .model-visual-shell .model-camera-heading>strong{font-size:11px;max-width:100%}
+.hero .model-visual-shell .model-camera-presets{
+ grid-template-columns:repeat(7,minmax(0,1fr));gap:5px
+}
+.hero .model-visual-shell .model-camera-presets>button{
+ min-height:43px;font-size:8px;border-color:#cbded9;
+}
+.hero .model-visual-shell .model-camera-footer{
+ border-top:0;margin:0;padding:0;justify-content:flex-end;gap:9px
+}
+.hero .model-visual-shell .model-camera-hint{grid-column:1/-1;margin:0;font-size:9px;color:#66858d}
+.hero .model-visual-shell .model-camera-footer>button{min-height:36px}
+.hero .model-visual-shell .model-camera-zoom button{height:36px}
+.hero .model-visual-shell .model-camera-glyph{font-size:15px}
+/* The same information is already presented in the hero proof row and model
+   footnotes. Keep a semantically helpful guide for assistive readers only. */
+.showcase-guide{
+ position:absolute!important;width:1px!important;height:1px!important;
+ padding:0!important;margin:-1px!important;border:0!important;
+ overflow:hidden!important;white-space:nowrap!important;
+ clip-path:inset(50%)!important
+}
+@media(max-width:1290px){
+ .hero .model-visual-shell .model-camera-dock{
+  grid-template-columns:105px minmax(0,1fr);gap:8px 10px
+ }
+ .hero .model-visual-shell .model-camera-presets{grid-column:2;grid-row:1/3}
+ .hero .model-visual-shell .model-camera-footer{grid-column:1;grid-row:2;justify-content:flex-start}
+ .hero .model-visual-shell .model-camera-hint{grid-row:3}
+ .hero .model-visual-shell .model-camera-footer>button{padding:7px 6px;font-size:8px}
+ .hero .model-visual-shell .model-camera-zoom button{width:28px}
+ .hero .model-visual-shell .model-camera-zoom output{min-width:30px;font-size:8px}
+}
+@media(max-width:850px){
+ .hero .model-visual-shell{max-width:730px;gap:9px}
+ .hero .model-visual-shell .structure-stage{height:530px}
+ .hero .model-visual-shell .model-camera-dock{grid-template-columns:122px 1fr;gap:7px 11px;padding:10px 12px}
+ .hero .model-visual-shell .model-camera-presets{grid-column:2;grid-row:1/3}
+ .hero .model-visual-shell .model-camera-footer{grid-column:1;grid-row:2}
+ .hero .model-visual-shell .model-camera-hint{grid-column:1/-1;grid-row:3}
+}
+@media(max-width:650px){
+ .hero .model-visual-shell{width:100%;gap:7px}
+ .hero .model-visual-shell .structure-stage{height:430px}
+ .hero .model-visual-shell .model-camera-dock{
+  position:relative;inset:auto;width:100%;max-width:none;
+  display:grid;grid-template-columns:1fr;gap:7px;padding:10px 10px 11px;
+  border-radius:9px;background:#f9fdf9
+ }
+ .hero .model-visual-shell .model-camera-heading{
+  grid-column:1;grid-row:1;display:flex;flex-direction:row;
+  justify-content:space-between;align-items:center;margin:0
+ }
+ .hero .model-visual-shell .model-camera-presets{
+  grid-column:1;grid-row:2;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px
+ }
+ .hero .model-visual-shell .model-camera-presets>button{min-height:39px;font-size:7px;padding:5px 0}
+ .hero .model-visual-shell .model-camera-glyph{font-size:12px}
+ .hero .model-visual-shell .model-camera-footer{
+  grid-column:1;grid-row:3;display:flex;justify-content:space-between;
+  padding:8px 0 0;border-top:1px solid #d4e4df;gap:8px
+ }
+ .hero .model-visual-shell .model-camera-footer>button{min-height:30px;padding:7px 12px}
+ .hero .model-visual-shell .model-camera-zoom button{height:30px;width:33px}
+ .hero .model-visual-shell .model-camera-zoom output{min-width:42px}
+ .hero .model-visual-shell .model-camera-hint{grid-column:1;grid-row:4;font-size:8px}
+ .hero .structure-stage .model-showcase{bottom:77px}
+ .hero .structure-stage .model-controls{bottom:27px}
+ .hero .structure-stage .model-disclaimer{bottom:4px}
+}
+@media(max-width:375px){
+ .hero .model-visual-shell .structure-stage{height:410px}
+ .hero .model-visual-shell .model-camera-dock{padding:9px 7px}
+ .hero .model-visual-shell .model-camera-presets{gap:3px}
+ .hero .model-visual-shell .model-camera-presets>button{font-size:6.5px}
+}
+
+/* Narrow handset header: retain actual language links while eliminating
+   12px horizontal overflow caused by the flag-label cluster at 320px. */
+@media(max-width:375px){
+ .site-header{padding-inline:12px;gap:6px}
+ .site-header .wordmark{font-size:22px}
+ .site-header .header-controls{gap:5px}
+ .site-header .language-control{gap:3px}
+ .site-header .language-link{min-width:34px;min-height:38px;padding:6px 5px}
+ .site-header .language-link .lang-label{display:none}
+ .site-header .lang-flag{font-size:17px}
+ .site-header .menu-toggle{width:32px;min-width:32px;padding:5px}
+}
+
+/* Engineering view switch: show actual D2 pads and Winkler foundation beams
+   without pretending that the shell roofs are solved structural results. */
+.hero .model-visual-shell .model-camera-heading{position:relative}
+.model-camera-heading #model-foundations-toggle{
+ font-size:8px;font-weight:900;letter-spacing:.015em;
+ color:#246b7e;background:#e4f5ee;border:1px solid #b8d9d4;
+ border-radius:5px;padding:6px 7px;min-height:27px;cursor:pointer
+}
+.model-camera-heading #model-foundations-toggle[aria-pressed="true"]{
+ color:white;background:#1c7085;border-color:#1c7085
+}
+.model-camera-heading #model-foundations-toggle[hidden]{display:none!important}
+.model-camera-heading #model-foundations-toggle:hover:not(:disabled){background:#cfebe3}
+.model-camera-heading #model-foundations-toggle:disabled{opacity:.38}
+@media(min-width:651px){
+ .hero .model-visual-shell .model-camera-heading{
+  display:grid;grid-template-columns:1fr;gap:4px;align-content:center
+ }
+ .hero .model-visual-shell .model-camera-heading>strong{font-size:10px}
+ .hero .model-visual-shell .model-camera-heading #model-foundations-toggle{justify-self:start}
+}
+@media(max-width:650px){
+ .hero .model-visual-shell .model-camera-heading{
+  display:flex;gap:6px;justify-content:space-between;flex-wrap:wrap
+ }
+ .hero .model-visual-shell .model-camera-heading #model-foundations-toggle{
+  min-height:24px;font-size:8px;padding:5px 8px
+ }
+}
+
+/* Native structural foundation evidence, not an imagined or simulated image. */
+.media-foundation-detail{display:inline-flex;align-items:center;gap:7px;margin-top:6px;
+ font-size:11px;font-weight:850;text-decoration:underline;text-underline-offset:3px;
+ color:#1a7287;max-width:100%}
+.media-foundation-detail:hover{color:#b3694d}
+
+/* One visible voluntary-support action. The procedural/legal instructions
+   remain accessible inside an expandable disclosure, not as a competing
+   second PayPal card crowding the engineering content. */
+.payment-guide{
+ border:1px solid #cbdedb;border-radius:10px;align-self:start;
+ overflow:hidden;background:#f6fbf8;color:#17495b
+}
+.payment-guide>summary{
+ display:flex;align-items:center;justify-content:space-between;gap:20px;
+ cursor:pointer;list-style:none;padding:19px 21px;
+ font-size:13px;font-weight:850;line-height:1.5
+}
+.payment-guide>summary::-webkit-details-marker{display:none}
+.payment-guide .payment-guide-plus{font-size:23px;color:#418e94;line-height:1}
+.payment-guide[open] .payment-guide-plus{transform:rotate(45deg)}
+.payment-guide>summary:hover{background:#e6f4ee}
+.payment-guide:focus-within{border-color:#8bbfbb}
+.payment-guide .personal-paypal-card{
+ margin:0;border:0;border-top:1px solid #cbdedb;box-shadow:none;
+ background:#fffefa;border-radius:0;padding:22px
+}
+.support-section .support-layout{align-items:center}
+@media(max-width:850px){.payment-guide{width:100%}}
+
+/* Compact, voluntary support section: one call to action and a disclosure,
+   with generous but not excessive whitespace. */
+.support-section{padding:54px var(--gutter) 29px;background:#f0f6f2}
+.support-section .support-layout{
+ max-width:1440px!important;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);
+ gap:clamp(24px,4vw,65px);align-items:center
+}
+.support-section h2{
+ font-size:clamp(31px,3.35vw,48px);line-height:1.12;max-width:18ch;margin:0 0 19px
+}
+.support-editorial .support-lead{
+ font-size:13px;line-height:1.75;max-width:57ch;margin:0
+}
+.support-editorial .eyebrow{font-size:10px;margin-bottom:13px}
+.support-guide{margin-top:18px}
+.support-trust{margin-top:22px;padding:10px 14px;gap:4px}
+.support-trust strong{font-size:11px}
+.support-trust span{font-size:10px}
+.payment-guide{align-self:center}
+.support-banner{margin:0 auto 52px}
+@media(max-width:850px){
+ .support-section{padding:45px var(--gutter) 27px}
+ .support-section .support-layout{grid-template-columns:1fr;gap:25px}
+ .support-section h2{font-size:clamp(30px,5.5vw,44px);max-width:20ch}
+ .support-banner{margin:0 24px 45px}
+}
+@media(max-width:650px){
+ .support-section{padding:35px 19px 22px}
+ .support-section h2{font-size:31px;max-width:20ch}
+ .support-banner{margin:0 16px 35px}
+}

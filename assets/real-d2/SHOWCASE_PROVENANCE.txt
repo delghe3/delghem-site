@@ -29,9 +29,12 @@ NOT valid for actual construction until independent structural and geotechnical 
 
 timber-terminal — Terminal a volte in legno
 Native source: showcase-timber-terminal.hfm.json
-SHA256: 2f36ef63a9126e8e0e5cae51f8c3065ba98d9f1ac3fc1437d4344f6544e7d8bb
+SHA256: 40cc3d7f6d3574246cd778a7f8e9fb1a8f9b8a924c426ce3f276468ac29ab996
 VALIDATED: D2 validateEditableModel() + typed foundationSystem upsert
-Geometry nodes=279 members=524 shell panels=127 foundation pads=32
+Geometry nodes=285 members=576 shell panels=127 foundation pads=32
+Foundation system: 32 original direct C.A. pads interconnected by 52 typed Winkler RC beams (28 longitudinal, 16 transverse and 8 subdivided through the court).
+Beam contact width 0.8m; soil elastic subgrade ks=18,000 kN/m3 is illustrative only, NOT laboratory/geotechnical verification.
+Winkler-generated nodal Z spring stiffness and released vertical ground DOFs are retained in the editable native D2 input model.
 Geometry envelope min=-43.4,-33,-0.95 max=43.4,28.5,23
 Materials: C30/37, S355, GL24h
 NOTE: Conceptually plausible exhibition geometry. No force calculation, wind, earthquake, loading, member sizing or global stability verification.

@@ -164,7 +164,7 @@ class NativeScene {
   // The stadium has both actual direct pad bearings and native Winkler
   // spring-supported interconnecting grade beams. Distinct archive entries
   // share the same valid D2 foundation system, each deriving tributary ks*b*L.
-  if(this.id==='football-canopy'){
+  if(this.id==='football-canopy'||this.id==='timber-terminal'){
    for(const [i,memberId] of this.winklerMembers.entries()){
     final=upsertFoundationElement(final,{id:'W'+(i+1),type:'winkler',
      memberId,contactWidthM:.8});
@@ -208,7 +208,7 @@ class NativeScene {
    gridX:[...this.gridsX].sort((a,b)=>a-b),
    gridY:[...this.gridsY].sort((a,b)=>a-b),
    ...(isBridge?{supports:this.bearingSupports}:{}),
-   ...(this.id==='football-canopy'?{winklerCount:this.winklerMembers.length}:{}),
+   ...(['football-canopy','timber-terminal'].includes(this.id)?{winklerCount:this.winklerMembers.length}:{}),
    ...(isMasonry?{buildings:this.buildings,openings:this.openings,roofSystems:this.roofSystems}:{}),
    qualifications:{solved:false,designed:false,executive:false}
   };
@@ -386,8 +386,8 @@ function timberTerminal(){
    titleEn:'Long-span glulam terminal',
    subtitleIt:'84 × 54 m · volte GL24h · lucernari · mezzanini C30/37/S355',
    subtitleEn:'84 × 54 m · vaulted GL24h trusses · skylights · composite mezzanines',
-   descriptionIt:'Atrio polifunzionale con otto capriate voltate in legno lamellare, pannelli ortotropi, lucernari, colonne miste e mezzanini in cemento armato.',
-   descriptionEn:'Multi-bay timber terminal with eight glulam vaulted truss frames, orthotropic roof panels, daylight openings, mixed steel/concrete support columns and mezzanines.',
+   descriptionIt:'Atrio polifunzionale con capriate voltate GL24h, lucernari e mezzanini misti. I 32 plinti sono collegati da 52 travi di fondazione in cemento armato su Winkler, con suolo ipotizzato.',
+   descriptionEn:'Multi-bay GL24h vaulted terminal with skylights and composite mezzanines. The 32 pads are interconnected by 52 real native reinforced-concrete Winkler foundation beams, based on illustrative subgrade assumptions.',
    icon:'atrium',category:'mixed_steel_rc_timber'});
  const X=Array.from({length:8},(_,i)=>-42+i*12);
  const Y=Array.from({length:9},(_,i)=>-27+i*6.75);
@@ -456,6 +456,28 @@ function timberTerminal(){
  }
  for(const x of [-18,-6,6])m.panel([[x,-33,9.3],[x+12,-33,9.3],[x+12,-27,9.3],[x,-27,9.3]],
   'M_STEEL',.016,'terminal-steel-canopy');
+ // 32 real concrete pads at the eight 12 m portal axes along four bearing
+ // rows. D2 foundationBeam member endpoints and typed Winkler entries are
+ // created together. These are conceptual soil parameters, not site results.
+ const ROWS=[-27,-18,18,27];
+ const foundationBeam=(a,b)=>{
+  const id=m.member(a,b,m.S.floorTie,'M_RC','terminal-winkler-grade-beam');
+  if(!id)throw Error('Coincident terminal Winkler grade beam between '+a+' and '+b);
+  m.winklerMembers.push(id);
+ };
+ // 4 longitudinal rows × 7 spans = 28.
+ for(const y of ROWS)for(let i=0;i<X.length-1;i++)
+  foundationBeam([X[i],y,0],[X[i+1],y,0]);
+ // Two transverse facade spans on each of eight axes = 16.
+ for(const x of X)for(const [a,b] of [[-27,-18],[18,27]])
+  foundationBeam([x,a,0],[x,b,0]);
+ // Connect the north/south foundation grids as one actual soil-supported
+ // beam network at both end portals. The 36m internal void is subdivided
+ // into four 9m Winkler members, avoiding a fictitious 36m single element.
+ const courtY=[-18,-9,0,9,18];
+ for(const x of [X[0],X.at(-1)])for(let j=0;j<courtY.length-1;j++)
+  foundationBeam([x,courtY[j],0],[x,courtY[j+1],0]);
+ if(m.winklerMembers.length!==52)throw Error('Expected 52 terminal foundation members');
  m.gridsX=new Set(fineX);m.gridsY=new Set(Y);
  return m.buildExport();
 }
@@ -661,6 +683,10 @@ writeFileSync(resolve(nativeFolder,'SHOWCASE_PROVENANCE.txt'),[
    'Foundation system: 18 direct C.A. pads and '+x.winklerCount+' native typed Winkler grade beams, effective contact width 0.8 m.',
    'Soil ks=18,000 kN/m3 and associated springs are purely illustrative input, not geotechnical test data.',
    'Two central bays on both sides are X-braced with 8 genuine S355 truss diagonals.']:[]),
+  ...(x.id==='timber-terminal'?[
+   'Foundation system: 32 original direct C.A. pads interconnected by '+x.winklerCount+' typed Winkler RC beams (28 longitudinal, 16 transverse and 8 subdivided through the court).',
+   'Beam contact width 0.8m; soil elastic subgrade ks=18,000 kN/m3 is illustrative only, NOT laboratory/geotechnical verification.',
+   'Winkler-generated nodal Z spring stiffness and released vertical ground DOFs are retained in the editable native D2 input model.']:[]),
   ...(x.id==='steel-arch-bridge'?[
    'True lateral bearing conditions on 4 end nodes at deck elevation 12 m, with NO pylons or pad footings.',
    'Western bearings: 2 hinges with Tx/Ty/Tz fixed, rotations free.',

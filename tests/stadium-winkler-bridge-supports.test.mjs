@@ -54,10 +54,9 @@ test('Football stadium footing beams are true named D2 Winkler foundations and t
   assert.ok([-14.25,0,14.25].includes(a[0])&&[-14.25,0,14.25].includes(c[0]));
  }
 });
-test('All other existing D2 concept specimens and the source eight-storey building stay unchanged',()=>{
+test('The original eight-storey building source stays unchanged while foundation models are upgraded',()=>{
  const before={
   'complex-demonstration.hfm.json':'baaab78550ed055a3dedfea96a301305896481dc3e279164fc11ca026ccab31f',
-  'showcase-timber-terminal.hfm.json':'2f36ef63a9126e8e0e5cae51f8c3065ba98d9f1ac3fc1437d4344f6544e7d8bb'
  };
  const {createHash}=requireHash();
  for(const [f,expected] of Object.entries(before)){

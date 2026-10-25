@@ -12,7 +12,7 @@ test('3D model defaults to a visible, smooth automatic orbit and lets visitors r
   assert.ok(stage.DEFAULT_ORBIT_SPEED >= .22 && stage.DEFAULT_ORBIT_SPEED <= .65,
     'A complete rotation should take about 10 to 29 seconds, not several minutes');
   const code=read('model-stage.js');
-  assert.match(code,/yaw\s*\+=\s*dt\s*\*\s*DEFAULT_ORBIT_SPEED/);
+  assert.match(code,/yaw=normalizeAngle\(yaw\+dt\*DEFAULT_ORBIT_SPEED\)/);
   assert.match(code,/reset-model/);
   assert.match(code,/requestAnimationFrame/);
   assert.match(code,/project\(plus\(origin,vector\),true\)/,

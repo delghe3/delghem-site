@@ -9,9 +9,8 @@ const read=name=>readFileSync(resolve(root,name),'utf8');
 const digest=name=>createHash('sha256').update(readFileSync(resolve(root,name))).digest('hex');
 const unchanged={
  'assets/real-d2/complex-demonstration.hfm.json':'baaab78550ed055a3dedfea96a301305896481dc3e279164fc11ca026ccab31f',
- 'assets/real-d2/showcase-timber-terminal.hfm.json':'2f36ef63a9126e8e0e5cae51f8c3065ba98d9f1ac3fc1437d4344f6544e7d8bb'
 };
-test('The original eight-storey tower and timber terminal remain physically unchanged when bridge, stadium and masonry are improved',async()=>{
+test('The original eight-storey model stays bit-for-bit identical as the timber terminal gets native Winkler foundations',async()=>{
  for(const [file,hash] of Object.entries(unchanged))assert.equal(digest(file),hash,file);
  const {showcaseModels}=await import('../assets/real-d2/showcase-geometry.mjs');
  assert.deepEqual(showcaseModels.map(m=>m.id),[

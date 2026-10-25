@@ -96,11 +96,16 @@ test('frase di invito richiesta compare immediatamente accanto al pulsante PayPa
   }
 });
 
-test('mobile release teaser separates alpha date and support link',()=>{
+test('Release milestone and optional support stay accessible while product proof leads the page',()=>{
  for(const [language,html] of pages){
-  assert.match(html,/class="release-inline"/);
-  assert.match(html,/class="hero-support-link"/);
+  assert.match(html,/id="release"/);
+  assert.match(html,/id="support-top"/);
+  const hero=html.slice(html.indexOf('<section class="hero'),html.indexOf('<section class="editorial-hub'));
+  assert.doesNotMatch(hero,/class="hero-support-link"/);
+  assert.match(hero,/class="hero-proof"/);
+  assert.ok(html.indexOf('id="support-top"')>html.indexOf('id="fem-lab"'),
+   language+': optional fundraising must follow engineering evidence');
  }
- assert.match(css,/\.release-inline\s*>\s*span/);
+ assert.match(css,/\.hero-proof/);
  assert.match(css,/@media\s*\(max-width:\s*650px\)/);
 });

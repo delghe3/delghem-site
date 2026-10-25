@@ -50,9 +50,9 @@ test('both homepages show loading poster and accurately qualified mixed-model la
  assert.match(css,/\.model-poster/);
  assert.match(css,/\.model-ready/);
 });
-test('contact banner on Chrome offers send and copy actions with clear labels in both languages',()=>{
+test('contact section following the product introduction offers accessible send/copy actions in both languages',()=>{
  for(const name of homes){
-  const h=file(name),part=h.slice(h.indexOf('<section class="contact-strip"'),h.indexOf('<section class="hero chapter"'));
+  const h=file(name),part=h.slice(h.indexOf('<section class="contact-strip"'),h.indexOf('<section class="app-section'));
   assert.match(part,/mailto:delghem@proton\.me/);
   assert.match(part,/class="contact-copy-button"/);
   assert.match(part,/id="contact-copy-status"/);

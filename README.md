@@ -22,6 +22,13 @@ Sito web statico bilingue (italiano / inglese) pubblicato tramite GitHub Pages s
 - Supporto PayPal: collegamento al flusso ufficiale di invio e copia dell'indirizzo destinatario. Il conto e il link di donazione non sono verificati; non trattiamo pagamenti nel sito.
 - Contatore **VISITORS / VISITATORI**: valore iniziale dichiarato dal titolare 87.600 (24/10/2026), al quale si aggiungono le nuove visualizzazioni del servizio; **non** rappresenta il numero verificato di visitatori unici. Se il servizio non risponde, resta il valore iniziale.
 
+## Visualizzatore 3D e miglioramento della pagina (25/10/2026)
+
+- Fondazioni del terminal: 32 plinti originali più **52 travi di collegamento su Winkler** (terminal-winkler-grade-beam), validate con l'archivio nativo DÈLGHEM D2 e i parametri di terreno assunti. Griglia: 28 collegamenti longitudinali, 16 trasversali di facciata e 8 tra le due ali con suddivisione della campata libera in passi di 9 m. I nodi generano molle verticali positive per la schematizzazione geotecnica concettuale. **Non eseguita un'analisi statica o verifica progettuale**.
+- Telecamera 3D: **rotazione integrale su 360°** orizzontale e verticale, con trascinamento mouse e touch, pinch/rotellina per lo zoom, viste rapide ISO, alto, basso, fronte, retro, sinistra e destra; proiezione prospettica/ortogonale, scala 53–280%, tasto Home per reset. I controlli sono sotto il visualizzatore per non nascondere i modelli strutturali. Un comando Fondazioni permette di isolare le reti native di travi su Winkler e i plinti del terminal e dello stadio, con proiezione dall’alto e immagine di documentazione nel media kit. Quando si modifica manualmente la camera, la sequenza automatica si mette in pausa e l'utente può riprenderla.
+- Layout riorganizzato con gerarchia ingegneristica: prima il modello nativo, quindi quattro sezioni di approfondimento (modellazione, laboratorio Kratos, Genius, Apple Silicon), poi le schermate reali e il resto delle evidenze; contatti subito dopo la presentazione e donazioni facoltative dopo i contenuti tecnici. Navigazione IT/EN più breve, prove documentate e condizioni di utilizzo sempre esplicite.
+- Il sito resta statico GitHub Pages. style.css, app.js, locales.js, modulo Canvas e geometrie D2 utilizzano versioni coerenti per evitare file stantii nella cache. Nessun codice o progetto nella cartella di DÈLGHEM D2 è stato modificato.
+
 ## SEO e promozione gratuita (24/10/2026)
 
 - Sei articoli tematici nuovi, indexable, con canonical e hreflang reciproci: Pushover/IDA; mappe tensionali FEM 3D; licenza industriale del codice per software house, ciascuno in IT/EN. La licenza viene proposta direttamente tramite delghem@proton.me; nessun checkout.

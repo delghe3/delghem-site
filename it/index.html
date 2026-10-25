@@ -36,20 +36,14 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.delghe.com/#organization","name":"DELGHE","url":"https://www.delghe.com/","brand":{"@type":"Brand","name":"DÈLGHEM"}},{"@type":"WebSite","@id":"https://www.delghe.com/#website","name":"DÈLGHEM","url":"https://www.delghe.com/","inLanguage":["en","it"],"about":{"@id":"https://www.delghe.com/#software"},"publisher":{"@id":"https://www.delghe.com/#organization"}},{"@type":"SoftwareApplication","@id":"https://www.delghe.com/#software","name":"DÈLGHEM","url":"https://www.delghe.com/","description":"Scopri DÈLGHEM, il software di calcolo strutturale in sviluppo per macOS e Apple Silicon: modelli 3D, analisi FEM, Genius e documentazione di progetto.","applicationCategory":"ScienceApplication","operatingSystem":"macOS","processorRequirements":"Apple Silicon","inLanguage":["en","it"],"creativeWorkStatus":"In sviluppo","screenshot":"https://www.delghe.com/assets/app-model.png","author":{"@type":"Person","name":"DELGHE"},"publisher":{"@id":"https://www.delghe.com/#organization"},"brand":{"@type":"Brand","name":"DELGHE"},"alternateName":["DELGHE FEM","DÈLGHEM","DELGHEM"]}]}</script>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../assets/Manrope.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="../style.css?v=20261025-showcase6">
+  <link rel="stylesheet" href="../style.css?v=20261025-showcase8">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Vai al contenuto</a>
   <div class="reading-progress" aria-hidden="true"><span></span></div>
   <header class="site-header">
     <a class="wordmark" href="#home" aria-label="DÈLGHEM home">DÈLGHEM<span class="wordmark-dot" aria-hidden="true"></span></a>
-    <nav class="desktop-nav" aria-label="Navigazione principale" data-i18n-aria="navLabel">
-      <a href="#app" data-i18n="navApp">Il programma</a>
-      <a href="#native">Apple Silicon</a>
-      <a href="#fem-lab">Laboratorio FEM</a><a href="#genius">Genius</a>
-      <a href="#workflow" data-i18n="navFeatures">Funzionalità</a>
-      <a href="#capabilities">Aree tecniche</a><a href="#gallery">Schermate</a><a href="#release">vAlpha1</a>
-    </nav>
+    <nav class="desktop-nav" aria-label="Navigazione principale"><a href="#model-showcase">Modelli 3D</a><a href="#fem-lab">Laboratorio FEM</a><a href="#genius">Genius</a><a href="#gallery">Schermate</a><a href="#release">vAlpha1</a></nav>
     <div class="header-controls">
       <div class="language-control" role="group" aria-label="Website language / Lingua del sito">
       <a class="language-link" data-language="en" href="/" lang="en" hreflang="en" aria-label="English"><span class="lang-flag">🇬🇧</span><span class="lang-label">English</span></a>
@@ -58,52 +52,24 @@
       <button class="menu-toggle icon-button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Apri menu" data-i18n-aria="openMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
     </div>
   </header>
-  <nav class="mobile-menu" id="mobile-menu" aria-label="Navigazione mobile" data-i18n-aria="mobileNav" hidden><a href="#app" data-i18n="navApp">Il programma</a><a href="#native">Apple Silicon</a><a href="#fem-lab">Laboratorio FEM</a><a href="#genius">Genius</a><a href="#workflow" data-i18n="navFeatures">Funzionalità</a><a href="#capabilities">Aree tecniche</a><a href="#gallery">Schermate</a><a href="#release">vAlpha1</a><a href="#support">Sostieni</a></nav>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Navigazione mobile" hidden><a href="#model-showcase">Modelli 3D</a><a href="#app">Il programma</a><a href="#fem-lab">Laboratorio FEM</a><a href="#genius">Genius</a><a href="#native">Apple Silicon</a><a href="#gallery">Schermate</a><a href="#project">Contatti</a><a href="#support-top">Sostieni</a></nav>
 
   <main id="main">
-    <section class="support-banner" id="support-top" aria-label="Sostieni DÈLGHEM con PayPal">
-  <div class="support-banner-inner">
-    <div class="support-banner-copy">
-      <span class="support-banner-kicker">SVILUPPO INDIPENDENTE <span aria-hidden="true">/</span> DÈLGHEM</span>
-      <p class="paypal-personal-appeal"><span class="paypal-impact-statement">Delghem è un progetto indipendente, se vuoi supportarlo con una donazione aiuteresti concretamente il progetto a prendere vita</span></p>
-    </div>
-    <div class="support-banner-action">
-      <a class="paypal-send-link" href="https://www.paypal.com/myaccount/transfer/send" target="_blank" rel="noopener noreferrer" aria-label="Apri PayPal per contribuire a DÈLGHEM">Sostieni con PayPal <span aria-hidden="true">↗</span></a>
-      <div class="support-banner-recipient"><span>Destinatario: <strong>ildelghe3@gmail.com</strong></span><button class="copy-paypal" type="button" data-email="ildelghe3@gmail.com" data-copy-done="Email copiata" data-copy-error="Seleziona e copia l’indirizzo">Copia email</button></div>
-      <p id="paypal-copy-status" class="copy-feedback" role="status" aria-live="polite"></p>
-      <small>PayPal personale: inserisci il destinatario manualmente. Contributo non detraibile.</small>
-      <div class="visitor-counter visitor-counter--top" role="status" aria-live="polite"><span class="visitor-counter__eyebrow">VISITATORI</span><strong class="visitor-counter__number" id="visitor-counter-total">87.600</strong></div>
-    </div>
-  </div>
-</section>
-    <section class="contact-strip" aria-label="Contatta DÈLGHEM">
-    <div class="contact-strip-inner">
-      <div class="contact-strip-copy">
-        <span class="contact-strip-kicker">CONTATTI E COLLABORAZIONI</span>
-        <strong class="contact-strip-title">Contatta DÈLGHEM</strong>
-        <span class="contact-strip-note">Per informazioni, approfondimenti tecnici e possibili collaborazioni.</span>
-      </div>
-      <div class="contact-strip-action">
-        <a class="contact-strip-link contact-email" href="mailto:delghem@proton.me?subject=Informazioni%20su%20D%C3%88LGHEM">delghem@proton.me<span aria-hidden="true">↗</span></a>
-        <button class="contact-copy-button" type="button" data-contact-email="delghem@proton.me">Copia email</button><span class="contact-copy-status" id="contact-copy-status" aria-live="polite" role="status"></span><span class="contact-strip-instruction">Scrivici</span>
-      </div>
-    </div>
-  </section>
   <section class="hero chapter" id="home" aria-labelledby="hero-title" data-chapter="intro">
       <div class="hero-copy"><p class="hero-spec"><span class="hero-spec-indicator" aria-hidden="true"></span>DELGHE / DÈLGHEM · INGEGNERIA STRUTTURALE PER MAC</p>
         <h1 id="hero-title"><span data-i18n="heroLine1">Il calcolo strutturale.</span><span class="accent-text" data-i18n="heroLine2">Sul tuo Mac.</span></h1>
-        <p class="hero-description" data-i18n="heroDescription">DÈLGHEM. L’app di calcolo strutturale progettata per macOS e Apple Silicon. Un nuovo spazio per le tue strutture.</p>
-        <div class="hero-actions"><a class="button primary" href="#app"><span data-i18n="exploreApp">Esplora il programma</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><button class="text-button" id="start-presentation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 5 10 7-10 7V5Z"/></svg><span data-i18n="watchPresentation">Avvia presentazione</span></button></div>
-        <div class="release-inline"><span class="release-inline-label">ALPHA · 01/2027</span><span>DÈLGHEM vAlpha1 — Rilascio previsto: gennaio 2027</span></div>
-        <a class="hero-support-link" href="#support-top">Sostieni lo sviluppo <span aria-hidden="true">↗</span></a>
-        <div class="native-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4m6-4v4M9 18v4m6-4v4M2 9h4m-4 6h4m12-6h4m-4 6h4"/></svg><span>Apple Silicon <span class="native-separator">/</span> macOS <span class="native-separator">/</span> <span data-i18n="nativeLabel">Nativamente.</span></span></div>
+        <p class="hero-description" data-i18n="heroDescription">DÈLGHEM è il progetto di software FEM per Apple Silicon: modellazione nativa, esempi strutturali complessi e benchmark Kratos consultabili. vAlpha1 in sviluppo.</p>
+        <div class="hero-proof"><span><strong>05</strong> Modelli nativi D2</span><span><strong>KRATOS</strong> Benchmark documentati</span><span><strong>ARM64</strong> macOS nativo</span></div><div class="hero-actions"><a class="button primary" href="#app"><span data-i18n="exploreApp">Esplora il programma</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><button class="text-button" id="start-presentation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 5 10 7-10 7V5Z"/></svg><span data-i18n="watchPresentation">Avvia presentazione</span></button></div>
+
+
+
       </div>
-      <div class="structure-stage">
+      <div class="model-visual-shell"><div class="structure-stage">
         <img class="model-poster" src="../assets/real-d2/complex-frame-poster.webp?v=20261024-8floor-d2a" width="792" height="643" alt="Modello strutturale DÈLGHEM D2 di 8 piani fuori terra con nucleo C30/37, acciaio S355, coperture a capriate S355 e GL24h e 24 plinti, non verificato" decoding="async">
         <div class="model-concept-label" aria-label="Modello nativo DÈLGHEM D2: 212 nodi, 514 aste, 112 shell, 24 plinti; torre 8 piani; capriate S355 e GL24h; studio concettuale">8 PIANI · S355 / C30/37 / GL24h</div>
         <div class="model-material-key" aria-label="Materiali del modello dimostrativo: acciaio S355, cemento armato C30/37, legno lamellare GL24h"><span><i class="mat-steel" aria-hidden="true"></i>S355</span><span><i class="mat-rc" aria-hidden="true"></i>C30/37</span><span><i class="mat-wood" aria-hidden="true"></i>GL24h</span><span hidden><i class="mat-masonry" aria-hidden="true"></i>MURATURA</span></div>
         <div class="model-motion-status" id="model-motion-status" role="status" aria-live="polite">⟳ ROTAZIONE 3D · ATTIVA</div>
-        <canvas id="structure-canvas" aria-label="Visualizzazione dimostrativa di un telaio strutturale tridimensionale. Trascina o usa le frecce per ruotare. Home ripristina la vista." data-i18n-aria="modelAlt"></canvas>
+        <canvas id="structure-canvas" aria-label="Visualizzazione dimostrativa di un telaio strutturale tridimensionale. Rotazione tridimensionale completa 360°, viste predefinite, zoom e proiezione." data-i18n-aria="modelAlt"></canvas><div class="showcase-guide" id="showcase-guide"><span>CINQUE STRUTTURE IN 3D</span><small>Modelli nativi D2 · geometrie non verificate</small></div>
         <div class="model-label"><span class="model-dot" aria-hidden="true"></span><span data-i18n="modelLabel">L’idea prende struttura.</span></div>
         <div class="model-showcase" id="model-showcase" role="group" aria-label="Modelli strutturali nativi DÈLGHEM D2, cambio ogni cinque secondi">
     <div class="model-showcase-heading">
@@ -120,10 +86,26 @@
         <div class="model-controls" role="group" aria-label="Vista del modello" data-i18n-aria="modelView"><button data-model-view="structure" aria-pressed="true" data-i18n="structure">Struttura</button><button data-model-view="deformed" aria-pressed="false" data-i18n="deformed">Deformata</button><button data-model-view="forces" aria-pressed="false" data-i18n="forces">Sollecitazioni</button><button id="rotate-model" class="icon-button" aria-pressed="true" aria-label="Rotazione automatica" data-i18n-aria="rotate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 6a8 8 0 0 1 14 6M4 12a8 8 0 0 0 14 6"/></svg></button><button id="reset-model" class="icon-button model-reset" type="button" aria-label="Reset 3D view" data-i18n-aria="resetView" title="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" aria-hidden="true"><path d="M3 11a9 9 0 1 1 3.2 7M3 4v7h7"/></svg></button></div>
         <p class="model-origin">Torre nativa DÈLGHEM D2 · 8 piani · 24 plinti · 3 coperture differenti · geometria non verificata</p><p class="model-disclaimer" data-i18n="modelDisclaimer">Visualizzazione dimostrativa · nessun risultato di calcolo</p>
       </div>
+<div class="model-camera-dock" id="model-camera-controls" role="group" aria-label="Orientamento 3D, proiezione e zoom"><div class="model-camera-heading"><span>CAMERA 3D / VISTE</span><strong id="model-view-readout">Assonometrica</strong><button type="button" id="model-foundations-toggle" aria-pressed="false" aria-label="Solo fondazioni" title="Mostra plinti e travi su Winkler senza sovrapporre la copertura">FONDAZ.</button></div><div class="model-camera-presets"><button type="button" data-model-camera="iso" aria-pressed="true" aria-label="Assonometrica" title="Assonometrica"><span class="model-camera-glyph" aria-hidden="true">3D</span><span>ISO</span></button><button type="button" data-model-camera="top" aria-pressed="false" aria-label="Dall’alto" title="Dall’alto"><span class="model-camera-glyph" aria-hidden="true">↑</span><span>TOP</span></button><button type="button" data-model-camera="bottom" aria-pressed="false" aria-label="Dal basso" title="Dal basso"><span class="model-camera-glyph" aria-hidden="true">↓</span><span>BOT</span></button><button type="button" data-model-camera="front" aria-pressed="false" aria-label="Frontale" title="Frontale"><span class="model-camera-glyph" aria-hidden="true">▣</span><span>FRON</span></button><button type="button" data-model-camera="back" aria-pressed="false" aria-label="Posteriore" title="Posteriore"><span class="model-camera-glyph" aria-hidden="true">▤</span><span>RETRO</span></button><button type="button" data-model-camera="left" aria-pressed="false" aria-label="Laterale sinistra" title="Laterale sinistra"><span class="model-camera-glyph" aria-hidden="true">◧</span><span>SX</span></button><button type="button" data-model-camera="right" aria-pressed="false" aria-label="Laterale destra" title="Laterale destra"><span class="model-camera-glyph" aria-hidden="true">◨</span><span>DX</span></button></div><div class="model-camera-footer"><button type="button" id="model-projection-toggle" aria-pressed="false" title="Cambia proiezione tra prospettica e ortogonale">PROSP</button><span class="model-camera-zoom"><button type="button" id="model-zoom-out" aria-label="Riduci zoom">−</button><output id="model-zoom-level" aria-live="off">100%</output><button type="button" id="model-zoom-in" aria-label="Ingrandisci">+</button></span></div><p class="model-camera-hint">Trascina liberamente · Gira di 360° · Rotella per lo zoom</p></div>
+      </div>
       <div class="hero-bottom"><a href="#app" class="scroll-prompt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 4v16m-5-5 5 5 5-5"/></svg><span data-i18n="scrollDiscover">Scorri. Entra nel progetto.</span></a><span class="development-note"><span aria-hidden="true"></span><span data-i18n="development">Progetto in sviluppo</span></span></div>
     </section>
-    <nav class="engineering-track" aria-label="Esplora DÈLGHEM"><div class="engineering-track-inner"><a href="#app" class="engineering-track-item"><span class="engineering-track-index">01 / MODELLAZIONE</span><strong>Dalla geometria al modello FEM</strong><span class="engineering-track-cta">Il programma <span aria-hidden="true">↗</span></span></a><a href="#capabilities" class="engineering-track-item"><span class="engineering-track-index">02 / ANALISI</span><strong>Deformate, sollecitazioni e verifiche</strong><span class="engineering-track-cta">Aree tecniche <span aria-hidden="true">↗</span></span></a><a href="#gallery" class="engineering-track-item"><span class="engineering-track-index">03 / PRODUZIONE</span><strong>Disegni, tavole e workflow</strong><span class="engineering-track-cta">Schermate reali <span aria-hidden="true">↗</span></span></a></div></nav>
+<section class="editorial-hub" id="editorial-hub" aria-labelledby="editorial-title"><div class="editorial-inner"><div class="editorial-head"><div><span class="eyebrow">ESPLORA IL PROGETTO</span><h2 id="editorial-title">Dalla geometria alla progettazione digitale.</h2></div><p>Scegli cosa approfondire: modelli reali D2, risultati numerici documentati, interfaccia e strumenti in sviluppo.</p></div><nav class="engineering-track" aria-label="Approfondimenti strutturali DÈLGHEM"><div class="engineering-track-inner"><a href="#model-showcase" class="engineering-track-item"><span class="engineering-track-index">01 / MODEL</span><strong>Modellazione strutturale</strong><span class="engineering-track-description">Cinque geometrie native D2 modificabili</span><span class="engineering-track-cta">Esplora <span aria-hidden="true">↗</span></span></a><a href="#fem-lab" class="engineering-track-item"><span class="engineering-track-index">02 / CALCOLO</span><strong>Laboratorio FEM Kratos</strong><span class="engineering-track-description">Risultati numerici documentati e analisi dinamiche</span><span class="engineering-track-cta">Esplora <span aria-hidden="true">↗</span></span></a><a href="#genius" class="engineering-track-item"><span class="engineering-track-index">03 / GENIUS</span><strong>Genius Assistant</strong><span class="engineering-track-description">Interazione testuale e flusso di lavoro in sviluppo</span><span class="engineering-track-cta">Esplora <span aria-hidden="true">↗</span></span></a><a href="#native" class="engineering-track-item"><span class="engineering-track-index">04 / NATIVE</span><strong>Nativo Apple Silicon</strong><span class="engineering-track-description">Architettura progettata per macOS ARM64</span><span class="engineering-track-cta">Esplora <span aria-hidden="true">↗</span></span></a></div></nav></div></section>
 
+
+<section class="contact-strip" aria-label="Contatta DÈLGHEM">
+    <div class="contact-strip-inner">
+      <div class="contact-strip-copy">
+        <span class="contact-strip-kicker">CONTATTI E COLLABORAZIONI</span>
+        <strong class="contact-strip-title">Contatta DÈLGHEM</strong>
+        <span class="contact-strip-note">Per informazioni, approfondimenti tecnici e possibili collaborazioni.</span>
+      </div>
+      <div class="contact-strip-action">
+        <a class="contact-strip-link contact-email" href="mailto:delghem@proton.me?subject=Informazioni%20su%20D%C3%88LGHEM">delghem@proton.me<span aria-hidden="true">↗</span></a>
+        <button class="contact-copy-button" type="button" data-contact-email="delghem@proton.me">Copia email</button><span class="contact-copy-status" id="contact-copy-status" aria-live="polite" role="status"></span><span class="contact-strip-instruction">Scrivici</span>
+      </div>
+    </div>
+  </section>
 
     <section class="app-section chapter" id="app" aria-labelledby="app-title" data-chapter="app">
       <div class="section-heading"><h2 id="app-title" data-i18n="appTitle">La struttura al centro.<br>Tutto il resto, a portata di mano.</h2><p data-i18n="appDescription">Geometria, proprietà e risultati nello stesso ambiente. Guarda da vicino l’interfaccia reale di DÈLGHEM.</p></div>
@@ -314,28 +296,44 @@
         <a class="support-guide" href="../software-fem-mac/">Approfondisci il progetto <span aria-hidden="true">↗</span></a>
         <div class="support-trust"><strong>Sviluppo trasparente</strong><span>Le funzionalità e i limiti della versione alpha sono documentati nel sito.</span></div>
       </div>
-      <div class="personal-paypal-card">
+      <details class="payment-guide"><summary><span>Come funziona il contributo PayPal personale</span><span aria-hidden="true" class="payment-guide-plus">+</span></summary><div class="personal-paypal-card">
         <div class="paypal-card-heading"><span class="paypal-mark" aria-hidden="true">P</span><span class="paypal-card-type">PAYPAL / PERSONAL ACCOUNT</span></div>
         <h3>Contribuisci con PayPal</h3>
         <p class="payment-description">Il destinatario usa un conto PayPal personale. Per questo non è disponibile un pulsante di donazione benefica. Il collegamento apre PayPal per un normale invio di denaro; il destinatario va inserito manualmente.</p>
         <ol class="funding-steps"><li><span class="funding-step-number">01</span><div><strong>Apri PayPal</strong><p>Accedi al tuo conto e scegli «Invia e richiedi».</p></div></li><li><span class="funding-step-number">02</span><div><strong>Inserisci il destinatario</strong><p>Copia e incolla l’indirizzo PayPal indicato qui sotto.</p></div></li><li><span class="funding-step-number">03</span><div><strong>Controlla il tipo di pagamento</strong><p>Per un contributo collegato a un progetto commerciale usa «Beni e servizi», se disponibile, e verifica eventuali commissioni.</p></div></li></ol>
         <div class="paypal-recipient"><span>DESTINATARIO PAYPAL</span><strong>ildelghe3@gmail.com</strong></div>
-        <a class="support-back-to-top" href="#support-top">Vai al pulsante PayPal all’inizio della pagina <span aria-hidden="true">↑</span></a>
+        <a class="support-back-to-top" href="#support-top">Vai al pulsante PayPal qui sotto <span aria-hidden="true">↓</span></a>
 <p class="paypal-me-note">Un link PayPal.Me diretto sarà attivato soltanto dopo che il titolare ne avrà comunicato e verificato l’indirizzo ufficiale.</p>
         <small class="donate-disclaimer">Non è una raccolta fondi benefica e non dà diritto a detrazioni fiscali, licenze o accessi anticipati. La possibilità di ricevere denaro dipende dalle impostazioni e dalle verifiche del conto PayPal.</small>
-      </div>
+      </div></details>
     </div>
   </section><section class="sharing-section" id="sharing" aria-labelledby="sharing-title"><div><p class="eyebrow">SHARE DÈLGHEM</p><h2 id="sharing-title">Fai conoscere il progetto.</h2><p>Condividi DÈLGHEM: nessuna pubblicazione automatica, nessun messaggio indesiderato.</p></div><div class="share-buttons"><a data-social="linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.delghe.com%2F" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a data-social="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.delghe.com%2F" target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a><a data-social="whatsapp" href="https://api.whatsapp.com/send?text=D%C3%88LGHEM%20%E2%80%94%20Software%20FEM%20per%20Mac%20Apple%20Silicon%20https%3A%2F%2Fwww.delghe.com%2F" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a><a data-social="twitter" href="https://twitter.com/intent/tweet?text=D%C3%88LGHEM%20%E2%80%94%20Software%20FEM%20per%20Mac%20Apple%20Silicon&amp;url=https%3A%2F%2Fwww.delghe.com%2F" target="_blank" rel="noopener noreferrer">X / Twitter <span aria-hidden="true">↗</span></a><button type="button" id="share-native">Condividi dal dispositivo</button><button type="button" id="share-copy">Copia link</button></div><p id="share-status" class="share-status" role="status" aria-live="polite"></p></section>
-    <section class="closing-section chapter" id="project" aria-labelledby="closing-title" data-chapter="project"><p class="closing-brand">DÈLGHEM</p><h2 id="closing-title" data-i18n="closingTitle">La prossima struttura<br>inizia da qui.</h2><p data-i18n="closingDescription">Un progetto di DELGHE. Calcolo strutturale, progettato per Mac.</p><div class="contact-actions"><a class="button primary contact-email" href="mailto:delghem@proton.me?subject=Informazioni%20su%20D%C3%88LGHEM"><span data-i18n="contactMe">Contattami</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg></a><a class="contact-address contact-email" href="mailto:delghem@proton.me?subject=Informazioni%20su%20D%C3%88LGHEM">delghem@proton.me</a></div><a class="replay-link" href="#home" data-i18n="backTop">Rivedi la presentazione</a></section>
+    <section class="support-banner" id="support-top" aria-label="Sostieni DÈLGHEM con PayPal">
+  <div class="support-banner-inner">
+    <div class="support-banner-copy">
+      <span class="support-banner-kicker">SVILUPPO INDIPENDENTE <span aria-hidden="true">/</span> DÈLGHEM</span>
+      <p class="paypal-personal-appeal"><span class="paypal-impact-statement">Delghem è un progetto indipendente, se vuoi supportarlo con una donazione aiuteresti concretamente il progetto a prendere vita</span></p>
+    </div>
+    <div class="support-banner-action">
+      <a class="paypal-send-link" href="https://www.paypal.com/myaccount/transfer/send" target="_blank" rel="noopener noreferrer" aria-label="Apri PayPal per contribuire a DÈLGHEM">Sostieni con PayPal <span aria-hidden="true">↗</span></a>
+      <div class="support-banner-recipient"><span>Destinatario: <strong>ildelghe3@gmail.com</strong></span><button class="copy-paypal" type="button" data-email="ildelghe3@gmail.com" data-copy-done="Email copiata" data-copy-error="Seleziona e copia l’indirizzo">Copia email</button></div>
+      <p id="paypal-copy-status" class="copy-feedback" role="status" aria-live="polite"></p>
+      <small>PayPal personale: inserisci il destinatario manualmente. Contributo non detraibile.</small>
+      <div class="visitor-counter visitor-counter--top" role="status" aria-live="polite"><span class="visitor-counter__eyebrow">VISITATORI</span><strong class="visitor-counter__number" id="visitor-counter-total">87.600</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="closing-section chapter" id="project" aria-labelledby="closing-title" data-chapter="project"><p class="closing-brand">DÈLGHEM</p><h2 id="closing-title" data-i18n="closingTitle">La prossima struttura<br>inizia da qui.</h2><p data-i18n="closingDescription">Un progetto di DELGHE. Calcolo strutturale, progettato per Mac.</p><div class="contact-actions"><a class="button primary contact-email" href="mailto:delghem@proton.me?subject=Informazioni%20su%20D%C3%88LGHEM"><span data-i18n="contactMe">Contattami</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg></a><a class="contact-address contact-email" href="mailto:delghem@proton.me?subject=Informazioni%20su%20D%C3%88LGHEM">delghem@proton.me</a></div><a class="replay-link" href="#home" data-i18n="backTop">Rivedi la presentazione</a></section>
   </main>
   <footer class="site-footer"><nav class="footer-resources" aria-label="Risorse / Promozione"><a href="../media-kit/">Materiali per presentare DÈLGHEM</a><a href="../software-fem-mac/">Software FEM per Mac</a></nav><a class="seo-footer-business" href="/licenza-software-fem-apple-silicon/">Proposta riservata alle software house: licenza e codice sorgente ↗</a><a class="footer-brand" href="#home">DELGHE<span aria-hidden="true"> / </span>DÈLGHEM</a><a class="footer-contact contact-email" href="mailto:delghem@proton.me?subject=Informazioni%20su%20D%C3%88LGHEM">delghem@proton.me</a><p data-i18n="footerNote">Progetto indipendente. Apple e macOS sono marchi di Apple Inc.; gli altri marchi appartengono ai rispettivi titolari.</p><button id="motion-toggle" class="motion-toggle" aria-pressed="true"><span class="motion-indicator" aria-hidden="true"></span><span id="motion-label" data-i18n="motionOn">Animazioni attive</span></button></footer>
   <div class="presentation-controls" id="presentation-controls" hidden role="region" aria-label="Controlli presentazione" data-i18n-aria="presentationControls"><button id="presentation-prev" class="icon-button" aria-label="Sezione precedente" data-i18n-aria="previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><span id="presentation-position" aria-live="polite">1 / 7</span><button id="presentation-next" class="icon-button" aria-label="Sezione successiva" data-i18n-aria="next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button><span class="presentation-divider"></span><button id="presentation-close" class="text-button" data-i18n="endPresentation">Esci</button></div>
   <dialog id="image-dialog" aria-label="Schermata ingrandita" data-i18n-aria="imageDialog"><button id="close-dialog" class="icon-button" aria-label="Chiudi schermata" data-i18n-aria="closeImage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button><img id="dialog-image" alt="Schermata DÈLGHEM"><p id="dialog-caption"></p></dialog>
   <noscript><p class="noscript-note" data-i18n="noScript">Le pagine in italiano e inglese sono disponibili anche senza JavaScript. Abilitalo per esplorare tutte le schermate e attivare le animazioni.</p></noscript>
 <dialog id="photo-dialog" aria-label="Schermata reale dell’applicazione"><button id="photo-dialog-close" class="photo-dialog-close" type="button" aria-label="Chiudi immagine">✕</button><img id="photo-image" alt="Schermata DÈLGHEM"><p id="photo-dialog-caption"></p></dialog>
-  <script type="module" src="../app.js?v=20261025-showcase6"></script>
+  <script type="module" src="../app.js?v=20261025-showcase8"></script>
   <script type="module" src="../genius-demo.js"></script>
-  <script type="module" src="../fem-lab.js?v=20261025-showcase6"></script>
+  <script type="module" src="../fem-lab.js?v=20261025-showcase8"></script>
   <script type="module" src="../social.js"></script>
 <script defer src="../visitor-counter.js"></script>
 <script defer src="../support-actions.js"></script>

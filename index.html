@@ -36,20 +36,14 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.delghe.com/#organization","name":"DELGHE","url":"https://www.delghe.com/","brand":{"@type":"Brand","name":"DÈLGHEM"}},{"@type":"WebSite","@id":"https://www.delghe.com/#website","name":"DÈLGHEM","url":"https://www.delghe.com/","inLanguage":["it","en"],"about":{"@id":"https://www.delghe.com/#software"},"publisher":{"@id":"https://www.delghe.com/#organization"}},{"@type":"SoftwareApplication","@id":"https://www.delghe.com/#software","name":"DÈLGHEM","url":"https://www.delghe.com/","description":"Discover DÈLGHEM, structural engineering software in development for macOS and Apple Silicon: 3D models, FEM analysis, Genius and project documentation.","applicationCategory":"ScienceApplication","operatingSystem":"macOS","processorRequirements":"Apple Silicon","inLanguage":["en","it"],"creativeWorkStatus":"In development","screenshot":"https://www.delghe.com/assets/app-model.png","author":{"@type":"Person","name":"DELGHE"},"publisher":{"@id":"https://www.delghe.com/#organization"},"brand":{"@type":"Brand","name":"DELGHE"},"alternateName":["DELGHE FEM","DÈLGHEM","DELGHEM"]}]}</script>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="./assets/Manrope.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=20261025-showcase6">
+  <link rel="stylesheet" href="./style.css?v=20261025-showcase8">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
   <div class="reading-progress" aria-hidden="true"><span></span></div>
   <header class="site-header">
     <a class="wordmark" href="#home" aria-label="DÈLGHEM home">DÈLGHEM<span class="wordmark-dot" aria-hidden="true"></span></a>
-    <nav class="desktop-nav" aria-label="Main navigation" data-i18n-aria="navLabel">
-      <a href="#app" data-i18n="navApp">The application</a>
-      <a href="#native">Apple Silicon</a>
-      <a href="#fem-lab">FEM Lab</a><a href="#genius">Genius</a>
-      <a href="#workflow" data-i18n="navFeatures">Features</a>
-      <a href="#capabilities">Technical areas</a><a href="#gallery">Screenshots</a><a href="#release">vAlpha1</a>
-    </nav>
+    <nav class="desktop-nav" aria-label="Main navigation"><a href="#model-showcase">3D Models</a><a href="#fem-lab">FEM Lab</a><a href="#genius">Genius</a><a href="#gallery">Screenshots</a><a href="#release">vAlpha1</a></nav>
     <div class="header-controls">
       <div class="language-control" role="group" aria-label="Website language / Lingua del sito">
       <a class="language-link" data-language="en" href="/" lang="en" hreflang="en" aria-label="English" aria-current="page"><span class="lang-flag">🇬🇧</span><span class="lang-label">English</span></a>
@@ -58,52 +52,24 @@
       <button class="menu-toggle icon-button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" data-i18n-aria="openMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
     </div>
   </header>
-  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-i18n-aria="mobileNav" hidden><a href="#app" data-i18n="navApp">The application</a><a href="#native">Apple Silicon</a><a href="#fem-lab">FEM Lab</a><a href="#genius">Genius</a><a href="#workflow" data-i18n="navFeatures">Features</a><a href="#capabilities">Technical areas</a><a href="#gallery">Screenshots</a><a href="#release">vAlpha1</a><a href="#support">Support</a></nav>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden><a href="#model-showcase">3D Models</a><a href="#app">The application</a><a href="#fem-lab">FEM Lab</a><a href="#genius">Genius</a><a href="#native">Apple Silicon</a><a href="#gallery">Screenshots</a><a href="#project">Contact</a><a href="#support-top">Support</a></nav>
 
   <main id="main">
-    <section class="support-banner" id="support-top" aria-label="Support DÈLGHEM with PayPal">
-  <div class="support-banner-inner">
-    <div class="support-banner-copy">
-      <span class="support-banner-kicker">INDEPENDENT DEVELOPMENT <span aria-hidden="true">/</span> DÈLGHEM</span>
-      <p class="paypal-personal-appeal"><span class="paypal-impact-statement">Delghem is an independent project. If you choose to support it with a donation, you will help bring the project to life.</span></p>
-    </div>
-    <div class="support-banner-action">
-      <a class="paypal-send-link" href="https://www.paypal.com/myaccount/transfer/send" target="_blank" rel="noopener noreferrer" aria-label="Open PayPal to support DÈLGHEM">Support via PayPal <span aria-hidden="true">↗</span></a>
-      <div class="support-banner-recipient"><span>Recipient: <strong>ildelghe3@gmail.com</strong></span><button class="copy-paypal" type="button" data-email="ildelghe3@gmail.com" data-copy-done="Email copied" data-copy-error="Select and copy the email">Copy email</button></div>
-      <p id="paypal-copy-status" class="copy-feedback" role="status" aria-live="polite"></p>
-      <small>Personal PayPal: enter the recipient manually. No charitable tax deduction.</small>
-      <div class="visitor-counter visitor-counter--top" role="status" aria-live="polite"><span class="visitor-counter__eyebrow">VISITORS</span><strong class="visitor-counter__number" id="visitor-counter-total">87,600</strong></div>
-    </div>
-  </div>
-</section>
-    <section class="contact-strip" aria-label="Contact DÈLGHEM">
-    <div class="contact-strip-inner">
-      <div class="contact-strip-copy">
-        <span class="contact-strip-kicker">BUSINESS & TECHNICAL ENQUIRIES</span>
-        <strong class="contact-strip-title">Contact DÈLGHEM</strong>
-        <span class="contact-strip-note">For information, technical discussions and potential collaborations.</span>
-      </div>
-      <div class="contact-strip-action">
-        <a class="contact-strip-link contact-email" href="mailto:delghem@proton.me?subject=D%C3%88LGHEM%20enquiry">delghem@proton.me<span aria-hidden="true">↗</span></a>
-        <button class="contact-copy-button" type="button" data-contact-email="delghem@proton.me">Copy email</button><span class="contact-copy-status" id="contact-copy-status" aria-live="polite" role="status"></span><span class="contact-strip-instruction">Send an email</span>
-      </div>
-    </div>
-  </section>
   <section class="hero chapter" id="home" aria-labelledby="hero-title" data-chapter="intro">
       <div class="hero-copy"><p class="hero-spec"><span class="hero-spec-indicator" aria-hidden="true"></span>DELGHE / DÈLGHEM · STRUCTURAL ENGINEERING FOR MAC</p>
         <h1 id="hero-title"><span data-i18n="heroLine1">Structural analysis.</span><span class="accent-text" data-i18n="heroLine2">On your Mac.</span></h1>
-        <p class="hero-description" data-i18n="heroDescription">DÈLGHEM. The structural engineering app designed for macOS and Apple Silicon. A new space for your structures.</p>
-        <div class="hero-actions"><a class="button primary" href="#app"><span data-i18n="exploreApp">Explore the application</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><button class="text-button" id="start-presentation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 5 10 7-10 7V5Z"/></svg><span data-i18n="watchPresentation">Start presentation</span></button></div>
-        <div class="release-inline"><span class="release-inline-label">ALPHA · 01/2027</span><span>DÈLGHEM vAlpha1 — Planned release: January 2027</span></div>
-        <a class="hero-support-link" href="#support-top">Support development <span aria-hidden="true">↗</span></a>
-        <div class="native-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4m6-4v4M9 18v4m6-4v4M2 9h4m-4 6h4m12-6h4m-4 6h4"/></svg><span>Apple Silicon <span class="native-separator">/</span> macOS <span class="native-separator">/</span> <span data-i18n="nativeLabel">Natively.</span></span></div>
+        <p class="hero-description" data-i18n="heroDescription">DÈLGHEM is a structural FEM project for Apple Silicon: native 3D modelling, complex engineering examples and documented Kratos benchmarks. vAlpha1 in development.</p>
+        <div class="hero-proof"><span><strong>05</strong> Native D2 models</span><span><strong>KRATOS</strong> Source-backed benchmarks</span><span><strong>ARM64</strong> Native macOS</span></div><div class="hero-actions"><a class="button primary" href="#app"><span data-i18n="exploreApp">Explore the application</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><button class="text-button" id="start-presentation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 5 10 7-10 7V5Z"/></svg><span data-i18n="watchPresentation">Start presentation</span></button></div>
+
+
+
       </div>
-      <div class="structure-stage">
+      <div class="model-visual-shell"><div class="structure-stage">
         <img class="model-poster" src="./assets/real-d2/complex-frame-poster.webp?v=20261024-8floor-d2a" width="792" height="643" alt="Native DÈLGHEM D2 mixed RC, S355 steel and GL24h timber model with cantilevers, stepped trusses and foundations" decoding="async">
         <div class="model-concept-label" aria-label="Native DÈLGHEM D2: 212 nodes, 514 members, 112 shells, 24 pad footings; eight-storey tower; steel S355 and timber GL24h trusses; conceptual study">8 STOREYS · S355 / C30/37 / GL24h</div>
         <div class="model-material-key" aria-label="Demonstrative materials: S355 structural steel, C30/37 reinforced concrete, GL24h glulam timber"><span><i class="mat-steel" aria-hidden="true"></i>S355</span><span><i class="mat-rc" aria-hidden="true"></i>C30/37</span><span><i class="mat-wood" aria-hidden="true"></i>GL24h</span><span hidden><i class="mat-masonry" aria-hidden="true"></i>MURATURA</span></div>
         <div class="model-motion-status" id="model-motion-status" role="status" aria-live="polite">⟳ LIVE 3D ORBIT · ON</div>
-        <canvas id="structure-canvas" aria-label="Illustrative animated three-dimensional structural frame. Drag or use the arrow keys to rotate. Home resets the view." data-i18n-aria="modelAlt"></canvas>
+        <canvas id="structure-canvas" aria-label="Illustrative animated three-dimensional structural frame. Full 360-degree drag orbit, camera view presets, zoom and projection controls." data-i18n-aria="modelAlt"></canvas><div class="showcase-guide" id="showcase-guide"><span>FIVE STRUCTURAL CONCEPTS</span><small>Native D2 models · unverified geometries</small></div>
         <div class="model-label"><span class="model-dot" aria-hidden="true"></span><span data-i18n="modelLabel">Give your ideas structure.</span></div>
         <div class="model-showcase" id="model-showcase" role="group" aria-label="Native DÈLGHEM D2 structural models, auto-advancing every five seconds">
     <div class="model-showcase-heading">
@@ -120,10 +86,26 @@
         <div class="model-controls" role="group" aria-label="Model view" data-i18n-aria="modelView"><button data-model-view="structure" aria-pressed="true" data-i18n="structure">Structure</button><button data-model-view="deformed" aria-pressed="false" data-i18n="deformed">Deformed</button><button data-model-view="forces" aria-pressed="false" data-i18n="forces">Forces</button><button id="rotate-model" class="icon-button" aria-pressed="true" aria-label="Automatic rotation" data-i18n-aria="rotate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 6a8 8 0 0 1 14 6M4 12a8 8 0 0 0 14 6"/></svg></button><button id="reset-model" class="icon-button model-reset" type="button" aria-label="Reset 3D view" data-i18n-aria="resetView" title="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" aria-hidden="true"><path d="M3 11a9 9 0 1 1 3.2 7M3 4v7h7"/></svg></button></div>
         <p class="model-origin">Eight-storey D2 model · 24 concrete footings · unverified concept</p><p class="model-disclaimer" data-i18n="modelDisclaimer">Illustrative visualization · no analysis results</p>
       </div>
+<div class="model-camera-dock" id="model-camera-controls" role="group" aria-label="3D orientation, projection and zoom"><div class="model-camera-heading"><span>3D CAMERA / VIEWS</span><strong id="model-view-readout">Isometric</strong><button type="button" id="model-foundations-toggle" aria-pressed="false" aria-label="Foundation-only view" title="Isolate true D2 pads and elastic-subgrade grade beams">FOUND.</button></div><div class="model-camera-presets"><button type="button" data-model-camera="iso" aria-pressed="true" aria-label="Isometric" title="Isometric"><span class="model-camera-glyph" aria-hidden="true">3D</span><span>ISO</span></button><button type="button" data-model-camera="top" aria-pressed="false" aria-label="Top" title="Top"><span class="model-camera-glyph" aria-hidden="true">↑</span><span>TOP</span></button><button type="button" data-model-camera="bottom" aria-pressed="false" aria-label="Underside" title="Underside"><span class="model-camera-glyph" aria-hidden="true">↓</span><span>BOT</span></button><button type="button" data-model-camera="front" aria-pressed="false" aria-label="Front" title="Front"><span class="model-camera-glyph" aria-hidden="true">▣</span><span>FRON</span></button><button type="button" data-model-camera="back" aria-pressed="false" aria-label="Rear" title="Rear"><span class="model-camera-glyph" aria-hidden="true">▤</span><span>RETRO</span></button><button type="button" data-model-camera="left" aria-pressed="false" aria-label="Left side" title="Left side"><span class="model-camera-glyph" aria-hidden="true">◧</span><span>SX</span></button><button type="button" data-model-camera="right" aria-pressed="false" aria-label="Right side" title="Right side"><span class="model-camera-glyph" aria-hidden="true">◨</span><span>DX</span></button></div><div class="model-camera-footer"><button type="button" id="model-projection-toggle" aria-pressed="false" title="Toggle perspective or orthographic projection">PROSP</button><span class="model-camera-zoom"><button type="button" id="model-zoom-out" aria-label="Zoom out">−</button><output id="model-zoom-level" aria-live="off">100%</output><button type="button" id="model-zoom-in" aria-label="Zoom in">+</button></span></div><p class="model-camera-hint">Drag to orbit 360° · Mouse wheel zoom</p></div>
+      </div>
       <div class="hero-bottom"><a href="#app" class="scroll-prompt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 4v16m-5-5 5 5 5-5"/></svg><span data-i18n="scrollDiscover">Scroll. Explore the project.</span></a><span class="development-note"><span aria-hidden="true"></span><span data-i18n="development">Project in development</span></span></div>
     </section>
-    <nav class="engineering-track" aria-label="Explore DÈLGHEM"><div class="engineering-track-inner"><a href="#app" class="engineering-track-item"><span class="engineering-track-index">01 / MODEL</span><strong>From geometry to FEM model</strong><span class="engineering-track-cta">Explore the app <span aria-hidden="true">↗</span></span></a><a href="#capabilities" class="engineering-track-item"><span class="engineering-track-index">02 / ANALYZE</span><strong>Deformations, forces and checks</strong><span class="engineering-track-cta">Technical areas <span aria-hidden="true">↗</span></span></a><a href="#gallery" class="engineering-track-item"><span class="engineering-track-index">03 / DOCUMENT</span><strong>Drawings, details and workflows</strong><span class="engineering-track-cta">Real screenshots <span aria-hidden="true">↗</span></span></a></div></nav>
+<section class="editorial-hub" id="editorial-hub" aria-labelledby="editorial-title"><div class="editorial-inner"><div class="editorial-head"><div><span class="eyebrow">INSIDE DÈLGHEM</span><h2 id="editorial-title">An engineering workflow, made for Mac.</h2></div><p>Explore native D2 models, source-backed numerical results and the interface of a developing engineering application.</p></div><nav class="engineering-track" aria-label="DÈLGHEM structural engineering topics"><div class="engineering-track-inner"><a href="#model-showcase" class="engineering-track-item"><span class="engineering-track-index">01 / MODELS</span><strong>Structural modelling</strong><span class="engineering-track-description">Five native editable D2 geometries</span><span class="engineering-track-cta">Explore <span aria-hidden="true">↗</span></span></a><a href="#fem-lab" class="engineering-track-item"><span class="engineering-track-index">02 / RESULTS</span><strong>Kratos FEM Laboratory</strong><span class="engineering-track-description">Documented numerical and dynamic benchmarks</span><span class="engineering-track-cta">Explore <span aria-hidden="true">↗</span></span></a><a href="#genius" class="engineering-track-item"><span class="engineering-track-index">03 / GENIUS</span><strong>Genius Assistant</strong><span class="engineering-track-description">Text-command workflow under development</span><span class="engineering-track-cta">Explore <span aria-hidden="true">↗</span></span></a><a href="#native" class="engineering-track-item"><span class="engineering-track-index">04 / APPLE</span><strong>Native Apple Silicon</strong><span class="engineering-track-description">Engineering architecture designed for ARM64</span><span class="engineering-track-cta">Explore <span aria-hidden="true">↗</span></span></a></div></nav></div></section>
 
+
+<section class="contact-strip" aria-label="Contact DÈLGHEM">
+    <div class="contact-strip-inner">
+      <div class="contact-strip-copy">
+        <span class="contact-strip-kicker">BUSINESS & TECHNICAL ENQUIRIES</span>
+        <strong class="contact-strip-title">Contact DÈLGHEM</strong>
+        <span class="contact-strip-note">For information, technical discussions and potential collaborations.</span>
+      </div>
+      <div class="contact-strip-action">
+        <a class="contact-strip-link contact-email" href="mailto:delghem@proton.me?subject=D%C3%88LGHEM%20enquiry">delghem@proton.me<span aria-hidden="true">↗</span></a>
+        <button class="contact-copy-button" type="button" data-contact-email="delghem@proton.me">Copy email</button><span class="contact-copy-status" id="contact-copy-status" aria-live="polite" role="status"></span><span class="contact-strip-instruction">Send an email</span>
+      </div>
+    </div>
+  </section>
 
     <section class="app-section chapter" id="app" aria-labelledby="app-title" data-chapter="app">
       <div class="section-heading"><h2 id="app-title" data-i18n="appTitle">Your structure, centre stage.<br>Your tools, close at hand.</h2><p data-i18n="appDescription">Geometry, properties and results in one environment. Take a closer look at the actual DÈLGHEM interface.</p></div>
@@ -314,28 +296,44 @@
         <a class="support-guide" href="./en/native-structural-analysis-mac/">Explore the project <span aria-hidden="true">↗</span></a>
         <div class="support-trust"><strong>Transparent development</strong><span>The scope and limitations of the alpha build are documented on this website.</span></div>
       </div>
-      <div class="personal-paypal-card">
+      <details class="payment-guide"><summary><span>How voluntary personal PayPal support works</span><span aria-hidden="true" class="payment-guide-plus">+</span></summary><div class="personal-paypal-card">
         <div class="paypal-card-heading"><span class="paypal-mark" aria-hidden="true">P</span><span class="paypal-card-type">PAYPAL / PERSONAL ACCOUNT</span></div>
         <h3>Contribute with PayPal</h3>
         <p class="payment-description">The recipient uses a personal PayPal account, so no charitable donation button is available. The link opens PayPal for a regular money transfer: you must enter the recipient yourself.</p>
         <ol class="funding-steps"><li><span class="funding-step-number">01</span><div><strong>Open PayPal</strong><p>Sign in and choose “Send &amp; Request”.</p></div></li><li><span class="funding-step-number">02</span><div><strong>Enter the recipient</strong><p>Copy and paste the PayPal email displayed below.</p></div></li><li><span class="funding-step-number">03</span><div><strong>Check payment type</strong><p>For project-related commercial payments select “Goods and Services”, if available, and review any fees.</p></div></li></ol>
         <div class="paypal-recipient"><span>PAYPAL RECIPIENT</span><strong>ildelghe3@gmail.com</strong></div>
-        <a class="support-back-to-top" href="#support-top">Go to the PayPal button at the top of this page <span aria-hidden="true">↑</span></a>
+        <a class="support-back-to-top" href="#support-top">Open the PayPal button directly below <span aria-hidden="true">↓</span></a>
 <p class="paypal-me-note">A direct PayPal.Me link can be added only after the account owner provides and verifies their official profile URL.</p>
         <small class="donate-disclaimer">This is not a charitable fundraiser and does not qualify for charitable tax deductions, licenses or early access. Payment receipt is subject to the PayPal account's settings and verification.</small>
-      </div>
+      </div></details>
     </div>
   </section><section class="sharing-section" id="sharing" aria-labelledby="sharing-title"><div><p class="eyebrow">SHARE DÈLGHEM</p><h2 id="sharing-title">Share the project with engineers.</h2><p>Spread the word — no tracking, no automated posts.</p></div><div class="share-buttons"><a data-social="linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.delghe.com%2F" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a data-social="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.delghe.com%2F" target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a><a data-social="whatsapp" href="https://api.whatsapp.com/send?text=D%C3%88LGHEM%20%E2%80%94%20FEM%20software%20for%20Apple%20Silicon%20https%3A%2F%2Fwww.delghe.com%2F" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a><a data-social="twitter" href="https://twitter.com/intent/tweet?text=D%C3%88LGHEM%20%E2%80%94%20FEM%20software%20for%20Apple%20Silicon&amp;url=https%3A%2F%2Fwww.delghe.com%2F" target="_blank" rel="noopener noreferrer">X / Twitter <span aria-hidden="true">↗</span></a><button type="button" id="share-native">Share from device</button><button type="button" id="share-copy">Copy link</button></div><p id="share-status" class="share-status" role="status" aria-live="polite"></p></section>
-    <section class="closing-section chapter" id="project" aria-labelledby="closing-title" data-chapter="project"><p class="closing-brand">DÈLGHEM</p><h2 id="closing-title" data-i18n="closingTitle">Your next structure<br>starts here.</h2><p data-i18n="closingDescription">A project by DELGHE. Structural analysis, designed for Mac.</p><div class="contact-actions"><a class="button primary contact-email" href="mailto:delghem@proton.me?subject=D%C3%88LGHEM%20enquiry"><span data-i18n="contactMe">Contact me</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg></a><a class="contact-address contact-email" href="mailto:delghem@proton.me?subject=D%C3%88LGHEM%20enquiry">delghem@proton.me</a></div><a class="replay-link" href="#home" data-i18n="backTop">View the presentation again</a></section>
+    <section class="support-banner" id="support-top" aria-label="Support DÈLGHEM with PayPal">
+  <div class="support-banner-inner">
+    <div class="support-banner-copy">
+      <span class="support-banner-kicker">INDEPENDENT DEVELOPMENT <span aria-hidden="true">/</span> DÈLGHEM</span>
+      <p class="paypal-personal-appeal"><span class="paypal-impact-statement">Delghem is an independent project. If you choose to support it with a donation, you will help bring the project to life.</span></p>
+    </div>
+    <div class="support-banner-action">
+      <a class="paypal-send-link" href="https://www.paypal.com/myaccount/transfer/send" target="_blank" rel="noopener noreferrer" aria-label="Open PayPal to support DÈLGHEM">Support via PayPal <span aria-hidden="true">↗</span></a>
+      <div class="support-banner-recipient"><span>Recipient: <strong>ildelghe3@gmail.com</strong></span><button class="copy-paypal" type="button" data-email="ildelghe3@gmail.com" data-copy-done="Email copied" data-copy-error="Select and copy the email">Copy email</button></div>
+      <p id="paypal-copy-status" class="copy-feedback" role="status" aria-live="polite"></p>
+      <small>Personal PayPal: enter the recipient manually. No charitable tax deduction.</small>
+      <div class="visitor-counter visitor-counter--top" role="status" aria-live="polite"><span class="visitor-counter__eyebrow">VISITORS</span><strong class="visitor-counter__number" id="visitor-counter-total">87,600</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="closing-section chapter" id="project" aria-labelledby="closing-title" data-chapter="project"><p class="closing-brand">DÈLGHEM</p><h2 id="closing-title" data-i18n="closingTitle">Your next structure<br>starts here.</h2><p data-i18n="closingDescription">A project by DELGHE. Structural analysis, designed for Mac.</p><div class="contact-actions"><a class="button primary contact-email" href="mailto:delghem@proton.me?subject=D%C3%88LGHEM%20enquiry"><span data-i18n="contactMe">Contact me</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg></a><a class="contact-address contact-email" href="mailto:delghem@proton.me?subject=D%C3%88LGHEM%20enquiry">delghem@proton.me</a></div><a class="replay-link" href="#home" data-i18n="backTop">View the presentation again</a></section>
   </main>
   <footer class="site-footer"><nav class="footer-resources" aria-label="Resources / Media"><a href="./en/media-kit/">Media assets for DÈLGHEM</a><a href="./en/native-structural-analysis-mac/">FEM software for Mac</a></nav><a class="seo-footer-business" href="/en/apple-silicon-fem-software-licensing/">For software houses: source-code licensing proposal ↗</a><a class="footer-brand" href="#home">DELGHE<span aria-hidden="true"> / </span>DÈLGHEM</a><a class="footer-contact contact-email" href="mailto:delghem@proton.me?subject=D%C3%88LGHEM%20enquiry">delghem@proton.me</a><p data-i18n="footerNote">An independent project. Apple and macOS are trademarks of Apple Inc.; other trademarks belong to their respective owners.</p><button id="motion-toggle" class="motion-toggle" aria-pressed="true"><span class="motion-indicator" aria-hidden="true"></span><span id="motion-label" data-i18n="motionOn">Animations on</span></button></footer>
   <div class="presentation-controls" id="presentation-controls" hidden role="region" aria-label="Presentation controls" data-i18n-aria="presentationControls"><button id="presentation-prev" class="icon-button" aria-label="Previous section" data-i18n-aria="previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><span id="presentation-position" aria-live="polite">1 / 7</span><button id="presentation-next" class="icon-button" aria-label="Next section" data-i18n-aria="next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button><span class="presentation-divider"></span><button id="presentation-close" class="text-button" data-i18n="endPresentation">Exit</button></div>
   <dialog id="image-dialog" aria-label="Enlarged screenshot" data-i18n-aria="imageDialog"><button id="close-dialog" class="icon-button" aria-label="Close screenshot" data-i18n-aria="closeImage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button><img id="dialog-image" alt="Schermata DÈLGHEM"><p id="dialog-caption"></p></dialog>
   <noscript><p class="noscript-note" data-i18n="noScript">Italian and English pages are available without JavaScript. Enable it to explore all screenshots and use the animations.</p></noscript>
 <dialog id="photo-dialog" aria-label="Real application screenshot"><button id="photo-dialog-close" class="photo-dialog-close" type="button" aria-label="Close photo">✕</button><img id="photo-image" alt="Schermata DÈLGHEM"><p id="photo-dialog-caption"></p></dialog>
-  <script type="module" src="./app.js?v=20261025-showcase6"></script>
+  <script type="module" src="./app.js?v=20261025-showcase8"></script>
   <script type="module" src="./genius-demo.js"></script>
-  <script type="module" src="./fem-lab.js?v=20261025-showcase6"></script>
+  <script type="module" src="./fem-lab.js?v=20261025-showcase8"></script>
   <script type="module" src="./social.js"></script>
 <script defer src="./visitor-counter.js"></script>
 <script defer src="./support-actions.js"></script>
