@@ -1,9 +1,9 @@
-import {sampleGaussScalar} from './contour-shading.mjs?v=20261025-aliasing17';
+import {recoverSharedVertexField,drawContinuousContours} from './contour-shading.mjs?v=20261025-smooth19';
 /**
  * DÈLGHEM native Kratos 2D surface studio — three separate completed
  * Kratos shell/QUAD4 benchmark solutions. Always-visible visualisation;
  * fields are true local Gauss-recovered face stresses in MPa, not invented
- * capacity checks or a continuous nodal stress recovery. Browser-only view.
+ * capacity checks; smooth nodal shading is only graphical. Browser-only view.
  */
 const surfaceRoot=document.getElementById('surface-lab');
 if(surfaceRoot){
@@ -20,6 +20,12 @@ if(surfaceRoot){
   return 'rgb('+rgb[i].map((v,j)=>Math.round(lerp(v,rgb[i+1][j],delta))).join(',')+')';
  };
  const dataURL=new URL('./assets/fem-lab/kratos-2d-surfaces.json',import.meta.url);
+ const layerCanvas=document.createElement('canvas');
+ const smoothLayer={canvas:layerCanvas,context:layerCanvas.getContext('2d',{alpha:true})};
+ const fieldIndex=()=>['vonMisesMPa','sigma11MPa','sigma22MPa','tau12MPa'].indexOf(currentField);
+ const gaussian=el=>el.gauss.map(g=>g[currentFace][fieldIndex()]);
+ const vertexKey=(el,i)=>el.vertices[i].map(x=>Math.round(x*1e6)).join(':');
+
  let dataset=null,currentField='vonMisesMPa',currentFace='top',showMesh=false,aliasing=false,hovered=null;
  const cases=[...surfaceRoot.querySelectorAll('[data-surface]')];
  const byId=new Map(cases.map(e=>[e.dataset.surface,e]));
@@ -75,19 +81,24 @@ if(surfaceRoot){
   const values=caseData.elements.flatMap(e=>e.gauss.map(g=>g[currentFace][['vonMisesMPa','sigma11MPa','sigma22MPa','tau12MPa'].indexOf(currentField)]));
   const min=Math.min(...values),max=Math.max(...values),range=Math.max(max-min,1e-8);
   const cells=[];
+  // ALIASING: shared vertex colors and one full-resolution interpolated
+  // raster layer. No painted micro-cells, no interpolation across voids.
+  if(aliasing){
+   const recovered=recoverSharedVertexField(caseData.elements,gaussian,vertexKey);
+   const quads=caseData.elements.map((el,i)=>({
+    pts:el.vertices.map(p=>geo.screen(point(p,caseData))),values:recovered[i]
+   }));
+   drawContinuousContours(c,smoothLayer,quads,palette,min,max,dpr);
+  }
   for(const el of caseData.elements){
    const q=el.vertices.map(p=>point(p,caseData)),outline=q.map(geo.screen);
-   // Never interpolate between distinct elements or through real voids.
-   // Numerical picking always reports the unchanged four Gauss values.
-   const inside=el.gauss.map(g=>g[currentFace][['vonMisesMPa','sigma11MPa','sigma22MPa','tau12MPa'].indexOf(currentField)]);
-   const steps=aliasing?8:2;
-   for(let row=0;row<steps;row++)for(let col=0;col<steps;col++){
-    const u=col/steps,v=row/steps,u2=(col+1)/steps,v2=(row+1)/steps;
+   // Picking reports the original arithmetic mean of four Gauss samples.
+   const inside=gaussian(el);
+   if(!aliasing)for(let row=0;row<2;row++)for(let col=0;col<2;col++){
+    const u=col/2,v=row/2,u2=(col+1)/2,v2=(row+1)/2;
     const pts=[[u,v],[u2,v],[u2,v2],[u,v2]]
      .map(uv=>geo.screen(worldQuad(q,...uv)));
-    const value=aliasing
-     ?sampleGaussScalar(inside,(u+u2)/2,(v+v2)/2)
-     :inside[row===0?(col===0?0:1):(col===0?3:2)];
+    const value=inside[row===0?(col===0?0:1):(col===0?3:2)];
     shadeCell(c,pts,heat((value-min)/range));
    }
    if(showMesh){

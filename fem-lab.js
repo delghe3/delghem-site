@@ -1,4 +1,4 @@
-import {sampleGaussScalar} from './contour-shading.mjs?v=20261025-aliasing17';
+import {recoverSharedVertexField,drawContinuousContours} from './contour-shading.mjs?v=20261025-smooth19';
 /**
  * DÈLGHEM D2 • native solver FEM showcase.
  * ALL FOUR LAB CHAPTERS ARE SCROLLABLE/ALWAYS VISIBLE.
@@ -260,6 +260,20 @@ if(labRoot){
  }
  // ---- Spatial, gently shaded QUAD4 stress fields on B01 irregular building ----
  const canvas=$('lab-stress-canvas'),ctx=canvas?.getContext('2d',{alpha:false});
+ const layerCanvas=document.createElement('canvas');
+ const smoothLayer={canvas:layerCanvas,context:layerCanvas.getContext('2d',{alpha:true})};
+ // Preserve authentic stress jumps between differently oriented shell
+ // patches (e.g., orthogonal walls and slab); smooth within each plane.
+ const normalBucket=el=>{
+  const [a,b,c]=el.vertices;
+  const u=b.map((x,i)=>x-a[i]),v=c.map((x,i)=>x-a[i]);
+  const n=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
+  const size=Math.hypot(...n)||1;
+  const axis=n.map(x=>x/size);
+  if(axis.find(x=>Math.abs(x)>1e-7)<0)axis.forEach((_,i)=>axis[i]=-axis[i]);
+  return axis.map(x=>Math.round(x*20)).join(':');
+ };
+ const nodeKey=(el,i)=>String(el.nodes[i])+'|'+normalBucket(el);
  const view={yaw:-.57,pitch:.48,mesh:false,aliasing:false,deformed:false,auto:false,selected:null,hover:null,drag:null,polys:[],frame:0};
  let frameBounds=null;
  function faceMean(element,side,field){
@@ -302,7 +316,10 @@ if(labRoot){
   ctx.fillStyle=sky;ctx.fillRect(0,0,w,h);
   const field=$('lab-stress-field').value,side=$('lab-stress-face').value;
   const elements=shell.elements,values=elements.map(e=>faceMean(e,side,field));
-  const min=Math.min(...values),max=Math.max(...values),span=Math.max(1e-12,max-min);
+  // The legend references the ORIGINAL Gauss result range, not smoothed
+  // peak attenuation from graphical recovery.
+  const rawValues=elements.flatMap(e=>e.gauss.map(g=>g[side][field]));
+  const min=Math.min(...rawValues),max=Math.max(...rawValues),span=Math.max(1e-12,max-min);
   $('lab-stress-max').textContent=num(max,3);$('lab-stress-min').textContent=num(min,3);
   $('lab-shell-count').textContent=elements.length;$('lab-beam-count').textContent=shell.beams.length;
   $('lab-stress-count').textContent=shell.mesh.shellCount+' QUAD4 / '+shell.mesh.beamCount+' BEAMS';
@@ -329,18 +346,22 @@ if(labRoot){
    return {id:e.id,source:e,pts,depth:pts.reduce((s,p)=>s+p.depth,0)/4,val:values[i]};
   }).sort((a,b)=>b.depth-a.depth);
   view.polys=colored;
+  if(view.aliasing){
+   const recovered=recoverSharedVertexField(elements,el=>el.gauss.map(g=>g[side][field]),nodeKey);
+   const byElement=new Map(elements.map((el,i)=>[el.id,recovered[i]]));
+   const quads=colored.map(item=>({pts:item.pts,values:byElement.get(item.id)}));
+   drawContinuousContours(ctx,smoothLayer,quads,palette,min,max,dpr);
+  }
   for(const item of colored){
-   const q=item.pts,N=view.aliasing?9:2;
-   const samples=item.source.gauss.map(g=>g[side][field]);
-   for(let j=0;j<N;j++)for(let i=0;i<N;i++){
-    const u=i/N,v=j/N,u2=(i+1)/N,v2=(j+1)/N;
-    const value=view.aliasing
-     ?sampleGaussScalar(samples,(u+u2)/2,(v+v2)/2)
-     :samples[j===0?(i===0?0:1):(i===0?3:2)];
+   const q=item.pts;
+   if(!view.aliasing)for(let j=0;j<2;j++)for(let i=0;i<2;i++){
+    const u=i/2,v=j/2,u2=(i+1)/2,v2=(j+1)/2;
+    const samples=item.source.gauss.map(g=>g[side][field]);
+    const value=samples[j===0?(i===0?0:1):(i===0?3:2)];
     polygon([blerp(q,u,v),blerp(q,u2,v),blerp(q,u2,v2),blerp(q,u,v2)],heat((value-min)/span));
    }
    const focus=item.id===view.selected||item.id===view.hover;
-   polygon(q,null,focus?'#153b4a':view.mesh?'#224d65a6':'#2b677229',focus?3.3:view.mesh?1.05:.3);
+   polygon(q,null,focus?'#153b4a':view.mesh?'#224d65a6':null,focus?3.3:view.mesh?1.05:0);
   }
   // Frame members use the actual 66 section-centerline segments returned by
   // the source mesh; purely architectural styling, not invented steel stresses.

@@ -17,11 +17,11 @@ test('Bilingual home SEO leads with DELGHE DÈLGHEM Genius and native Apple Sili
   assert.ok(script,page+' JSON-LD');
   const obj=JSON.parse(script[1]);assert.ok(obj['@graph'].some(x=>x['@type']==='SoftwareApplication'));
   assert.match(obj['@graph'].find(x=>x['@type']==='SoftwareApplication').description,/Genius.*Kratos/);
-  assert.match(html,/surface-studio\.js\?v=20261025-aliasing17/);
+  assert.match(html,/surface-studio\.js\?v=20261025-smooth19/);
   assert.match(html,/engineering-benchmarks\.js\?v=20261025-showcase15seo/);
   assert.match(html,/genius-demo\.js\?v=20261025-showcase15seo/);
   assert.match(html,/style\.css\?v=20261025-showcase15seo/);
-  assert.match(html,/fem-lab\.js\?v=20261025-aliasing17/);
+  assert.match(html,/fem-lab\.js\?v=20261025-smooth19/);
   assert.match(html,/app\.js\?v=20261025-showcase15seo/);
  }
  assert.match(read('app.js'),/model-stage\.js\?v=20261025-showcase15seo/);

@@ -13,10 +13,10 @@ test('FEM 3D and all three FEM 2D maps have bilingual ALIASING toggles and quali
   for(const id of ['lab-aliasing-toggle','surface-aliasing-toggle']){
    assert.match(html,new RegExp('id="'+id+'"[^>]*aria-pressed="false"[^>]*>ALIASING<'));
   }
-  assert.match(html,/same element|stesso elemento/i);
-  assert.match(html,/non modifica|does not change/i);
-  assert.match(html,/fem-lab\.js\?v=20261025-aliasing17/);
-  assert.match(html,/surface-studio\.js\?v=20261025-aliasing17/);
+  assert.match(html,/adjacent coplanar|elementi QUAD4 complanari/i);
+  assert.match(html,/unchanged Kratos|risultati originali Kratos/i);
+  assert.match(html,/fem-lab\.js\?v=20261025-smooth19/);
+  assert.match(html,/surface-studio\.js\?v=20261025-smooth19/);
  }
 });
 
@@ -43,10 +43,10 @@ test('Alias controls rerender only colors, preserve Kratos datasets, element top
  const surface=read('surface-studio.js'),stress=read('fem-lab.js');
  assert.match(surface,/surface-aliasing-toggle/);
  assert.match(stress,/lab-aliasing-toggle/);
- assert.match(surface,/sampleGaussScalar\(/);
- assert.match(stress,/sampleGaussScalar\(/);
- assert.match(surface,/aliasing\s*\?\s*8\s*:\s*2/);
- assert.match(stress,/view\.aliasing\s*\?\s*9\s*:\s*2/);
+ assert.match(surface,/drawContinuousContours\(/);
+ assert.match(stress,/drawContinuousContours\(/);
+ assert.match(surface,/recoverSharedVertexField\(/);
+ assert.match(stress,/recoverSharedVertexField\(/);
  assert.match(surface,/aria-pressed/);
  assert.match(stress,/aria-pressed/);
  for(const text of [stress,surface]){

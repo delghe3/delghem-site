@@ -37,7 +37,7 @@
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../assets/Manrope.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="../style.css?v=20261025-showcase15seo">
-  <link rel="stylesheet" href="../fem-aliasing.css?v=20261025-aliasing17">
+  <link rel="stylesheet" href="../fem-aliasing.css?v=20261025-smooth19">
   <link rel="stylesheet" href="../intro-neon.css?v=20261025-neonhold">
 <script type="module" src="../site-intro.js?v=20261025-neonhold"></script>
   <noscript><style>.site-intro{display:none!important}</style></noscript>
@@ -348,8 +348,8 @@
     <div id="lab-data-error" class="lab-error" role="alert" hidden>Impossibile caricare i dati numerici della sezione.</div>
     <div class="lab-panel" id="lab-panel-stress">
       <div class="lab-panel-heading"><div><span class="lab-kicker">01 / KRATOSMULTIPHYSICS • SHELL QUAD4 + TELAIO</span><h3>Telaio irregolare: mappa delle tensioni</h3><p>Soluzione statica effettivamente eseguita con KratosMultiphysics su 176 shell QUAD4 e 66 segmenti di trave del benchmark B01. Le tensioni delle facce sono <strong>ricostruite dalle risultanti locali N e M di Kratos</strong> con le relazioni elastiche N/h ± 6M/h² ai quattro punti di Gauss: la colorazione interna è un’interpolazione grafica, non un campo nodale certificato.</p></div><div class="lab-controls"><label class="lab-select"><span>Componente</span><select id="lab-stress-field"><option value="vonMisesMPa">Von Mises · σVM</option><option value="sigma11MPa">σ11</option><option value="sigma22MPa">σ22</option><option value="tau12MPa">τ12</option></select></label><label class="lab-select"><span>Faccia shell</span><select id="lab-stress-face"><option value="top">Superiore</option><option value="bottom">Inferiore</option></select></label></div></div>
-      <div class="lab-model-toolbar" role="group" aria-label="FEM 3D viewing controls"><button class="lab-tool aliasing-toggle" type="button" id="lab-aliasing-toggle" aria-pressed="false" title="Grafical color interpolation within each QUAD4 element; solver results stay unchanged.">ALIASING</button><button class="lab-tool" type="button" id="lab-mesh-toggle" aria-pressed="false">Mostra mesh</button><button class="lab-tool" type="button" id="lab-deform-toggle" aria-pressed="false">Deformata × 800</button><button class="lab-tool" type="button" id="lab-motion-toggle" aria-pressed="false">Ruota automaticamente</button><button type="button" class="lab-tool" id="lab-reset-view">Vista iniziale</button></div>
-      <p class="fem-aliasing-disclaimer">ALIASING interpola i colori fra i punti di Gauss nello stesso elemento: non modifica le tensioni Kratos, la mesh o le aperture.</p>
+      <div class="lab-model-toolbar" role="group" aria-label="FEM 3D viewing controls"><button class="lab-tool aliasing-toggle" type="button" id="lab-aliasing-toggle" aria-pressed="false" title="Continuous visual interpolation across coplanar QUAD4 elements; solver results unchanged.">ALIASING</button><button class="lab-tool" type="button" id="lab-mesh-toggle" aria-pressed="false">Mostra mesh</button><button class="lab-tool" type="button" id="lab-deform-toggle" aria-pressed="false">Deformata × 800</button><button class="lab-tool" type="button" id="lab-motion-toggle" aria-pressed="false">Ruota automaticamente</button><button type="button" class="lab-tool" id="lab-reset-view">Vista iniziale</button></div>
+      <p class="fem-aliasing-disclaimer">ALIASING genera una sfumatura cromatica continua fra elementi QUAD4 complanari usando valori nodali mediati per la sola visualizzazione. La mediazione è soltanto grafica e può attenuare visivamente i picchi locali: consultare i risultati originali Kratos ai punti di Gauss per la lettura ingegneristica. Mesh e aperture non cambiano.</p>
       <div class="lab-stress-layout">
        <div class="lab-visual-box lab-contour"><div class="lab-viewport-label">DÈLGHEM D2 <span> / B01 COUPLED FRAME + WALL</span></div><img id="lab-stress-poster" class="lab-stress-poster" src="../assets/fem-lab/gallery/stress-actual-solver.webp" width="1600" height="779" loading="eager" decoding="async" alt="Mappa tensionale reale KratosMultiphysics su telaio con parete forata, visibile anche senza gli script interattivi"><canvas id="lab-stress-canvas" tabindex="0" role="img" aria-label="Telaio irregolare: mappa delle tensioni" width="1000" height="600"></canvas><div class="lab-contour-footer"><span>Trascina il modello per ruotarlo · frecce per orientare la vista</span><span id="lab-stress-count">176 QUAD4 / 66 BEAMS</span></div></div>
        <aside class="lab-contour-side"><strong>σ / FEM · D2</strong><div class="lab-value-scale"><span id="lab-stress-max">—</span><div class="lab-heat-bar"></div><span id="lab-stress-min">—</span></div><small>MPa · scala del campo</small><div class="lab-selected-info"><span>ELEMENTO</span><strong id="lab-stress-selected">—</strong><p id="lab-stress-readout">Clicca un pannello per leggerne le tensioni.</p></div><div class="lab-side-metrics"><div><span>SHELL QUAD4</span><strong id="lab-shell-count">176</strong></div><div><span>ASTE FEM</span><strong id="lab-beam-count">66</strong></div><div><span>LIVELLI</span><strong>2</strong></div></div></aside>
@@ -367,11 +367,11 @@
   <div class="surface-controls" id="surface-lab-controls" role="group" aria-label="Controlli visualizzatore stress 2D">
    <label><span>COMPONENTE</span><select id="surface-field"><option value="vonMisesMPa">σ von Mises</option><option value="sigma11MPa">σ11</option><option value="sigma22MPa">σ22</option><option value="tau12MPa">τ12</option></select></label>
    <label><span>FACCIA</span><select id="surface-face"><option value="top">Superiore</option><option value="bottom">Inferiore</option></select></label>
-   <button type="button" class="aliasing-toggle" id="surface-aliasing-toggle" aria-pressed="false" title="Graphical color interpolation within each QUAD4 element; solver results unchanged.">ALIASING</button>
+   <button type="button" class="aliasing-toggle" id="surface-aliasing-toggle" aria-pressed="false" title="Continuous visual interpolation across coplanar QUAD4 elements; solver results unchanged.">ALIASING</button>
    <button type="button" id="surface-mesh-toggle" aria-pressed="false">Mostra mesh</button>
    <span class="surface-field-chip" id="surface-field-readout">σVM · Faccia superiore</span>
   </div>
-  <p class="fem-aliasing-disclaimer">ALIASING interpola i colori fra i punti di Gauss nello stesso elemento: non modifica le tensioni Kratos, la mesh o le aperture.</p>
+  <p class="fem-aliasing-disclaimer">ALIASING genera una sfumatura cromatica continua fra elementi QUAD4 complanari usando valori nodali mediati per la sola visualizzazione. La mediazione è soltanto grafica e può attenuare visivamente i picchi locali: consultare i risultati originali Kratos ai punti di Gauss per la lettura ingegneristica. Mesh e aperture non cambiano.</p>
   <div class="surface-grid"><article class="surface-card" data-surface="skewed-double-opening-slab">
      <div class="surface-card-head"><span>01 / QUAD4 · KRATOS</span><span class="surface-chip">280 elementi</span></div>
      <h4>Soletta irregolare con due aperture</h4><p>Piastra irregolare · 2 vani · carico gravitazionale</p>
@@ -561,12 +561,12 @@
 <dialog id="photo-dialog" aria-label="Schermata reale dell’applicazione"><button id="photo-dialog-close" class="photo-dialog-close" type="button" aria-label="Chiudi immagine">✕</button><img id="photo-image" alt="Schermata DÈLGHEM"><p id="photo-dialog-caption"></p></dialog>
   <script type="module" src="../app.js?v=20261025-showcase15seo"></script>
   <script type="module" src="../genius-demo.js?v=20261025-showcase15seo"></script>
-  <script type="module" src="../fem-lab.js?v=20261025-aliasing17"></script>
+  <script type="module" src="../fem-lab.js?v=20261025-smooth19"></script>
   <script type="module" src="../social.js"></script>
 <script defer src="../visitor-counter.js?v=20261025-showcase15seo"></script>
 <script defer src="../support-actions.js"></script>
 <script defer src="../contact-actions.js"></script>
-<script type="module" src="../surface-studio.js?v=20261025-aliasing17"></script>
+<script type="module" src="../surface-studio.js?v=20261025-smooth19"></script>
 <script type="module" src="../engineering-benchmarks.js?v=20261025-showcase15seo"></script>
 <script type="module" src="../engineering-simulations.js?v=20261025-showcase15seo"></script>
 </body>
