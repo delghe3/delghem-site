@@ -1,11 +1,12 @@
-import {introAt,INTRO_DURATION_MS} from './site-intro-timeline.mjs?v=20261025-showcase15seo';
+import {introAt,INTRO_DURATION_MS,INTRO_EXIT_START_MS,INTRO_TAGLINE_HOLD_MS} from './site-intro-timeline.mjs?v=20261025-neonhold';
 
 /**
- * The DÈLGHEM public homepage opens with one five-second identity sequence.
+ * The DÈLGHEM homepage builds its name, ignites its neon tagline,
+ * then holds it for five full seconds before the exit transition.
  * Coloured mesh cells are decorative engineering visual language only.
  * The side cards reference ACTUAL existing D2 / Kratos source imagery.
  * No browser APIs, external requests or persistence are needed beyond this
- * one deterministic display interval.
+ * one deterministic timeline with a five-second tagline hold.
  */
 const root=document.getElementById('site-intro');
 if(root){
@@ -37,8 +38,8 @@ if(root){
   root.dataset.done='true';
   root.classList.add('is-dismissed');
   root.setAttribute('aria-hidden','true');
-  // The last 390 ms already fade out before the five-second mark. Removing
-  // it here reveals the completed website after exactly five seconds.
+  // Only after five full seconds of tagline visibility may the exit begin.
+  // Removal happens once the subsequent 390ms closing transition ends.
   root.remove();
  }
  function handleMotion(event){
@@ -141,7 +142,8 @@ if(root){
    root.dataset.letters=String(state.word.length);
   }
   progress.style.transform='scaleX('+state.progress.toFixed(5)+')';
-  countdown.textContent='00:'+String(Math.ceil((INTRO_DURATION_MS-state.elapsed)/1000)).padStart(2,'0');
+  const msLeft=state.tagline ? Math.min(INTRO_TAGLINE_HOLD_MS,Math.max(0,INTRO_EXIT_START_MS-state.elapsed)) : INTRO_DURATION_MS-state.elapsed;
+  countdown.textContent='00:'+String(Math.ceil(msLeft/1000)).padStart(2,'0');
   if(state.tagline&&root.dataset.phase==='build'){
    root.dataset.phase='complete';
    tagline.setAttribute('aria-hidden','false');

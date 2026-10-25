@@ -1,0 +1,72 @@
+/* DELGHEM identity reveal: instant neon ignition and five-second hold.
+ * Loaded after the main stylesheet so the existing FEM scene is untouched.
+ * No fade-in is applied to the caption: the entire line appears at once. */
+.site-intro{
+ animation:introFailsafe 9.3s steps(1,end) forwards;
+}
+.site-intro__tagline{
+ position:relative;
+ isolation:isolate;
+ color:#f2fffd;
+ opacity:0;
+ transform:none;
+ transition:none;
+ text-shadow:none;
+ filter:none;
+}
+.site-intro__tagline::before{
+ content:'';
+ position:absolute;
+ z-index:-1;
+ inset:-24px -50px;
+ background:radial-gradient(ellipse at center,rgba(56,255,225,.35),rgba(50,171,243,.12) 40%,transparent 75%);
+ opacity:0;
+ filter:blur(18px);
+ pointer-events:none;
+}
+.site-intro[data-phase="complete"] .site-intro__tagline,
+.site-intro[data-phase="exit"] .site-intro__tagline{
+ opacity:1;
+ transform:none;
+ transition:none;
+ animation:introTaglineNeonStrike 1100ms ease-out both;
+}
+.site-intro[data-phase="complete"] .site-intro__tagline::before,
+.site-intro[data-phase="exit"] .site-intro__tagline::before{
+ opacity:1;
+ animation:introTaglineNeonAura 1600ms ease-out both;
+}
+@keyframes introTaglineNeonStrike{
+ 0%{
+  opacity:1;
+  color:#fff;
+  text-shadow:0 0 5px #f4ffff,0 0 17px #70f7e9,0 0 38px #51eedf,0 0 90px #1ac4f8;
+ }
+ 14%{
+  opacity:1;
+  text-shadow:0 0 5px #fff,0 0 23px #a2fff3,0 0 53px #65f6e6,0 0 115px #20d9fb;
+ }
+ 40%{
+  opacity:1;
+  text-shadow:0 0 3px #fff,0 0 14px #8ffff1,0 0 42px #48dfdc,0 0 85px #21accf;
+ }
+ 100%{
+  opacity:1;
+  color:#e8fffb;
+  text-shadow:0 0 4px #d9ffff,0 0 18px #55f5dc,0 0 48px #21d6ea9c;
+ }
+}
+@keyframes introTaglineNeonAura{
+ 0%{opacity:1;transform:scale(1.01);filter:blur(26px)}
+ 35%{opacity:.87;transform:scale(1.08);filter:blur(23px)}
+ 100%{opacity:.54;transform:scale(1);filter:blur(20px)}
+}
+@media(max-width:650px){
+ .site-intro__tagline::before{inset:-18px -12px}
+}
+@media(prefers-reduced-motion:reduce){
+ .site-intro__tagline,
+ .site-intro[data-phase="complete"] .site-intro__tagline,
+ .site-intro[data-phase="exit"] .site-intro__tagline,
+ .site-intro__tagline::before{animation:none!important;transition:none!important}
+}
