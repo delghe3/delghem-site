@@ -115,3 +115,24 @@ test('Transparent IndexNow key file and only domain-owned sitemap submissions',(
  assert.ok(existsSync(resolve(root,key+'.txt')));
  assert.equal(read(key+'.txt').trim(),key);
 });
+
+test('Official press kit provides one download ZIP with all 10 authentic D2 promo banners and no font/source binaries',()=>{
+ const zip='assets/banners/delghem-banners-it-en.zip';
+ assert.ok(existsSync(resolve(root,zip)),zip+' must be publicly hosted');
+ const archive=spawnSync('unzip',['-Z','-1',resolve(root,zip)],{encoding:'utf8'});
+ assert.equal(archive.status,0,'ZIP readable');
+ const files=archive.stdout.trim().split('\n').filter(Boolean);
+ assert.equal(files.length,11,'exactly 10 WebP + one usage and provenance notice');
+ assert.ok(files.includes('README-PROMO.txt'));
+ for(const lang of ['it','en'])for(const type of ['leaderboard','billboard','rectangle','skyscraper','square']){
+  assert.ok(files.includes('delghem-'+type+'-'+lang+'.webp'));
+ }
+ assert.ok(files.every(name=>!/\.(exe|dmg|ttf|otf|js|mjs|json)$/i.test(name)),
+  'only images and a brief usage notice, no fonts or program code');
+ for(const file of ['media-kit/index.html','en/media-kit/index.html']){
+  const html=read(file);
+  assert.match(html,/href="[^"]*delghem-banners-it-en\.zip"/);
+  assert.match(html,/banner-bundle-download/);
+ }
+ assert.match(read('README.md'),/delghem-banners-it-en\.zip/);
+});

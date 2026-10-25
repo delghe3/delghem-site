@@ -51,6 +51,9 @@ La promozione pubblica DÈLGHEM si basa su contenuti originali, fonti tecniche v
 
 ## SEO e promozione gratuita (24/10/2026)
 
+- Archivio ZIP gratuito dei 10 banner ufficiali IT/EN: assets/banners/delghem-banners-it-en.zip. Cinque formati per lingua, solo WebP con schermate D2 autentiche, benchmark Kratos QUAD4 realmente calcolato e nota sulle limitazioni. Link di download in entrambi i media kit. La diffusione sui siti di terzi richiede consenso del publisher; nessuna pubblicazione non autorizzata.
+
+
 - Sei articoli tematici nuovi, indexable, con canonical e hreflang reciproci: Pushover/IDA; mappe tensionali FEM 3D; licenza industriale del codice per software house, ciascuno in IT/EN. La licenza viene proposta direttamente tramite delghem@proton.me; nessun checkout.
 - Sitemap.xml ampliata da 10 a 16 URL canonici; markup TechArticle, WebPage e BreadcrumbList; collegamenti contestuali dalla homepage, dal kit stampa e dalle note su Apple Silicon.
 - Anteprime social PNG 1200×630 IT/EN da geometrie originali D2 e benchmark reali ma indipendenti, incluse nei metadati Open Graph/Twitter e nel media kit; non sono screenshot fittizi dell'app.
