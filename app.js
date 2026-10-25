@@ -1,4 +1,4 @@
-import { messages as dictionaries } from './locales.js?v=20261025-showcase11';
+import { messages as dictionaries } from './locales.js?v=20261025-showcase12';
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const italian = dictionaries.it;
@@ -232,6 +232,6 @@ window.addEventListener('scroll', onScroll, { passive: true });
 updateLanguage(language);
 onScroll();
 $('#structure-canvas').tabIndex = 0;
-import('./model-stage.js?v=20261025-showcase11').then(({ initModelStage }) => { modelStage = initModelStage(); renderMotion(); }).catch(error => { console.error('Unable to initialize the illustrative model', error); });
+import('./model-stage.js?v=20261025-showcase12').then(({ initModelStage }) => { modelStage = initModelStage(); renderMotion(); }).catch(error => { console.error('Unable to initialize the illustrative model', error); });
 
 // Trusted static translations. A separate opt-in-free visit counter requests an external aggregate counter; no cookies are set by this module.

@@ -36,7 +36,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.delghe.com/#organization","name":"DELGHE","url":"https://www.delghe.com/","brand":{"@type":"Brand","name":"DÈLGHEM"}},{"@type":"WebSite","@id":"https://www.delghe.com/#website","name":"DÈLGHEM","url":"https://www.delghe.com/","inLanguage":["it","en"],"about":{"@id":"https://www.delghe.com/#software"},"publisher":{"@id":"https://www.delghe.com/#organization"},"description":"DELGHE presents DÈLGHEM: Genius, Kratos 2D FEM, stratified pile stress maps and steel-frame viscous damper comparison for Apple Silicon."},{"@type":"SoftwareApplication","@id":"https://www.delghe.com/#software","name":"DÈLGHEM","url":"https://www.delghe.com/","description":"DELGHE presents DÈLGHEM: Genius, Kratos 2D FEM, stratified pile stress maps and steel-frame viscous damper comparison for Apple Silicon.","applicationCategory":"ScienceApplication","operatingSystem":"macOS","processorRequirements":"Apple Silicon","inLanguage":["en","it"],"creativeWorkStatus":"In development","screenshot":"https://www.delghe.com/assets/app-model.png","author":{"@type":"Person","name":"DELGHE"},"publisher":{"@id":"https://www.delghe.com/#organization"},"brand":{"@type":"Brand","name":"DELGHE"},"alternateName":["DELGHE FEM","DÈLGHEM","DELGHEM"]}]}</script>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="./assets/Manrope.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=20261025-showcase11">
+  <link rel="stylesheet" href="./style.css?v=20261025-showcase12">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -324,14 +324,17 @@
    <select id="steel-frame-toggle"><option value="with">With viscous damper</option><option value="without">Without damper</option></select>
   </label>
   <button type="button" id="steel-frame-camera">Reset camera</button>
+  <button type="button" id="steel-frame-front">Front XZ</button>
+  <button type="button" id="steel-frame-thickness" aria-pressed="true">Sections ON</button>
   <button type="button" id="steel-frame-play" aria-pressed="false">Play</button>
  </div>
  <div class="steel-frame-canvas-wrap">
-  <canvas id="steel-damper-canvas" width="1060" height="550" tabindex="0" role="img" aria-label="3D steel portal frame with visible diagonal viscous cylinder and magnified structural roof drift"></canvas>
-  <img class="steel-frame-fallback" src="./assets/engineering/steel-viscous-frame-en.webp" width="1280" height="760" loading="lazy" decoding="async" alt="Source-backed steel portal comparative dynamic response with a projected equivalent viscous device">
+  <canvas id="steel-damper-canvas" width="1060" height="550" tabindex="0" role="img" aria-label="Axonometric representation of the authentic planar D2 model: four nodes, two HEB260 columns, one IPE330 beam, schematic equivalent viscous damper"></canvas>
+  <img class="steel-frame-fallback" src="./assets/engineering/steel-viscous-frame-en.webp?v=20261025-showcase12" width="1280" height="760" loading="lazy" decoding="async" alt="Source-backed steel portal comparative dynamic response with a projected equivalent viscous device">
  </div>
  <div class="steel-timeline"><span>0,0 s</span><input type="range" id="steel-frame-time" min="0" max="1800" step="1" value="0" aria-label="Frame response time"><output id="steel-frame-time-label">0,00 s</output></div>
  <p id="steel-frame-description" class="eng-3d-status">Drag to orbit. Visually displayed deformations are intentionally magnified.</p>
+ <div class="eng-native-model-ref"><span>NATIVE XZ FRAME · 4 NODES · 3 MEMBERS</span><a class="eng-native-portal-link" href="./assets/engineering/portal-steel-d2.hfm.json" target="_blank" rel="noopener noreferrer">Native DÈLGHEM D2 geometry file · .hfm.json ↗</a></div>
  <div class="steel-comparison-summary">
   <div><small>PEAK DRIFT REDUCTION</small><strong id="steel-drift-reduction">—</strong></div>
   <div><small>DAMPER ENERGY</small><strong id="steel-damper-energy">—</strong></div>
@@ -342,7 +345,7 @@
   <svg id="steel-frame-response" viewBox="0 0 900 390" role="img" aria-label="Roof displacement histories solved by DÈLGHEM D2 equivalent MDOF engine"></svg>
   <div class="steel-curve-key"><span><i class="steel-key-bare"></i>No device</span><span><i class="steel-key-damped"></i>With device</span></div>
  </div>
- <p class="eng-stress-qualification">S355 one-bay 6×4 m steel portal (HEB260/IPE330): stiffness from 2D Euler–Bernoulli frame matrices; two real numerical D2 MDOF one-DOF time histories. The 3D diagonal/cylinder illustrates the viscous element. Linear damper α=1 represented by projected equivalent C; no native Kratos separate-node damper connection is claimed. Analytical—not recorded—input motion. Not an NTC seismic check.</p>
+ <p class="eng-stress-qualification">Authentic planar D2 model (XZ): exactly two S355 HEB260 columns and one IPE330 beam, 4 native nodes / 3 members with catalog I-section flange and web sizes; fixed base constraints and no fictitious rear frame. Stiffness from 2D Euler–Bernoulli members, and two solved D2 one-DOF histories. The schematic cylinder shows equivalent viscous damping, NOT a validated D2 spatial device connection. Linear damper α=1 represented by projected equivalent C; no native Kratos separate-node damper connection is claimed. Analytical—not recorded—input motion. Not an NTC seismic check.</p>
 </div>
    <details class="eng-technical-details" id="eng-device-law-details"><summary>Damper constitutive F = C · |v|^α and force–displacement loop<span aria-hidden="true">+</span></summary>
    <label class="eng-select">ESONENTE α <select id="damper-alpha-select"><option value="0.5">Non lineare · α = 0,5</option><option value="1">Lineare · α = 1</option></select></label><div class="eng-device-charts">
@@ -491,15 +494,15 @@
   <dialog id="image-dialog" aria-label="Enlarged screenshot" data-i18n-aria="imageDialog"><button id="close-dialog" class="icon-button" aria-label="Close screenshot" data-i18n-aria="closeImage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button><img id="dialog-image" alt="Schermata DÈLGHEM"><p id="dialog-caption"></p></dialog>
   <noscript><p class="noscript-note" data-i18n="noScript">Italian and English pages are available without JavaScript. Enable it to explore all screenshots and use the animations.</p></noscript>
 <dialog id="photo-dialog" aria-label="Real application screenshot"><button id="photo-dialog-close" class="photo-dialog-close" type="button" aria-label="Close photo">✕</button><img id="photo-image" alt="Schermata DÈLGHEM"><p id="photo-dialog-caption"></p></dialog>
-  <script type="module" src="./app.js?v=20261025-showcase11"></script>
-  <script type="module" src="./genius-demo.js?v=20261025-showcase11"></script>
-  <script type="module" src="./fem-lab.js?v=20261025-showcase11"></script>
+  <script type="module" src="./app.js?v=20261025-showcase12"></script>
+  <script type="module" src="./genius-demo.js?v=20261025-showcase12"></script>
+  <script type="module" src="./fem-lab.js?v=20261025-showcase12"></script>
   <script type="module" src="./social.js"></script>
 <script defer src="./visitor-counter.js"></script>
 <script defer src="./support-actions.js"></script>
 <script defer src="./contact-actions.js"></script>
-<script type="module" src="./surface-studio.js?v=20261025-showcase11"></script>
-<script type="module" src="./engineering-benchmarks.js?v=20261025-showcase11"></script>
-<script type="module" src="./engineering-simulations.js?v=20261025-showcase11"></script>
+<script type="module" src="./surface-studio.js?v=20261025-showcase12"></script>
+<script type="module" src="./engineering-benchmarks.js?v=20261025-showcase12"></script>
+<script type="module" src="./engineering-simulations.js?v=20261025-showcase12"></script>
 </body>
 </html>

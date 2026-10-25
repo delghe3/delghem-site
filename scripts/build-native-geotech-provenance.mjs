@@ -29,6 +29,14 @@ for(const caseData of profile.cases){
 if(frame.geometry.nativeFrameSourceSha256!==digest(read(frame.geometry.nativeFrameSource))||
   frame.cases.some(x=>x.energyAudit.maxNewtonResidual>1e-7))
  throw Error('D2 source steel frame geometry or dynamic convergence is not proven');
+const nativePortal=JSON.parse(read(frame.geometry.nativeFrameSource));
+const H=frame.geometry.sectionShapes?.S_HEB260;
+const I=frame.geometry.sectionShapes?.S_IPE330;
+if(nativePortal.nodes.length!==4||nativePortal.members.length!==3||
+  nativePortal.nodes.some(n=>n.y!==0)||frame.geometry.visualExtrusionDepthM!==0||
+  !(H?.h===.26&&H.b===.26&&H.tw===.01&&H.tf===.0175)||
+  !(I?.h===.33&&I.b===.16&&I.tw===.0075&&I.tf===.0115))
+ throw Error('Rendered steel portal no longer matches 4 native nodes / 3 I-profile members');
 
 if(report.schema!=='delghem-d2-geo-and-viscous-benchmarks-1'||report.piles?.length!==2||report.devices?.length!==2
  ||report.completeGeotechnicalVerification!==false||report.completeStructuralVerification!==false)
@@ -49,6 +57,7 @@ const inputs=[
  'scripts/build-pile-stratigraphic-stress.mjs',
  'scripts/build-steel-viscous-comparison.mjs',
  'engineering-simulations.js',
+ 'steel-portal-renderer.mjs',
  ...['it','en'].flatMap(lang=>[
   basename+'/pile-stratigraphy-'+lang+'.webp',
   basename+'/pile-stratigraphy-clay-'+lang+'.webp',
@@ -101,6 +110,14 @@ const lines=[
  ]),
  '',
  'FRAME TIME-HISTORY: STEEL PORTAL WITH AND WITHOUT LINEAR VISCOUS DEVICE',
+ '  GEOMETRIC SOURCE CORRECTION (25 OCTOBER 2026): FOUR NATIVE NODES BL, BR, TL, TR AND THREE ACTUAL NATIVE MEMBERS ONLY.',
+ '  Two HEB260 columns and one IPE330 beam. No fictitious four-column rear frame, no roof extrusions, no fake pad footings.',
+ '  Actual D2 catalogue sections h,b,tw,tf: HEB260 0.260/0.260/0.010/0.0175 m, IPE330 0.330/0.160/0.0075/0.0115 m.',
+ '  Correct assonometric viewer uses native file nodes/members, and verifies SHA256 of actual geometry before rendering.',
+ '  A separate source-coaxial conceptual damper overlay connects BL to TR; it is NOT an additional native D2 FEM member.',
+ '  DÈLGHEM Spessori ON/OFF switches 3 real profile solids per member / only native centre lines, without changing geometry or solved benchmark results.',
+ '  ISO is orthographic; Frontale XZ and mouse/touch rotations are display options only.',
+
  '  A genuine editable DÈLGHEM D2 HEB260/IPE330 S355 portal source geometry was validated separately from its time history.',
  '  Original native portal geometry SHA256: '+frame.geometry.nativeFrameSourceSha256+' ('+frame.geometry.nativeFrameSource+').',
  '  Two completed DÈLGHEM D2 hystereticMDOF implicit Newmark runs, with equivalent SDOF lateral portal stiffness from assembled 2D Euler-Bernoulli frame finite elements.',

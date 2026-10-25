@@ -1,3 +1,5 @@
+import {buildNativePortalScene,renderNativeSteelPortal} from './steel-portal-renderer.mjs?v=20261025-showcase12';
+
 /**
  * Engineering Lab II. Two independently sourced visualisations:
  *
@@ -31,7 +33,7 @@ if(enhancedEngineeringRoot){
   p.append(x);return x;
  };
  const frameStates={caseId:'with',timeIndex:0,playing:false,cameraYaw:-.68,cameraPitch:.32,down:null,raf:0,timestamp:0,indexFraction:0};
- let soilData=null,frameData=null;
+ let soilData=null,frameData=null,frameNative=null;
  let activeSoil=null,activeFrame=null,soilState={mode:'influence',lastLayout:null};
  const c2d=(canvas)=>{
   const w=canvas.getBoundingClientRect().width;
@@ -197,104 +199,35 @@ if(enhancedEngineeringRoot){
 
  // Reduced-order dynamic steel portal (the D2 MDOF response is genuinely
  // solved; the extrusion and steel damper cylinder are visual aids).
- const frameView={id:'with',index:0,playing:false,yaw:-.70,pitch:.32,
+ const frameView={id:'with',index:0,playing:false,showThickness:true,yaw:-.57,pitch:.47,
   pointer:null,start:null,frameRaf:0,lastMs:0,indexFraction:0};
- function frameProject(position,offset,size){
-  const {w,h}=size;
-  const x=position[0]+offset-.0-3,y=position[1]-1.5,z=position[2]-2.05;
-  const cs=Math.cos(frameView.yaw),sn=Math.sin(frameView.yaw);
-  const px=x*cs-y*sn,depth=x*sn+y*cs;
-  const py=z*Math.cos(frameView.pitch)-depth*Math.sin(frameView.pitch);
-  const scale=Math.min(w/12.6,h/8.3);
-  const perspective=clamp(1-depth*.048,.78,1.22);
-  return {x:w*.50+px*scale*perspective,
-   y:h*.60-py*scale*perspective,depth};
- }
  function paintFrame(){
-  if(!frameData)return;
-  const c=$('steel-damper-canvas'),size=c2d(c);
-  if(!size)return;
-  const {ctx,w,h}=size;
-  const grad=ctx.createLinearGradient(0,0,0,h);
-  grad.addColorStop(0,'#f5fcfa');grad.addColorStop(1,'#d9ebe8');
-  ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);
-  const series=frameData.cases.find(x=>x.id===frameView.id);
-  const point=series.records[frameView.index];
-  const amp=12,ux=point.displacementMM/1000*amp;
-  const shift=(z)=>ux*Math.max(0,z/4);
-  const P=(x,y,z)=>frameProject([x,y,z],shift(z),size);
-  const segment=(p,q,color,width=9)=>{
-   const a=P(...p),b=P(...q);
-   ctx.lineCap='round';ctx.strokeStyle='#193f54';ctx.lineWidth=width+3;
-   ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
-   ctx.strokeStyle=color;ctx.lineWidth=width;
-   ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
-   ctx.strokeStyle='rgba(255,255,255,.58)';ctx.lineWidth=Math.max(1,width*.22);
-   ctx.beginPath();ctx.moveTo(a.x-1,a.y-1);ctx.lineTo(b.x-1,b.y-1);ctx.stroke();
-  };
-  // Engineered 6m×4m real source 2D portal geometry extruded to 3m:
-  // blue HEB columns, IPE roof beam, two visible concrete bases.
-  const ground=[
-   P(-2,-2,0),P(8,-2,0),P(8,5,0),P(-2,5,0)
-  ];
-  ctx.fillStyle='#d9eae5';ctx.strokeStyle='#8cafb0';ctx.lineWidth=1.4;
-  ctx.beginPath();ground.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));
-  ctx.closePath();ctx.fill();ctx.stroke();
-  for(let x=-2;x<=8;x+=1){
-   const a=P(x,-2,0),b=P(x,5,0);
-   ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
-   ctx.strokeStyle='#b9d5d0';ctx.lineWidth=.65;ctx.stroke();
-  }
-  for(let y=-2;y<=5;y+=1){
-   const a=P(-2,y,0),b=P(8,y,0);
-   ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
-  }
-  const portal=[0,3];
-  for(const offsetY of portal){
-   segment([0,offsetY,0],[0,offsetY,4],'#4b97b6',12);
-   segment([6,offsetY,0],[6,offsetY,4],'#3b7e9e',12);
-   segment([0,offsetY,4],[6,offsetY,4],'#5aacc5',10);
-  }
-  for(const x of [0,6])segment([x,0,4],[x,3,4],'#6eaab9',8);
-  for(const x of [0,6])for(const y of [0,3]){
-   const a=P(x,y,0);
-   ctx.fillStyle='#7a959b';ctx.strokeStyle='#2c5266';ctx.lineWidth=1;
-   ctx.fillRect(a.x-11,a.y-2,22,10);ctx.strokeRect(a.x-11,a.y-2,22,10);
-  }
-  const inDamper=frameView.id==='with';
-  if(inDamper){
-   const a=[0,0,.10],b=[6,0,4];
-   segment(a,b,'#b6c4c9',5);
-   const lerp3=t=>a.map((v,i)=>v+(b[i]-v)*t);
-   const f=lerp3(.55),g=lerp3(.78),e=P(...f),j=P(...g);
-   ctx.lineWidth=19;ctx.strokeStyle='#9a4834';
-   ctx.beginPath();ctx.moveTo(e.x,e.y);ctx.lineTo(j.x,j.y);ctx.stroke();
-   ctx.lineWidth=13;ctx.strokeStyle='#f0a260';ctx.stroke();
-   ctx.beginPath();ctx.moveTo(e.x,e.y);ctx.lineTo(j.x,j.y);ctx.stroke();
-   ctx.lineWidth=4;ctx.strokeStyle='#f9e2b5';ctx.stroke();
-   ctx.beginPath();ctx.moveTo(e.x,e.y);ctx.lineTo(j.x,j.y);ctx.stroke();
-   for(const point3 of [lerp3(.55),lerp3(.78)]){
-    const p=P(...point3);ctx.beginPath();ctx.arc(p.x,p.y,5,0,Math.PI*2);
-    ctx.fillStyle='#cfe7dd';ctx.fill();ctx.strokeStyle='#7e4d37';ctx.stroke();
-   }
-   ctx.fillStyle='#884125';ctx.font='850 11px system-ui';ctx.textAlign='left';
-   ctx.fillText(it?'DISSIPATORE VISCOSO':'VISCOUS DAMPER',Math.min(w-155,Math.max(8,j.x+11)),j.y-8);
-  }
-  const roof=P(6,0,4);
-  ctx.textAlign='left';
-  ctx.fillStyle='#173e53';ctx.font='850 12px system-ui';
-  ctx.fillText(it?'PORTALE S355 · 6 × 4 m':'S355 PORTAL · 6 × 4 m',14,24);
-  ctx.font='780 10px system-ui';
-  ctx.fillStyle='#4c7480';
-  ctx.fillText(it?'Deformata ingrandita ×12':'Deformation exaggerated ×12',14,41);
-  ctx.fillStyle=inDamper?'#b35c37':'#3a708d';ctx.font='850 12px system-ui';
-  ctx.fillText((inDamper?(it?'CON VISCOSO':'WITH DAMPER'):(it?'SENZA VISCOSO':'NO DAMPER')),
-   14,h-17);
-  ctx.fillStyle='#226478';ctx.font='780 11px ui-monospace,monospace';
-  ctx.textAlign='right';
-  ctx.fillText('u = '+num(point.displacementMM,1)+' mm',w-13,24);
-  ctx.fillText('t = '+num(point.timeS,2)+' s',w-13,40);
-  c.dataset.ready='true';$('steel-frame-scene').dataset.ready='true';
+  if(!frameData||!frameNative)return;
+  const canvas=$('steel-damper-canvas'),dimensions=c2d(canvas);
+  if(!dimensions)return;
+  const state=frameData.cases.find(c=>c.id===frameView.id);
+  if(!state)throw Error('Native D2 time-history case not found');
+  const sample=state.records[frameView.index];
+  const nativeScene=renderNativeSteelPortal(dimensions.ctx,{
+   width:dimensions.w,height:dimensions.h,scene:frameNative,
+   yaw:frameView.yaw,pitch:frameView.pitch,
+   driftMM:sample.displacementMM,amplification:12,
+   timeS:sample.timeS,withDamper:frameView.id==='with',
+   showThickness:frameView.showThickness,
+   italian:it,format:num
+  });
+  // Expose structural provenance in inspectable DOM attributes: even after
+  // zoom/orbit the scene contains only the 4 nodes and 3 D2 members.
+  canvas.dataset.nativeMembers=String(nativeScene.sourceMemberCount);
+  canvas.dataset.nativeNodes=String(frameNative.sourceNodeCount);
+  canvas.dataset.nativeProfileSolids=String(frameNative.solids.length);
+  canvas.dataset.nativeDimension='XZ / source 2D';
+  canvas.dataset.thickness=frameView.showThickness?'on':'off';
+  canvas.dataset.cameraYaw=frameView.yaw.toFixed(5);
+  canvas.dataset.cameraPitch=frameView.pitch.toFixed(5);
+  canvas.dataset.damperOverlay=frameView.id==='with'?'equivalent-linear-C':'none';
+  canvas.dataset.ready='true';
+  $('steel-frame-scene').dataset.ready='true';
  }
  function responseGraph(){
   if(!frameData)return;
@@ -412,7 +345,19 @@ if(enhancedEngineeringRoot){
   });
   $('steel-frame-play').addEventListener('click',togglePlay);
   $('steel-frame-camera').addEventListener('click',()=>{
-   frameView.yaw=-.70;frameView.pitch=.32;updateFrame();
+   frameView.yaw=-.57;frameView.pitch=.47;updateFrame();
+  });
+  $('steel-frame-front')?.addEventListener('click',()=>{
+   frameView.yaw=0;frameView.pitch=0;updateFrame();
+  });
+  $('steel-frame-thickness')?.addEventListener('click',()=>{
+   frameView.showThickness=!frameView.showThickness;
+   const control=$('steel-frame-thickness');
+   control.setAttribute('aria-pressed',String(frameView.showThickness));
+   control.textContent=it
+    ?(frameView.showThickness?'Spessori ON':'Spessori OFF')
+    :(frameView.showThickness?'Sections ON':'Sections OFF');
+   paintFrame();
   });
   const view=$('steel-damper-canvas');
   view.style.touchAction='none';
@@ -436,7 +381,7 @@ if(enhancedEngineeringRoot){
   view.addEventListener('keydown',e=>{
    if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;
    e.preventDefault();
-   if(e.key==='Home'){frameView.yaw=-.7;frameView.pitch=.32;}
+   if(e.key==='Home'){frameView.yaw=-.57;frameView.pitch=.47;}
    if(e.key==='ArrowLeft')frameView.yaw-=.16;
    if(e.key==='ArrowRight')frameView.yaw+=.16;
    if(e.key==='ArrowUp')frameView.pitch=clamp(frameView.pitch-.15,-1.33,1.33);
@@ -451,12 +396,14 @@ if(enhancedEngineeringRoot){
  }
  (async()=>{
   try{
-   const [soilResponse,frameResponse]=await Promise.all([
+   const [soilResponse,frameResponse,nativeResponse]=await Promise.all([
     fetch(new URL('./assets/engineering/pile-stratigraphic-stress.json',import.meta.url),{cache:'no-cache'}),
-    fetch(new URL('./assets/engineering/steel-frame-viscous-comparison.json',import.meta.url),{cache:'no-cache'})
+    fetch(new URL('./assets/engineering/steel-frame-viscous-comparison.json',import.meta.url),{cache:'no-cache'}),
+    fetch(new URL('./assets/engineering/portal-steel-d2.hfm.json',import.meta.url),{cache:'no-cache'})
    ]);
-   if(!soilResponse.ok||!frameResponse.ok)throw Error('Published native D2 numerical source unavailable');
-   const [soil,frame]=await Promise.all([soilResponse.json(),frameResponse.json()]);
+   if(!soilResponse.ok||!frameResponse.ok||!nativeResponse.ok)
+    throw Error('Published D2 soil, native steel geometry or dynamic source unavailable');
+   const [soil,frame,nativeRaw]=await Promise.all([soilResponse.json(),frameResponse.json(),nativeResponse.text()]);
    if(soil.schema!=='delghem-d2-pile-stratigraphy-influence-1'||soil.cases?.length!==2||
       soil.cases.some(x=>x.isSoilFiniteElementStress!==false||x.pile.converged!==true)||soil.completeGeotechnicalVerification!==false)
     throw Error('Native soil source scope not qualified');
@@ -464,6 +411,17 @@ if(enhancedEngineeringRoot){
       frame.analysisDomain!=='calibrated-equivalent-SDOF'||
       frame.comparison.usesKratosSeismicDeviceRoute!==false||frame.completeSeismicVerification!==false)
     throw Error('Native D2 SDOF frame model scope not qualified');
+   if(frame.geometry.nativeFrameSource!=='assets/engineering/portal-steel-d2.hfm.json')
+    throw Error('D2 portal geometry URI differs from canonical native source');
+   // Verify native file bytes against the SHA256 recorded by the source
+   // generator. This prevents a misleading 3D render of stale geometry
+   // paired with dynamic results from another structural frame.
+   const hashBytes=new Uint8Array(await crypto.subtle.digest(
+    'SHA-256',new TextEncoder().encode(nativeRaw)));
+   const actualSha=[...hashBytes].map(v=>v.toString(16).padStart(2,'0')).join('');
+   if(actualSha!==frame.geometry.nativeFrameSourceSha256)
+    throw Error('D2 native portal SHA mismatch vs published dynamic data');
+   frameNative=buildNativePortalScene(JSON.parse(nativeRaw),frame.geometry);
    soilData=soil;frameData=frame;
    $('soil-stress-field').addEventListener('change',e=>{
     soilState.mode=e.target.value==='lithostatic'?'lithostatic':'influence';

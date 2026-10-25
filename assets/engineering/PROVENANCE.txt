@@ -39,6 +39,13 @@ PILE STRATIGRAPHY: EXACT SELF-WEIGHT AND APPROXIMATE LOAD INFLUENCE
     Native pile input SHA256: d0019b68f3991275888a49b5d2d8b6da6e629d52b6b11477cb2079122dc3a811.
 
 FRAME TIME-HISTORY: STEEL PORTAL WITH AND WITHOUT LINEAR VISCOUS DEVICE
+  GEOMETRIC SOURCE CORRECTION (25 OCTOBER 2026): FOUR NATIVE NODES BL, BR, TL, TR AND THREE ACTUAL NATIVE MEMBERS ONLY.
+  Two HEB260 columns and one IPE330 beam. No fictitious four-column rear frame, no roof extrusions, no fake pad footings.
+  Actual D2 catalogue sections h,b,tw,tf: HEB260 0.260/0.260/0.010/0.0175 m, IPE330 0.330/0.160/0.0075/0.0115 m.
+  Correct assonometric viewer uses native file nodes/members, and verifies SHA256 of actual geometry before rendering.
+  A separate source-coaxial conceptual damper overlay connects BL to TR; it is NOT an additional native D2 FEM member.
+  DÈLGHEM Spessori ON/OFF switches 3 real profile solids per member / only native centre lines, without changing geometry or solved benchmark results.
+  ISO is orthographic; Frontale XZ and mouse/touch rotations are display options only.
   A genuine editable DÈLGHEM D2 HEB260/IPE330 S355 portal source geometry was validated separately from its time history.
   Original native portal geometry SHA256: 0bf25979e69a95a87967f95d1d8d7582fbcb1eb7af00ee55fb5c854d8d3a1195 (assets/engineering/portal-steel-d2.hfm.json).
   Two completed DÈLGHEM D2 hystereticMDOF implicit Newmark runs, with equivalent SDOF lateral portal stiffness from assembled 2D Euler-Bernoulli frame finite elements.
@@ -77,22 +84,23 @@ DÈLGHEM D2 SOURCE MODULES (CODE BYTES HASHED, NOT COPIED)
 
 WEBSITE FILES (DATA, SOURCE-BASED CHART FALLBACKS AND GENERATORS)
   assets/engineering/pile-stratigraphic-stress.json SHA256 277634c371f6b03b5f99eae8e7d54a006b9e916f5058450db9d6e912c53770cf | bytes 554406
-  assets/engineering/steel-frame-viscous-comparison.json SHA256 beae3c22c5a86820f806720e2a78e1b8fea7c7e8174246a5b2b1d30f149c6b39 | bytes 479829
+  assets/engineering/steel-frame-viscous-comparison.json SHA256 007321f2fb3011595085794d44b737aec79c8060e3373084b120fb22cf685957 | bytes 480404
   assets/engineering/portal-steel-d2.hfm.json SHA256 0bf25979e69a95a87967f95d1d8d7582fbcb1eb7af00ee55fb5c854d8d3a1195 | bytes 3109
   scripts/build-pile-stratigraphic-stress.mjs SHA256 0ced39a0ee9dc61e903afcbe333e84158e451773017cac1c436d5496b2947f22 | bytes 6428
-  scripts/build-steel-viscous-comparison.mjs SHA256 8961492b3e8884c4ae42b7c4e3d7c4a6653f567f69c17ba2ac7125917fb0b250 | bytes 12035
-  engineering-simulations.js SHA256 09b42b4819f8113727c619834834fe1ec6fb32ac34b22c7b586d86a0e4206042 | bytes 24961
+  scripts/build-steel-viscous-comparison.mjs SHA256 57d4363afee2fb102c7f081b336d84a2c8f4d8f178c15d58e7eea6bdbfdd6a52 | bytes 12596
+  engineering-simulations.js SHA256 d549811f8daa31422a5465d03c79ab71f1eedccd17a18def436509e20b00fdc1 | bytes 23488
+  steel-portal-renderer.mjs SHA256 40f8fe9726eeebb18b4421845b38d2a1b59281fa843981eb89c2e934d6dddbe5 | bytes 16262
   assets/engineering/pile-stratigraphy-it.webp SHA256 ee95120e6952699f21bf6e4959c5c87d5c5afe40f1b7250108aeb65dfcaa3644 | bytes 34300
   assets/engineering/pile-stratigraphy-clay-it.webp SHA256 9517610929bc0fc9169a28b6c0e2f82305e955b2f167a5ffd28653212c3595de | bytes 35888
   assets/engineering/pile-lithostatic-it.webp SHA256 da119a38ed76f255cf164f7e5baa3ca14c17a1433179686aeab30b38f0759bbb | bytes 30820
-  assets/engineering/steel-viscous-frame-it.webp SHA256 945b0ad4af5e28100d2dd27a73d3488dec4869b24c6a2963bb5d4ac29b2bf6c3 | bytes 43870
-  assets/engineering/steel-viscous-bare-it.webp SHA256 2efd7a9842b6d38693664b055b0096ae6af59747c69662b88dc046c0c746dab5 | bytes 41952
+  assets/engineering/steel-viscous-frame-it.webp SHA256 3775747c0e53376a0116c70371a7a0204088b9a4f1f190a4cfaa046f34f4f55b | bytes 43368
+  assets/engineering/steel-viscous-bare-it.webp SHA256 a0b860d47a8efc73d66071caac404506bd3fb06c831faec1c05b665dc9990625 | bytes 38694
   assets/engineering/steel-dynamic-response-it.webp SHA256 ee843bd9b0ed6b02a506c6d4f686ed9d57ca290ffe3ac7ae2dfde99c778ba5ab | bytes 58248
   assets/engineering/pile-stratigraphy-en.webp SHA256 9e771a030a5aca7161b96ea791aae2beb1ce33413580d8d14446cea83e915cd5 | bytes 31948
   assets/engineering/pile-stratigraphy-clay-en.webp SHA256 875e2ea866179ffd898c978634c05a32944fd2d13d9656bf3f5f0b7e19fc55fc | bytes 33354
   assets/engineering/pile-lithostatic-en.webp SHA256 87cd300125d21daa8e6dc404e85b30490e5c657064e654f500088007644cccdc | bytes 28714
-  assets/engineering/steel-viscous-frame-en.webp SHA256 a2dd7178259470ebb96542643cd0e117f2963700e0147fa6f5fc692d4c4301f2 | bytes 43602
-  assets/engineering/steel-viscous-bare-en.webp SHA256 b552bdc1de5db4b7ae243a7778fadd4c0240c6191815f98d8df613331071091b | bytes 40830
+  assets/engineering/steel-viscous-frame-en.webp SHA256 660c2e977559cd7c8a009bd5b710b9ec696beb974d841366445929538db71f12 | bytes 43698
+  assets/engineering/steel-viscous-bare-en.webp SHA256 af8e2eeea2e56f966dc3073f9a37e6e20f51e44d686dde1fecb5dd4c007d75c6 | bytes 39822
   assets/engineering/steel-dynamic-response-en.webp SHA256 53e200d03b0b141cce0a8a178f10ae844e16207e49d5b3b8a31c65c2a22cb080 | bytes 55254
   assets/engineering/soil-piles-and-dampers.json SHA256 ecfd535804277c9a6c7c12b43542aa23a716eeffc5e2450b33e8d329bea52fe6 | bytes 78861
   assets/engineering/pile-layered-sand-input.json SHA256 0c0b6b1478c9c34c51090db6bb9e81318e9146f2267f3fd8f4c1737c42d36b1a | bytes 3648
@@ -101,7 +109,7 @@ WEBSITE FILES (DATA, SOURCE-BASED CHART FALLBACKS AND GENERATORS)
   assets/engineering/damper-velocity.webp SHA256 bece2c09b19df03cd497f694f8c0213d7ca028452a13f70ff9955114f40188eb | bytes 10010
   assets/engineering/damper-cycle.webp SHA256 b18fd6a096ccc588c10bb709a7efb24ec59c572633930a0c3cb5775d6e4e28cd | bytes 10434
   scripts/build-native-geotech-damper-evidence.mjs SHA256 bd81a765e0bda2c6ada19a08be92965d9996c53359755af7bd60f3d1f1d1aa20 | bytes 6370
-  scripts/build-native-geotech-provenance.mjs SHA256 2c1a8723a13a70973141a85dec461bd0597c71d8777aad9f63143004061a54b4 | bytes 9860
+  scripts/build-native-geotech-provenance.mjs SHA256 dc7ad7baf0b37ec64438a4613aeaa348b467adade929f79b0701ea69958d64f7 | bytes 11273
 
 LIMITATIONS AND INDEPENDENCE
   No foundation safety, settlement acceptance, seismic collapse limit state, damper qualification or building capacity has been certified.

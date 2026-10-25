@@ -209,7 +209,12 @@ const report={
  analysisDomain:'calibrated-equivalent-SDOF',
  numericalMethod:'D2 1DOF implicit Newmark solver, elastic (very high yield threshold), one roof mass and equivalent portal shear stiffness',
  outputPrecision:'Time histories rounded to 6 decimals only for browser transport; full-precision D2 residual and energy diagnostics are preserved.',
- geometry:{nodes:pts,beams,bayWidthM:6,heightM:4,visualExtrusionDepthM:3,
+ geometry:{nodes:pts,beams,bayWidthM:6,heightM:4,visualExtrusionDepthM:0,
+  visualDomain:'Native planar D2 XZ portal shown as solid HEB/IPE actual sections, not a four-column spatial frame.',
+  sectionShapes:{
+   S_HEB260:{catalogKey:heb.key,source:'D2/src/core/catalog.mjs',h:heb.h,b:heb.b,tw:heb.tw,tf:heb.tf},
+   S_IPE330:{catalogKey:ipe.key,source:'D2/src/core/catalog.mjs',h:ipe.h,b:ipe.b,tw:ipe.tw,tf:ipe.tf}
+  },
   nativeFrameSource:frameSourceRel,nativeFrameSourceSha256:sha(frameSource),
   materials:{steel:'S355',columns:'HEB 260',beam:'IPE 330'},
   damper:{from:'BL',to:'TR',directionCosineX:cos,alpha:viscousAlpha,coefficientCkNsM:cAxial}},
@@ -222,7 +227,7 @@ const report={
  comparison:{
   usesKratosSeismicDeviceRoute:false,
   viscousRepresentation:'Equivalent linear viscous matrix Ceff=Caxial × cos²(theta) on one reduced roof degree of freedom. D2 source validator accepts only coincident connector endpoints; the diagonal architectural representation is an analytical direction-cosine projection, NOT a validated direct beam-to-beam damper connection.',
-  modelingAssumptions:'3D viewer depicts an extrusion of the physical 2D steel portal. Numerical analysis uses an equivalent single roof degree of freedom and D2 native Newmark MDOF solver; no direct geometric seismicDevice in Kratos or NTC design verification.',
+  modelingAssumptions:'Axonometric Canvas viewer renders exactly the four native D2 nodes, two HEB260 columns and one IPE330 beam as finite-thickness steel I sections, without invented additional columns or beams. The pinned schematic diagonal damper is a conceptual visual overlay, NOT a native connected member. Numerical analysis uses one equivalent roof degree of freedom with D2 Newmark MDOF solver; no spatial Kratos device and no code-based seismic design verification.',
   driftReductionPercent,
   maxDamperForceKN:damped.maxDamperForceKN,
   alpha:1,

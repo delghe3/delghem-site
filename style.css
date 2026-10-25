@@ -2466,3 +2466,34 @@ body{background:var(--canvas-paper);color:var(--canvas-ink)}
  .soil-reaction-strip small{font-size:7px}
  .soil-reaction-strip output{font-size:11px}
 }
+
+/* Source-correct DÈLGHEM structural representation: physical I-section
+   profiles vs exact centre-line members, never synthetic extra frames. */
+.steel-frame-toolbar #steel-frame-thickness{
+ background:#e8f3ed;border-color:#94c4c1;color:#1a667b;
+}
+.steel-frame-toolbar #steel-frame-thickness[aria-pressed="true"]{
+ background:#1d7188;border-color:#1d7188;color:white;
+}
+.steel-frame-toolbar #steel-frame-thickness:hover{filter:brightness(1.045)}
+@media(max-width:650px){
+ .steel-frame-toolbar #steel-frame-thickness{font-size:9px;padding:6px}
+ .steel-frame-toolbar #steel-frame-front{font-size:9px;padding:6px}
+}
+
+/* Inspectable DÈLGHEM D2 native four-node three-member portal geometry. */
+.eng-native-model-ref{
+ display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+ gap:9px;margin:6px 0 15px;padding:11px 13px;
+ border:1px solid #c3dfd8;border-radius:8px;background:#fafff9;
+}
+.eng-native-model-ref>span{font-size:9px;font-weight:890;letter-spacing:.035em;color:#547b84}
+.eng-native-portal-link{font-size:10px;font-weight:870;color:#176e84;
+ text-decoration:underline;text-underline-offset:3px}
+.eng-native-portal-link:hover{color:#a96040}
+.eng-native-portal-link:focus-visible{outline:3px solid #e4af84;outline-offset:3px}
+@media(max-width:650px){
+ .eng-native-model-ref{gap:6px;padding:9px}
+ .eng-native-model-ref>span{font-size:8px}
+ .eng-native-portal-link{font-size:9px}
+}
