@@ -87,7 +87,7 @@ test('frase di invito richiesta compare immediatamente accanto al pulsante PayPa
   const italian='Delghem è un progetto indipendente, se vuoi supportarlo con una donazione aiuteresti concretamente il progetto a prendere vita';
   const english='Delghem is an independent project. If you choose to support it with a donation, you will help bring the project to life.';
   for(const [language,html] of pages){
-    const section=html.split('<section class="support-banner"')[1].split('</section>')[0];
+    const section=html.split('<section class="support-banner support-banner-top"')[1].split('</section>')[0];
     const expected=language==='Italiano'?italian:english;
     assert.ok(section.includes(expected),language+': missing invitation');
     const position=section.indexOf(expected);
@@ -103,8 +103,8 @@ test('Release milestone and optional support stay accessible while product proof
   const hero=html.slice(html.indexOf('<section class="hero'),html.indexOf('<section class="editorial-hub'));
   assert.doesNotMatch(hero,/class="hero-support-link"/);
   assert.match(hero,/class="hero-proof"/);
-  assert.ok(html.indexOf('id="support-top"')>html.indexOf('id="fem-lab"'),
-   language+': optional fundraising must follow engineering evidence');
+  assert.ok(html.indexOf('id="support-top"')<html.indexOf('id="home"'),
+   language+': owner explicitly requested visitor counter and voluntary support before hero');
  }
  assert.match(css,/\.hero-proof/);
  assert.match(css,/@media\s*\(max-width:\s*650px\)/);

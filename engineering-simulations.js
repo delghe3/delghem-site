@@ -1,4 +1,5 @@
-import {buildNativePortalScene,renderNativeSteelPortal} from './steel-portal-renderer.mjs?v=20261025-showcase12';
+import {buildNativePortalScene,renderNativeSteelPortal} from './steel-portal-renderer.mjs?v=20261025-showcase14';
+import {shouldAutoplay,nextLoopedFrame} from './engineering-playback.mjs?v=20261025-showcase14';
 
 /**
  * Engineering Lab II. Two independently sourced visualisations:
@@ -32,9 +33,8 @@ if(enhancedEngineeringRoot){
   if(content!==undefined)x.textContent=String(content);
   p.append(x);return x;
  };
- const frameStates={caseId:'with',timeIndex:0,playing:false,cameraYaw:-.68,cameraPitch:.32,down:null,raf:0,timestamp:0,indexFraction:0};
  let soilData=null,frameData=null,frameNative=null;
- let activeSoil=null,activeFrame=null,soilState={mode:'influence',lastLayout:null};
+ let activeSoil=null,soilState={mode:'influence',lastLayout:null};
  const c2d=(canvas)=>{
   const w=canvas.getBoundingClientRect().width;
   const h=canvas.getBoundingClientRect().height;
@@ -199,34 +199,47 @@ if(enhancedEngineeringRoot){
 
  // Reduced-order dynamic steel portal (the D2 MDOF response is genuinely
  // solved; the extrusion and steel damper cylinder are visual aids).
- const frameView={id:'with',index:0,playing:false,showThickness:true,yaw:-.57,pitch:.47,
-  pointer:null,start:null,frameRaf:0,lastMs:0,indexFraction:0};
- function paintFrame(){
+ // One synchronized sample index is shared by both genuine D2 Newmark
+ // results, the common synthetic input accelerogram and both graph cursors.
+ // There is no independent phase clock that could fake a comparison.
+ const reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
+ const frameView={
+  id:'compare',index:0,indexFraction:0,playing:false,
+  visible:false,userPaused:false,reducedMotion:Boolean(reduceMotion?.matches),
+  showThickness:true,yaw:-.57,pitch:.47,
+  pointer:null,start:null,frameRaf:0,lastMs:0
+ };
+ function paintFramePair(){
   if(!frameData||!frameNative)return;
-  const canvas=$('steel-damper-canvas'),dimensions=c2d(canvas);
-  if(!dimensions)return;
-  const state=frameData.cases.find(c=>c.id===frameView.id);
-  if(!state)throw Error('Native D2 time-history case not found');
-  const sample=state.records[frameView.index];
-  const nativeScene=renderNativeSteelPortal(dimensions.ctx,{
-   width:dimensions.w,height:dimensions.h,scene:frameNative,
-   yaw:frameView.yaw,pitch:frameView.pitch,
-   driftMM:sample.displacementMM,amplification:12,
-   timeS:sample.timeS,withDamper:frameView.id==='with',
-   showThickness:frameView.showThickness,
-   italian:it,format:num
-  });
-  // Expose structural provenance in inspectable DOM attributes: even after
-  // zoom/orbit the scene contains only the 4 nodes and 3 D2 members.
-  canvas.dataset.nativeMembers=String(nativeScene.sourceMemberCount);
-  canvas.dataset.nativeNodes=String(frameNative.sourceNodeCount);
-  canvas.dataset.nativeProfileSolids=String(frameNative.solids.length);
-  canvas.dataset.nativeDimension='XZ / source 2D';
-  canvas.dataset.thickness=frameView.showThickness?'on':'off';
-  canvas.dataset.cameraYaw=frameView.yaw.toFixed(5);
-  canvas.dataset.cameraPitch=frameView.pitch.toFixed(5);
-  canvas.dataset.damperOverlay=frameView.id==='with'?'equivalent-linear-C':'none';
-  canvas.dataset.ready='true';
+  for(const config of [
+    {id:'without',canvas:'steel-bare-canvas'},
+    {id:'with',canvas:'steel-damper-canvas'}
+  ]){
+   const canvas=$(config.canvas),dimensions=c2d(canvas);
+   if(!dimensions)continue; // hidden when user explicitly isolates one case
+   const state=frameData.cases.find(c=>c.id===config.id);
+   if(!state)throw Error('Missing source-backed D2 Newmark record: '+config.id);
+   const sample=state.records[frameView.index];
+   const nativeScene=renderNativeSteelPortal(dimensions.ctx,{
+    width:dimensions.w,height:dimensions.h,scene:frameNative,
+    yaw:frameView.yaw,pitch:frameView.pitch,
+    driftMM:sample.displacementMM,amplification:12,
+    timeS:sample.timeS,withDamper:config.id==='with',
+    showThickness:frameView.showThickness,
+    italian:it,format:num
+   });
+   canvas.dataset.nativeMembers=String(nativeScene.sourceMemberCount);
+   canvas.dataset.nativeNodes=String(frameNative.sourceNodeCount);
+   canvas.dataset.nativeProfileSolids=String(frameNative.solids.length);
+   canvas.dataset.nativeDimension='XZ / source 2D';
+   canvas.dataset.thickness=frameView.showThickness?'on':'off';
+   canvas.dataset.cameraYaw=frameView.yaw.toFixed(5);
+   canvas.dataset.cameraPitch=frameView.pitch.toFixed(5);
+   canvas.dataset.damperOverlay=config.id==='with'?'equivalent-linear-C':'none';
+   canvas.dataset.caseId=config.id;
+   canvas.dataset.sampleIndex=String(frameView.index);
+   canvas.dataset.ready='true';
+  }
   $('steel-frame-scene').dataset.ready='true';
  }
  function responseGraph(){
@@ -269,78 +282,196 @@ if(enhancedEngineeringRoot){
   const time=frameData.cases[0].records[frameView.index].timeS;
   make(root,'line',{x1:x(time),x2:x(time),y1:top,y2:bottom,stroke:'#bc653c','stroke-dasharray':'5 6','stroke-width':2,id:'steel-time-marker'});
  }
+ function renderAccelerogram(){
+  if(!frameData)return;
+  const svg=$('steel-frame-accelerogram');
+  const acceleration=frameData.input.accelerationMS2;
+  const count=acceleration.length;
+  const timeStep=frameData.input.dtSec;
+  const peak=Math.max(...acceleration.map(Math.abs));
+  const x0=76,x1=866,y0=24,y1=192;
+  const toX=index=>x0+index/(count-1)*(x1-x0);
+  const toY=a=>(y0+y1)/2-a/Math.max(1e-8,peak)*((y1-y0)*.43);
+  svg.replaceChildren();
+  const defs=make(svg,'defs');
+  const clip=make(defs,'clipPath',{id:'steel-accelerogram-clip'});
+  make(clip,'rect',{id:'steel-accelerogram-reveal',x:x0,y:y0,width:0,height:y1-y0});
+  for(let tick=0;tick<=6;tick++){
+   const time=(count-1)*timeStep*tick/6;
+   const xx=toX((count-1)*tick/6);
+   make(svg,'line',{x1:xx,x2:xx,y1:y0,y2:y1,stroke:'#dbe8e7','stroke-width':1});
+   make(svg,'text',{x:xx,y:y1+22,'text-anchor':'middle',
+    'font-size':12,fill:'#557c84'},num(time,0));
+  }
+  for(const fraction of [-1,-.5,0,.5,1]){
+   const y=toY(fraction*peak);
+   make(svg,'line',{x1:x0,x2:x1,y1:y,y2:y,
+    stroke:fraction===0?'#729da0':'#dae8e4',
+    'stroke-width':fraction===0?1.7:1});
+   make(svg,'text',{x:x0-12,y:y+4,'text-anchor':'end',
+    'font-size':12,fill:'#557c84'},num(fraction*peak,1));
+  }
+  const pathParts=[];
+  for(let i=0;i<count;i+=2){
+   pathParts.push((pathParts.length?'L':'M')+
+    toX(i).toFixed(2)+','+toY(acceleration[i]).toFixed(2));
+  }
+  pathParts.push('L'+toX(count-1).toFixed(2)+','+toY(acceleration.at(-1)).toFixed(2));
+  const path=pathParts.join(' ');
+  // Pale full input for context; bright revealed portion advances at SAME
+  // shared source record index as both solved frame displacements.
+  make(svg,'path',{d:path,stroke:'#bad4d5','stroke-width':1.7,fill:'none'});
+  make(svg,'path',{d:path,stroke:'#17839c','stroke-width':3.2,
+    fill:'none','clip-path':'url(#steel-accelerogram-clip)',
+    'stroke-linecap':'round','stroke-linejoin':'round'});
+  make(svg,'line',{id:'steel-accelerogram-marker',x1:x0,x2:x0,
+    y1:y0,y2:y1,stroke:'#c96a40','stroke-width':2,'stroke-dasharray':'5 5'});
+  make(svg,'text',{x:478,y:234,'text-anchor':'middle','font-size':13,
+    fill:'#28576a'},it?'Tempo [s]':'Time [s]');
+  make(svg,'text',{x:20,y:118,transform:'rotate(-90,20,118)',
+    'text-anchor':'middle','font-size':13,fill:'#28576a'},
+   it?'Accelerazione suolo [m/s²]':'Ground acceleration [m/s²]');
+  svg.dataset.source='DÈLGHEM D2 synthetic analytical input';
+  svg.dataset.samples=String(count);
+  svg.dataset.sampleIndex=String(frameView.index);
+ }
  function markTime(){
   if(!frameData)return;
-  const t=frameData.cases[0].records[frameView.index].timeS;
-  const xx=82+t/(frameData.input.dtSec*(frameData.input.accelerationMS2.length-1))*(870-82);
-  $('steel-frame-response').querySelector('#steel-time-marker')?.setAttribute('x1',String(xx));
-  $('steel-frame-response').querySelector('#steel-time-marker')?.setAttribute('x2',String(xx));
+  const count=frameData.input.accelerationMS2.length;
+  const index=frameView.index;
+  const time=frameData.cases[0].records[index].timeS;
+  const xx=82+index/(count-1)*(870-82);
+  const chart=$('steel-frame-response');
+  chart.querySelector('#steel-time-marker')?.setAttribute('x1',String(xx));
+  chart.querySelector('#steel-time-marker')?.setAttribute('x2',String(xx));
+  chart.dataset.sampleIndex=String(index);
+  const accelerogram=$('steel-frame-accelerogram');
+  const ax=76+index/(count-1)*(866-76);
+  const marker=accelerogram.querySelector('#steel-accelerogram-marker');
+  marker?.setAttribute('x1',String(ax));
+  marker?.setAttribute('x2',String(ax));
+  accelerogram.querySelector('#steel-accelerogram-reveal')?.setAttribute('width',String(Math.max(0,ax-76)));
+  accelerogram.dataset.sampleIndex=String(index);
+  $('steel-input-acceleration').textContent='a₉(t) = '+
+   num(frameData.input.accelerationMS2[index],2)+' m/s²';
  }
  function updateFrame(){
-  const source=frameData?.cases.find(x=>x.id===frameView.id);
-  if(!source)return;
-  const record=source.records[frameView.index];
+  if(!frameData)return;
+  const samples=Object.fromEntries(frameData.cases.map(c=>[c.id,c.records[frameView.index]]));
+  const chosen=frameView.id==='without'?'without':'with';
+  const selected=frameData.cases.find(c=>c.id===chosen);
   $('steel-frame-time').value=String(frameView.index);
-  $('steel-frame-time-label').textContent=num(record.timeS,2)+' s';
-  $('steel-peak-drift').textContent=num(source.peakDriftPercent,2)+'%';
-  $('steel-peak-drift-label').textContent=frameView.id==='with'
-    ?(it?'DRIFT CON DISPOSITIVO':'DRIFT WITH DEVICE')
-    :(it?'DRIFT SENZA DISPOSITIVO':'DRIFT WITHOUT DEVICE');
+  $('steel-frame-time-label').textContent=num(samples.with.timeS,2)+' s';
+  $('steel-peak-drift').textContent=num(selected.peakDriftPercent,2)+'%';
+  $('steel-peak-drift-label').textContent=chosen==='with'
+   ?(it?'DRIFT CON DISPOSITIVO':'DRIFT WITH DEVICE')
+   :(it?'DRIFT SENZA DISPOSITIVO':'DRIFT WITHOUT DEVICE');
+  $('steel-bare-live-displacement').textContent=
+   'u₀(t) = '+num(samples.without.displacementMM,1)+' mm';
+  $('steel-damped-live-displacement').textContent=
+   'uᵥ(t) = '+num(samples.with.displacementMM,1)+' mm';
   $('steel-frame-description').textContent=
-   (it?'Configurazione':'Configuration')+' '+
-   (frameView.id==='with'?(it?'con':'with'):(it?'senza':'without'))+' · '+
-   'u(t)='+num(record.displacementMM,1)+' mm · a(t)='+num(record.roofAccelerationMS2,2)+' m/s² · '+
-   (it?'deformata visuale ×12':'visual displacement ×12');
-  markTime();paintFrame();
+   (it?'Confronto sincronizzato':'Synchronized comparison')+
+   ' · t = '+num(samples.with.timeS,2)+' s'+
+   ' · '+(it?'senza':'bare')+' '+num(samples.without.displacementMM,1)+' mm'+
+   ' / '+(it?'con':'damped')+' '+num(samples.with.displacementMM,1)+' mm'+
+   ' · '+(it?'deformate amplificate ×12':'deformations amplified ×12');
+  markTime();
+  paintFramePair();
  }
  function setFrameMode(id){
-  if(!['with','without'].includes(id)||!frameData)return;
+  if(!['compare','with','without'].includes(id)||!frameData)return;
   frameView.id=id;
   $('steel-frame-toggle').value=id;
+  $('steel-frame-comparison').dataset.focus=id;
   updateFrame();
+ }
+ function updatePlaybackControl(){
+  const button=$('steel-frame-play');
+  if(!button)return;
+  button.setAttribute('aria-pressed',String(frameView.playing));
+  button.textContent=frameView.playing?(it?'Pausa':'Pause'):(it?'Riproduci':'Play');
+  $('steel-frame-scene').dataset.playing=String(frameView.playing);
+  $('steel-frame-scene').dataset.autoplay=String(
+   shouldAutoplay({visible:frameView.visible,documentVisible:!document.hidden,
+    reducedMotion:frameView.reducedMotion,userPaused:frameView.userPaused})
+  );
+ }
+ function stopPlayback({manual=false}={}){
+  if(manual)frameView.userPaused=true;
+  frameView.playing=false;
+  if(frameView.frameRaf)cancelAnimationFrame(frameView.frameRaf);
+  frameView.frameRaf=0;
+  frameView.lastMs=0;
+  updatePlaybackControl();
+ }
+ function startPlayback(){
+  if(!frameData||frameView.playing||document.hidden||!frameView.visible)return;
+  frameView.playing=true;
+  frameView.lastMs=0;
+  frameView.frameRaf=requestAnimationFrame(stepFrame);
+  updatePlaybackControl();
+ }
+ function syncAutoplay(){
+  if(!frameView.visible||document.hidden){
+   stopPlayback();return;
+  }
+  const allowed=shouldAutoplay({
+   visible:frameView.visible,documentVisible:!document.hidden,
+   reducedMotion:frameView.reducedMotion,userPaused:frameView.userPaused
+  });
+  if(allowed)startPlayback();
+  else if(frameView.playing&&frameView.userPaused)stopPlayback();
+  updatePlaybackControl();
  }
  function togglePlay(){
   if(!frameData)return;
-  frameView.playing=!frameView.playing;
-  const button=$('steel-frame-play');
-  button.setAttribute('aria-pressed',String(frameView.playing));
-  button.textContent=frameView.playing?(it?'Pausa':'Pause'):(it?'Riproduci':'Play');
   if(frameView.playing){
-   if(frameView.index>=frameData.cases[0].records.length-1)frameView.index=0;
-   frameView.lastMs=0;
-   frameView.indexFraction=frameView.index;
-   frameView.frameRaf=requestAnimationFrame(stepFrame);
-  }else if(frameView.frameRaf){
-   cancelAnimationFrame(frameView.frameRaf);frameView.frameRaf=0;
+   stopPlayback({manual:true});
+  }else{
+   frameView.userPaused=false;
+   startPlayback(); // explicit action also permits users who prefer reduced motion
   }
  }
  function stepFrame(ms){
-  if(!frameView.playing||document.hidden){frameView.frameRaf=0;return;}
-  if(!frameView.lastMs)frameView.lastMs=ms;
-  const elapsed=Math.min(120,Math.max(0,ms-frameView.lastMs));
-  frameView.lastMs=ms;
-  // Website preview 2× simulated time, actual records remain exactly those
-  // computed by D2 and the selected time marker shows physical seconds.
-  frameView.indexFraction=Math.min(frameData.cases[0].records.length-1,
-   frameView.indexFraction+elapsed/1000/frameData.input.dtSec*2);
-  frameView.index=Math.round(frameView.indexFraction);
-  updateFrame();
-  if(frameView.index===frameData.cases[0].records.length-1){
-   frameView.playing=false;
-   $('steel-frame-play').setAttribute('aria-pressed','false');
-   $('steel-frame-play').textContent=it?'Riproduci':'Play';
-   frameView.frameRaf=0;
+  if(!frameView.playing)return;
+  if(document.hidden||!frameView.visible){stopPlayback();return;}
+  if(!frameView.lastMs){frameView.lastMs=ms;frameView.frameRaf=requestAnimationFrame(stepFrame);return;}
+  const elapsed=Math.max(0,Math.min(125,ms-frameView.lastMs));
+  // Throttle heavy physical-flange Canvas rendering to ~30 Hz without
+  // altering any source time indices or the physical 2× playback factor.
+  if(elapsed<30){
+   frameView.frameRaf=requestAnimationFrame(stepFrame);
    return;
   }
+  frameView.lastMs=ms;
+  const next=nextLoopedFrame({
+   indexFraction:frameView.indexFraction,elapsedMs:elapsed,
+   dtSec:frameData.input.dtSec,
+   count:frameData.input.accelerationMS2.length,speed:2
+  });
+  frameView.indexFraction=next.indexFraction;
+  frameView.index=next.index;
+  updateFrame();
+  // Continually loop the SAME diagnostic accelerogram and both 18s solved
+  // responses; never substitute a different input or stop at final sample.
   frameView.frameRaf=requestAnimationFrame(stepFrame);
  }
  function initFrame(){
-  $('steel-frame-time').max=String(frameData.cases[0].records.length-1);
+  const count=frameData.input.accelerationMS2.length;
+  if(frameData.cases.some(c=>c.records.length!==count))
+   throw Error('D2 dynamic comparison has mismatched frame/input timelines');
+  $('steel-frame-time').max=String(count-1);
+  $('steel-frame-comparison').dataset.focus='compare';
+  $('steel-frame-toggle').value='compare';
   $('steel-frame-toggle').addEventListener('change',e=>setFrameMode(e.target.value));
-  $('steel-frame-metric')?.addEventListener('change',()=>responseGraph());
+  $('steel-frame-metric')?.addEventListener('change',()=>{
+   responseGraph();markTime();
+  });
   $('steel-frame-time').addEventListener('input',e=>{
-   if(frameView.playing)togglePlay();
-   frameView.index=clamp(Number(e.target.value)||0,0,frameData.cases[0].records.length-1);
+   if(frameView.playing)stopPlayback({manual:true});
+   frameView.index=clamp(Number(e.target.value)||0,0,count-1);
+   frameView.indexFraction=frameView.index;
    updateFrame();
   });
   $('steel-frame-play').addEventListener('click',togglePlay);
@@ -357,42 +488,68 @@ if(enhancedEngineeringRoot){
    control.textContent=it
     ?(frameView.showThickness?'Spessori ON':'Spessori OFF')
     :(frameView.showThickness?'Sections ON':'Sections OFF');
-   paintFrame();
+   paintFramePair();
   });
-  const view=$('steel-damper-canvas');
-  view.style.touchAction='none';
-  view.addEventListener('pointerdown',e=>{
-   if(e.pointerType==='mouse'&&e.button!==0)return;
-   if(frameView.playing)togglePlay();
-   frameView.pointer=e.pointerId;
-   frameView.start={yaw:frameView.yaw,pitch:frameView.pitch,x:e.clientX,y:e.clientY};
-   try{view.setPointerCapture(e.pointerId);}catch{}
-   view.focus({preventScroll:true});
+  for(const key of ['steel-bare-canvas','steel-damper-canvas']){
+   const canvas=$(key);
+   canvas.style.touchAction='none';
+   canvas.addEventListener('pointerdown',e=>{
+    if(e.pointerType==='mouse'&&e.button!==0)return;
+    if(frameView.playing)stopPlayback({manual:true});
+    frameView.pointer=e.pointerId;
+    frameView.start={yaw:frameView.yaw,pitch:frameView.pitch,x:e.clientX,y:e.clientY};
+    try{canvas.setPointerCapture(e.pointerId);}catch{}
+    canvas.focus({preventScroll:true});
+   });
+   canvas.addEventListener('pointermove',e=>{
+    if(frameView.pointer!==e.pointerId||!frameView.start)return;
+    frameView.yaw=frameView.start.yaw+(e.clientX-frameView.start.x)*.008;
+    frameView.pitch=clamp(frameView.start.pitch+(e.clientY-frameView.start.y)*.007,-1.33,1.33);
+    paintFramePair(); // both cases share one camera angle
+   });
+   const end=e=>{
+    if(frameView.pointer===e.pointerId){frameView.pointer=null;frameView.start=null;}
+   };
+   canvas.addEventListener('pointerup',end);
+   canvas.addEventListener('pointercancel',end);
+   canvas.addEventListener('keydown',e=>{
+    if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;
+    e.preventDefault();
+    if(frameView.playing)stopPlayback({manual:true});
+    if(e.key==='Home'){frameView.yaw=-.57;frameView.pitch=.47;}
+    if(e.key==='ArrowLeft')frameView.yaw-=.16;
+    if(e.key==='ArrowRight')frameView.yaw+=.16;
+    if(e.key==='ArrowUp')frameView.pitch=clamp(frameView.pitch-.15,-1.33,1.33);
+    if(e.key==='ArrowDown')frameView.pitch=clamp(frameView.pitch+.15,-1.33,1.33);
+    paintFramePair();
+   });
+  }
+  const target=$('steel-frame-comparison');
+  const observer=new IntersectionObserver(entries=>{
+   frameView.visible=entries.some(e=>e.isIntersecting&&e.intersectionRatio>.08);
+   syncAutoplay(); // starts automatically on scrolling into view
+  },{threshold:[0,.08,.18]});
+  observer.observe(target);
+  document.addEventListener('visibilitychange',syncAutoplay);
+  reduceMotion?.addEventListener?.('change',e=>{
+   frameView.reducedMotion=e.matches;
+   if(frameView.reducedMotion&&frameView.playing)stopPlayback();
+   syncAutoplay();
   });
-  view.addEventListener('pointermove',e=>{
-   if(frameView.pointer!==e.pointerId||!frameView.start)return;
-   frameView.yaw=frameView.start.yaw+(e.clientX-frameView.start.x)*.008;
-   frameView.pitch=clamp(frameView.start.pitch+(e.clientY-frameView.start.y)*.007,-1.33,1.33);
-   paintFrame();
-  });
-  const end=e=>{if(frameView.pointer===e.pointerId){frameView.pointer=null;frameView.start=null;}};
-  view.addEventListener('pointerup',end);
-  view.addEventListener('pointercancel',end);
-  view.addEventListener('keydown',e=>{
-   if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;
-   e.preventDefault();
-   if(e.key==='Home'){frameView.yaw=-.57;frameView.pitch=.47;}
-   if(e.key==='ArrowLeft')frameView.yaw-=.16;
-   if(e.key==='ArrowRight')frameView.yaw+=.16;
-   if(e.key==='ArrowUp')frameView.pitch=clamp(frameView.pitch-.15,-1.33,1.33);
-   if(e.key==='ArrowDown')frameView.pitch=clamp(frameView.pitch+.15,-1.33,1.33);
-   paintFrame();
-  });
+  if(frameView.reducedMotion){
+   // Meaningful static contrast without auto movement for reduced-motion
+   // visitors; they can still opt in with the explicit Play control.
+   const records=frameData.cases.find(c=>c.id==='without').records;
+   frameView.index=records.reduce((max,v,i)=>Math.abs(v.displacementMM)>
+    Math.abs(records[max].displacementMM)?i:max,0);
+   frameView.indexFraction=frameView.index;
+  }
   $('steel-drift-reduction').textContent=num(frameData.comparison.driftReductionPercent,1)+'%';
   $('steel-damper-energy').textContent=num(frameData.cases[1].viscousDamperEnergyKNM,2)+' kN·m';
-  $('steel-peak-drift').textContent=num(frameData.cases[1].peakDriftPercent,2)+'%';
+  renderAccelerogram();
   responseGraph();
   updateFrame();
+  updatePlaybackControl();
  }
  (async()=>{
   try{
@@ -433,9 +590,11 @@ if(enhancedEngineeringRoot){
    soilCanvas.addEventListener('click',soilProbe);
    const resize=new ResizeObserver(()=>{
     if(soilData)drawSoil();
-    if(frameData)paintFrame();
+    if(frameData)paintFramePair();
    });
-   resize.observe(soilCanvas);resize.observe($('steel-damper-canvas'));
+   resize.observe(soilCanvas);
+   resize.observe($('steel-damper-canvas'));
+   resize.observe($('steel-bare-canvas'));
    initFrame();drawSoil();
    enhancedEngineeringRoot.dataset.enhanced='true';
   }catch(e){

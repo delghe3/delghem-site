@@ -48,7 +48,7 @@ test('Site engineering proof section shows D2 pile loads and viscous α curves w
   assert.match(h,/engineering-benchmarks\.js\?v=/);
   assert.match(h,/assets\/app-foundation-real\.png/);
   assert.match(h,/id="engineering-benchmarks"/);
-  assert.ok(h.indexOf('id="engineering-benchmarks"')>h.indexOf('id="fem-lab"'));
+  assert.ok(h.indexOf('id="engineering-benchmarks"')>h.indexOf('id="home"')&&h.indexOf('id="engineering-benchmarks"')<h.indexOf('id="editorial-hub"'),file+': source-backed seismic comparison must be in the opening');
  }
  const js=read('engineering-benchmarks.js');
  for(const m of ['soil-piles-and-dampers.json','pile-curve','damper-alpha-select','damper-loop-curve'])assert.ok(js.includes(m),m);

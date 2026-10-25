@@ -4,7 +4,7 @@
  * by D2. Geotechnical / structural design has NOT been performed or certified.
  */
 import {complexDemo} from './assets/real-d2/complex-demo-geometry.mjs?v=20261024-8floor-d2a';
-import {showcaseModels} from './assets/real-d2/showcase-geometry.mjs?v=20261025-showcase12';
+import {showcaseModels} from './assets/real-d2/showcase-geometry.mjs?v=20261025-showcase14';
 export const MODEL_SHOWCASE_DURATION_MS=5000;
 const models=[complexDemo,...showcaseModels];
 const towerShowcase={

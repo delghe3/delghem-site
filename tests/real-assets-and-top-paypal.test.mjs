@@ -5,11 +5,11 @@ import path from 'node:path';
 const root=path.resolve(import.meta.dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 for(const name of ['index.html','it/index.html']){
- test(name+': PayPal and original owner appeal remain available, intentionally after engineering content',()=>{
+ test(name+': PayPal and original owner appeal remain available, in the compact site opening strip',()=>{
   const page=read(name);
-  const top=page.indexOf('<section class="support-banner"');
+  const top=page.indexOf('<section class="support-banner support-banner-top"');
   assert.ok(top>0);
-  assert.ok(top>page.indexOf('<section class="hero')&&top<page.indexOf('<section class="closing-section'));
+  assert.ok(top>page.indexOf('<main id="main">')&&top<page.indexOf('<section class="hero chapter'));
   const fragment=page.slice(top,page.indexOf('</section>',top));
   assert.match(fragment,/class="paypal-personal-appeal"/);
   assert.match(fragment,/class="paypal-send-link"/);
@@ -37,7 +37,7 @@ test('no UNIBO frontiers labels in site content',()=>{
 for(const name of ['index.html','it/index.html']){
  test(name+': the unique visitor counter stays inside the preserved PayPal section, not duplicated in footer',()=>{
    const html=read(name);
-   const start=html.indexOf('<section class="support-banner"');
+   const start=html.indexOf('<section class="support-banner support-banner-top"');
    const end=html.indexOf('</section>',start);
    const footer=html.indexOf('<footer class="site-footer"');
    assert.ok(start>=0&&end>start&&footer>end);

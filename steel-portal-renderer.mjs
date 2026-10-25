@@ -299,6 +299,14 @@ export function renderNativeSteelPortal(ctx,{
   caption(ctx,'IPE330',b.x,b.y-17,{size:clamp(width/75,8,10),color:'#286378',align:'center'});
  }
  const pad=clamp(width*.027,9,15);
+ // In a side-by-side mobile comparison, canvas panels are ~145–180px wide.
+ // Keep actual D2 member polygons / viscous cylinder fully legible and move
+ // displacement/time text into the external accessible figcaption/readout.
+ // Otherwise the structural member labels overlap the frame itself.
+ if(width<280){
+  caption(ctx,'D2 · XZ',pad,15,{size:9,color:'#174d60',weight:900});
+  return draw;
+ }
  caption(ctx,'DÈLGHEM D2 · XZ',pad,21,{
   size:clamp(width/44,10,13),color:'#173f55',weight:940
  });

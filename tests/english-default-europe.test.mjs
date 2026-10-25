@@ -45,7 +45,7 @@ test('whole-site SEO pairs reciprocate with English x-default and no Italian roo
 test('top PayPal and visitor count survive both language routes',()=>{
  for(const f of ['index.html','it/index.html']){
   const s=read(f);
-  const position=s.indexOf('class="support-banner"');
+  const position=s.indexOf('class="support-banner support-banner-top"');
   const top=s.slice(position,s.indexOf('</section>',position));
   assert.match(top,/class="paypal-send-link"/);
   assert.match(top,/id="visitor-counter-total"/);

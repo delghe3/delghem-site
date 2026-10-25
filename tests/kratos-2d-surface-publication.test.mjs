@@ -36,7 +36,7 @@ test('Three genuine QUAD4 Kratos 2D surfaces preserve mesh holes, finite Gauss f
 test('Three Kratos surfaces are prominently visible within full scrollable FEM section in both languages with no tab-only access',()=>{
  for(const page of ['index.html','it/index.html']){
   const html=read(page);
-  const a=html.indexOf('id="fem-lab"'),b=html.indexOf('id="engineering-benchmarks"');
+  const a=html.indexOf('id="fem-lab"'),b=html.indexOf('id="technical-library"');
   const lab=html.slice(a,b);
   assert.ok(a>=0&&b>a);
   assert.match(lab,/id="surface-lab"/);

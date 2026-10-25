@@ -80,11 +80,11 @@ test('Terminal and stadium foundation inspection controls show only true typed D
  const t=json('assets/real-d2/showcase-timber-terminal.hfm.json');
  assert.equal(t.foundationSystem.items.filter(x=>x.type==='winkler').length,52);
 });
-test('Site has a modern engineering-first hierarchy: hero above donation, clear proof and editorial navigation',()=>{
+test('Site has a modern compact opening: support strip, hero, proof and editorial navigation',()=>{
  for(const name of ['index.html','it/index.html']){
   const h=text(name),header=h.indexOf('<header class="site-header'),hero=h.indexOf('<section class="hero'),donate=h.indexOf('<section class="support-banner');
   assert.ok(header>=0&&hero>header,name+' header before hero');
-  assert.ok(donate>hero,name+' donation after hero');
+  assert.ok(donate<header+100000&&donate>header&&donate<hero,name+' support after header and before hero');
   assert.ok(h.includes('id="showcase-guide"'));
   assert.ok(h.includes('class="hero-proof"'));
   assert.ok(h.includes('class="editorial-hub"'));
