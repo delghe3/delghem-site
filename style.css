@@ -3155,3 +3155,343 @@ html.site-intro-active{overflow:hidden!important;overscroll-behavior:none}
 @media(prefers-reduced-motion:reduce){
  .site-intro[data-phase="exit"]{transition:none!important}
 }
+
+/* Official DÈLGHEM creative kit: exportable engineering banner assets
+   constructed from actual D2/Kratos screenshots, not false calculations. */
+.banner-library{
+ max-width:1510px;
+ margin:26px auto 59px;
+ padding:clamp(24px,3.7vw,56px);
+ background:linear-gradient(145deg,#f2faf5,#e4f2ee 75%);
+ border:1px solid #c6dfd8;border-radius:14px;
+ color:#17495b
+}
+.banner-library-heading .eyebrow{
+ color:#2b7a8b;font-size:10px;letter-spacing:.1em;font-weight:860
+}
+.banner-library-heading h2{
+ margin:12px 0 16px;max-width:23ch;
+ font-size:clamp(29px,3.6vw,49px);line-height:1.15;letter-spacing:-.05em
+}
+.banner-library-heading p{
+ max-width:86ch;font-size:13px;line-height:1.85;color:#516d77;
+ margin-bottom:21px
+}
+.banner-press-gallery{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:15px
+}
+.banner-format-card{
+ background:#fffefa;border:1px solid #c9dbd8;border-radius:11px;
+ padding:13px;overflow:hidden;min-width:0;
+ display:flex;flex-direction:column;
+ box-shadow:0 8px 20px #144a5a13
+}
+.banner-format-card[data-selected="true"]{
+ border-color:#398b96;box-shadow:0 0 0 2px #3e9b9c25,0 9px 22px #144a5a16
+}
+.banner-preview{
+ height:clamp(185px,19vw,270px);width:100%;
+ display:grid;place-items:center;
+ padding:13px;overflow:hidden;
+ background:#dbece7;
+ border-radius:6px;border:1px solid #c4d9d3;
+}
+.banner-preview>a{
+ display:flex;justify-content:center;align-items:center;
+ width:100%;height:100%;min-width:0
+}
+.banner-preview img{
+ display:block;max-width:100%;max-height:100%;width:auto;height:auto;
+ object-fit:contain;
+ box-shadow:0 9px 25px #0c32452e
+}
+.banner-format-card:last-child:nth-child(odd){
+ grid-column:1/-1;
+ max-width:650px;
+ justify-self:center;
+ width:100%
+}
+.banner-format-meta{
+ display:flex;justify-content:space-between;align-items:end;
+ gap:12px;margin-top:14px
+}
+.banner-format-meta>div:first-child{min-width:0}
+.banner-format-meta small{font-size:9px;font-weight:890;color:#3a8b92;letter-spacing:.08em}
+.banner-format-meta h3{font-size:19px;color:#184b5d;margin:3px 0 7px;line-height:1.2}
+.banner-format-meta p{font-size:11px;color:#68838b;line-height:1.55}
+.banner-format-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0}
+.banner-format-actions>a,.banner-format-actions button{
+ font-size:10px;font-weight:880;cursor:pointer;
+ border-radius:6px;padding:9px 11px;min-height:37px;
+ display:flex;align-items:center;justify-content:center;
+ border:1px solid #acd0c8;background:#e9f5ed;color:#1c6776;
+ text-decoration:none
+}
+.banner-format-actions button{background:#226f83;color:#fff;border-color:#226f83}
+.banner-format-actions button:hover{background:#2e8599}
+.banner-format-actions>a:hover{background:#d6eee4}
+.banner-embed-box{
+ margin-top:21px;background:#fffefa;border:1px solid #bdd8d0;
+ border-radius:10px;padding:15px
+}
+.banner-embed-box label{font-size:11px;font-weight:850;color:#265e6e;display:block;margin-bottom:10px}
+.banner-embed-box textarea{
+ display:block;width:100%;min-height:78px;max-width:100%;
+ resize:vertical;padding:11px 13px;border:1px solid #cee0dc;
+ border-radius:6px;background:#f1f7f4;
+ color:#174d5c;font-size:11px;font-family:ui-monospace,SFMono-Regular,monospace;
+ line-height:1.6;overflow:auto
+}
+.banner-embed-box output{display:block;min-height:17px;margin-top:9px;font-size:10px;color:#45817f}
+.banner-ethics{
+ margin:16px 0!important;font-size:11px;line-height:1.7;color:#55717b;
+ border-left:3px solid #dcad75;padding-left:12px
+}
+.banner-library-return{margin-top:17px}
+@media(max-width:1000px){
+ .banner-press-gallery{grid-template-columns:1fr}
+ .banner-format-card:last-child:nth-child(odd){grid-column:auto;max-width:none}
+ .banner-preview{height:240px}
+}
+@media(max-width:650px){
+ .banner-library{padding:22px 13px 26px;margin:20px 12px 36px;border-radius:11px}
+ .banner-library-heading h2{font-size:31px}
+ .banner-library-heading p{font-size:12px}
+ .banner-press-gallery{gap:9px}
+ .banner-format-card{padding:9px}
+ .banner-preview{height:190px;padding:6px}
+ .banner-format-meta{display:block}
+ .banner-format-meta h3{font-size:17px}
+ .banner-format-actions{margin-top:10px;justify-content:flex-start}
+ .banner-embed-box{padding:10px}
+ .banner-embed-box textarea{font-size:10px}
+}
+
+/* 2026-10-25 SEO dossiers: unique, source-backed structural engineering
+   content for real search intent. Native Apple Silicon, Kratos FEM, D2
+   pile t-z/q-z, reduced Newmark viscous comparison and Genius command UI. */
+.tech-dossier{
+ background:#f4f7f2;color:#153d4d
+}
+.tech-dossier-main{max-width:1460px}
+.tech-dossier-hero{
+ padding-top:clamp(43px,6.4vw,92px);
+ padding-bottom:clamp(43px,6.4vw,80px);
+ max-width:1120px
+}
+.tech-dossier-hero h1{
+ color:#153f52;
+ font-weight:870;
+ font-size:clamp(38px,5.4vw,69px);
+ line-height:1.075;
+ letter-spacing:-.057em;
+ max-width:21ch;
+ text-wrap:balance
+}
+.tech-dossier-hero .guide-lead{
+ font-size:clamp(15px,1.32vw,18px);
+ color:#4e6b75;
+ max-width:81ch;
+ line-height:1.83
+}
+.tech-dossier-cover{
+ border:1px solid #b9d9d4;
+ border-radius:12px;
+ background:linear-gradient(145deg,#ecf7f1,#d6eae4);
+ overflow:hidden
+}
+.tech-dossier-cover img{
+ width:100%;
+ height:auto;
+ max-height:575px;
+ object-fit:contain;
+ display:block
+}
+.tech-dossier-cover figcaption{
+ font-size:11px;
+ line-height:1.75;
+ color:#4d7379;
+ padding:12px 19px;
+ background:#f6fcf8
+}
+.tech-dossier-metrics{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:12px;
+ margin-top:22px
+}
+.tech-dossier-metrics span{
+ display:flex;
+ align-items:center;
+ min-height:75px;
+ padding:12px 18px;
+ background:#e5f1ea;
+ border:1px solid #c1ded5;
+ border-radius:9px;
+ font-size:clamp(11px,1.2vw,15px);
+ font-weight:890;
+ line-height:1.45;
+ color:#226a7b
+}
+.tech-dossier .tech-dossier-part{
+ max-width:1050px;
+ margin:0 auto;
+ padding:clamp(35px,5vw,65px) 10px;
+ border-top:1px solid #cbded7;
+ border-bottom:0
+}
+.tech-dossier .tech-dossier-part h2{
+ font-size:clamp(28px,3.2vw,42px);
+ line-height:1.19;
+ color:#164153;
+ font-weight:850;
+ letter-spacing:-.035em;
+ margin:12px 0 21px
+}
+.tech-dossier .tech-dossier-part>p{
+ font-size:clamp(13px,1.25vw,16px);
+ line-height:1.92;
+ color:#3f5f6d;
+ max-width:88ch;
+ margin:0 0 18px;
+}
+.tech-dossier-part strong{color:#1b6276;font-weight:865}
+.tech-dossier-part code{
+ background:#e5f0e9;
+ border:1px solid #b9d6ce;
+ border-radius:3px;
+ padding:2px 6px;
+ color:#185d6f;
+ overflow-wrap:anywhere
+}
+.tech-dossier-caveat{
+ max-width:1030px;
+ margin:25px auto 30px;
+ background:#fef7e8;
+ border-left:3px solid #bd9369;
+ padding:16px clamp(15px,2.5vw,29px);
+ border-radius:0 8px 8px 0
+}
+.tech-dossier-caveat>strong{display:block;font-size:12px;color:#825e42;margin-bottom:5px}
+.tech-dossier-caveat>p{font-size:12px;line-height:1.75;color:#6e665e}
+.tech-dossier-related{
+ max-width:1070px;
+ margin:0 auto 70px;
+ border-top:1px solid #bfdbd5;
+ padding-top:30px;
+}
+.tech-dossier-related h2{
+ font-size:clamp(25px,3vw,35px);
+ color:#194456;
+ margin-bottom:15px
+}
+.tech-dossier-related>p{
+ font-size:12px;color:#55737b;line-height:1.8;max-width:84ch
+}
+.tech-dossier-actions{
+ display:flex;align-items:center;flex-wrap:wrap;
+ gap:10px;margin:23px 0 30px
+}
+.tech-dossier-actions .button{
+ display:inline-flex;
+ text-decoration:none;
+ white-space:normal;
+ min-height:46px;
+ align-items:center;
+}
+.tech-dossier-article-links{
+ display:flex;flex-wrap:wrap;gap:10px;
+ padding:22px 0;border-top:1px solid #cee1dc
+}
+.tech-dossier-article-links a{
+ display:inline-flex;align-items:center;
+ padding:10px 13px;
+ border:1px solid #c2dbd4;
+ border-radius:5px;
+ background:#e8f3eb;
+ color:#1f6475;
+ font-size:11px;font-weight:850;
+ text-decoration:none
+}
+.tech-dossier-article-links a:hover{background:#d6ece4}
+.tech-dossier .seo-guide-footer{
+ display:flex;justify-content:center;gap:9px;
+ flex-wrap:wrap;
+ padding:27px 18px;
+ font-size:11px;
+ color:#a2c4c6;
+ background:#102f3e
+}
+.tech-dossier .seo-guide-footer a{
+ text-decoration:underline;
+ text-underline-offset:3px
+}
+/* Contextual links help readers AND Google discover indexable pages without
+   any keyword-stuffed footer, doorway page or unnecessary new home section. */
+.seo-growth-footer-links{
+ display:flex;align-items:center;justify-content:center;
+ flex-wrap:wrap;gap:10px 23px;
+ border-block:1px solid #497a821e;
+ padding:13px 7px;
+ margin:11px auto 15px;
+ max-width:1300px;
+ width:100%
+}
+.seo-growth-footer-links a{
+ color:#306a78;
+ font-size:11px;
+ font-weight:790;
+ text-decoration:none
+}
+.seo-growth-footer-links a:hover{
+ color:#c17348;
+ text-decoration:underline;
+ text-underline-offset:4px
+}
+.seo-engineering-topic-links{
+ display:flex;flex-wrap:wrap;gap:9px;
+ justify-content:flex-start;
+ margin:0 0 18px
+}
+.seo-engineering-topic-links a{
+ display:inline-flex;
+ border:1px solid #c1dfd6;
+ background:#eff8f2;
+ color:#1f6577;
+ border-radius:6px;
+ padding:9px 12px;
+ min-height:37px;
+ font-size:11px;
+ font-weight:845;
+ text-decoration:none
+}
+.seo-engineering-topic-links a:hover{background:#d9f1e7}
+.seo-genius-detail-link{
+ display:inline-flex;
+ align-items:center;
+ width:max-content;max-width:100%;
+ padding:9px 14px;
+ margin:12px 0;
+ font-size:11px;
+ font-weight:865;
+ color:#12495f;
+ border-radius:7px;
+ background:#dbf2e6;
+ border:1px solid #7ab5b5
+}
+.seo-genius-detail-link:hover{background:#f2fcf6}
+@media(max-width:750px){
+ .tech-dossier-main{padding:0 21px}
+ .tech-dossier-hero h1{font-size:clamp(34px,8vw,50px)}
+ .tech-dossier-metrics{grid-template-columns:1fr;gap:8px}
+ .tech-dossier-metrics span{min-height:45px;font-size:12px}
+ .tech-dossier .tech-dossier-part{padding:30px 0}
+ .tech-dossier .tech-dossier-part h2{font-size:28px}
+ .tech-dossier .tech-dossier-part>p{font-size:13px}
+ .tech-dossier-article-links{flex-direction:column}
+ .tech-dossier-actions .button{flex:1}
+ .seo-growth-footer-links{gap:12px;justify-content:flex-start}
+ .seo-growth-footer-links a{font-size:10px}
+ .seo-engineering-topic-links a{font-size:10px}
+}

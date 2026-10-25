@@ -46,8 +46,8 @@ test('Two homepages deliver animated splash before the rest of the site with rea
   assert.match(html,/id="site-intro-tagline"/);
   assert.match(html,/Superior performance through native Apple Silicon\./);
   assert.match(html,/aria-label="DELGHEM"/);
-  assert.match(html,/site-intro\.js\?v=20261025-showcase14/);
-  assert.match(html,/style\.css\?v=20261025-showcase14/);
+  assert.match(html,/site-intro\.js\?v=20261025-showcase15seo/);
+  assert.match(html,/style\.css\?v=20261025-showcase15seo/);
   assert.match(html,/kratos.*surface|surface-skewed-double-opening-slab\.webp/);
   assert.ok(html.includes(prefix+'assets/fem-lab/gallery/surface-skewed-double-opening-slab.webp'));
   assert.match(html,/<noscript><style>[\s\S]*site-intro[\s\S]*<\/style><\/noscript>/);

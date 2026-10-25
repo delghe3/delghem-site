@@ -1,4 +1,4 @@
-import {introAt,INTRO_DURATION_MS} from './site-intro-timeline.mjs?v=20261025-showcase14';
+import {introAt,INTRO_DURATION_MS} from './site-intro-timeline.mjs?v=20261025-showcase15seo';
 
 /**
  * The DÈLGHEM public homepage opens with one five-second identity sequence.

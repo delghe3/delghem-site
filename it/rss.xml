@@ -5,7 +5,11 @@
     <link>https://www.delghe.com/it/</link>
     <description>Risultati Kratos, modellazione nativa FEM per Apple Silicon e sviluppo di DÈLGHEM.</description>
     <language>it-IT</language>
-    <lastBuildDate>Sat, 24 Oct 2026 07:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 04:00:00 GMT</lastBuildDate>
+<item><title>Fondazioni su pali e travi Winkler per Mac</title><link>https://www.delghe.com/fondazioni-pali-winkler-mac/</link><description>Risposte assiali t-z/q-z DÈLGHEM D2 in sabbia e argilla, carichi di fusto/punta e campi tensionali dichiarati come approssimazioni ove necessario.</description><pubDate>Sun, 25 Oct 2026 04:00:00 GMT</pubDate><guid isPermaLink="true">https://www.delghe.com/fondazioni-pali-winkler-mac/</guid></item>
+<item><title>Dissipatori viscosi: confronto dinamico acciaio Mac</title><link>https://www.delghe.com/dissipatori-viscosi-fem-mac/</link><description>Confronto reale di due risposte DÈLGHEM D2 Newmark a 1 GDL, telaio S355 e input accelerografico analitico sintetico, con limitazioni esplicite.</description><pubDate>Sun, 25 Oct 2026 04:00:00 GMT</pubDate><guid isPermaLink="true">https://www.delghe.com/dissipatori-viscosi-fem-mac/</guid></item>
+<item><title>Genius Assistant FEM: comandi tecnici per Mac</title><link>https://www.delghe.com/genius-assistente-fem-mac/</link><description>Schermata originale Genius della build D2, comandi per nodi, sezioni IPE400, materiali S355, carichi e revisione ingegneristica.</description><pubDate>Sun, 25 Oct 2026 04:00:00 GMT</pubDate><guid isPermaLink="true">https://www.delghe.com/genius-assistente-fem-mac/</guid></item>
+
     <item>
       <title>Kratos su Mac: cicli plastici, IDA e Pushover | DÈLGHEM</title>
       <link>https://www.delghe.com/analisi-pushover-ida-mac/</link>

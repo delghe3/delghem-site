@@ -5,7 +5,11 @@
     <link>https://www.delghe.com/</link>
     <description>Real Kratos engineering benchmarks and native structural FEM development updates.</description>
     <language>en-GB</language>
-    <lastBuildDate>Sat, 24 Oct 2026 07:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 04:00:00 GMT</lastBuildDate>
+<item><title>Pile foundations and Winkler grade beams for Apple Silicon Mac</title><link>https://www.delghe.com/en/pile-winkler-foundations-mac/</link><description>Native D2 t-z/q-z axial pile response in sand and clay, real shaft/toe force transfer and clearly qualified soil stress influence.</description><pubDate>Sun, 25 Oct 2026 04:00:00 GMT</pubDate><guid isPermaLink="true">https://www.delghe.com/en/pile-winkler-foundations-mac/</guid></item>
+<item><title>Steel-frame viscous dampers: native Mac dynamic benchmark</title><link>https://www.delghe.com/en/viscous-dampers-steel-fem-mac/</link><description>Source-backed D2 equivalent SDOF Newmark responses with and without viscous damping, under the same synthetic ground acceleration; limitations disclosed.</description><pubDate>Sun, 25 Oct 2026 04:00:00 GMT</pubDate><guid isPermaLink="true">https://www.delghe.com/en/viscous-dampers-steel-fem-mac/</guid></item>
+<item><title>Genius FEM Assistant: structural engineering text commands on Mac</title><link>https://www.delghe.com/en/genius-fem-assistant-mac/</link><description>Authentic D2 Genius interface, controlled node creation, IPE400 section/material edits, loads and engineer-reviewed execution.</description><pubDate>Sun, 25 Oct 2026 04:00:00 GMT</pubDate><guid isPermaLink="true">https://www.delghe.com/en/genius-fem-assistant-mac/</guid></item>
+
     <item>
       <title>Kratos FEM on Mac: Cyclic Plasticity, IDA and Pushover</title>
       <link>https://www.delghe.com/en/nonlinear-pushover-ida-mac/</link>

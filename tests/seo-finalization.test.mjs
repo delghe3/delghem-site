@@ -47,7 +47,7 @@ test('Sitemap has full-resolution genuine software image URLs (including JS ligh
  const xml=read('sitemap.xml');
  assert.match(xml,/xmlns:image="http:\/\/www\.google\.com\/schemas\/sitemap-image\/1\.1"/);
  const pages=(xml.match(/<loc>/g)||[]).length;
- assert.equal(pages,16);
+ assert.equal(pages,22);
  const pics=[...xml.matchAll(/<image:loc>(.*?)<\/image:loc>/g)].map(x=>x[1]);
  assert.ok(pics.length>=20,'Too few searchable real screenshots');
  assert.ok(pics.some(x=>x.includes('/assets/screenshots/model.webp')));

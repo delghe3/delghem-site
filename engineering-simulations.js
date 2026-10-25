@@ -1,5 +1,5 @@
-import {buildNativePortalScene,renderNativeSteelPortal} from './steel-portal-renderer.mjs?v=20261025-showcase14';
-import {shouldAutoplay,nextLoopedFrame} from './engineering-playback.mjs?v=20261025-showcase14';
+import {buildNativePortalScene,renderNativeSteelPortal} from './steel-portal-renderer.mjs?v=20261025-showcase15seo';
+import {shouldAutoplay,nextLoopedFrame} from './engineering-playback.mjs?v=20261025-showcase15seo';
 
 /**
  * Engineering Lab II. Two independently sourced visualisations:

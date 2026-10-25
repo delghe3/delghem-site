@@ -1,6 +1,26 @@
 # DÈLGHEM — Sito ufficiale
 
+[![DÈLGHEM — software FEM nativo Apple Silicon, Genius Assistant (banner IT)](https://www.delghe.com/assets/banners/delghem-billboard-it.webp)](https://www.delghe.com/it/)
+
+**[Sito DÈLGHEM](https://www.delghe.com/it/)** · **[Engineering site / English](https://www.delghe.com/)** · **[Kit banner IT](https://www.delghe.com/media-kit/#promotional-banners)** · **[Press & banners EN](https://www.delghe.com/en/media-kit/#promotional-banners)**
+
+[![DELGHEM for Apple Silicon — original native FEM interface (banner EN)](https://www.delghe.com/assets/banners/delghem-leaderboard-en.webp)](https://www.delghe.com/)
+
+> **Progetto indipendente in sviluppo** per Mac Apple Silicon. vAlpha1 prevista per il 2027. I benchmark pubblicati sono diagnostici e qualificati, non verifiche certificate di edifici. I banner utilizzano schermate autentiche D2 e una mappa di tensioni Kratos. Nessun software di calcolo è distribuito tramite questo repository del sito.
+
+
 Sito web statico bilingue (italiano / inglese) pubblicato tramite GitHub Pages su `www.delghe.com`.
+
+## Banner gratuiti e SEO — 25 ottobre 2026
+
+La promozione pubblica DÈLGHEM si basa su contenuti originali, fonti tecniche verificabili e link editoriali legittimi, non su backlink acquistati o inserimenti automatici non autorizzati. **[Banner e kit stampa IT](https://www.delghe.com/media-kit/#promotional-banners)** · **[Press kit EN](https://www.delghe.com/en/media-kit/#promotional-banners)**.
+
+- **Dieci banner WebP** da schermate autentiche D2 Genius e un benchmark Kratos QUAD4, cinque formati per lingua: `assets/banners/delghem-leaderboard-en.webp` (728×90), `assets/banners/delghem-billboard-it.webp` (970×250), 300×250, 300×600 e 1080×1080. Ogni immagine indica che la vAlpha1 è ancora in sviluppo. Rigenerazione: `bash scripts/build-promo-banners.sh`.
+- **Sei articoli tecnici nuovi (IT/EN)** su pali/Winkler, smorzatori viscosi e Genius, con descrizioni uniche, canonical/hreflang reciproci, TechArticle e BreadcrumbList. Il contenuto evidenzia sempre i limiti: tensioni nel terreno indicative dove dichiarato, telaio con dissipatore equivalente SDOF, Genius esemplificativo sul sito.
+- **Sitemap:** `sitemap.xml` contiene 22 URL canonici delle pagine del dominio e immagini autentiche; `rss.xml` e `it/rss.xml` riportano 6 approfondimenti ciascuno. `robots.txt` consente la scansione. La creazione di URL, la sitemap e la trasmissione IndexNow **non garantiscono indicizzazione, posizioni su Google o traffico**.
+- **Distribuzione legittima:** link e banner in README pubblico del repository, materiali stampa riutilizzabili da editori autorizzati e pagina profilo pubblica del progetto. Non si inoltrano inserzioni automatiche su forum, terzi o directory che vietano l'autopromozione. Per link pagati/affiliati il codice incorporabile usa `rel="sponsored nofollow"`.
+- **IndexNow:** proprietà del dominio verificabile con il TXT pubblico `8ff31d9d4e6d4526840ac3cacfa4533f.txt`. `bash scripts/notify-indexnow.sh --dry-run` valida l'elenco e la chiave; `--submit` notifica soltanto i 22 URL di proprietà dopo il deploy. **IndexNow non è Google Search Console.**
+- Il repository contiene **soltanto il sito**: l'applicazione privata DÈLGHEM D2 non viene modificata né pubblicata.
 
 ## Contenuto
 
