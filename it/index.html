@@ -38,7 +38,7 @@
   <link rel="preload" href="../assets/Manrope.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="../style.css?v=20261025-showcase15seo">
   <link rel="stylesheet" href="../fem-aliasing.css?v=20261025-smooth19">
-  <link rel="stylesheet" href="../seismic-isolators.css?v=20261025-isolation1">
+  <link rel="stylesheet" href="../seismic-isolators.css?v=20261025-shear2">
   <link rel="stylesheet" href="../intro-neon.css?v=20261025-neonhold">
 <script type="module" src="../site-intro.js?v=20261025-neonhold"></script>
   <noscript><style>.site-intro{display:none!important}</style></noscript>
@@ -178,6 +178,12 @@
   <figure class="steel-frame-case steel-frame-case--bare" data-case="without">
    <figcaption><span><i aria-hidden="true"></i>SENZA DISSIPATORE</span><output id="steel-bare-live-displacement" aria-live="off">u(t) = 0,00 mm</output></figcaption>
    <div class="steel-frame-canvas-wrap"><canvas id="steel-bare-canvas" width="1060" height="550" tabindex="0" role="img" aria-label="Telaio DÈLGHEM D2 senza viscoso: tre aste HEB260/IPE330, deformata moltiplicata per dodici"></canvas><img class="steel-frame-fallback" src="../assets/engineering/steel-viscous-bare-it.webp?v=20261025-showcase15seo" width="1280" height="760" loading="lazy" decoding="async" alt="SENZA DISSIPATORE · DÈLGHEM D2"></div>
+
+    <div class="seismic-demand-strip steel-shear-meter" id="steel-shear-without-panel" role="group" aria-label="TAGLIO ELASTICO MAX TELAIO, kN">
+     <div class="seismic-demand-heading"><span>TAGLIO ELASTICO MAX TELAIO</span><output id="steel-shear-without-value" aria-live="off">0,0 kN</output></div>
+     <div class="seismic-demand-track"><div class="seismic-demand-fill" id="steel-shear-without-fill" style="width:0%"></div><span class="seismic-demand-peak-marker" id="steel-shear-without-peak" style="left:0%" aria-hidden="true"></span></div>
+     <div class="seismic-demand-footer"><span>0 kN</span><span class="seismic-demand-scale">SCALA MAX: <strong id="steel-shear-without-scale">— kN</strong></span><span>Picco raggiunto: <strong id="steel-shear-without-peak-value">0,0 kN</strong></span></div>
+    </div>
   </figure>
   <figure class="steel-frame-case steel-frame-case--damped" data-case="with">
    <figcaption><span><i aria-hidden="true"></i>CON DISSIPATORE</span><output id="steel-damped-live-displacement" aria-live="off">u(t) = 0,00 mm</output></figcaption>
@@ -185,8 +191,15 @@
   <canvas id="steel-damper-canvas" width="1060" height="550" tabindex="0" role="img" aria-label="Vista assonometrica del modello nativo DÈLGHEM D2 piano XZ: quattro nodi, due colonne HEB260, una trave IPE330, dissipatore equivalente illustrativo"></canvas>
   <img class="steel-frame-fallback" src="../assets/engineering/steel-viscous-frame-it.webp?v=20261025-showcase15seo" width="1280" height="760" loading="lazy" decoding="async" alt="Telaio dimostrativo con dispositivo viscoso modellato come contributo equivalente al piano">
  </div>
+
+    <div class="seismic-demand-strip steel-shear-meter" id="steel-shear-with-panel" role="group" aria-label="TAGLIO ELASTICO MAX TELAIO, kN">
+     <div class="seismic-demand-heading"><span>TAGLIO ELASTICO MAX TELAIO</span><output id="steel-shear-with-value" aria-live="off">0,0 kN</output></div>
+     <div class="seismic-demand-track"><div class="seismic-demand-fill" id="steel-shear-with-fill" style="width:0%"></div><span class="seismic-demand-peak-marker" id="steel-shear-with-peak" style="left:0%" aria-hidden="true"></span></div>
+     <div class="seismic-demand-footer"><span>0 kN</span><span class="seismic-demand-scale">SCALA MAX: <strong id="steel-shear-with-scale">— kN</strong></span><span>Picco raggiunto: <strong id="steel-shear-with-peak-value">0,0 kN</strong></span></div>
+    </div>
   </figure>
  </div>
+ <p class="seismic-demand-meaning">La barra mostra il valore assoluto del taglio elastico equivalente del telaio, V = k·u, ricavato dalla rigidezza D2 e dagli spostamenti delle due storie temporali già risolte. <strong>Non è una tensione locale né una verifica di resistenza</strong> di travi o pilastri. Scala unica fra i due telai; il dissipatore non è sommato al taglio elastico del telaio.</p>
  <div class="steel-accelerogram-panel" id="steel-input-accelerogram">
   <div class="steel-accelerogram-title"><strong>ACCELEROGRAMMA ANALITICO · INGRESSO COMUNE</strong><output id="steel-input-acceleration" aria-live="off">0,00 m/s²</output></div>
   <svg id="steel-frame-accelerogram" viewBox="0 0 900 240" role="img" aria-label="Accelerazione del suolo sintetica [m/s²]">
@@ -236,16 +249,27 @@
      <div class="isolation-render">
       <canvas id="isolation-fixed-canvas" width="1060" height="590" role="img" tabindex="0" aria-label="Telaio tridimensionale in acciaio a quattro campate con fondazioni incastrate"></canvas>
       <img class="isolation-fallback" src="../assets/engineering/isolation-fixed-preview.svg" alt="Telaio multiplo in acciaio con pilastri incastrati, schema" width="1060" height="590" loading="lazy">
-     </div><p>Basi incastrate. Le oscillazioni del terreno vengono trasmesse alla sovrastruttura.</p>
+     </div>
+    <div class="seismic-demand-strip isolation-shear-meter" id="isolation-fixed-shear-panel" role="group" aria-label="TAGLIO INTERPIANO MASSIMO, kN">
+     <div class="seismic-demand-heading"><span>TAGLIO INTERPIANO MASSIMO</span><output id="isolation-fixed-shear-value" aria-live="off">0,0 kN</output></div>
+     <div class="seismic-demand-track"><div class="seismic-demand-fill" id="isolation-fixed-shear-fill" style="width:0%"></div><span class="seismic-demand-peak-marker" id="isolation-fixed-shear-peak" style="left:0%" aria-hidden="true"></span></div>
+     <div class="seismic-demand-footer"><span>0 kN</span><span class="seismic-demand-scale">SCALA MAX: <strong id="isolation-fixed-shear-scale">— kN</strong></span><span>Picco raggiunto: <strong id="isolation-fixed-shear-peak-value">0,0 kN</strong></span><span class="seismic-demand-story">Piano critico: <strong id="isolation-fixed-shear-floor">—</strong></span></div>
+    </div><p>Basi incastrate. Le oscillazioni del terreno vengono trasmesse alla sovrastruttura.</p>
     </figure>
     <figure class="isolation-model-card isolation-model-card--isolated">
      <figcaption><span><i aria-hidden="true"></i>BASE ISOLATA · APPOGGI ANTISISMICI</span><output id="isolation-isolated-live" aria-live="off">— mm</output></figcaption>
      <div class="isolation-render">
       <canvas id="isolation-isolated-canvas" width="1060" height="590" role="img" tabindex="0" aria-label="Telaio tridimensionale in acciaio a quattro campate su isolatori sismici"></canvas>
       <img class="isolation-fallback" src="../assets/engineering/isolation-bearings-preview.svg" alt="Telaio multiplo in acciaio su isolatori sismici, schema" width="1060" height="590" loading="lazy">
-     </div><p>Lo strato isolante assorbe gli spostamenti orizzontali; in questo esempio semplificato si attenuano le deformazioni tra i piani.</p>
+     </div>
+    <div class="seismic-demand-strip isolation-shear-meter" id="isolation-isolated-shear-panel" role="group" aria-label="TAGLIO INTERPIANO MASSIMO, kN">
+     <div class="seismic-demand-heading"><span>TAGLIO INTERPIANO MASSIMO</span><output id="isolation-isolated-shear-value" aria-live="off">0,0 kN</output></div>
+     <div class="seismic-demand-track"><div class="seismic-demand-fill" id="isolation-isolated-shear-fill" style="width:0%"></div><span class="seismic-demand-peak-marker" id="isolation-isolated-shear-peak" style="left:0%" aria-hidden="true"></span></div>
+     <div class="seismic-demand-footer"><span>0 kN</span><span class="seismic-demand-scale">SCALA MAX: <strong id="isolation-isolated-shear-scale">— kN</strong></span><span>Picco raggiunto: <strong id="isolation-isolated-shear-peak-value">0,0 kN</strong></span><span class="seismic-demand-story">Piano critico: <strong id="isolation-isolated-shear-floor">—</strong></span></div>
+    </div><p>Lo strato isolante assorbe gli spostamenti orizzontali; in questo esempio semplificato si attenuano le deformazioni tra i piani.</p>
     </figure>
    </div>
+   <p class="seismic-demand-meaning">La barra mostra il <strong>taglio interpiano massimo in valore assoluto</strong> dei tre livelli, calcolato dal modello ridotto con k·Δu + c·Δv. <strong>Non è una tensione FEM locale</strong> e non costituisce verifica delle sezioni. Scala unica fra telaio incastrato e isolato. Il triangolo segna il picco raggiunto dall’inizio della registrazione.</p>
    <div class="isolation-input-panel">
     <div class="isolation-chart-heading"><strong>ACCELEROGRAMMA SINTETICO IDENTICO</strong><output id="isolation-input-live" aria-live="off">a<sub>g</sub> = 0.00 m/s²</output></div>
     <svg id="isolation-input-chart" viewBox="0 0 960 165" role="img" aria-label="Accelerogramma sintetico di ingresso sincronizzato"></svg>
@@ -618,7 +642,7 @@
 <script defer src="../contact-actions.js"></script>
 <script type="module" src="../surface-studio.js?v=20261025-smooth19"></script>
 <script type="module" src="../engineering-benchmarks.js?v=20261025-showcase15seo"></script>
-<script type="module" src="../seismic-isolators.js?v=20261025-isolation1"></script>
-<script type="module" src="../engineering-simulations.js?v=20261025-showcase15seo"></script>
+<script type="module" src="../seismic-isolators.js?v=20261025-shear2"></script>
+<script type="module" src="../engineering-simulations.js?v=20261025-shear2"></script>
 </body>
 </html>

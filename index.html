@@ -38,7 +38,7 @@
   <link rel="preload" href="./assets/Manrope.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="./style.css?v=20261025-showcase15seo">
   <link rel="stylesheet" href="./fem-aliasing.css?v=20261025-smooth19">
-  <link rel="stylesheet" href="./seismic-isolators.css?v=20261025-isolation1">
+  <link rel="stylesheet" href="./seismic-isolators.css?v=20261025-shear2">
   <link rel="stylesheet" href="./intro-neon.css?v=20261025-neonhold">
 <script type="module" src="./site-intro.js?v=20261025-neonhold"></script>
   <noscript><style>.site-intro{display:none!important}</style></noscript>
@@ -178,6 +178,12 @@
   <figure class="steel-frame-case steel-frame-case--bare" data-case="without">
    <figcaption><span><i aria-hidden="true"></i>WITHOUT DAMPER</span><output id="steel-bare-live-displacement" aria-live="off">u(t) = 0,00 mm</output></figcaption>
    <div class="steel-frame-canvas-wrap"><canvas id="steel-bare-canvas" width="1060" height="550" tabindex="0" role="img" aria-label="DÈLGHEM D2 bare steel portal, three genuine HEB260/IPE330 members and 12x magnified drift"></canvas><img class="steel-frame-fallback" src="./assets/engineering/steel-viscous-bare-en.webp?v=20261025-showcase15seo" width="1280" height="760" loading="lazy" decoding="async" alt="WITHOUT DAMPER · DÈLGHEM D2"></div>
+
+    <div class="seismic-demand-strip steel-shear-meter" id="steel-shear-without-panel" role="group" aria-label="MAX FRAME ELASTIC SHEAR, kN">
+     <div class="seismic-demand-heading"><span>MAX FRAME ELASTIC SHEAR</span><output id="steel-shear-without-value" aria-live="off">0,0 kN</output></div>
+     <div class="seismic-demand-track"><div class="seismic-demand-fill" id="steel-shear-without-fill" style="width:0%"></div><span class="seismic-demand-peak-marker" id="steel-shear-without-peak" style="left:0%" aria-hidden="true"></span></div>
+     <div class="seismic-demand-footer"><span>0 kN</span><span class="seismic-demand-scale">COMMON MAX: <strong id="steel-shear-without-scale">— kN</strong></span><span>Peak reached: <strong id="steel-shear-without-peak-value">0,0 kN</strong></span></div>
+    </div>
   </figure>
   <figure class="steel-frame-case steel-frame-case--damped" data-case="with">
    <figcaption><span><i aria-hidden="true"></i>WITH DAMPER</span><output id="steel-damped-live-displacement" aria-live="off">u(t) = 0,00 mm</output></figcaption>
@@ -185,8 +191,15 @@
   <canvas id="steel-damper-canvas" width="1060" height="550" tabindex="0" role="img" aria-label="Axonometric representation of the authentic planar D2 model: four nodes, two HEB260 columns, one IPE330 beam, schematic equivalent viscous damper"></canvas>
   <img class="steel-frame-fallback" src="./assets/engineering/steel-viscous-frame-en.webp?v=20261025-showcase15seo" width="1280" height="760" loading="lazy" decoding="async" alt="Source-backed steel portal comparative dynamic response with a projected equivalent viscous device">
  </div>
+
+    <div class="seismic-demand-strip steel-shear-meter" id="steel-shear-with-panel" role="group" aria-label="MAX FRAME ELASTIC SHEAR, kN">
+     <div class="seismic-demand-heading"><span>MAX FRAME ELASTIC SHEAR</span><output id="steel-shear-with-value" aria-live="off">0,0 kN</output></div>
+     <div class="seismic-demand-track"><div class="seismic-demand-fill" id="steel-shear-with-fill" style="width:0%"></div><span class="seismic-demand-peak-marker" id="steel-shear-with-peak" style="left:0%" aria-hidden="true"></span></div>
+     <div class="seismic-demand-footer"><span>0 kN</span><span class="seismic-demand-scale">COMMON MAX: <strong id="steel-shear-with-scale">— kN</strong></span><span>Peak reached: <strong id="steel-shear-with-peak-value">0,0 kN</strong></span></div>
+    </div>
   </figure>
  </div>
+ <p class="seismic-demand-meaning">The bar displays the equivalent elastic frame restoring shear |V| = k·|u|, calculated from the D2 condensed stiffness and the two already-solved time histories. <strong>It is not a member stress or a beam/column resistance check</strong>. Same scale for both frames; device viscous force is not added to frame elastic shear.</p>
  <div class="steel-accelerogram-panel" id="steel-input-accelerogram">
   <div class="steel-accelerogram-title"><strong>ANALYTICAL ACCELEROGRAM · SHARED INPUT</strong><output id="steel-input-acceleration" aria-live="off">0,00 m/s²</output></div>
   <svg id="steel-frame-accelerogram" viewBox="0 0 900 240" role="img" aria-label="Synthetic ground acceleration [m/s²]">
@@ -236,16 +249,27 @@
      <div class="isolation-render">
       <canvas id="isolation-fixed-canvas" width="1060" height="590" role="img" tabindex="0" aria-label="Three-dimensional four-bay steel frame with fixed column foundations"></canvas>
       <img class="isolation-fallback" src="./assets/engineering/isolation-fixed-preview.svg" alt="Four-bay steel structure with fixed column foundations, schematic" width="1060" height="590" loading="lazy">
-     </div><p>Rigid fixed-base diaphragms. Ground motion transmitted into the steel superstructure.</p>
+     </div>
+    <div class="seismic-demand-strip isolation-shear-meter" id="isolation-fixed-shear-panel" role="group" aria-label="MAX INTERSTOREY SHEAR, kN">
+     <div class="seismic-demand-heading"><span>MAX INTERSTOREY SHEAR</span><output id="isolation-fixed-shear-value" aria-live="off">0,0 kN</output></div>
+     <div class="seismic-demand-track"><div class="seismic-demand-fill" id="isolation-fixed-shear-fill" style="width:0%"></div><span class="seismic-demand-peak-marker" id="isolation-fixed-shear-peak" style="left:0%" aria-hidden="true"></span></div>
+     <div class="seismic-demand-footer"><span>0 kN</span><span class="seismic-demand-scale">COMMON MAX: <strong id="isolation-fixed-shear-scale">— kN</strong></span><span>Peak reached: <strong id="isolation-fixed-shear-peak-value">0,0 kN</strong></span><span class="seismic-demand-story">Critical storey: <strong id="isolation-fixed-shear-floor">—</strong></span></div>
+    </div><p>Rigid fixed-base diaphragms. Ground motion transmitted into the steel superstructure.</p>
     </figure>
     <figure class="isolation-model-card isolation-model-card--isolated">
      <figcaption><span><i aria-hidden="true"></i>BASE ISOLATED · SEISMIC BEARINGS</span><output id="isolation-isolated-live" aria-live="off">— mm</output></figcaption>
      <div class="isolation-render">
       <canvas id="isolation-isolated-canvas" width="1060" height="590" role="img" tabindex="0" aria-label="Three-dimensional four-bay steel frame on base isolation bearings"></canvas>
       <img class="isolation-fallback" src="./assets/engineering/isolation-bearings-preview.svg" alt="Four-bay steel building supported by seismic isolation bearings, schematic" width="1060" height="590" loading="lazy">
-     </div><p>Isolator layer takes horizontal travel; the steel-frame interstorey response is attenuated in this simplified example.</p>
+     </div>
+    <div class="seismic-demand-strip isolation-shear-meter" id="isolation-isolated-shear-panel" role="group" aria-label="MAX INTERSTOREY SHEAR, kN">
+     <div class="seismic-demand-heading"><span>MAX INTERSTOREY SHEAR</span><output id="isolation-isolated-shear-value" aria-live="off">0,0 kN</output></div>
+     <div class="seismic-demand-track"><div class="seismic-demand-fill" id="isolation-isolated-shear-fill" style="width:0%"></div><span class="seismic-demand-peak-marker" id="isolation-isolated-shear-peak" style="left:0%" aria-hidden="true"></span></div>
+     <div class="seismic-demand-footer"><span>0 kN</span><span class="seismic-demand-scale">COMMON MAX: <strong id="isolation-isolated-shear-scale">— kN</strong></span><span>Peak reached: <strong id="isolation-isolated-shear-peak-value">0,0 kN</strong></span><span class="seismic-demand-story">Critical storey: <strong id="isolation-isolated-shear-floor">—</strong></span></div>
+    </div><p>Isolator layer takes horizontal travel; the steel-frame interstorey response is attenuated in this simplified example.</p>
     </figure>
    </div>
+   <p class="seismic-demand-meaning">The bar displays the <strong>instantaneous maximum absolute interstorey shear</strong> over three levels, evaluated from the reduced-order k·Δu + c·Δv formulation. <strong>It is not a member stress or FEM local stress</strong>. Same scale across the fixed and isolated frames. The marker denotes the largest demand reached so far.</p>
    <div class="isolation-input-panel">
     <div class="isolation-chart-heading"><strong>IDENTICAL SYNTHETIC ACCELEROGRAM</strong><output id="isolation-input-live" aria-live="off">a<sub>g</sub> = 0.00 m/s²</output></div>
     <svg id="isolation-input-chart" viewBox="0 0 960 165" role="img" aria-label="Synchronized synthetic ground acceleration history"></svg>
@@ -618,7 +642,7 @@
 <script defer src="./contact-actions.js"></script>
 <script type="module" src="./surface-studio.js?v=20261025-smooth19"></script>
 <script type="module" src="./engineering-benchmarks.js?v=20261025-showcase15seo"></script>
-<script type="module" src="./seismic-isolators.js?v=20261025-isolation1"></script>
-<script type="module" src="./engineering-simulations.js?v=20261025-showcase15seo"></script>
+<script type="module" src="./seismic-isolators.js?v=20261025-shear2"></script>
+<script type="module" src="./engineering-simulations.js?v=20261025-shear2"></script>
 </body>
 </html>

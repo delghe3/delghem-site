@@ -90,3 +90,80 @@
 .isolation-technical>div strong{color:#23596b;white-space:nowrap}
 .isolation-technical>p{font-size:10px;line-height:1.7;color:#6f7373;margin:0;padding:0 13px 15px}
 @media(max-width:750px){.isolation-technical>div{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Identical actual-kN scale within EACH structural comparison pair.
+   Instantaneous shear fills animate; small triangular marker is the
+   historical maximum attained at the current time cursor. */
+.seismic-demand-strip{
+ position:relative;margin:9px 4px 11px;padding:12px 11px 10px;
+ background:linear-gradient(160deg,#f9fdfb,#eaf5ef);
+ border:1px solid #bad8d2;border-radius:9px;
+ box-shadow:inset 0 1px 0 #fff9;
+ min-width:0;
+}
+.steel-frame-case .seismic-demand-strip{margin-top:10px;margin-bottom:9px}
+.isolation-model-card .seismic-demand-strip{margin-top:11px}
+.seismic-demand-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;margin-bottom:11px}
+.seismic-demand-heading>span{font-size:9px;letter-spacing:.035em;color:#305b67;font-weight:870;line-height:1.4}
+.seismic-demand-heading>output{
+ font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+ font-size:clamp(13px,1.2vw,19px);font-weight:900;
+ font-variant-numeric:tabular-nums;color:#187e81;white-space:nowrap;
+}
+.seismic-demand-strip[data-level="medium"] .seismic-demand-heading>output{color:#ac772e}
+.seismic-demand-strip[data-level="high"] .seismic-demand-heading>output{color:#b84c3f}
+.seismic-demand-track{
+ width:100%;height:19px;position:relative;overflow:visible;
+ border:1px solid #9fbab4;border-radius:5px;
+ background:linear-gradient(90deg,#f0f6f0,#e6eeea);
+ box-shadow:inset 0 2px 3px #32565c1d;
+}
+.seismic-demand-track::before{
+ content:'';pointer-events:none;position:absolute;inset:0;border-radius:4px;
+ background:repeating-linear-gradient(90deg,transparent 0,transparent calc(25% - 1px),#77999b5e calc(25% - 1px),#77999b5e 25%);
+ z-index:2;opacity:.4;
+}
+.seismic-demand-fill{
+ height:100%;min-width:0;max-width:100%;width:0;position:relative;z-index:1;
+ border-radius:4px;background:linear-gradient(180deg,#3cbaac,#209c88);
+ box-shadow:0 0 10px #35ad9457, inset 0 2px 2px #fff5;
+}
+.seismic-demand-strip[data-level="medium"] .seismic-demand-fill{
+ background:linear-gradient(180deg,#f3c66e,#d79b3c);box-shadow:0 0 12px #e7a1427e;
+}
+.seismic-demand-strip[data-level="high"] .seismic-demand-fill{
+ background:linear-gradient(180deg,#f39363,#cb4f44);box-shadow:0 0 13px #d760548a;
+}
+.seismic-demand-peak-marker{
+ position:absolute;z-index:5;top:-7px;left:0;transform:translateX(-50%);
+ width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;
+ border-top:6px solid #203f55;filter:drop-shadow(0 1px 1px #18484e42);
+}
+.seismic-demand-footer{display:flex;justify-content:space-between;align-items:center;gap:5px;flex-wrap:wrap;margin-top:8px;color:#597984;font-size:9px;line-height:1.45}
+.seismic-demand-footer strong{font-family:ui-monospace,SFMono-Regular,monospace;font-size:10px;color:#205b70;font-weight:860}
+.seismic-demand-story{color:#507b7b}
+.seismic-demand-meaning{
+ margin:10px 2px 15px!important;padding:11px 13px;
+ color:#5e7177!important;border-left:3px solid #a9c7bb;
+ font-size:10px!important;line-height:1.72!important;background:#f7fcf7!important;
+}
+.seismic-demand-meaning strong{color:#35596b}
+@media(max-width:850px){
+ .seismic-demand-heading{flex-wrap:wrap;gap:3px}
+ .seismic-demand-heading>span{width:100%;font-size:9px}
+ .seismic-demand-track{height:16px}
+ .seismic-demand-strip{padding:9px 7px;margin-inline:2px}
+ .seismic-demand-footer{font-size:8px}
+ .seismic-demand-footer strong{font-size:9px}
+}
+@media(max-width:650px){
+ .seismic-demand-heading>output{font-size:12px}
+ .seismic-demand-heading>span{font-size:8px}
+ .seismic-demand-strip{padding:8px 6px}
+ .seismic-demand-meaning{font-size:9px!important}
+}
+@media(prefers-reduced-motion:reduce){.seismic-demand-fill,.seismic-demand-peak-marker{transition:none}}
+/* Both structural comparison chapters use the same accessible meter design. */
+.steel-shear-meter{min-height:113px}
+.isolation-shear-meter{min-height:119px}
+.seismic-demand-scale{white-space:nowrap}

@@ -1,4 +1,4 @@
-import {computeIsolationComparison} from './seismic-isolation-model.mjs?v=20261025-isolation1';
+import {computeIsolationComparison} from './seismic-isolation-model.mjs?v=20261025-shear2';
 
 /**
  * Synchronized 3D-looking diagram of a MULTIBAY STEEL FRAME, not a spatial
@@ -193,6 +193,22 @@ if(isolationRoot){
   drawFrame(isolatedCanvas,true,B,input.accelerationMS2);
   $('isolation-fixed-live').textContent=text('ROOF','COPERTURA')+' '+format(A.roofDisplacementMM)+' mm';
   $('isolation-isolated-live').textContent=text('BASE','BASE')+' '+format(B.baseDisplacementMM)+' mm';
+  // Common kN scale for the two three-storey reduced shear-building cases.
+  const shearScaleKN=Math.max(peaks.fixedStoryShearKN,peaks.isolatedStoryShearKN);
+  for(const side of ['fixed','isolated'])$('isolation-'+side+'-shear-scale').textContent=format(shearScaleKN,1)+' kN';
+  for(const [side,state] of [['fixed',A],['isolated',B]]){
+   const base='isolation-'+side+'-shear';
+   const value=state.maxStoryShearKN;
+   const fraction=clamp(value/Math.max(1e-12,shearScaleKN),0,1);
+   const reached=clamp(state.peakReachedStoryShearKN/Math.max(1e-12,shearScaleKN),0,1);
+   $(base+'-value').textContent=format(value,1)+' kN';
+   $(base+'-peak-value').textContent=format(state.peakReachedStoryShearKN,1)+' kN';
+   $(base+'-fill').style.width=(fraction*100).toFixed(2)+'%';
+   $(base+'-peak').style.left=(reached*100).toFixed(2)+'%';
+   $(base+'-floor').textContent=String(state.criticalStory);
+   $(base+'-panel').dataset.level=fraction>.67?'high':fraction>.34?'medium':'low';
+  }
+
   $('isolation-input-live').textContent='a_g = '+format(input.accelerationMS2,2)+' m/s²';
   $('isolation-time-label').textContent=format(input.timeS,2)+' s';
   $('isolation-time').value=String(tIndex);

@@ -84,6 +84,7 @@ function integrate(isolated,p,ag){
  const A=K.map((row,i)=>row.map((k,j)=>beta*dt*dt*k+gamma*dt*C[i][j]+(i===j?M[i]:0)));
  const L=cholesky(A);
  let u=Array(n).fill(0),v=Array(n).fill(0),a=Array(n).fill(0);
+ let peakReachedStoryShearKN=0;
  const records=[];
  for(let step=0;step<ag.length;step++){
   const aground=ag[step],t=step*dt;
@@ -100,6 +101,17 @@ function integrate(isolated,p,ag){
   const base=isolated?u[0]:0;
   const floors=isolated?u.slice(1):u;
   const relative=[base,...floors];
+  const storyVelocityMS=isolated?v.slice():[0,...v];
+  // Resultant lateral story shear (kΔu + cΔv) in the reduced-order
+  // three-storey shear-building idealisation. These are NOT beam/column
+  // FEM section forces or von Mises/local stresses.
+  const storyShearKN=Array.from({length:3},(_,i)=>(
+   p.storyStiffnessNPerM*(relative[i+1]-relative[i])+
+   p.storyDampingNsPerM*(storyVelocityMS[i+1]-storyVelocityMS[i])
+  )/1000);
+  const maxStoryShearKN=Math.max(...storyShearKN.map(Math.abs));
+  const criticalStory=storyShearKN.findIndex(x=>Math.abs(x)===maxStoryShearKN)+1;
+  peakReachedStoryShearKN=Math.max(peakReachedStoryShearKN,maxStoryShearKN);
   const maxStoryDriftMM=Math.max(...relative.slice(1).map((x,i)=>Math.abs((x-relative[i])*1000)));
   records.push({
    timeS:Number(t.toFixed(4)),
@@ -109,6 +121,11 @@ function integrate(isolated,p,ag){
    baseDisplacementMM:base*1000,
    baseShearKN:isolated?(p.isolatorStiffnessNPerM*u[0]+p.isolatorDampingNsPerM*v[0])/1000:0,
    maxStoryDriftMM,
+   storyVelocityMS,
+   storyShearKN,
+   maxStoryShearKN,
+   peakReachedStoryShearKN,
+   criticalStory,
    levelsMM:relative.map(x=>x*1000)
   });
  }
@@ -125,7 +142,9 @@ export function computeIsolationComparison(p=isolationParameters){
   fixedStoryDriftMM:peak(fixed,x=>x.maxStoryDriftMM),
   isolatedStoryDriftMM:peak(isolated,x=>x.maxStoryDriftMM),
   isolationTravelMM:peak(isolated,x=>x.baseDisplacementMM),
-  isolationShearKN:peak(isolated,x=>x.baseShearKN)
+  isolationShearKN:peak(isolated,x=>x.baseShearKN),
+  fixedStoryShearKN:peak(fixed,x=>x.maxStoryShearKN),
+  isolatedStoryShearKN:peak(isolated,x=>x.maxStoryShearKN)
  };
  return {
   schema:'delghem-isolation-illustrative-model-1',

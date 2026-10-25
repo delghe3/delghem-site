@@ -1,3 +1,4 @@
+import {portalFrameShearHistory} from './seismic-demand-meters.mjs?v=20261025-shear2';
 import {buildNativePortalScene,renderNativeSteelPortal} from './steel-portal-renderer.mjs?v=20261025-showcase15seo';
 import {shouldAutoplay,nextLoopedFrame} from './engineering-playback.mjs?v=20261025-showcase15seo';
 
@@ -33,7 +34,7 @@ if(enhancedEngineeringRoot){
   if(content!==undefined)x.textContent=String(content);
   p.append(x);return x;
  };
- let soilData=null,frameData=null,frameNative=null;
+ let soilData=null,frameData=null,frameNative=null,shearDemand=null;
  let activeSoil=null,soilState={mode:'influence',lastLayout:null};
  const c2d=(canvas)=>{
   const w=canvas.getBoundingClientRect().width;
@@ -370,6 +371,21 @@ if(enhancedEngineeringRoot){
    'u₀(t) = '+num(samples.without.displacementMM,1)+' mm';
   $('steel-damped-live-displacement').textContent=
    'uᵥ(t) = '+num(samples.with.displacementMM,1)+' mm';
+  // Identical physical kN scale across both D2 source-backed frame cases.
+  // Display-only magnitude: elastic steel-portal restoring action |k*u|.
+  const shearScaleKN=Math.max(shearDemand.peaks.without,shearDemand.peaks.with);
+  for(const side of ['without','with'])$('steel-shear-'+side+'-scale').textContent=num(shearScaleKN,1)+' kN';
+  for(const id of ['without','with']){
+   const demand=shearDemand[id][frameView.index];
+   const fraction=clamp(demand.currentKN/Math.max(1e-12,shearScaleKN),0,1);
+   const peakFraction=clamp(demand.runningPeakKN/Math.max(1e-12,shearScaleKN),0,1);
+   $('steel-shear-'+id+'-value').textContent=num(demand.currentKN,1)+' kN';
+   $('steel-shear-'+id+'-peak-value').textContent=num(demand.runningPeakKN,1)+' kN';
+   $('steel-shear-'+id+'-fill').style.width=(fraction*100).toFixed(2)+'%';
+   $('steel-shear-'+id+'-peak').style.left=(peakFraction*100).toFixed(2)+'%';
+   $('steel-shear-'+id+'-panel').dataset.level=fraction>.67?'high':fraction>.34?'medium':'low';
+  }
+
   $('steel-frame-description').textContent=
    (it?'Confronto sincronizzato':'Synchronized comparison')+
    ' · t = '+num(samples.with.timeS,2)+' s'+
@@ -458,6 +474,7 @@ if(enhancedEngineeringRoot){
   frameView.frameRaf=requestAnimationFrame(stepFrame);
  }
  function initFrame(){
+  shearDemand=portalFrameShearHistory(frameData);
   const count=frameData.input.accelerationMS2.length;
   if(frameData.cases.some(c=>c.records.length!==count))
    throw Error('D2 dynamic comparison has mismatched frame/input timelines');
