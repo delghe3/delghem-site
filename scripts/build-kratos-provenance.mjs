@@ -12,11 +12,22 @@ const read=rel=>fs.readFileSync(path.join(site,rel));
 const shell=JSON.parse(read('assets/fem-lab/advanced-shell-results.json'));
 const cyclic=JSON.parse(read('assets/fem-lab/native-kratos-cyclic.json'));
 const ida=JSON.parse(read('assets/fem-lab/native-nonlinear-ida.json'));
+const surfaces=JSON.parse(read('assets/fem-lab/kratos-2d-surfaces.json'));
 if(shell.sourceEngine!=='KratosMultiphysics'||cyclic.engine!=='KratosMultiphysics'||
  ida.models.some(x=>x.engine!=='KratosMultiphysics')||!cyclic.complete||
- shell.elements.length!==176||cyclic.states.length!==240)
+ shell.elements.length!==176||cyclic.states.length!==240||
+ surfaces.engine!=='KratosMultiphysics'||surfaces.cases?.length!==3||
+ surfaces.cases.some(c=>c.sourceEngine!=='KratosMultiphysics'||c.completeStructuralVerification!==false||c.mesh.shells!==c.elements.length))
  throw Error('Unqualified Kratos provenance; no public inventory emitted');
 const items=[
+ 'assets/fem-lab/kratos-2d-surfaces.json',
+ 'assets/fem-lab/kratos-2d-input/skewed-double-opening-slab.hfm.json',
+ 'assets/fem-lab/kratos-2d-input/double-window-shear-wall.hfm.json',
+ 'assets/fem-lab/kratos-2d-input/l-shaped-transfer-plate.hfm.json',
+ 'assets/fem-lab/gallery/surface-skewed-double-opening-slab.webp',
+ 'assets/fem-lab/gallery/surface-double-window-shear-wall.webp',
+ 'assets/fem-lab/gallery/surface-l-shaped-transfer-plate.webp',
+ 'scripts/build-kratos-2d-surfaces.mjs',
  'assets/fem-lab/advanced-shell-results.json',
  'assets/fem-lab/native-kratos-cyclic.json',
  'assets/fem-lab/native-nonlinear-ida.json',
@@ -38,10 +49,11 @@ const items=[
 ];
 const lines=[
  'DÈLGHEM D2 — KRATOSMULTIPHYSICS SOURCE-BACKED FEM LAB',
- 'Build date: 24 October 2026',
- 'This is the website-publicated technical evidence of distinct D2 benchmark cases.',
+ 'Build date: 25 October 2026',
+ 'This is a website source evidence record for distinct, actually solved D2 Kratos benchmark cases.',
  '',
- 'ENGINE: KratosMultiphysics for every active numerical chart, without solver attribution substitutions.',
+ 'ENGINE: KratosMultiphysics for all FEM source-backed charts in the FEM Laboratory (B01, axial cyclic, IDA, and the three 2D QUAD4 shell solves).',
+ 'SEPARATE NUMERICAL DOMAINS: geotechnical pile t-z/q-z response uses the DÈLGHEM D2 pile-axial module, and viscous plots are validated-input constitutive illustrations; see assets/engineering/PROVENANCE.txt.',,
  '',
  'STATIC SHELL BENCHMARK B01',
  '  Solver: '+shell.sourceEngine,
@@ -70,6 +82,20 @@ const lines=[
  ...ida.models.map(x=>'  '+x.id+': input SHA256 '+x.sourceRequestSha256+'; native result SHA256 '+x.nativeResultSha256),
  '  Input accelerograms are analytical diagnostics, not actual historic earthquake records.',
  '  No collapse observed; no statistical fragility curve is inferred from the orientations.',
+ '',
+ 'THREE INDEPENDENT KRATOS 2D PLANAR QUAD4 SURFACE BENCHMARKS',
+ '  All have physically meshed openings and actual native Kratos input/result evidence.',
+ ...surfaces.cases.flatMap(c=>[
+  '  '+c.id+' ('+c.plane+' plane)',
+  '    Native solver: '+c.sourceEngine+'; analysis: '+c.analysis+'.',
+  '    Mesh: '+c.mesh.nodes+' nodes, '+c.mesh.shells+' QUAD4 shell elements; '+c.mesh.gaussPerShell+' Gauss points each.',
+  '    Load: '+c.load.pressureKNM2+' kN/m2 '+c.load.system+'; boundary: '+c.boundary.support+'.',
+  '    Static equilibrium residual: '+c.diagnostics.residual+'.',
+  '    Input SHA256: '+c.sourceSha256+' (assets/fem-lab/'+c.sourceFile+').',
+  '    Native calculated result SHA256: '+c.nativeSolverResultSha256+'.',
+  '    Stress: '+c.stressRecovery,
+  '    This benchmark is NOT certified or qualified for building safety; stresses recovered for elastic local faces only.'
+ ]),
  '',
  'IMAGE AND DATA FILE INTEGRITY (SOURCE HASHES)',
  ...items.map(rel=>rel+' | SHA256: '+hash(read(rel))+' | bytes: '+read(rel).byteLength),

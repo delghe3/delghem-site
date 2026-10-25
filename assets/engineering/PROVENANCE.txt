@@ -1,0 +1,58 @@
+DÈLGHEM D2 — GEOTECHNICAL AND VISCOUS CONSTITUTIVE DATA EVIDENCE
+Built 25 October 2026 from independently reproducible D2 first-party modules.
+
+STRICT ENGINE DISTINCTIONS
+  Pile responses are ACTUAL solved DÈLGHEM D2 geotechnical axial t-z/q-z numerical calculations (nonlinear springs of shaft and toe).
+  The geotechnical pile domain is not claimed to be the Kratos shell/frame solver.
+  Viscous damper parameters C and alpha were validated with the D2 seismic-devices input validator.
+  Viscous plots were generated as analytical constitutive response: NOT building FEM time-history simulation and NOT certified physical device tests.
+
+PILE SCREENING CASES (ASSUMED SOIL AND GEOMETRY)
+  layered-sand (sand):
+    Diameter 0.6 m, length 15 m, assumed E 30 GPa.
+    Head applied vertical force 700 kN; settlement 5.943149320757216 mm.
+    Computed shaft reaction 425.3026276957678 kN; tip reaction 274.69737223572884 kN.
+    Equilibrium residual 6.85033683112124e-8 kN; iterations 6; converged true.
+    Raw actual native input pile-layered-sand-input.json SHA256 0c0b6b1478c9c34c51090db6bb9e81318e9146f2267f3fd8f4c1737c42d36b1a.
+    These are numerical diagnostic pile load–settlement responses, NOT full geotechnical NTC bearing checks or field-calibrated profiles.
+  layered-clay (clay):
+    Diameter 0.6 m, length 15 m, assumed E 30 GPa.
+    Head applied vertical force 700 kN; settlement 3.9705174695334873 mm.
+    Computed shaft reaction 660.9488729736001 kN; tip reaction 39.05112702638843 kN.
+    Equilibrium residual 1.1425527191022411e-11 kN; iterations 6; converged true.
+    Raw actual native input pile-layered-clay-input.json SHA256 d0019b68f3991275888a49b5d2d8b6da6e629d52b6b11477cb2079122dc3a811.
+    These are numerical diagnostic pile load–settlement responses, NOT full geotechnical NTC bearing checks or field-calibrated profiles.
+
+VISCOUS DAMPERS: CONSTITUTIVE LAW ONLY
+  nonlinear-viscous alpha 0.5
+    C 180 in force/(velocity^alpha) consistent units; F = C × sgn(v) × |v|^alpha.
+    Harmonic displacement amplitude 28 mm; frequency 1.25 Hz.
+    Maximum constitutive force 84.41049779702551 kN; positive closed-loop energy 8.261985605861147 kN·m.
+    Source-validated device PARAMETERS; results analytically sampled from the force–velocity law only.
+    Constitutive example: NOT dynamic FEM of a building, NOT manufacturer device certification.
+  linear-viscous alpha 1
+    C 180 in force/(velocity^alpha) consistent units; F = C × sgn(v) × |v|^alpha.
+    Harmonic displacement amplitude 28 mm; frequency 1.25 Hz.
+    Maximum constitutive force 39.5840674352314 kN; positive closed-loop energy 3.4815986925465214 kN·m.
+    Source-validated device PARAMETERS; results analytically sampled from the force–velocity law only.
+    Constitutive example: NOT dynamic FEM of a building, NOT manufacturer device certification.
+
+DÈLGHEM D2 SOURCE MODULES (CODE BYTES HASHED, NOT COPIED)
+  D2/src/core/pile-axial-geotech.mjs SHA256 4b22a1e29595b84fddeefcf5109138fe55c47be7801d61ac78351152525410a4
+  D2/src/core/pile-axial-soil.mjs SHA256 30661319cfdfe6b46caec648451cc7faaa8259752bb2567bba9b3e3971553642
+  D2/src/core/seismic-devices.mjs SHA256 1e9d0b5523ccee2cd7558022d7cf1ac5031747a6dd65cb96e3e82a0a79f6ea49
+
+WEBSITE FILES (DATA, SOURCE-BASED CHART FALLBACKS AND GENERATORS)
+  assets/engineering/soil-piles-and-dampers.json SHA256 ecfd535804277c9a6c7c12b43542aa23a716eeffc5e2450b33e8d329bea52fe6 | bytes 78861
+  assets/engineering/pile-layered-sand-input.json SHA256 0c0b6b1478c9c34c51090db6bb9e81318e9146f2267f3fd8f4c1737c42d36b1a | bytes 3648
+  assets/engineering/pile-layered-clay-input.json SHA256 d0019b68f3991275888a49b5d2d8b6da6e629d52b6b11477cb2079122dc3a811 | bytes 3240
+  assets/engineering/pile-curves.webp SHA256 396cb843c7a677217be9801a2ddfc80637c6748ab88ca6198b0872014edd441a | bytes 19252
+  assets/engineering/damper-velocity.webp SHA256 bece2c09b19df03cd497f694f8c0213d7ca028452a13f70ff9955114f40188eb | bytes 10010
+  assets/engineering/damper-cycle.webp SHA256 b18fd6a096ccc588c10bb709a7efb24ec59c572633930a0c3cb5775d6e4e28cd | bytes 10434
+  scripts/build-native-geotech-damper-evidence.mjs SHA256 bd81a765e0bda2c6ada19a08be92965d9996c53359755af7bd60f3d1f1d1aa20 | bytes 6370
+  scripts/build-native-geotech-provenance.mjs SHA256 b4c5137500644f88b8cde3d596c086a9e236861f5a19ae24b24ac4865eba1222 | bytes 4866
+
+LIMITATIONS AND INDEPENDENCE
+  No foundation safety, settlement acceptance, seismic collapse limit state, damper qualification or building capacity has been certified.
+  Images pile-curves.webp, damper-velocity.webp and damper-cycle.webp are screenshots from the numerical/analytical on-page plots.
+  Actual app screenshots are separately identified as authentic DÈLGHEM D2 application media.

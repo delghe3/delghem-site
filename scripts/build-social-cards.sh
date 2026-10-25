@@ -1,48 +1,62 @@
 #!/usr/bin/env bash
+# Social previews composed solely of REAL DÈLGHEM D2 app screenshots and
+# real Kratos solver-derived 2D shell plots. No synthetic analysis claims.
 set -euo pipefail
-cd /Users/delghe/Desktop/DELGHEM-SITO-AGGIORNAMENTO
+SCRIPT_DIR="$(cd "$(dirname "$BASH_SOURCE")" && pwd)"
+cd "$SCRIPT_DIR/.."
 mkdir -p assets/social
-base='assets/real-d2/complex-frame-poster.webp'
-curve='assets/fem-lab/gallery/kratos-axial-loading.webp'
 font='assets/Manrope.ttf'
-function draw_social(){
+plot='assets/fem-lab/gallery/surface-skewed-double-opening-slab.webp'
+test -f "$font" && test -f "$plot"
+build_social(){
   lang="$1"
+  app="assets/genius/genius-workflow-$lang.webp"
   out="assets/social/delghem-apple-silicon-$lang.png"
-  if [[ "$lang" == "it" ]]; then
+  test -f "$app"
+  if [ "$lang" = 'it' ];then
     kicker='INGEGNERIA STRUTTURALE / MAC'
-    title='Il calcolo FEM.'
-    line='Nativo per'
-    note='Apple Silicon'
-    subtitle='Modelli 3D, analisi e risultati'
-    status='vAlpha1 · gennaio 2027 (previsto)'
-    footer='Modello D2 e benchmark distinti · non certificati'
+    headline='Genius Assistant'
+    line='Descrivi. Controlla. Applica.'
+    sub='Mappe FEM 2D calcolate con Kratos'
+    second='Modelli D2 e risultati documentati'
+    status='vAlpha1 in sviluppo · gennaio 2027 previsto'
+    appLabel='INTERFACCIA ORIGINALE DÈLGHEM D2'
+    imageLabel='BENCHMARK KRATOS · QUAD4'
   else
     kicker='STRUCTURAL ENGINEERING / MAC'
-    title='Structural FEM.'
-    line='Built for'
-    note='Apple Silicon'
-    subtitle='3D modelling, analysis and results'
-    status='vAlpha1 · January 2027 (planned)'
-    footer='Separate D2 concept & test cases · not certified'
+    headline='Genius Assistant'
+    line='Describe. Review. Apply.'
+    sub='Real 2D Kratos stress maps'
+    second='Editable D2 models and source-backed FEM'
+    status='vAlpha1 in development · January 2027 planned'
+    appLabel='AUTHENTIC DÈLGHEM D2 INTERFACE'
+    imageLabel='KRATOS BENCHMARK · QUAD4'
   fi
-  magick -size 1200x630 'gradient:#edf8f5-#c9e4df' \
-   '(' "$base" -resize 575x500 ')' -gravity northeast -geometry +2+78 -compose over -composite \
-   -gravity northwest \
-   -stroke '#2e7e8c' -strokewidth 0.8 -fill none -draw 'roundrectangle 750,387 1167,597 16,16' \
-   '(' "$curve" -resize 402x190 ')' -gravity northwest -geometry +758+397 -compose over -composite \
-   -font "$font" -stroke none \
-   -fill '#327585' -pointsize 17 -annotate +60+75 "$kicker" \
-   -fill '#142e3c' -pointsize 70 -annotate +55+168 'DÈLGHEM' \
-   -fill '#1f4657' -pointsize 37 -annotate +57+254 "$title" \
-   -pointsize 35 -annotate +57+305 "$line" \
-   -fill '#1e8191' -pointsize 47 -annotate +57+369 "$note" \
-   -fill '#416c75' -pointsize 20 -annotate +60+416 "$subtitle" \
-   -stroke '#91c4c6' -strokewidth 2 -draw 'line 57,450 575,450' \
-   -stroke none -fill '#2c5d6d' -pointsize 17 -annotate +59+503 "$status" \
-   -fill '#547e83' -pointsize 13 -annotate +59+540 "$footer" \
-   -fill '#143e51' -pointsize 25 -annotate +59+584 'www.delghe.com' \
-   -strip "$out"
+  # Source images remain unchanged. Overlays only crop/scale their actual
+  # pixels to the social 1200x630 canvas; no fabricated solver imagery.
+  tmp="$(mktemp -d)"
+  magick "$app" -resize '532x265^' -gravity center -extent 532x265 "$tmp/app.png"
+  magick "$plot" -resize '532x164^' -gravity center -extent 532x164 "$tmp/stress.png"
+  magick -size 1200x630 'gradient:#0c2b3b-#1f5261' \
+    -fill '#173e4b' -stroke '#386e7c' -strokewidth 1 \
+    -draw 'roundrectangle 607,54 1179,582 15,15' \
+    -stroke none -fill '#295a68' -draw 'roundrectangle 624,80 1161,348 8,8' \
+    '(' "$tmp/app.png" ')' -gravity northwest -geometry +628+82 -compose over -composite \
+    '(' "$tmp/stress.png" ')' -gravity northwest -geometry +628+403 -compose over -composite \
+    -fill '#8fc3c0' -font "$font" -pointsize 15 -annotate +58+72 "$kicker" \
+    -fill '#f4faf7' -pointsize 65 -annotate +55+171 'DÈLGHEM' \
+    -fill '#a2dcd0' -pointsize 35 -annotate +57+241 "$headline" \
+    -fill '#e9f9f2' -pointsize 23 -annotate +59+290 "$line" \
+    -stroke '#558b92' -strokewidth 1 -draw 'line 58,327 550,327' -stroke none \
+    -fill '#c1ebe0' -pointsize 21 -annotate +59+372 "$sub" \
+    -fill '#b7d7d9' -pointsize 17 -annotate +59+409 "$second" \
+    -fill '#f5c09b' -pointsize 17 -annotate +59+500 "$status" \
+    -fill '#ecf9f2' -pointsize 28 -annotate +59+563 'www.delghe.com' \
+    -fill '#d5f1e6' -pointsize 12 -annotate +630+72 "$appLabel" \
+    -fill '#cce6e7' -pointsize 12 -annotate +630+394 "$imageLabel" \
+    -strip "$out"
+  rm -rf "$tmp"
   magick identify "$out"
 }
-draw_social en
-draw_social it
+build_social en
+build_social it

@@ -1,8 +1,10 @@
 DÈLGHEM D2 — KRATOSMULTIPHYSICS SOURCE-BACKED FEM LAB
-Build date: 24 October 2026
-This is the website-publicated technical evidence of distinct D2 benchmark cases.
+Build date: 25 October 2026
+This is a website source evidence record for distinct, actually solved D2 Kratos benchmark cases.
 
-ENGINE: KratosMultiphysics for every active numerical chart, without solver attribution substitutions.
+ENGINE: KratosMultiphysics for all FEM source-backed charts in the FEM Laboratory (B01, axial cyclic, IDA, and the three 2D QUAD4 shell solves).
+SEPARATE NUMERICAL DOMAINS: geotechnical pile t-z/q-z response uses the DÈLGHEM D2 pile-axial module, and viscous plots are validated-input constitutive illustrations; see assets/engineering/PROVENANCE.txt.
+
 
 STATIC SHELL BENCHMARK B01
   Solver: KratosMultiphysics
@@ -33,7 +35,45 @@ INCREMENTAL DYNAMIC ANALYSIS
   Input accelerograms are analytical diagnostics, not actual historic earthquake records.
   No collapse observed; no statistical fragility curve is inferred from the orientations.
 
+THREE INDEPENDENT KRATOS 2D PLANAR QUAD4 SURFACE BENCHMARKS
+  All have physically meshed openings and actual native Kratos input/result evidence.
+  skewed-double-opening-slab (xy plane)
+    Native solver: KratosMultiphysics; analysis: static / linear elastic.
+    Mesh: 330 nodes, 280 QUAD4 shell elements; 4 Gauss points each.
+    Load: 3.8 kN/m2 global-Z; boundary: west-and-south.
+    Static equilibrium residual: 1.4345358350900534e-12.
+    Input SHA256: 993e8d4aa2dfe0428f554fb253a11b99be6d213b691116a55d7af6b9b1cd1cdc (assets/fem-lab/kratos-2d-input/skewed-double-opening-slab.hfm.json).
+    Native calculated result SHA256: 96156b4fb53f8013cf2156b0f2b0eed3f48483df7353dfa6e7e45fbd7b4d8be1.
+    Stress: Elastic top/bottom local face σ from native Kratos Gauss resultants: N/h ± 6M/h², kN/m² to MPa. No nodal stress recovery.
+    This benchmark is NOT certified or qualified for building safety; stresses recovered for elastic local faces only.
+  double-window-shear-wall (xz plane)
+    Native solver: KratosMultiphysics; analysis: static / linear elastic.
+    Mesh: 335 nodes, 276 QUAD4 shell elements; 4 Gauss points each.
+    Load: 2.6 kN/m2 global-Y; boundary: base.
+    Static equilibrium residual: 8.577223674911151e-13.
+    Input SHA256: f98af246f67bb7c172868861b54add5a55d38ab992e870c893f311c0294fc3c0 (assets/fem-lab/kratos-2d-input/double-window-shear-wall.hfm.json).
+    Native calculated result SHA256: b607efae03a6114266b2907e6f99fc5d003e9b7b968f76c56681e2a9030d3a86.
+    Stress: Elastic top/bottom local face σ from native Kratos Gauss resultants: N/h ± 6M/h², kN/m² to MPa. No nodal stress recovery.
+    This benchmark is NOT certified or qualified for building safety; stresses recovered for elastic local faces only.
+  l-shaped-transfer-plate (xy plane)
+    Native solver: KratosMultiphysics; analysis: static / linear elastic.
+    Mesh: 315 nodes, 270 QUAD4 shell elements; 4 Gauss points each.
+    Load: 4.2 kN/m2 global-Z; boundary: west-and-south.
+    Static equilibrium residual: 2.4065602037796387e-13.
+    Input SHA256: 137225d8c5ea40c54b59784b4a0d82ec7b86bf2dafe5c99465c82abc6504aa46 (assets/fem-lab/kratos-2d-input/l-shaped-transfer-plate.hfm.json).
+    Native calculated result SHA256: e4038c935fe16f2c4e9d2fb4dc4aa5a3bc045a48a40afa9456548ca021ac2fda.
+    Stress: Elastic top/bottom local face σ from native Kratos Gauss resultants: N/h ± 6M/h², kN/m² to MPa. No nodal stress recovery.
+    This benchmark is NOT certified or qualified for building safety; stresses recovered for elastic local faces only.
+
 IMAGE AND DATA FILE INTEGRITY (SOURCE HASHES)
+assets/fem-lab/kratos-2d-surfaces.json | SHA256: 3ddb9f0c848de770d179e79a6bca690b4c47dd9a808510f121cda00371733710 | bytes: 635637
+assets/fem-lab/kratos-2d-input/skewed-double-opening-slab.hfm.json | SHA256: 993e8d4aa2dfe0428f554fb253a11b99be6d213b691116a55d7af6b9b1cd1cdc | bytes: 159620
+assets/fem-lab/kratos-2d-input/double-window-shear-wall.hfm.json | SHA256: f98af246f67bb7c172868861b54add5a55d38ab992e870c893f311c0294fc3c0 | bytes: 155546
+assets/fem-lab/kratos-2d-input/l-shaped-transfer-plate.hfm.json | SHA256: 137225d8c5ea40c54b59784b4a0d82ec7b86bf2dafe5c99465c82abc6504aa46 | bytes: 153362
+assets/fem-lab/gallery/surface-skewed-double-opening-slab.webp | SHA256: 72bf7f6978ba650c0bf70799e2ded398b9d3dbb1a64ad282c403d03157ae3f60 | bytes: 10466
+assets/fem-lab/gallery/surface-double-window-shear-wall.webp | SHA256: a97cf66876a03fbc6d777f9f5e64e4cbffe8c297cb3588e729b3f9b1f0ebf0e5 | bytes: 18998
+assets/fem-lab/gallery/surface-l-shaped-transfer-plate.webp | SHA256: f2e59f83cd5e231fb6e4a670d67b0e88be27836d8a4d7ba41284e9f0451e41e3 | bytes: 9210
+scripts/build-kratos-2d-surfaces.mjs | SHA256: 3fde46e30cc144d05cee11972652122bd08faa2730af22db86af90ff9fdba71f | bytes: 9925
 assets/fem-lab/advanced-shell-results.json | SHA256: c18e7a282e617df57fa51c1f3edb1cc2ec2e84097306288669af8091fe5cf1fc | bytes: 309278
 assets/fem-lab/native-kratos-cyclic.json | SHA256: e43bb657875bb0c98e233edb6b886aca7fd8471672c7c7a5fe40f2062bd66d33 | bytes: 86227
 assets/fem-lab/native-nonlinear-ida.json | SHA256: b1dde5facebd6172ef3615fb623be76326b45e8b1d85205e69d0f4678f0f2c5d | bytes: 749212

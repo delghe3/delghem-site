@@ -82,5 +82,20 @@ if(explorer){
     byId('genius-demo-status').dataset.qualified=String(key!=='analysis');
   };
   buttons.forEach(button=>button.addEventListener('click',()=>select(button.dataset.geniusCase)));
+  const copy=document.getElementById('genius-copy-command');
+  const feedback=document.getElementById('genius-copy-status');
+  copy?.addEventListener('click',async()=>{
+    const instruction=byId('genius-demo-command')?.textContent?.trim();
+    if(!instruction)return;
+    try{
+      if(!navigator.clipboard?.writeText)throw Error('Clipboard not available');
+      await navigator.clipboard.writeText(instruction);
+      if(feedback)feedback.textContent=locale==='it'?'Comando copiato.':'Command copied.';
+    }catch{
+      if(feedback)feedback.textContent=locale==='it'
+       ?'Seleziona e copia il comando qui sopra.'
+       :'Select and copy the command above.';
+    }
+  });
   select('node');
 }

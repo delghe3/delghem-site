@@ -176,6 +176,29 @@ if(labRoot){
   $('lab-push-peak').textContent=num(Math.max(...f),1)+' kN';
   $('lab-push-plastic').textContent=pc(cyclic.maxPlasticStrain);
  }
+ // Keep all solver graphs and dynamic hysteresis on-screen. Only redundant
+ // APP SCREENSHOT EVIDENCE (not numerical charts) is placed in a lightweight
+ // disclosure. No-JavaScript visitors still get the original screenshots.
+ function compactScreenshots(){
+  for(const parent of labRoot.querySelectorAll('.lab-analysis-supplement')){
+   const evidence=[...parent.children].filter(n=>
+    n.classList.contains('lab-app-evidence')||
+    n.classList.contains('lab-workflow-image'));
+   if(!evidence.length)continue;
+   const details=document.createElement('details');
+   details.className='lab-evidence-collapse';
+   const summary=document.createElement('summary');
+   summary.textContent=txt(
+    'Original DÈLGHEM screenshots and analysis settings ↗',
+    'Schermate originali DÈLGHEM e impostazioni dell’analisi ↗');
+   details.append(summary);
+   const wrapper=document.createElement('div');wrapper.className='lab-evidence-collapse-grid';
+   evidence.forEach(node=>wrapper.append(node));
+   details.append(wrapper);
+   parent.append(details);
+  }
+ }
+ compactScreenshots();
  // ---- 16 actual Kratos nonlinear IDA time histories, eight PGA levels each ----
  function renderIDA(){
   const models=ida.models;

@@ -1,0 +1,135 @@
+{
+  "id": "layered-sand",
+  "name": "Ø600 mm pile in layered sand",
+  "lengthM": 15,
+  "diameterM": 0.6,
+  "EGPa": 30,
+  "segments": 30,
+  "headNKn": 700,
+  "tolerance": 1e-9,
+  "maxIterations": 100,
+  "shaft": [
+    {
+      "topM": 0,
+      "bottomM": 5,
+      "tultKnM": 0,
+      "tultGradientKnM2": 3.2512298334007204,
+      "z50M": 0.00127,
+      "z50GradientMPerM": 0
+    },
+    {
+      "topM": 5,
+      "bottomM": 15,
+      "tultKnM": 18.652735907340677,
+      "tultGradientKnM2": 4.1450524238534845,
+      "z50M": 0.00127,
+      "z50GradientMPerM": 0
+    }
+  ],
+  "tip": {
+    "qultKn": 819.9556825869361,
+    "z50M": 0.0078,
+    "suctionRatio": 0.05
+  },
+  "geotechAudit": {
+    "method": "api1993-sand-tz-qz",
+    "source": "API sand t-z/q-z; FHWA Route 351 summary; API Nq density table",
+    "K0": 0.4,
+    "interfaceFactor": 0.8,
+    "layers": [
+      {
+        "index": 1,
+        "input": {
+          "topM": 0,
+          "bottomM": 5,
+          "phiDeg": 32,
+          "gammaEffKnM3": 9,
+          "relativeDensity": "loose"
+        },
+        "top": {
+          "depthM": 0,
+          "diameterM": 0.6,
+          "phiDeg": 32,
+          "sigmaVeffKPa": 0,
+          "K0": 0.4,
+          "interfaceFactor": 0.8,
+          "deltaDeg": 25.6,
+          "fsMaxKPa": 0,
+          "perimeterM": 1.8849555921538759,
+          "tultKnM": 0,
+          "zCriticalM": 0.00254,
+          "z50M": 0.00127,
+          "source": "API 1993 sand t-z + Kulhawy interface friction convention"
+        },
+        "bottom": {
+          "depthM": 5,
+          "diameterM": 0.6,
+          "phiDeg": 32,
+          "sigmaVeffKPa": 45,
+          "K0": 0.4,
+          "interfaceFactor": 0.8,
+          "deltaDeg": 25.6,
+          "fsMaxKPa": 8.624154985226067,
+          "perimeterM": 1.8849555921538759,
+          "tultKnM": 16.256149167003603,
+          "zCriticalM": 0.00254,
+          "z50M": 0.00127,
+          "source": "API 1993 sand t-z + Kulhawy interface friction convention"
+        }
+      },
+      {
+        "index": 2,
+        "input": {
+          "topM": 5,
+          "bottomM": 15,
+          "phiDeg": 36,
+          "gammaEffKnM3": 10,
+          "relativeDensity": "medium"
+        },
+        "top": {
+          "depthM": 5,
+          "diameterM": 0.6,
+          "phiDeg": 36,
+          "sigmaVeffKPa": 45,
+          "K0": 0.4,
+          "interfaceFactor": 0.8,
+          "deltaDeg": 28.8,
+          "fsMaxKPa": 9.895583739469862,
+          "perimeterM": 1.8849555921538759,
+          "tultKnM": 18.652735907340677,
+          "zCriticalM": 0.00254,
+          "z50M": 0.00127,
+          "source": "API 1993 sand t-z + Kulhawy interface friction convention"
+        },
+        "bottom": {
+          "depthM": 15,
+          "diameterM": 0.6,
+          "phiDeg": 36,
+          "sigmaVeffKPa": 145,
+          "K0": 0.4,
+          "interfaceFactor": 0.8,
+          "deltaDeg": 28.8,
+          "fsMaxKPa": 31.885769827180667,
+          "perimeterM": 1.8849555921538759,
+          "tultKnM": 60.103260145875524,
+          "zCriticalM": 0.00254,
+          "z50M": 0.00127,
+          "source": "API 1993 sand t-z + Kulhawy interface friction convention"
+        }
+      }
+    ],
+    "tip": {
+      "diameterM": 0.6,
+      "sigmaVeffKPa": 145,
+      "relativeDensity": "medium",
+      "Nq": 20,
+      "areaM2": 0.2827433388230814,
+      "qUltKPa": 2900,
+      "qultKn": 819.9556825869361,
+      "z50M": 0.0078,
+      "suctionRatio": 0.05,
+      "source": "API sand q-z: Q/Qp=0.5 at z/D=0.013"
+    },
+    "note": "t-z: fs,max=K0·sigma_v_eff·tan(delta), delta=interfaceFactor·phi; 50% a z=0.05 in. q-z: Nq per densità relativa e 50% a z/D=0.013."
+  }
+}

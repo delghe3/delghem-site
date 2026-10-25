@@ -1,4 +1,4 @@
-import { messages as dictionaries } from './locales.js?v=20261025-showcase8';
+import { messages as dictionaries } from './locales.js?v=20261025-showcase9';
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const italian = dictionaries.it;
@@ -154,8 +154,36 @@ mediaPreference.addEventListener('change', () => {
   renderMotion();
 });
 
+// Preserve access to original engineering evidence when its contents
+// live in an optional compact technical panel.
+function openTechnicalAncestor(node){
+  const item=node?.closest('details.technical-library-details');
+  if(item&&!item.open)item.open=true;
+  return item;
+}
+function openTechnicalHash(){
+  const hash=location.hash?.slice(1);
+  if(!hash)return;
+  const target=document.getElementById(decodeURIComponent(hash));
+  if(target)openTechnicalAncestor(target);
+}
+document.addEventListener('click',event=>{
+  const anchor=event.target.closest?.('a[href^="#"]');
+  if(!anchor)return;
+  const hash=anchor.getAttribute('href')?.slice(1);
+  if(!hash)return;
+  const target=document.getElementById(decodeURIComponent(hash));
+  if(target)openTechnicalAncestor(target);
+},true);
+window.addEventListener('hashchange',openTechnicalHash);
+if(location.hash)requestAnimationFrame(()=>{
+  openTechnicalHash();
+  const target=document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  target?.scrollIntoView({behavior:'instant',block:'start'});
+});
 function presentationGo(index) {
   presentationIndex = Math.min(chapters.length - 1, Math.max(0, index));
+  openTechnicalAncestor(chapters[presentationIndex]);
   chapters[presentationIndex].scrollIntoView({ behavior: motion && !mediaPreference.matches ? 'smooth' : 'instant', block: 'start' });
   updatePresentationPosition();
 }
@@ -187,7 +215,12 @@ function onScroll() {
     if (presentationActive) {
       let nearest = 0;
       let distance = Infinity;
-      chapters.forEach((chapter, index) => { const top = Math.abs(chapter.getBoundingClientRect().top - 80); if (top < distance) { nearest = index; distance = top; } });
+      chapters.forEach((chapter, index) => {
+        const panel=chapter.closest('details.technical-library-details');
+        if(panel&&!panel.open)return;
+        const top=Math.abs(chapter.getBoundingClientRect().top-80);
+        if(top<distance){nearest=index;distance=top;}
+      });
       presentationIndex = nearest;
       updatePresentationPosition();
     }
@@ -199,6 +232,6 @@ window.addEventListener('scroll', onScroll, { passive: true });
 updateLanguage(language);
 onScroll();
 $('#structure-canvas').tabIndex = 0;
-import('./model-stage.js?v=20261025-showcase8').then(({ initModelStage }) => { modelStage = initModelStage(); renderMotion(); }).catch(error => { console.error('Unable to initialize the illustrative model', error); });
+import('./model-stage.js?v=20261025-showcase9').then(({ initModelStage }) => { modelStage = initModelStage(); renderMotion(); }).catch(error => { console.error('Unable to initialize the illustrative model', error); });
 
 // Trusted static translations. A separate opt-in-free visit counter requests an external aggregate counter; no cookies are set by this module.

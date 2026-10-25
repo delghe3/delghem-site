@@ -1,0 +1,118 @@
+{
+  "id": "layered-clay",
+  "name": "Ø600 mm pile in layered clay",
+  "lengthM": 15,
+  "diameterM": 0.6,
+  "EGPa": 30,
+  "segments": 30,
+  "headNKn": 700,
+  "tolerance": 1e-9,
+  "maxIterations": 100,
+  "shaft": [
+    {
+      "topM": 0,
+      "bottomM": 5,
+      "tultKnM": 0,
+      "tultGradientKnM2": 7.9971892886850595,
+      "z50M": 0.0018599999999999999,
+      "z50GradientMPerM": 0
+    },
+    {
+      "topM": 5,
+      "bottomM": 15,
+      "tultKnM": 59.074191412341484,
+      "tultGradientKnM2": 3.5877815519556115,
+      "z50M": 0.0018599999999999999,
+      "z50GradientMPerM": 0
+    }
+  ],
+  "tip": {
+    "qultKn": 178.12830345854127,
+    "z50M": 0.0078,
+    "suctionRatio": 0.05
+  },
+  "geotechAudit": {
+    "method": "api-clay-tz-qz-monotonic",
+    "source": "API clay alpha method + API normalized t-z/q-z",
+    "residualRatio": null,
+    "layers": [
+      {
+        "index": 1,
+        "input": {
+          "topM": 0,
+          "bottomM": 5,
+          "cuKPa": 40,
+          "gammaEffKnM3": 9
+        },
+        "top": {
+          "diameterM": 0.6,
+          "cuKPa": 40,
+          "sigmaVeffKPa": 0,
+          "psi": null,
+          "alpha": 0,
+          "fsMaxKPa": 0,
+          "perimeterM": 1.8849555921538759,
+          "tultKnM": 0,
+          "z50M": 0.0018599999999999999,
+          "source": "API clay alpha method; t/tmax=0.5 at z/D=0.0031"
+        },
+        "bottom": {
+          "diameterM": 0.6,
+          "cuKPa": 40,
+          "sigmaVeffKPa": 45,
+          "psi": 0.8888888888888888,
+          "alpha": 0.5303300858899107,
+          "fsMaxKPa": 21.213203435596427,
+          "perimeterM": 1.8849555921538759,
+          "tultKnM": 39.9859464434253,
+          "z50M": 0.0018599999999999999,
+          "source": "API clay alpha method; t/tmax=0.5 at z/D=0.0031"
+        }
+      },
+      {
+        "index": 2,
+        "input": {
+          "topM": 5,
+          "bottomM": 15,
+          "cuKPa": 70,
+          "gammaEffKnM3": 10
+        },
+        "top": {
+          "diameterM": 0.6,
+          "cuKPa": 70,
+          "sigmaVeffKPa": 45,
+          "psi": 1.5555555555555556,
+          "alpha": 0.4477118844014734,
+          "fsMaxKPa": 31.33983190810314,
+          "perimeterM": 1.8849555921538759,
+          "tultKnM": 59.074191412341484,
+          "z50M": 0.0018599999999999999,
+          "source": "API clay alpha method; t/tmax=0.5 at z/D=0.0031"
+        },
+        "bottom": {
+          "diameterM": 0.6,
+          "cuKPa": 70,
+          "sigmaVeffKPa": 145,
+          "psi": 0.4827586206896552,
+          "alpha": 0.7196229171289245,
+          "fsMaxKPa": 50.37360419902471,
+          "perimeterM": 1.8849555921538759,
+          "tultKnM": 94.9520069318976,
+          "z50M": 0.0018599999999999999,
+          "source": "API clay alpha method; t/tmax=0.5 at z/D=0.0031"
+        }
+      }
+    ],
+    "tip": {
+      "diameterM": 0.6,
+      "cuKPa": 70,
+      "areaM2": 0.2827433388230814,
+      "qUltKPa": 630,
+      "qultKn": 178.12830345854127,
+      "z50M": 0.0078,
+      "suctionRatio": 0.05,
+      "source": "API cohesive tip q=9su; q/qmax=0.5 at z/D=0.013"
+    },
+    "note": "Backbone Hyperfem monotono calibrato al 50%: t-z usa z50=0.0031D e q-z z50=0.013D. Il softening API post-picco non è attivo."
+  }
+}

@@ -38,7 +38,7 @@ test('Unrendered FEM model has an immediately visible real solver poster instead
 });
 test('All 11 computed charts have visible solver-derived image fallbacks when JavaScript cannot initialize',()=>{
  for(const page of ['index.html','it/index.html']){
-  const html=file(page),section=html.slice(html.indexOf('<section class="fem-lab-section'),html.indexOf('<section class="genius-section'));
+  const html=file(page),section=html.slice(html.indexOf('<section class="fem-lab-section'),html.indexOf('<section class="engineering-benchmarks'));
   for(const id of graphIds){
    const pattern=new RegExp('<svg id="'+id+'"[^>]*><\\/svg>\\s*<img[^>]*class="lab-static-fallback"[^>]+src="[^"]*\\/gallery\\/[^"]+\\.webp"');
    assert.match(section,pattern,page+': '+id+' needs immediate credible fallback');

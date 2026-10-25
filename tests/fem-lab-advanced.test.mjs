@@ -10,7 +10,7 @@ const json=path=>JSON.parse(read(path));
 const real=(s)=>s&&typeof s==='number'&&Number.isFinite(s);
 test('Scrolling FEM laboratory shows four analytical chapters without click-to-reveal tabs',{timeout:10000},()=>{
  for(const lang of ['index.html','it/index.html']){
-  const html=read(lang),s=html.slice(html.indexOf('<section class="fem-lab-section'),html.indexOf('<section class="genius-section'));
+  const html=read(lang),s=html.slice(html.indexOf('<section class="fem-lab-section'),html.indexOf('<section class="engineering-benchmarks'));
   assert.ok(s.length>6000,lang);
   assert.doesNotMatch(s,/data-lab-tab/);
   assert.doesNotMatch(s,/role="tabpanel"/);
