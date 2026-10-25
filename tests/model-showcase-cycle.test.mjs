@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const read=p=>readFileSync(resolve(root,p),'utf8');
 const sha=p=>createHash('sha256').update(readFileSync(resolve(root,p))).digest('hex');
-const models=['football-canopy','steel-arch-bridge','timber-terminal'];
+const models=['football-canopy','steel-arch-bridge','timber-terminal','masonry-aggregate'];
 test('Existing eight-storey D2 conceptual building stays the FIRST model unchanged in native form',async()=>{
  const source=JSON.parse(read('assets/real-d2/complex-demonstration.hfm.json'));
  const {complexDemo}=await import('../assets/real-d2/complex-demo-geometry.mjs');
@@ -21,10 +21,10 @@ test('Existing eight-storey D2 conceptual building stays the FIRST model unchang
  assert.match(stage,/complexDemo/);
  assert.match(stage,/MODEL_SHOWCASE_DURATION_MS\s*=\s*5000/);
 });
-test('Three distinct advanced structural concepts are real validated D2-native JSON files and not rendered stock images',async()=>{
+test('Four distinct advanced structural concepts are real validated D2-native JSON files and not rendered stock images',async()=>{
  const module=await import('../assets/real-d2/showcase-geometry.mjs');
  assert.deepEqual(module.showcaseModels.map(m=>m.id),models);
- assert.equal(module.showcaseModels.length,3);
+ assert.equal(module.showcaseModels.length,4);
  for(const m of module.showcaseModels){
   assert.equal(m.source.modelFile,'showcase-'+m.id+'.hfm.json');
   const file='assets/real-d2/'+m.source.modelFile;
@@ -35,8 +35,8 @@ test('Three distinct advanced structural concepts are real validated D2-native J
   assert.equal(json.nodes.length,m.nodes.length,m.id);
   assert.equal(json.members.length,m.members.length,m.id);
   assert.equal(json.shells.length,m.shells.length,m.id);
-  assert.equal(json.foundationSystem.items.filter(f=>f.type==='direct').length,m.footings.length,m.id);
-  assert.ok(json.sections.length>=6&&json.materials.length>=2);
+  assert.equal((json.foundationSystem?.items??[]).filter(f=>f.type==='direct').length,m.footings.length,m.id);
+  assert.ok(json.sections.length>=3&&json.materials.length>=2);
   assert.ok(m.nodes.length>=80&&m.members.length>=170,m.id);
   assert.deepEqual(m.qualifications,{solved:false,designed:false,executive:false});
   assert.ok(m.titleIt&&m.titleEn&&m.subtitleIt&&m.subtitleEn,m.id);
@@ -63,7 +63,9 @@ test('Arch bridge is a tied twin-rib arch with structural steel hangers and RC d
  for(const name of ['arch-upper-rib','arch-lower-rib','arch-lattice','arch-hanger','deck-tie','deck-crossbeam'])assert.ok(kind.has(name),name);
  assert.ok(m.members.filter(x=>x.kind==='arch-hanger').length>=14);
  assert.ok(m.shells.filter(s=>s.kind==='rc-bridge-deck').length>=12);
- assert.ok(m.footings.length>=4);
+ assert.equal(m.footings.length,0);
+ assert.equal(m.supports.filter(b=>b.kind==='hinge').length,2);
+ assert.equal(m.supports.filter(b=>b.kind==='roller').length,2);
 });
 test('Third concept is a naturally curved multi-bay engineered timber terminal with native laminated shell roof and RC/steel elements',async()=>{
  const {showcaseModels}=await import('../assets/real-d2/showcase-geometry.mjs');
@@ -75,7 +77,7 @@ test('Third concept is a naturally curved multi-bay engineered timber terminal w
  assert.ok(original.laminates.length>=1);
  assert.ok(original.shells.filter(s=>s.material==='M_WOOD').every(s=>s.laminate));
 });
-test('The hero provides four selectable five-second cards, a visible progress track, pause and arrow controls in both languages',()=>{
+test('The hero provides five selectable five-second cards, a visible progress track, pause and arrow controls in both languages',()=>{
  for(const p of ['index.html','it/index.html']){
   const h=read(p);
   assert.match(h,/id="model-showcase"/);
@@ -85,7 +87,7 @@ test('The hero provides four selectable five-second cards, a visible progress tr
   assert.match(h,/id="model-showcase-pause"/);
   assert.match(h,/id="model-showcase-title"/);
   assert.match(h,/id="model-showcase-counter"/);
-  assert.match(h,/data-showcase-index="3"/);
+  assert.match(h,/data-showcase-index="4"/);
  }
  const js=read('model-stage.js');
  assert.match(js,/MODEL_SHOWCASE_DURATION_MS/);

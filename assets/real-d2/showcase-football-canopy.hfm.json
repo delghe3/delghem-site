@@ -258,7 +258,7 @@
       "springs": [
         0,
         0,
-        151200,
+        253800,
         0,
         0,
         0
@@ -308,7 +308,7 @@
       "springs": [
         0,
         0,
-        151200,
+        253800,
         0,
         0,
         0
@@ -694,7 +694,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -744,7 +744,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -1130,7 +1130,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -1180,7 +1180,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -1566,7 +1566,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -1616,7 +1616,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -2002,7 +2002,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -2052,7 +2052,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -2438,7 +2438,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -2488,7 +2488,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -2874,7 +2874,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -2924,7 +2924,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -3310,7 +3310,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -3360,7 +3360,7 @@
       "springs": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -3746,7 +3746,7 @@
       "springs": [
         0,
         0,
-        151200,
+        253800,
         0,
         0,
         0
@@ -3796,7 +3796,7 @@
       "springs": [
         0,
         0,
-        151200,
+        253800,
         0,
         0,
         0
@@ -11099,6 +11099,278 @@
         1,
         0
       ]
+    },
+    {
+      "id": "B614",
+      "n1": "N92",
+      "n2": "N123",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B615",
+      "n1": "N122",
+      "n2": "N93",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B616",
+      "n1": "N122",
+      "n2": "N153",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B617",
+      "n1": "N152",
+      "n2": "N123",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B618",
+      "n1": "N95",
+      "n2": "N126",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B619",
+      "n1": "N125",
+      "n2": "N96",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B620",
+      "n1": "N125",
+      "n2": "N156",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B621",
+      "n1": "N155",
+      "n2": "N126",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B622",
+      "n1": "N1",
+      "n2": "N31",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B623",
+      "n1": "N31",
+      "n2": "N61",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B624",
+      "n1": "N61",
+      "n2": "N91",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B625",
+      "n1": "N91",
+      "n2": "N121",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B626",
+      "n1": "N121",
+      "n2": "N151",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B627",
+      "n1": "N151",
+      "n2": "N181",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B628",
+      "n1": "N181",
+      "n2": "N211",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B629",
+      "n1": "N211",
+      "n2": "N241",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B630",
+      "n1": "N4",
+      "n2": "N34",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B631",
+      "n1": "N34",
+      "n2": "N64",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B632",
+      "n1": "N64",
+      "n2": "N94",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B633",
+      "n1": "N94",
+      "n2": "N124",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B634",
+      "n1": "N124",
+      "n2": "N154",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B635",
+      "n1": "N154",
+      "n2": "N184",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B636",
+      "n1": "N184",
+      "n2": "N214",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B637",
+      "n1": "N214",
+      "n2": "N244",
+      "material": "M_RC",
+      "section": "S_RC_T",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
     }
   ],
   "shells": [
@@ -12436,6 +12708,102 @@
         "depthM": 0.95,
         "gammaR": 1.4,
         "mu": 0.48
+      },
+      {
+        "id": "W1",
+        "type": "winkler",
+        "memberId": "B622",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W2",
+        "type": "winkler",
+        "memberId": "B623",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W3",
+        "type": "winkler",
+        "memberId": "B624",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W4",
+        "type": "winkler",
+        "memberId": "B625",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W5",
+        "type": "winkler",
+        "memberId": "B626",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W6",
+        "type": "winkler",
+        "memberId": "B627",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W7",
+        "type": "winkler",
+        "memberId": "B628",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W8",
+        "type": "winkler",
+        "memberId": "B629",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W9",
+        "type": "winkler",
+        "memberId": "B630",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W10",
+        "type": "winkler",
+        "memberId": "B631",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W11",
+        "type": "winkler",
+        "memberId": "B632",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W12",
+        "type": "winkler",
+        "memberId": "B633",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W13",
+        "type": "winkler",
+        "memberId": "B634",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W14",
+        "type": "winkler",
+        "memberId": "B635",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W15",
+        "type": "winkler",
+        "memberId": "B636",
+        "contactWidthM": 0.8
+      },
+      {
+        "id": "W16",
+        "type": "winkler",
+        "memberId": "B637",
+        "contactWidthM": 0.8
       }
     ],
     "soilLayers": [
@@ -12780,7 +13148,7 @@
       "N1": [
         0,
         0,
-        151200,
+        253800,
         0,
         0,
         0
@@ -12788,7 +13156,7 @@
       "N4": [
         0,
         0,
-        151200,
+        253800,
         0,
         0,
         0
@@ -12796,7 +13164,7 @@
       "N31": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12804,7 +13172,7 @@
       "N34": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12812,7 +13180,7 @@
       "N61": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12820,7 +13188,7 @@
       "N64": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12828,7 +13196,7 @@
       "N91": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12836,7 +13204,7 @@
       "N94": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12844,7 +13212,7 @@
       "N121": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12852,7 +13220,7 @@
       "N124": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12860,7 +13228,7 @@
       "N151": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12868,7 +13236,7 @@
       "N154": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12876,7 +13244,7 @@
       "N181": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12884,7 +13252,7 @@
       "N184": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12892,7 +13260,7 @@
       "N211": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12900,7 +13268,7 @@
       "N214": [
         0,
         0,
-        151200,
+        356400,
         0,
         0,
         0
@@ -12908,7 +13276,7 @@
       "N241": [
         0,
         0,
-        151200,
+        253800,
         0,
         0,
         0
@@ -12916,7 +13284,7 @@
       "N244": [
         0,
         0,
-        151200,
+        253800,
         0,
         0,
         0

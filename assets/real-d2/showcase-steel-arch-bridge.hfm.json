@@ -246,33 +246,25 @@
       "id": "N1",
       "x": 0,
       "y": -6.4,
-      "z": 0,
+      "z": 12,
       "fixed": [
         true,
         true,
+        true,
         false,
-        true,
-        true,
-        true
-      ],
-      "springs": [
-        0,
-        0,
-        151200,
-        0,
-        0,
-        0
+        false,
+        false
       ]
     },
     {
       "id": "N2",
       "x": 0,
-      "y": -6.4,
+      "y": 6.4,
       "z": 12,
       "fixed": [
-        false,
-        false,
-        false,
+        true,
+        true,
+        true,
         false,
         false,
         false
@@ -280,35 +272,27 @@
     },
     {
       "id": "N3",
-      "x": 0,
-      "y": 6.4,
-      "z": 0,
+      "x": 96,
+      "y": -6.4,
+      "z": 12,
       "fixed": [
-        true,
-        true,
         false,
         true,
         true,
-        true
-      ],
-      "springs": [
-        0,
-        0,
-        151200,
-        0,
-        0,
-        0
+        false,
+        false,
+        false
       ]
     },
     {
       "id": "N4",
-      "x": 0,
+      "x": 96,
       "y": 6.4,
       "z": 12,
       "fixed": [
         false,
-        false,
-        false,
+        true,
+        true,
         false,
         false,
         false
@@ -316,78 +300,6 @@
     },
     {
       "id": "N5",
-      "x": 96,
-      "y": -6.4,
-      "z": 0,
-      "fixed": [
-        true,
-        true,
-        false,
-        true,
-        true,
-        true
-      ],
-      "springs": [
-        0,
-        0,
-        151200,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "N6",
-      "x": 96,
-      "y": -6.4,
-      "z": 12,
-      "fixed": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ]
-    },
-    {
-      "id": "N7",
-      "x": 96,
-      "y": 6.4,
-      "z": 0,
-      "fixed": [
-        true,
-        true,
-        false,
-        true,
-        true,
-        true
-      ],
-      "springs": [
-        0,
-        0,
-        151200,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "N8",
-      "x": 96,
-      "y": 6.4,
-      "z": 12,
-      "fixed": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ]
-    },
-    {
-      "id": "N9",
       "x": 8,
       "y": -6.4,
       "z": 12,
@@ -401,7 +313,7 @@
       ]
     },
     {
-      "id": "N10",
+      "id": "N6",
       "x": 8,
       "y": -6.4,
       "z": 19.63889,
@@ -415,7 +327,7 @@
       ]
     },
     {
-      "id": "N11",
+      "id": "N7",
       "x": 8,
       "y": -6.4,
       "z": 17.03889,
@@ -429,7 +341,7 @@
       ]
     },
     {
-      "id": "N12",
+      "id": "N8",
       "x": 16,
       "y": -6.4,
       "z": 12,
@@ -443,7 +355,7 @@
       ]
     },
     {
-      "id": "N13",
+      "id": "N9",
       "x": 16,
       "y": -6.4,
       "z": 25.88889,
@@ -457,7 +369,7 @@
       ]
     },
     {
-      "id": "N14",
+      "id": "N10",
       "x": 16,
       "y": -6.4,
       "z": 23.28889,
@@ -471,7 +383,7 @@
       ]
     },
     {
-      "id": "N15",
+      "id": "N11",
       "x": 24,
       "y": -6.4,
       "z": 12,
@@ -485,7 +397,7 @@
       ]
     },
     {
-      "id": "N16",
+      "id": "N12",
       "x": 24,
       "y": -6.4,
       "z": 30.75,
@@ -499,7 +411,7 @@
       ]
     },
     {
-      "id": "N17",
+      "id": "N13",
       "x": 24,
       "y": -6.4,
       "z": 28.15,
@@ -513,7 +425,7 @@
       ]
     },
     {
-      "id": "N18",
+      "id": "N14",
       "x": 32,
       "y": -6.4,
       "z": 12,
@@ -527,7 +439,7 @@
       ]
     },
     {
-      "id": "N19",
+      "id": "N15",
       "x": 32,
       "y": -6.4,
       "z": 34.22222,
@@ -541,7 +453,7 @@
       ]
     },
     {
-      "id": "N20",
+      "id": "N16",
       "x": 32,
       "y": -6.4,
       "z": 31.62222,
@@ -555,7 +467,7 @@
       ]
     },
     {
-      "id": "N21",
+      "id": "N17",
       "x": 40,
       "y": -6.4,
       "z": 12,
@@ -569,7 +481,7 @@
       ]
     },
     {
-      "id": "N22",
+      "id": "N18",
       "x": 40,
       "y": -6.4,
       "z": 36.30556,
@@ -583,7 +495,7 @@
       ]
     },
     {
-      "id": "N23",
+      "id": "N19",
       "x": 40,
       "y": -6.4,
       "z": 33.70556,
@@ -597,7 +509,7 @@
       ]
     },
     {
-      "id": "N24",
+      "id": "N20",
       "x": 48,
       "y": -6.4,
       "z": 12,
@@ -611,7 +523,7 @@
       ]
     },
     {
-      "id": "N25",
+      "id": "N21",
       "x": 48,
       "y": -6.4,
       "z": 37,
@@ -625,7 +537,7 @@
       ]
     },
     {
-      "id": "N26",
+      "id": "N22",
       "x": 48,
       "y": -6.4,
       "z": 34.4,
@@ -639,7 +551,7 @@
       ]
     },
     {
-      "id": "N27",
+      "id": "N23",
       "x": 56,
       "y": -6.4,
       "z": 12,
@@ -653,7 +565,7 @@
       ]
     },
     {
-      "id": "N28",
+      "id": "N24",
       "x": 56,
       "y": -6.4,
       "z": 36.30556,
@@ -667,7 +579,7 @@
       ]
     },
     {
-      "id": "N29",
+      "id": "N25",
       "x": 56,
       "y": -6.4,
       "z": 33.70556,
@@ -681,7 +593,7 @@
       ]
     },
     {
-      "id": "N30",
+      "id": "N26",
       "x": 64,
       "y": -6.4,
       "z": 12,
@@ -695,7 +607,7 @@
       ]
     },
     {
-      "id": "N31",
+      "id": "N27",
       "x": 64,
       "y": -6.4,
       "z": 34.22222,
@@ -709,7 +621,7 @@
       ]
     },
     {
-      "id": "N32",
+      "id": "N28",
       "x": 64,
       "y": -6.4,
       "z": 31.62222,
@@ -723,7 +635,7 @@
       ]
     },
     {
-      "id": "N33",
+      "id": "N29",
       "x": 72,
       "y": -6.4,
       "z": 12,
@@ -737,7 +649,7 @@
       ]
     },
     {
-      "id": "N34",
+      "id": "N30",
       "x": 72,
       "y": -6.4,
       "z": 30.75,
@@ -751,7 +663,7 @@
       ]
     },
     {
-      "id": "N35",
+      "id": "N31",
       "x": 72,
       "y": -6.4,
       "z": 28.15,
@@ -765,7 +677,7 @@
       ]
     },
     {
-      "id": "N36",
+      "id": "N32",
       "x": 80,
       "y": -6.4,
       "z": 12,
@@ -779,7 +691,7 @@
       ]
     },
     {
-      "id": "N37",
+      "id": "N33",
       "x": 80,
       "y": -6.4,
       "z": 25.88889,
@@ -793,7 +705,7 @@
       ]
     },
     {
-      "id": "N38",
+      "id": "N34",
       "x": 80,
       "y": -6.4,
       "z": 23.28889,
@@ -807,7 +719,7 @@
       ]
     },
     {
-      "id": "N39",
+      "id": "N35",
       "x": 88,
       "y": -6.4,
       "z": 12,
@@ -821,7 +733,7 @@
       ]
     },
     {
-      "id": "N40",
+      "id": "N36",
       "x": 88,
       "y": -6.4,
       "z": 19.63889,
@@ -835,7 +747,7 @@
       ]
     },
     {
-      "id": "N41",
+      "id": "N37",
       "x": 88,
       "y": -6.4,
       "z": 17.03889,
@@ -849,8 +761,64 @@
       ]
     },
     {
-      "id": "N42",
+      "id": "N38",
       "x": 0,
+      "y": -6.4,
+      "z": 13.45,
+      "fixed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "N39",
+      "x": 8,
+      "y": -6.4,
+      "z": 13.45,
+      "fixed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "N40",
+      "x": 16,
+      "y": -6.4,
+      "z": 13.45,
+      "fixed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "N41",
+      "x": 24,
+      "y": -6.4,
+      "z": 13.45,
+      "fixed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "N42",
+      "x": 32,
       "y": -6.4,
       "z": 13.45,
       "fixed": [
@@ -864,7 +832,7 @@
     },
     {
       "id": "N43",
-      "x": 8,
+      "x": 40,
       "y": -6.4,
       "z": 13.45,
       "fixed": [
@@ -878,7 +846,7 @@
     },
     {
       "id": "N44",
-      "x": 16,
+      "x": 48,
       "y": -6.4,
       "z": 13.45,
       "fixed": [
@@ -892,7 +860,7 @@
     },
     {
       "id": "N45",
-      "x": 24,
+      "x": 56,
       "y": -6.4,
       "z": 13.45,
       "fixed": [
@@ -906,7 +874,7 @@
     },
     {
       "id": "N46",
-      "x": 32,
+      "x": 64,
       "y": -6.4,
       "z": 13.45,
       "fixed": [
@@ -920,7 +888,7 @@
     },
     {
       "id": "N47",
-      "x": 40,
+      "x": 72,
       "y": -6.4,
       "z": 13.45,
       "fixed": [
@@ -934,7 +902,7 @@
     },
     {
       "id": "N48",
-      "x": 48,
+      "x": 80,
       "y": -6.4,
       "z": 13.45,
       "fixed": [
@@ -948,7 +916,7 @@
     },
     {
       "id": "N49",
-      "x": 56,
+      "x": 88,
       "y": -6.4,
       "z": 13.45,
       "fixed": [
@@ -962,7 +930,7 @@
     },
     {
       "id": "N50",
-      "x": 64,
+      "x": 96,
       "y": -6.4,
       "z": 13.45,
       "fixed": [
@@ -976,62 +944,6 @@
     },
     {
       "id": "N51",
-      "x": 72,
-      "y": -6.4,
-      "z": 13.45,
-      "fixed": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ]
-    },
-    {
-      "id": "N52",
-      "x": 80,
-      "y": -6.4,
-      "z": 13.45,
-      "fixed": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ]
-    },
-    {
-      "id": "N53",
-      "x": 88,
-      "y": -6.4,
-      "z": 13.45,
-      "fixed": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ]
-    },
-    {
-      "id": "N54",
-      "x": 96,
-      "y": -6.4,
-      "z": 13.45,
-      "fixed": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ]
-    },
-    {
-      "id": "N55",
       "x": 8,
       "y": 6.4,
       "z": 12,
@@ -1045,7 +957,7 @@
       ]
     },
     {
-      "id": "N56",
+      "id": "N52",
       "x": 8,
       "y": 6.4,
       "z": 19.63889,
@@ -1059,7 +971,7 @@
       ]
     },
     {
-      "id": "N57",
+      "id": "N53",
       "x": 8,
       "y": 6.4,
       "z": 17.03889,
@@ -1073,7 +985,7 @@
       ]
     },
     {
-      "id": "N58",
+      "id": "N54",
       "x": 16,
       "y": 6.4,
       "z": 12,
@@ -1087,7 +999,7 @@
       ]
     },
     {
-      "id": "N59",
+      "id": "N55",
       "x": 16,
       "y": 6.4,
       "z": 25.88889,
@@ -1101,7 +1013,7 @@
       ]
     },
     {
-      "id": "N60",
+      "id": "N56",
       "x": 16,
       "y": 6.4,
       "z": 23.28889,
@@ -1115,7 +1027,7 @@
       ]
     },
     {
-      "id": "N61",
+      "id": "N57",
       "x": 24,
       "y": 6.4,
       "z": 12,
@@ -1129,7 +1041,7 @@
       ]
     },
     {
-      "id": "N62",
+      "id": "N58",
       "x": 24,
       "y": 6.4,
       "z": 30.75,
@@ -1143,7 +1055,7 @@
       ]
     },
     {
-      "id": "N63",
+      "id": "N59",
       "x": 24,
       "y": 6.4,
       "z": 28.15,
@@ -1157,7 +1069,7 @@
       ]
     },
     {
-      "id": "N64",
+      "id": "N60",
       "x": 32,
       "y": 6.4,
       "z": 12,
@@ -1171,7 +1083,7 @@
       ]
     },
     {
-      "id": "N65",
+      "id": "N61",
       "x": 32,
       "y": 6.4,
       "z": 34.22222,
@@ -1185,7 +1097,7 @@
       ]
     },
     {
-      "id": "N66",
+      "id": "N62",
       "x": 32,
       "y": 6.4,
       "z": 31.62222,
@@ -1199,7 +1111,7 @@
       ]
     },
     {
-      "id": "N67",
+      "id": "N63",
       "x": 40,
       "y": 6.4,
       "z": 12,
@@ -1213,7 +1125,7 @@
       ]
     },
     {
-      "id": "N68",
+      "id": "N64",
       "x": 40,
       "y": 6.4,
       "z": 36.30556,
@@ -1227,7 +1139,7 @@
       ]
     },
     {
-      "id": "N69",
+      "id": "N65",
       "x": 40,
       "y": 6.4,
       "z": 33.70556,
@@ -1241,7 +1153,7 @@
       ]
     },
     {
-      "id": "N70",
+      "id": "N66",
       "x": 48,
       "y": 6.4,
       "z": 12,
@@ -1255,7 +1167,7 @@
       ]
     },
     {
-      "id": "N71",
+      "id": "N67",
       "x": 48,
       "y": 6.4,
       "z": 37,
@@ -1269,7 +1181,7 @@
       ]
     },
     {
-      "id": "N72",
+      "id": "N68",
       "x": 48,
       "y": 6.4,
       "z": 34.4,
@@ -1283,7 +1195,7 @@
       ]
     },
     {
-      "id": "N73",
+      "id": "N69",
       "x": 56,
       "y": 6.4,
       "z": 12,
@@ -1297,7 +1209,7 @@
       ]
     },
     {
-      "id": "N74",
+      "id": "N70",
       "x": 56,
       "y": 6.4,
       "z": 36.30556,
@@ -1311,7 +1223,7 @@
       ]
     },
     {
-      "id": "N75",
+      "id": "N71",
       "x": 56,
       "y": 6.4,
       "z": 33.70556,
@@ -1325,7 +1237,7 @@
       ]
     },
     {
-      "id": "N76",
+      "id": "N72",
       "x": 64,
       "y": 6.4,
       "z": 12,
@@ -1339,7 +1251,7 @@
       ]
     },
     {
-      "id": "N77",
+      "id": "N73",
       "x": 64,
       "y": 6.4,
       "z": 34.22222,
@@ -1353,7 +1265,7 @@
       ]
     },
     {
-      "id": "N78",
+      "id": "N74",
       "x": 64,
       "y": 6.4,
       "z": 31.62222,
@@ -1367,7 +1279,7 @@
       ]
     },
     {
-      "id": "N79",
+      "id": "N75",
       "x": 72,
       "y": 6.4,
       "z": 12,
@@ -1381,7 +1293,7 @@
       ]
     },
     {
-      "id": "N80",
+      "id": "N76",
       "x": 72,
       "y": 6.4,
       "z": 30.75,
@@ -1395,7 +1307,7 @@
       ]
     },
     {
-      "id": "N81",
+      "id": "N77",
       "x": 72,
       "y": 6.4,
       "z": 28.15,
@@ -1409,7 +1321,7 @@
       ]
     },
     {
-      "id": "N82",
+      "id": "N78",
       "x": 80,
       "y": 6.4,
       "z": 12,
@@ -1423,7 +1335,7 @@
       ]
     },
     {
-      "id": "N83",
+      "id": "N79",
       "x": 80,
       "y": 6.4,
       "z": 25.88889,
@@ -1437,7 +1349,7 @@
       ]
     },
     {
-      "id": "N84",
+      "id": "N80",
       "x": 80,
       "y": 6.4,
       "z": 23.28889,
@@ -1451,7 +1363,7 @@
       ]
     },
     {
-      "id": "N85",
+      "id": "N81",
       "x": 88,
       "y": 6.4,
       "z": 12,
@@ -1465,7 +1377,7 @@
       ]
     },
     {
-      "id": "N86",
+      "id": "N82",
       "x": 88,
       "y": 6.4,
       "z": 19.63889,
@@ -1479,7 +1391,7 @@
       ]
     },
     {
-      "id": "N87",
+      "id": "N83",
       "x": 88,
       "y": 6.4,
       "z": 17.03889,
@@ -1493,8 +1405,64 @@
       ]
     },
     {
-      "id": "N88",
+      "id": "N84",
       "x": 0,
+      "y": 6.4,
+      "z": 13.45,
+      "fixed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "N85",
+      "x": 8,
+      "y": 6.4,
+      "z": 13.45,
+      "fixed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "N86",
+      "x": 16,
+      "y": 6.4,
+      "z": 13.45,
+      "fixed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "N87",
+      "x": 24,
+      "y": 6.4,
+      "z": 13.45,
+      "fixed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "N88",
+      "x": 32,
       "y": 6.4,
       "z": 13.45,
       "fixed": [
@@ -1508,7 +1476,7 @@
     },
     {
       "id": "N89",
-      "x": 8,
+      "x": 40,
       "y": 6.4,
       "z": 13.45,
       "fixed": [
@@ -1522,7 +1490,7 @@
     },
     {
       "id": "N90",
-      "x": 16,
+      "x": 48,
       "y": 6.4,
       "z": 13.45,
       "fixed": [
@@ -1536,7 +1504,7 @@
     },
     {
       "id": "N91",
-      "x": 24,
+      "x": 56,
       "y": 6.4,
       "z": 13.45,
       "fixed": [
@@ -1550,7 +1518,7 @@
     },
     {
       "id": "N92",
-      "x": 32,
+      "x": 64,
       "y": 6.4,
       "z": 13.45,
       "fixed": [
@@ -1564,7 +1532,7 @@
     },
     {
       "id": "N93",
-      "x": 40,
+      "x": 72,
       "y": 6.4,
       "z": 13.45,
       "fixed": [
@@ -1578,7 +1546,7 @@
     },
     {
       "id": "N94",
-      "x": 48,
+      "x": 80,
       "y": 6.4,
       "z": 13.45,
       "fixed": [
@@ -1592,7 +1560,7 @@
     },
     {
       "id": "N95",
-      "x": 56,
+      "x": 88,
       "y": 6.4,
       "z": 13.45,
       "fixed": [
@@ -1606,62 +1574,6 @@
     },
     {
       "id": "N96",
-      "x": 64,
-      "y": 6.4,
-      "z": 13.45,
-      "fixed": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ]
-    },
-    {
-      "id": "N97",
-      "x": 72,
-      "y": 6.4,
-      "z": 13.45,
-      "fixed": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ]
-    },
-    {
-      "id": "N98",
-      "x": 80,
-      "y": 6.4,
-      "z": 13.45,
-      "fixed": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ]
-    },
-    {
-      "id": "N99",
-      "x": 88,
-      "y": 6.4,
-      "z": 13.45,
-      "fixed": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ]
-    },
-    {
-      "id": "N100",
       "x": 96,
       "y": 6.4,
       "z": 13.45,
@@ -1675,7 +1587,7 @@
       ]
     },
     {
-      "id": "N101",
+      "id": "N97",
       "x": 0,
       "y": 0,
       "z": 12,
@@ -1689,7 +1601,7 @@
       ]
     },
     {
-      "id": "N102",
+      "id": "N98",
       "x": 8,
       "y": 0,
       "z": 12,
@@ -1703,7 +1615,7 @@
       ]
     },
     {
-      "id": "N103",
+      "id": "N99",
       "x": 16,
       "y": 0,
       "z": 12,
@@ -1717,7 +1629,7 @@
       ]
     },
     {
-      "id": "N104",
+      "id": "N100",
       "x": 24,
       "y": 0,
       "z": 12,
@@ -1731,7 +1643,7 @@
       ]
     },
     {
-      "id": "N105",
+      "id": "N101",
       "x": 32,
       "y": 0,
       "z": 12,
@@ -1745,7 +1657,7 @@
       ]
     },
     {
-      "id": "N106",
+      "id": "N102",
       "x": 40,
       "y": 0,
       "z": 12,
@@ -1759,7 +1671,7 @@
       ]
     },
     {
-      "id": "N107",
+      "id": "N103",
       "x": 48,
       "y": 0,
       "z": 12,
@@ -1773,7 +1685,7 @@
       ]
     },
     {
-      "id": "N108",
+      "id": "N104",
       "x": 56,
       "y": 0,
       "z": 12,
@@ -1787,7 +1699,7 @@
       ]
     },
     {
-      "id": "N109",
+      "id": "N105",
       "x": 64,
       "y": 0,
       "z": 12,
@@ -1801,7 +1713,7 @@
       ]
     },
     {
-      "id": "N110",
+      "id": "N106",
       "x": 72,
       "y": 0,
       "z": 12,
@@ -1815,7 +1727,7 @@
       ]
     },
     {
-      "id": "N111",
+      "id": "N107",
       "x": 80,
       "y": 0,
       "z": 12,
@@ -1829,7 +1741,7 @@
       ]
     },
     {
-      "id": "N112",
+      "id": "N108",
       "x": 88,
       "y": 0,
       "z": 12,
@@ -1843,7 +1755,7 @@
       ]
     },
     {
-      "id": "N113",
+      "id": "N109",
       "x": 96,
       "y": 0,
       "z": 12,
@@ -1861,59 +1773,7 @@
     {
       "id": "B1",
       "n1": "N1",
-      "n2": "N2",
-      "material": "M_RC",
-      "section": "S_RC_C",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "B2",
-      "n1": "N3",
-      "n2": "N4",
-      "material": "M_RC",
-      "section": "S_RC_C",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "B3",
-      "n1": "N5",
-      "n2": "N6",
-      "material": "M_RC",
-      "section": "S_RC_C",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "B4",
-      "n1": "N7",
-      "n2": "N8",
-      "material": "M_RC",
-      "section": "S_RC_C",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "B5",
-      "n1": "N2",
-      "n2": "N9",
+      "n2": "N5",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -1924,9 +1784,9 @@
       ]
     },
     {
-      "id": "B6",
-      "n1": "N2",
-      "n2": "N10",
+      "id": "B2",
+      "n1": "N1",
+      "n2": "N6",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -1937,9 +1797,9 @@
       ]
     },
     {
-      "id": "B7",
-      "n1": "N2",
-      "n2": "N11",
+      "id": "B3",
+      "n1": "N1",
+      "n2": "N7",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -1950,9 +1810,56 @@
       ]
     },
     {
+      "id": "B4",
+      "n1": "N5",
+      "n2": "N8",
+      "material": "M_STEEL",
+      "section": "S_BEAM",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B5",
+      "n1": "N6",
+      "n2": "N9",
+      "material": "M_STEEL",
+      "section": "S_ARCH",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B6",
+      "n1": "N7",
+      "n2": "N10",
+      "material": "M_STEEL",
+      "section": "S_MID",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B7",
+      "n1": "N7",
+      "n2": "N9",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
       "id": "B8",
-      "n1": "N9",
-      "n2": "N12",
+      "n1": "N8",
+      "n2": "N11",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -1964,8 +1871,8 @@
     },
     {
       "id": "B9",
-      "n1": "N10",
-      "n2": "N13",
+      "n1": "N9",
+      "n2": "N12",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -1977,8 +1884,8 @@
     },
     {
       "id": "B10",
-      "n1": "N11",
-      "n2": "N14",
+      "n1": "N10",
+      "n2": "N13",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -1990,16 +1897,16 @@
     },
     {
       "id": "B11",
-      "n1": "N11",
-      "n2": "N13",
+      "n1": "N10",
+      "n2": "N12",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B12",
-      "n1": "N12",
-      "n2": "N15",
+      "n1": "N11",
+      "n2": "N14",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -2011,8 +1918,8 @@
     },
     {
       "id": "B13",
-      "n1": "N13",
-      "n2": "N16",
+      "n1": "N12",
+      "n2": "N15",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -2024,8 +1931,8 @@
     },
     {
       "id": "B14",
-      "n1": "N14",
-      "n2": "N17",
+      "n1": "N13",
+      "n2": "N16",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -2037,16 +1944,16 @@
     },
     {
       "id": "B15",
-      "n1": "N14",
-      "n2": "N16",
+      "n1": "N13",
+      "n2": "N15",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B16",
-      "n1": "N15",
-      "n2": "N18",
+      "n1": "N14",
+      "n2": "N17",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -2058,8 +1965,8 @@
     },
     {
       "id": "B17",
-      "n1": "N16",
-      "n2": "N19",
+      "n1": "N15",
+      "n2": "N18",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -2071,8 +1978,8 @@
     },
     {
       "id": "B18",
-      "n1": "N17",
-      "n2": "N20",
+      "n1": "N16",
+      "n2": "N19",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -2084,16 +1991,16 @@
     },
     {
       "id": "B19",
-      "n1": "N17",
-      "n2": "N19",
+      "n1": "N16",
+      "n2": "N18",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B20",
-      "n1": "N18",
-      "n2": "N21",
+      "n1": "N17",
+      "n2": "N20",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -2105,8 +2012,8 @@
     },
     {
       "id": "B21",
-      "n1": "N19",
-      "n2": "N22",
+      "n1": "N18",
+      "n2": "N21",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -2118,8 +2025,8 @@
     },
     {
       "id": "B22",
-      "n1": "N20",
-      "n2": "N23",
+      "n1": "N19",
+      "n2": "N22",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -2131,16 +2038,16 @@
     },
     {
       "id": "B23",
-      "n1": "N20",
-      "n2": "N22",
+      "n1": "N19",
+      "n2": "N21",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B24",
-      "n1": "N21",
-      "n2": "N24",
+      "n1": "N20",
+      "n2": "N23",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -2152,8 +2059,8 @@
     },
     {
       "id": "B25",
-      "n1": "N22",
-      "n2": "N25",
+      "n1": "N21",
+      "n2": "N24",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -2165,8 +2072,8 @@
     },
     {
       "id": "B26",
-      "n1": "N23",
-      "n2": "N26",
+      "n1": "N22",
+      "n2": "N25",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -2178,16 +2085,16 @@
     },
     {
       "id": "B27",
-      "n1": "N23",
-      "n2": "N25",
+      "n1": "N22",
+      "n2": "N24",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B28",
-      "n1": "N24",
-      "n2": "N27",
+      "n1": "N23",
+      "n2": "N26",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -2199,8 +2106,8 @@
     },
     {
       "id": "B29",
-      "n1": "N25",
-      "n2": "N28",
+      "n1": "N24",
+      "n2": "N27",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -2212,8 +2119,8 @@
     },
     {
       "id": "B30",
-      "n1": "N26",
-      "n2": "N29",
+      "n1": "N25",
+      "n2": "N28",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -2225,16 +2132,16 @@
     },
     {
       "id": "B31",
-      "n1": "N26",
-      "n2": "N28",
+      "n1": "N25",
+      "n2": "N27",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B32",
-      "n1": "N27",
-      "n2": "N30",
+      "n1": "N26",
+      "n2": "N29",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -2246,8 +2153,8 @@
     },
     {
       "id": "B33",
-      "n1": "N28",
-      "n2": "N31",
+      "n1": "N27",
+      "n2": "N30",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -2259,8 +2166,8 @@
     },
     {
       "id": "B34",
-      "n1": "N29",
-      "n2": "N32",
+      "n1": "N28",
+      "n2": "N31",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -2272,16 +2179,16 @@
     },
     {
       "id": "B35",
-      "n1": "N29",
-      "n2": "N31",
+      "n1": "N28",
+      "n2": "N30",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B36",
-      "n1": "N30",
-      "n2": "N33",
+      "n1": "N29",
+      "n2": "N32",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -2293,8 +2200,8 @@
     },
     {
       "id": "B37",
-      "n1": "N31",
-      "n2": "N34",
+      "n1": "N30",
+      "n2": "N33",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -2306,8 +2213,8 @@
     },
     {
       "id": "B38",
-      "n1": "N32",
-      "n2": "N35",
+      "n1": "N31",
+      "n2": "N34",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -2319,16 +2226,16 @@
     },
     {
       "id": "B39",
-      "n1": "N32",
-      "n2": "N34",
+      "n1": "N31",
+      "n2": "N33",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B40",
-      "n1": "N33",
-      "n2": "N36",
+      "n1": "N32",
+      "n2": "N35",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -2340,8 +2247,8 @@
     },
     {
       "id": "B41",
-      "n1": "N34",
-      "n2": "N37",
+      "n1": "N33",
+      "n2": "N36",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -2353,8 +2260,8 @@
     },
     {
       "id": "B42",
-      "n1": "N35",
-      "n2": "N38",
+      "n1": "N34",
+      "n2": "N37",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -2366,16 +2273,16 @@
     },
     {
       "id": "B43",
-      "n1": "N35",
-      "n2": "N37",
+      "n1": "N34",
+      "n2": "N36",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B44",
-      "n1": "N36",
-      "n2": "N39",
+      "n1": "N35",
+      "n2": "N3",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -2387,8 +2294,8 @@
     },
     {
       "id": "B45",
-      "n1": "N37",
-      "n2": "N40",
+      "n1": "N36",
+      "n2": "N3",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -2400,8 +2307,8 @@
     },
     {
       "id": "B46",
-      "n1": "N38",
-      "n2": "N41",
+      "n1": "N37",
+      "n2": "N3",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -2413,54 +2320,123 @@
     },
     {
       "id": "B47",
-      "n1": "N38",
-      "n2": "N40",
+      "n1": "N1",
+      "n2": "N38",
+      "material": "M_STEEL",
+      "section": "S_RAIL",
+      "type": "beam",
+      "orientation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B48",
+      "n1": "N5",
+      "n2": "N6",
+      "material": "M_STEEL",
+      "section": "S_HANGER",
+      "type": "truss"
+    },
+    {
+      "id": "B49",
+      "n1": "N7",
+      "n2": "N6",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B48",
-      "n1": "N39",
-      "n2": "N6",
-      "material": "M_STEEL",
-      "section": "S_BEAM",
-      "type": "beam",
-      "orientation": [
-        0,
-        1,
-        0
-      ]
-    },
-    {
-      "id": "B49",
-      "n1": "N40",
-      "n2": "N6",
-      "material": "M_STEEL",
-      "section": "S_ARCH",
-      "type": "beam",
-      "orientation": [
-        0,
-        1,
-        0
-      ]
-    },
-    {
       "id": "B50",
-      "n1": "N41",
-      "n2": "N6",
+      "n1": "N5",
+      "n2": "N39",
       "material": "M_STEEL",
-      "section": "S_MID",
+      "section": "S_RAIL",
       "type": "beam",
       "orientation": [
-        0,
         1,
+        0,
         0
       ]
     },
     {
       "id": "B51",
-      "n1": "N2",
+      "n1": "N8",
+      "n2": "N9",
+      "material": "M_STEEL",
+      "section": "S_HANGER",
+      "type": "truss"
+    },
+    {
+      "id": "B52",
+      "n1": "N10",
+      "n2": "N9",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B53",
+      "n1": "N8",
+      "n2": "N40",
+      "material": "M_STEEL",
+      "section": "S_RAIL",
+      "type": "beam",
+      "orientation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B54",
+      "n1": "N11",
+      "n2": "N12",
+      "material": "M_STEEL",
+      "section": "S_HANGER",
+      "type": "truss"
+    },
+    {
+      "id": "B55",
+      "n1": "N13",
+      "n2": "N12",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B56",
+      "n1": "N11",
+      "n2": "N41",
+      "material": "M_STEEL",
+      "section": "S_RAIL",
+      "type": "beam",
+      "orientation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B57",
+      "n1": "N14",
+      "n2": "N15",
+      "material": "M_STEEL",
+      "section": "S_HANGER",
+      "type": "truss"
+    },
+    {
+      "id": "B58",
+      "n1": "N16",
+      "n2": "N15",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B59",
+      "n1": "N14",
       "n2": "N42",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -2472,24 +2448,24 @@
       ]
     },
     {
-      "id": "B52",
-      "n1": "N9",
-      "n2": "N10",
+      "id": "B60",
+      "n1": "N17",
+      "n2": "N18",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B53",
-      "n1": "N11",
-      "n2": "N10",
+      "id": "B61",
+      "n1": "N19",
+      "n2": "N18",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B54",
-      "n1": "N9",
+      "id": "B62",
+      "n1": "N17",
       "n2": "N43",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -2501,24 +2477,24 @@
       ]
     },
     {
-      "id": "B55",
-      "n1": "N12",
-      "n2": "N13",
+      "id": "B63",
+      "n1": "N20",
+      "n2": "N21",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B56",
-      "n1": "N14",
-      "n2": "N13",
+      "id": "B64",
+      "n1": "N22",
+      "n2": "N21",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B57",
-      "n1": "N12",
+      "id": "B65",
+      "n1": "N20",
       "n2": "N44",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -2530,24 +2506,24 @@
       ]
     },
     {
-      "id": "B58",
-      "n1": "N15",
-      "n2": "N16",
+      "id": "B66",
+      "n1": "N23",
+      "n2": "N24",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B59",
-      "n1": "N17",
-      "n2": "N16",
+      "id": "B67",
+      "n1": "N25",
+      "n2": "N24",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B60",
-      "n1": "N15",
+      "id": "B68",
+      "n1": "N23",
       "n2": "N45",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -2559,24 +2535,24 @@
       ]
     },
     {
-      "id": "B61",
-      "n1": "N18",
-      "n2": "N19",
+      "id": "B69",
+      "n1": "N26",
+      "n2": "N27",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B62",
-      "n1": "N20",
-      "n2": "N19",
+      "id": "B70",
+      "n1": "N28",
+      "n2": "N27",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B63",
-      "n1": "N18",
+      "id": "B71",
+      "n1": "N26",
       "n2": "N46",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -2588,24 +2564,24 @@
       ]
     },
     {
-      "id": "B64",
-      "n1": "N21",
-      "n2": "N22",
+      "id": "B72",
+      "n1": "N29",
+      "n2": "N30",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B65",
-      "n1": "N23",
-      "n2": "N22",
+      "id": "B73",
+      "n1": "N31",
+      "n2": "N30",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B66",
-      "n1": "N21",
+      "id": "B74",
+      "n1": "N29",
       "n2": "N47",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -2617,24 +2593,24 @@
       ]
     },
     {
-      "id": "B67",
-      "n1": "N24",
-      "n2": "N25",
+      "id": "B75",
+      "n1": "N32",
+      "n2": "N33",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B68",
-      "n1": "N26",
-      "n2": "N25",
+      "id": "B76",
+      "n1": "N34",
+      "n2": "N33",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B69",
-      "n1": "N24",
+      "id": "B77",
+      "n1": "N32",
       "n2": "N48",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -2646,24 +2622,24 @@
       ]
     },
     {
-      "id": "B70",
-      "n1": "N27",
-      "n2": "N28",
+      "id": "B78",
+      "n1": "N35",
+      "n2": "N36",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B71",
-      "n1": "N29",
-      "n2": "N28",
+      "id": "B79",
+      "n1": "N37",
+      "n2": "N36",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B72",
-      "n1": "N27",
+      "id": "B80",
+      "n1": "N35",
       "n2": "N49",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -2675,24 +2651,8 @@
       ]
     },
     {
-      "id": "B73",
-      "n1": "N30",
-      "n2": "N31",
-      "material": "M_STEEL",
-      "section": "S_HANGER",
-      "type": "truss"
-    },
-    {
-      "id": "B74",
-      "n1": "N32",
-      "n2": "N31",
-      "material": "M_STEEL",
-      "section": "S_WEB",
-      "type": "truss"
-    },
-    {
-      "id": "B75",
-      "n1": "N30",
+      "id": "B81",
+      "n1": "N3",
       "n2": "N50",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -2704,102 +2664,54 @@
       ]
     },
     {
-      "id": "B76",
-      "n1": "N33",
-      "n2": "N34",
-      "material": "M_STEEL",
-      "section": "S_HANGER",
-      "type": "truss"
-    },
-    {
-      "id": "B77",
-      "n1": "N35",
-      "n2": "N34",
-      "material": "M_STEEL",
-      "section": "S_WEB",
-      "type": "truss"
-    },
-    {
-      "id": "B78",
-      "n1": "N33",
-      "n2": "N51",
-      "material": "M_STEEL",
-      "section": "S_RAIL",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "B79",
-      "n1": "N36",
-      "n2": "N37",
-      "material": "M_STEEL",
-      "section": "S_HANGER",
-      "type": "truss"
-    },
-    {
-      "id": "B80",
-      "n1": "N38",
-      "n2": "N37",
-      "material": "M_STEEL",
-      "section": "S_WEB",
-      "type": "truss"
-    },
-    {
-      "id": "B81",
-      "n1": "N36",
-      "n2": "N52",
-      "material": "M_STEEL",
-      "section": "S_RAIL",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
-    },
-    {
       "id": "B82",
-      "n1": "N39",
-      "n2": "N40",
+      "n1": "N38",
+      "n2": "N39",
       "material": "M_STEEL",
-      "section": "S_HANGER",
-      "type": "truss"
+      "section": "S_RAIL",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
     },
     {
       "id": "B83",
-      "n1": "N41",
-      "n2": "N40",
-      "material": "M_STEEL",
-      "section": "S_WEB",
-      "type": "truss"
-    },
-    {
-      "id": "B84",
       "n1": "N39",
-      "n2": "N53",
+      "n2": "N40",
       "material": "M_STEEL",
       "section": "S_RAIL",
       "type": "beam",
       "orientation": [
-        1,
         0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B84",
+      "n1": "N40",
+      "n2": "N41",
+      "material": "M_STEEL",
+      "section": "S_RAIL",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
         0
       ]
     },
     {
       "id": "B85",
-      "n1": "N6",
-      "n2": "N54",
+      "n1": "N41",
+      "n2": "N42",
       "material": "M_STEEL",
       "section": "S_RAIL",
       "type": "beam",
       "orientation": [
-        1,
         0,
+        1,
         0
       ]
     },
@@ -2909,60 +2821,8 @@
     },
     {
       "id": "B94",
-      "n1": "N50",
+      "n1": "N2",
       "n2": "N51",
-      "material": "M_STEEL",
-      "section": "S_RAIL",
-      "type": "beam",
-      "orientation": [
-        0,
-        1,
-        0
-      ]
-    },
-    {
-      "id": "B95",
-      "n1": "N51",
-      "n2": "N52",
-      "material": "M_STEEL",
-      "section": "S_RAIL",
-      "type": "beam",
-      "orientation": [
-        0,
-        1,
-        0
-      ]
-    },
-    {
-      "id": "B96",
-      "n1": "N52",
-      "n2": "N53",
-      "material": "M_STEEL",
-      "section": "S_RAIL",
-      "type": "beam",
-      "orientation": [
-        0,
-        1,
-        0
-      ]
-    },
-    {
-      "id": "B97",
-      "n1": "N53",
-      "n2": "N54",
-      "material": "M_STEEL",
-      "section": "S_RAIL",
-      "type": "beam",
-      "orientation": [
-        0,
-        1,
-        0
-      ]
-    },
-    {
-      "id": "B98",
-      "n1": "N4",
-      "n2": "N55",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -2973,9 +2833,9 @@
       ]
     },
     {
-      "id": "B99",
-      "n1": "N4",
-      "n2": "N56",
+      "id": "B95",
+      "n1": "N2",
+      "n2": "N52",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -2986,9 +2846,9 @@
       ]
     },
     {
-      "id": "B100",
-      "n1": "N4",
-      "n2": "N57",
+      "id": "B96",
+      "n1": "N2",
+      "n2": "N53",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -2999,9 +2859,56 @@
       ]
     },
     {
+      "id": "B97",
+      "n1": "N51",
+      "n2": "N54",
+      "material": "M_STEEL",
+      "section": "S_BEAM",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B98",
+      "n1": "N52",
+      "n2": "N55",
+      "material": "M_STEEL",
+      "section": "S_ARCH",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B99",
+      "n1": "N53",
+      "n2": "N56",
+      "material": "M_STEEL",
+      "section": "S_MID",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B100",
+      "n1": "N53",
+      "n2": "N55",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
       "id": "B101",
-      "n1": "N55",
-      "n2": "N58",
+      "n1": "N54",
+      "n2": "N57",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -3013,8 +2920,8 @@
     },
     {
       "id": "B102",
-      "n1": "N56",
-      "n2": "N59",
+      "n1": "N55",
+      "n2": "N58",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -3026,8 +2933,8 @@
     },
     {
       "id": "B103",
-      "n1": "N57",
-      "n2": "N60",
+      "n1": "N56",
+      "n2": "N59",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -3039,16 +2946,16 @@
     },
     {
       "id": "B104",
-      "n1": "N57",
-      "n2": "N59",
+      "n1": "N56",
+      "n2": "N58",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B105",
-      "n1": "N58",
-      "n2": "N61",
+      "n1": "N57",
+      "n2": "N60",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -3060,8 +2967,8 @@
     },
     {
       "id": "B106",
-      "n1": "N59",
-      "n2": "N62",
+      "n1": "N58",
+      "n2": "N61",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -3073,8 +2980,8 @@
     },
     {
       "id": "B107",
-      "n1": "N60",
-      "n2": "N63",
+      "n1": "N59",
+      "n2": "N62",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -3086,16 +2993,16 @@
     },
     {
       "id": "B108",
-      "n1": "N60",
-      "n2": "N62",
+      "n1": "N59",
+      "n2": "N61",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B109",
-      "n1": "N61",
-      "n2": "N64",
+      "n1": "N60",
+      "n2": "N63",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -3107,8 +3014,8 @@
     },
     {
       "id": "B110",
-      "n1": "N62",
-      "n2": "N65",
+      "n1": "N61",
+      "n2": "N64",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -3120,8 +3027,8 @@
     },
     {
       "id": "B111",
-      "n1": "N63",
-      "n2": "N66",
+      "n1": "N62",
+      "n2": "N65",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -3133,16 +3040,16 @@
     },
     {
       "id": "B112",
-      "n1": "N63",
-      "n2": "N65",
+      "n1": "N62",
+      "n2": "N64",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B113",
-      "n1": "N64",
-      "n2": "N67",
+      "n1": "N63",
+      "n2": "N66",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -3154,8 +3061,8 @@
     },
     {
       "id": "B114",
-      "n1": "N65",
-      "n2": "N68",
+      "n1": "N64",
+      "n2": "N67",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -3167,8 +3074,8 @@
     },
     {
       "id": "B115",
-      "n1": "N66",
-      "n2": "N69",
+      "n1": "N65",
+      "n2": "N68",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -3180,16 +3087,16 @@
     },
     {
       "id": "B116",
-      "n1": "N66",
-      "n2": "N68",
+      "n1": "N65",
+      "n2": "N67",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B117",
-      "n1": "N67",
-      "n2": "N70",
+      "n1": "N66",
+      "n2": "N69",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -3201,8 +3108,8 @@
     },
     {
       "id": "B118",
-      "n1": "N68",
-      "n2": "N71",
+      "n1": "N67",
+      "n2": "N70",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -3214,8 +3121,8 @@
     },
     {
       "id": "B119",
-      "n1": "N69",
-      "n2": "N72",
+      "n1": "N68",
+      "n2": "N71",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -3227,16 +3134,16 @@
     },
     {
       "id": "B120",
-      "n1": "N69",
-      "n2": "N71",
+      "n1": "N68",
+      "n2": "N70",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B121",
-      "n1": "N70",
-      "n2": "N73",
+      "n1": "N69",
+      "n2": "N72",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -3248,8 +3155,8 @@
     },
     {
       "id": "B122",
-      "n1": "N71",
-      "n2": "N74",
+      "n1": "N70",
+      "n2": "N73",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -3261,8 +3168,8 @@
     },
     {
       "id": "B123",
-      "n1": "N72",
-      "n2": "N75",
+      "n1": "N71",
+      "n2": "N74",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -3274,16 +3181,16 @@
     },
     {
       "id": "B124",
-      "n1": "N72",
-      "n2": "N74",
+      "n1": "N71",
+      "n2": "N73",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B125",
-      "n1": "N73",
-      "n2": "N76",
+      "n1": "N72",
+      "n2": "N75",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -3295,8 +3202,8 @@
     },
     {
       "id": "B126",
-      "n1": "N74",
-      "n2": "N77",
+      "n1": "N73",
+      "n2": "N76",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -3308,8 +3215,8 @@
     },
     {
       "id": "B127",
-      "n1": "N75",
-      "n2": "N78",
+      "n1": "N74",
+      "n2": "N77",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -3321,16 +3228,16 @@
     },
     {
       "id": "B128",
-      "n1": "N75",
-      "n2": "N77",
+      "n1": "N74",
+      "n2": "N76",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B129",
-      "n1": "N76",
-      "n2": "N79",
+      "n1": "N75",
+      "n2": "N78",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -3342,8 +3249,8 @@
     },
     {
       "id": "B130",
-      "n1": "N77",
-      "n2": "N80",
+      "n1": "N76",
+      "n2": "N79",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -3355,8 +3262,8 @@
     },
     {
       "id": "B131",
-      "n1": "N78",
-      "n2": "N81",
+      "n1": "N77",
+      "n2": "N80",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -3368,16 +3275,16 @@
     },
     {
       "id": "B132",
-      "n1": "N78",
-      "n2": "N80",
+      "n1": "N77",
+      "n2": "N79",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B133",
-      "n1": "N79",
-      "n2": "N82",
+      "n1": "N78",
+      "n2": "N81",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -3389,8 +3296,8 @@
     },
     {
       "id": "B134",
-      "n1": "N80",
-      "n2": "N83",
+      "n1": "N79",
+      "n2": "N82",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -3402,8 +3309,8 @@
     },
     {
       "id": "B135",
-      "n1": "N81",
-      "n2": "N84",
+      "n1": "N80",
+      "n2": "N83",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -3415,16 +3322,16 @@
     },
     {
       "id": "B136",
-      "n1": "N81",
-      "n2": "N83",
+      "n1": "N80",
+      "n2": "N82",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
       "id": "B137",
-      "n1": "N82",
-      "n2": "N85",
+      "n1": "N81",
+      "n2": "N4",
       "material": "M_STEEL",
       "section": "S_BEAM",
       "type": "beam",
@@ -3436,8 +3343,8 @@
     },
     {
       "id": "B138",
-      "n1": "N83",
-      "n2": "N86",
+      "n1": "N82",
+      "n2": "N4",
       "material": "M_STEEL",
       "section": "S_ARCH",
       "type": "beam",
@@ -3449,8 +3356,8 @@
     },
     {
       "id": "B139",
-      "n1": "N84",
-      "n2": "N87",
+      "n1": "N83",
+      "n2": "N4",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -3462,54 +3369,123 @@
     },
     {
       "id": "B140",
-      "n1": "N84",
-      "n2": "N86",
+      "n1": "N2",
+      "n2": "N84",
+      "material": "M_STEEL",
+      "section": "S_RAIL",
+      "type": "beam",
+      "orientation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B141",
+      "n1": "N51",
+      "n2": "N52",
+      "material": "M_STEEL",
+      "section": "S_HANGER",
+      "type": "truss"
+    },
+    {
+      "id": "B142",
+      "n1": "N53",
+      "n2": "N52",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B141",
-      "n1": "N85",
-      "n2": "N8",
-      "material": "M_STEEL",
-      "section": "S_BEAM",
-      "type": "beam",
-      "orientation": [
-        0,
-        1,
-        0
-      ]
-    },
-    {
-      "id": "B142",
-      "n1": "N86",
-      "n2": "N8",
-      "material": "M_STEEL",
-      "section": "S_ARCH",
-      "type": "beam",
-      "orientation": [
-        0,
-        1,
-        0
-      ]
-    },
-    {
       "id": "B143",
-      "n1": "N87",
-      "n2": "N8",
+      "n1": "N51",
+      "n2": "N85",
       "material": "M_STEEL",
-      "section": "S_MID",
+      "section": "S_RAIL",
       "type": "beam",
       "orientation": [
-        0,
         1,
+        0,
         0
       ]
     },
     {
       "id": "B144",
-      "n1": "N4",
+      "n1": "N54",
+      "n2": "N55",
+      "material": "M_STEEL",
+      "section": "S_HANGER",
+      "type": "truss"
+    },
+    {
+      "id": "B145",
+      "n1": "N56",
+      "n2": "N55",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B146",
+      "n1": "N54",
+      "n2": "N86",
+      "material": "M_STEEL",
+      "section": "S_RAIL",
+      "type": "beam",
+      "orientation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B147",
+      "n1": "N57",
+      "n2": "N58",
+      "material": "M_STEEL",
+      "section": "S_HANGER",
+      "type": "truss"
+    },
+    {
+      "id": "B148",
+      "n1": "N59",
+      "n2": "N58",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B149",
+      "n1": "N57",
+      "n2": "N87",
+      "material": "M_STEEL",
+      "section": "S_RAIL",
+      "type": "beam",
+      "orientation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B150",
+      "n1": "N60",
+      "n2": "N61",
+      "material": "M_STEEL",
+      "section": "S_HANGER",
+      "type": "truss"
+    },
+    {
+      "id": "B151",
+      "n1": "N62",
+      "n2": "N61",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B152",
+      "n1": "N60",
       "n2": "N88",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -3521,24 +3497,24 @@
       ]
     },
     {
-      "id": "B145",
-      "n1": "N55",
-      "n2": "N56",
+      "id": "B153",
+      "n1": "N63",
+      "n2": "N64",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B146",
-      "n1": "N57",
-      "n2": "N56",
+      "id": "B154",
+      "n1": "N65",
+      "n2": "N64",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B147",
-      "n1": "N55",
+      "id": "B155",
+      "n1": "N63",
       "n2": "N89",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -3550,24 +3526,24 @@
       ]
     },
     {
-      "id": "B148",
-      "n1": "N58",
-      "n2": "N59",
+      "id": "B156",
+      "n1": "N66",
+      "n2": "N67",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B149",
-      "n1": "N60",
-      "n2": "N59",
+      "id": "B157",
+      "n1": "N68",
+      "n2": "N67",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B150",
-      "n1": "N58",
+      "id": "B158",
+      "n1": "N66",
       "n2": "N90",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -3579,24 +3555,24 @@
       ]
     },
     {
-      "id": "B151",
-      "n1": "N61",
-      "n2": "N62",
+      "id": "B159",
+      "n1": "N69",
+      "n2": "N70",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B152",
-      "n1": "N63",
-      "n2": "N62",
+      "id": "B160",
+      "n1": "N71",
+      "n2": "N70",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B153",
-      "n1": "N61",
+      "id": "B161",
+      "n1": "N69",
       "n2": "N91",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -3608,24 +3584,24 @@
       ]
     },
     {
-      "id": "B154",
-      "n1": "N64",
-      "n2": "N65",
+      "id": "B162",
+      "n1": "N72",
+      "n2": "N73",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B155",
-      "n1": "N66",
-      "n2": "N65",
+      "id": "B163",
+      "n1": "N74",
+      "n2": "N73",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B156",
-      "n1": "N64",
+      "id": "B164",
+      "n1": "N72",
       "n2": "N92",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -3637,24 +3613,24 @@
       ]
     },
     {
-      "id": "B157",
-      "n1": "N67",
-      "n2": "N68",
+      "id": "B165",
+      "n1": "N75",
+      "n2": "N76",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B158",
-      "n1": "N69",
-      "n2": "N68",
+      "id": "B166",
+      "n1": "N77",
+      "n2": "N76",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B159",
-      "n1": "N67",
+      "id": "B167",
+      "n1": "N75",
       "n2": "N93",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -3666,24 +3642,24 @@
       ]
     },
     {
-      "id": "B160",
-      "n1": "N70",
-      "n2": "N71",
+      "id": "B168",
+      "n1": "N78",
+      "n2": "N79",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B161",
-      "n1": "N72",
-      "n2": "N71",
+      "id": "B169",
+      "n1": "N80",
+      "n2": "N79",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B162",
-      "n1": "N70",
+      "id": "B170",
+      "n1": "N78",
       "n2": "N94",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -3695,24 +3671,24 @@
       ]
     },
     {
-      "id": "B163",
-      "n1": "N73",
-      "n2": "N74",
+      "id": "B171",
+      "n1": "N81",
+      "n2": "N82",
       "material": "M_STEEL",
       "section": "S_HANGER",
       "type": "truss"
     },
     {
-      "id": "B164",
-      "n1": "N75",
-      "n2": "N74",
+      "id": "B172",
+      "n1": "N83",
+      "n2": "N82",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B165",
-      "n1": "N73",
+      "id": "B173",
+      "n1": "N81",
       "n2": "N95",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -3724,24 +3700,8 @@
       ]
     },
     {
-      "id": "B166",
-      "n1": "N76",
-      "n2": "N77",
-      "material": "M_STEEL",
-      "section": "S_HANGER",
-      "type": "truss"
-    },
-    {
-      "id": "B167",
-      "n1": "N78",
-      "n2": "N77",
-      "material": "M_STEEL",
-      "section": "S_WEB",
-      "type": "truss"
-    },
-    {
-      "id": "B168",
-      "n1": "N76",
+      "id": "B174",
+      "n1": "N4",
       "n2": "N96",
       "material": "M_STEEL",
       "section": "S_RAIL",
@@ -3753,102 +3713,54 @@
       ]
     },
     {
-      "id": "B169",
-      "n1": "N79",
-      "n2": "N80",
-      "material": "M_STEEL",
-      "section": "S_HANGER",
-      "type": "truss"
-    },
-    {
-      "id": "B170",
-      "n1": "N81",
-      "n2": "N80",
-      "material": "M_STEEL",
-      "section": "S_WEB",
-      "type": "truss"
-    },
-    {
-      "id": "B171",
-      "n1": "N79",
-      "n2": "N97",
-      "material": "M_STEEL",
-      "section": "S_RAIL",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "B172",
-      "n1": "N82",
-      "n2": "N83",
-      "material": "M_STEEL",
-      "section": "S_HANGER",
-      "type": "truss"
-    },
-    {
-      "id": "B173",
-      "n1": "N84",
-      "n2": "N83",
-      "material": "M_STEEL",
-      "section": "S_WEB",
-      "type": "truss"
-    },
-    {
-      "id": "B174",
-      "n1": "N82",
-      "n2": "N98",
-      "material": "M_STEEL",
-      "section": "S_RAIL",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
-    },
-    {
       "id": "B175",
-      "n1": "N85",
-      "n2": "N86",
+      "n1": "N84",
+      "n2": "N85",
       "material": "M_STEEL",
-      "section": "S_HANGER",
-      "type": "truss"
+      "section": "S_RAIL",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
     },
     {
       "id": "B176",
-      "n1": "N87",
-      "n2": "N86",
-      "material": "M_STEEL",
-      "section": "S_WEB",
-      "type": "truss"
-    },
-    {
-      "id": "B177",
       "n1": "N85",
-      "n2": "N99",
+      "n2": "N86",
       "material": "M_STEEL",
       "section": "S_RAIL",
       "type": "beam",
       "orientation": [
-        1,
         0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B177",
+      "n1": "N86",
+      "n2": "N87",
+      "material": "M_STEEL",
+      "section": "S_RAIL",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
         0
       ]
     },
     {
       "id": "B178",
-      "n1": "N8",
-      "n2": "N100",
+      "n1": "N87",
+      "n2": "N88",
       "material": "M_STEEL",
       "section": "S_RAIL",
       "type": "beam",
       "orientation": [
-        1,
         0,
+        1,
         0
       ]
     },
@@ -3958,60 +3870,60 @@
     },
     {
       "id": "B187",
-      "n1": "N96",
+      "n1": "N1",
       "n2": "N97",
       "material": "M_STEEL",
-      "section": "S_RAIL",
+      "section": "S_MID",
       "type": "beam",
       "orientation": [
-        0,
         1,
+        0,
         0
       ]
     },
     {
       "id": "B188",
       "n1": "N97",
-      "n2": "N98",
+      "n2": "N2",
       "material": "M_STEEL",
-      "section": "S_RAIL",
+      "section": "S_MID",
       "type": "beam",
       "orientation": [
-        0,
         1,
+        0,
         0
       ]
     },
     {
       "id": "B189",
-      "n1": "N98",
-      "n2": "N99",
+      "n1": "N5",
+      "n2": "N98",
       "material": "M_STEEL",
-      "section": "S_RAIL",
+      "section": "S_MID",
       "type": "beam",
       "orientation": [
-        0,
         1,
+        0,
         0
       ]
     },
     {
       "id": "B190",
-      "n1": "N99",
-      "n2": "N100",
+      "n1": "N98",
+      "n2": "N51",
       "material": "M_STEEL",
-      "section": "S_RAIL",
+      "section": "S_MID",
       "type": "beam",
       "orientation": [
-        0,
         1,
+        0,
         0
       ]
     },
     {
       "id": "B191",
-      "n1": "N2",
-      "n2": "N101",
+      "n1": "N8",
+      "n2": "N99",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4023,8 +3935,8 @@
     },
     {
       "id": "B192",
-      "n1": "N101",
-      "n2": "N4",
+      "n1": "N99",
+      "n2": "N54",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4037,9 +3949,9 @@
     {
       "id": "B193",
       "n1": "N9",
-      "n2": "N102",
+      "n2": "N55",
       "material": "M_STEEL",
-      "section": "S_MID",
+      "section": "S_CHORD",
       "type": "beam",
       "orientation": [
         1,
@@ -4049,8 +3961,8 @@
     },
     {
       "id": "B194",
-      "n1": "N102",
-      "n2": "N55",
+      "n1": "N11",
+      "n2": "N100",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4062,8 +3974,8 @@
     },
     {
       "id": "B195",
-      "n1": "N12",
-      "n2": "N103",
+      "n1": "N100",
+      "n2": "N57",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4075,8 +3987,8 @@
     },
     {
       "id": "B196",
-      "n1": "N103",
-      "n2": "N58",
+      "n1": "N14",
+      "n2": "N101",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4088,21 +4000,8 @@
     },
     {
       "id": "B197",
-      "n1": "N13",
-      "n2": "N59",
-      "material": "M_STEEL",
-      "section": "S_CHORD",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "B198",
-      "n1": "N15",
-      "n2": "N104",
+      "n1": "N101",
+      "n2": "N60",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4113,9 +4012,22 @@
       ]
     },
     {
-      "id": "B199",
-      "n1": "N104",
+      "id": "B198",
+      "n1": "N15",
       "n2": "N61",
+      "material": "M_STEEL",
+      "section": "S_CHORD",
+      "type": "beam",
+      "orientation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B199",
+      "n1": "N17",
+      "n2": "N102",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4127,8 +4039,8 @@
     },
     {
       "id": "B200",
-      "n1": "N18",
-      "n2": "N105",
+      "n1": "N102",
+      "n2": "N63",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4140,8 +4052,8 @@
     },
     {
       "id": "B201",
-      "n1": "N105",
-      "n2": "N64",
+      "n1": "N20",
+      "n2": "N103",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4153,21 +4065,8 @@
     },
     {
       "id": "B202",
-      "n1": "N19",
-      "n2": "N65",
-      "material": "M_STEEL",
-      "section": "S_CHORD",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "B203",
-      "n1": "N21",
-      "n2": "N106",
+      "n1": "N103",
+      "n2": "N66",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4178,9 +4077,22 @@
       ]
     },
     {
-      "id": "B204",
-      "n1": "N106",
+      "id": "B203",
+      "n1": "N21",
       "n2": "N67",
+      "material": "M_STEEL",
+      "section": "S_CHORD",
+      "type": "beam",
+      "orientation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B204",
+      "n1": "N23",
+      "n2": "N104",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4192,8 +4104,8 @@
     },
     {
       "id": "B205",
-      "n1": "N24",
-      "n2": "N107",
+      "n1": "N104",
+      "n2": "N69",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4205,8 +4117,8 @@
     },
     {
       "id": "B206",
-      "n1": "N107",
-      "n2": "N70",
+      "n1": "N26",
+      "n2": "N105",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4218,21 +4130,8 @@
     },
     {
       "id": "B207",
-      "n1": "N25",
-      "n2": "N71",
-      "material": "M_STEEL",
-      "section": "S_CHORD",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "B208",
-      "n1": "N27",
-      "n2": "N108",
+      "n1": "N105",
+      "n2": "N72",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4243,9 +4142,22 @@
       ]
     },
     {
-      "id": "B209",
-      "n1": "N108",
+      "id": "B208",
+      "n1": "N27",
       "n2": "N73",
+      "material": "M_STEEL",
+      "section": "S_CHORD",
+      "type": "beam",
+      "orientation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B209",
+      "n1": "N29",
+      "n2": "N106",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4257,8 +4169,8 @@
     },
     {
       "id": "B210",
-      "n1": "N30",
-      "n2": "N109",
+      "n1": "N106",
+      "n2": "N75",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4270,8 +4182,8 @@
     },
     {
       "id": "B211",
-      "n1": "N109",
-      "n2": "N76",
+      "n1": "N32",
+      "n2": "N107",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4283,21 +4195,8 @@
     },
     {
       "id": "B212",
-      "n1": "N31",
-      "n2": "N77",
-      "material": "M_STEEL",
-      "section": "S_CHORD",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "B213",
-      "n1": "N33",
-      "n2": "N110",
+      "n1": "N107",
+      "n2": "N78",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4308,9 +4207,22 @@
       ]
     },
     {
-      "id": "B214",
-      "n1": "N110",
+      "id": "B213",
+      "n1": "N33",
       "n2": "N79",
+      "material": "M_STEEL",
+      "section": "S_CHORD",
+      "type": "beam",
+      "orientation": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B214",
+      "n1": "N35",
+      "n2": "N108",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4322,8 +4234,8 @@
     },
     {
       "id": "B215",
-      "n1": "N36",
-      "n2": "N111",
+      "n1": "N108",
+      "n2": "N81",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4335,8 +4247,8 @@
     },
     {
       "id": "B216",
-      "n1": "N111",
-      "n2": "N82",
+      "n1": "N3",
+      "n2": "N109",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4348,10 +4260,10 @@
     },
     {
       "id": "B217",
-      "n1": "N37",
-      "n2": "N83",
+      "n1": "N109",
+      "n2": "N4",
       "material": "M_STEEL",
-      "section": "S_CHORD",
+      "section": "S_MID",
       "type": "beam",
       "orientation": [
         1,
@@ -4361,58 +4273,74 @@
     },
     {
       "id": "B218",
-      "n1": "N39",
-      "n2": "N112",
+      "n1": "N97",
+      "n2": "N98",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
       "orientation": [
-        1,
         0,
+        1,
         0
       ]
     },
     {
       "id": "B219",
-      "n1": "N112",
-      "n2": "N85",
+      "n1": "N1",
+      "n2": "N51",
       "material": "M_STEEL",
-      "section": "S_MID",
-      "type": "beam",
-      "orientation": [
-        1,
-        0,
-        0
-      ]
+      "section": "S_WEB",
+      "type": "truss"
     },
     {
       "id": "B220",
-      "n1": "N6",
-      "n2": "N113",
+      "n1": "N98",
+      "n2": "N99",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
       "orientation": [
-        1,
         0,
+        1,
         0
       ]
     },
     {
       "id": "B221",
-      "n1": "N113",
-      "n2": "N8",
+      "n1": "N99",
+      "n2": "N100",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
       "orientation": [
-        1,
         0,
+        1,
         0
       ]
     },
     {
       "id": "B222",
+      "n1": "N8",
+      "n2": "N57",
+      "material": "M_STEEL",
+      "section": "S_WEB",
+      "type": "truss"
+    },
+    {
+      "id": "B223",
+      "n1": "N100",
+      "n2": "N101",
+      "material": "M_STEEL",
+      "section": "S_MID",
+      "type": "beam",
+      "orientation": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "B224",
       "n1": "N101",
       "n2": "N102",
       "material": "M_STEEL",
@@ -4425,15 +4353,15 @@
       ]
     },
     {
-      "id": "B223",
-      "n1": "N2",
-      "n2": "N55",
+      "id": "B225",
+      "n1": "N14",
+      "n2": "N63",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B224",
+      "id": "B226",
       "n1": "N102",
       "n2": "N103",
       "material": "M_STEEL",
@@ -4446,7 +4374,7 @@
       ]
     },
     {
-      "id": "B225",
+      "id": "B227",
       "n1": "N103",
       "n2": "N104",
       "material": "M_STEEL",
@@ -4459,15 +4387,15 @@
       ]
     },
     {
-      "id": "B226",
-      "n1": "N12",
-      "n2": "N61",
+      "id": "B228",
+      "n1": "N20",
+      "n2": "N69",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B227",
+      "id": "B229",
       "n1": "N104",
       "n2": "N105",
       "material": "M_STEEL",
@@ -4480,7 +4408,7 @@
       ]
     },
     {
-      "id": "B228",
+      "id": "B230",
       "n1": "N105",
       "n2": "N106",
       "material": "M_STEEL",
@@ -4493,15 +4421,15 @@
       ]
     },
     {
-      "id": "B229",
-      "n1": "N18",
-      "n2": "N67",
+      "id": "B231",
+      "n1": "N26",
+      "n2": "N75",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
     },
     {
-      "id": "B230",
+      "id": "B232",
       "n1": "N106",
       "n2": "N107",
       "material": "M_STEEL",
@@ -4514,7 +4442,7 @@
       ]
     },
     {
-      "id": "B231",
+      "id": "B233",
       "n1": "N107",
       "n2": "N108",
       "material": "M_STEEL",
@@ -4527,85 +4455,17 @@
       ]
     },
     {
-      "id": "B232",
-      "n1": "N24",
-      "n2": "N73",
+      "id": "B234",
+      "n1": "N32",
+      "n2": "N81",
       "material": "M_STEEL",
       "section": "S_WEB",
       "type": "truss"
-    },
-    {
-      "id": "B233",
-      "n1": "N108",
-      "n2": "N109",
-      "material": "M_STEEL",
-      "section": "S_MID",
-      "type": "beam",
-      "orientation": [
-        0,
-        1,
-        0
-      ]
-    },
-    {
-      "id": "B234",
-      "n1": "N109",
-      "n2": "N110",
-      "material": "M_STEEL",
-      "section": "S_MID",
-      "type": "beam",
-      "orientation": [
-        0,
-        1,
-        0
-      ]
     },
     {
       "id": "B235",
-      "n1": "N30",
-      "n2": "N79",
-      "material": "M_STEEL",
-      "section": "S_WEB",
-      "type": "truss"
-    },
-    {
-      "id": "B236",
-      "n1": "N110",
-      "n2": "N111",
-      "material": "M_STEEL",
-      "section": "S_MID",
-      "type": "beam",
-      "orientation": [
-        0,
-        1,
-        0
-      ]
-    },
-    {
-      "id": "B237",
-      "n1": "N111",
-      "n2": "N112",
-      "material": "M_STEEL",
-      "section": "S_MID",
-      "type": "beam",
-      "orientation": [
-        0,
-        1,
-        0
-      ]
-    },
-    {
-      "id": "B238",
-      "n1": "N36",
-      "n2": "N85",
-      "material": "M_STEEL",
-      "section": "S_WEB",
-      "type": "truss"
-    },
-    {
-      "id": "B239",
-      "n1": "N112",
-      "n2": "N113",
+      "n1": "N108",
+      "n2": "N109",
       "material": "M_STEEL",
       "section": "S_MID",
       "type": "beam",
@@ -4620,10 +4480,10 @@
     {
       "id": "F1",
       "nodes": [
-        "N2",
-        "N9",
-        "N102",
-        "N101"
+        "N1",
+        "N5",
+        "N98",
+        "N97"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4631,10 +4491,10 @@
     {
       "id": "F2",
       "nodes": [
-        "N101",
-        "N102",
-        "N55",
-        "N4"
+        "N97",
+        "N98",
+        "N51",
+        "N2"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4642,10 +4502,10 @@
     {
       "id": "F3",
       "nodes": [
-        "N9",
-        "N12",
-        "N103",
-        "N102"
+        "N5",
+        "N8",
+        "N99",
+        "N98"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4653,10 +4513,10 @@
     {
       "id": "F4",
       "nodes": [
-        "N102",
-        "N103",
-        "N58",
-        "N55"
+        "N98",
+        "N99",
+        "N54",
+        "N51"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4664,10 +4524,10 @@
     {
       "id": "F5",
       "nodes": [
-        "N12",
-        "N15",
-        "N104",
-        "N103"
+        "N8",
+        "N11",
+        "N100",
+        "N99"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4675,10 +4535,10 @@
     {
       "id": "F6",
       "nodes": [
-        "N103",
-        "N104",
-        "N61",
-        "N58"
+        "N99",
+        "N100",
+        "N57",
+        "N54"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4686,10 +4546,10 @@
     {
       "id": "F7",
       "nodes": [
-        "N15",
-        "N18",
-        "N105",
-        "N104"
+        "N11",
+        "N14",
+        "N101",
+        "N100"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4697,10 +4557,10 @@
     {
       "id": "F8",
       "nodes": [
-        "N104",
-        "N105",
-        "N64",
-        "N61"
+        "N100",
+        "N101",
+        "N60",
+        "N57"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4708,10 +4568,10 @@
     {
       "id": "F9",
       "nodes": [
-        "N18",
-        "N21",
-        "N106",
-        "N105"
+        "N14",
+        "N17",
+        "N102",
+        "N101"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4719,10 +4579,10 @@
     {
       "id": "F10",
       "nodes": [
-        "N105",
-        "N106",
-        "N67",
-        "N64"
+        "N101",
+        "N102",
+        "N63",
+        "N60"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4730,10 +4590,10 @@
     {
       "id": "F11",
       "nodes": [
-        "N21",
-        "N24",
-        "N107",
-        "N106"
+        "N17",
+        "N20",
+        "N103",
+        "N102"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4741,10 +4601,10 @@
     {
       "id": "F12",
       "nodes": [
-        "N106",
-        "N107",
-        "N70",
-        "N67"
+        "N102",
+        "N103",
+        "N66",
+        "N63"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4752,10 +4612,10 @@
     {
       "id": "F13",
       "nodes": [
-        "N24",
-        "N27",
-        "N108",
-        "N107"
+        "N20",
+        "N23",
+        "N104",
+        "N103"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4763,10 +4623,10 @@
     {
       "id": "F14",
       "nodes": [
-        "N107",
-        "N108",
-        "N73",
-        "N70"
+        "N103",
+        "N104",
+        "N69",
+        "N66"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4774,10 +4634,10 @@
     {
       "id": "F15",
       "nodes": [
-        "N27",
-        "N30",
-        "N109",
-        "N108"
+        "N23",
+        "N26",
+        "N105",
+        "N104"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4785,10 +4645,10 @@
     {
       "id": "F16",
       "nodes": [
-        "N108",
-        "N109",
-        "N76",
-        "N73"
+        "N104",
+        "N105",
+        "N72",
+        "N69"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4796,10 +4656,10 @@
     {
       "id": "F17",
       "nodes": [
-        "N30",
-        "N33",
-        "N110",
-        "N109"
+        "N26",
+        "N29",
+        "N106",
+        "N105"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4807,10 +4667,10 @@
     {
       "id": "F18",
       "nodes": [
-        "N109",
-        "N110",
-        "N79",
-        "N76"
+        "N105",
+        "N106",
+        "N75",
+        "N72"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4818,10 +4678,10 @@
     {
       "id": "F19",
       "nodes": [
-        "N33",
-        "N36",
-        "N111",
-        "N110"
+        "N29",
+        "N32",
+        "N107",
+        "N106"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4829,10 +4689,10 @@
     {
       "id": "F20",
       "nodes": [
-        "N110",
-        "N111",
-        "N82",
-        "N79"
+        "N106",
+        "N107",
+        "N78",
+        "N75"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4840,10 +4700,10 @@
     {
       "id": "F21",
       "nodes": [
-        "N36",
-        "N39",
-        "N112",
-        "N111"
+        "N32",
+        "N35",
+        "N108",
+        "N107"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4851,10 +4711,10 @@
     {
       "id": "F22",
       "nodes": [
-        "N111",
-        "N112",
-        "N85",
-        "N82"
+        "N107",
+        "N108",
+        "N81",
+        "N78"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4862,10 +4722,10 @@
     {
       "id": "F23",
       "nodes": [
-        "N39",
-        "N6",
-        "N113",
-        "N112"
+        "N35",
+        "N3",
+        "N109",
+        "N108"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4873,10 +4733,10 @@
     {
       "id": "F24",
       "nodes": [
-        "N112",
-        "N113",
-        "N8",
-        "N85"
+        "N108",
+        "N109",
+        "N4",
+        "N81"
       ],
       "material": "M_RC",
       "thickness": 0.25
@@ -4892,174 +4752,5 @@
       "shellLoads": []
     }
   ],
-  "combinations": [],
-  "foundationSystem": {
-    "schema": "delghem-d2-foundations-1",
-    "items": [
-      {
-        "id": "FD_N1",
-        "type": "direct",
-        "nodeId": "N1",
-        "widthM": 2.8,
-        "lengthM": 3,
-        "thicknessM": 0.95,
-        "depthM": 0.95,
-        "gammaR": 1.4,
-        "mu": 0.48
-      },
-      {
-        "id": "FD_N3",
-        "type": "direct",
-        "nodeId": "N3",
-        "widthM": 2.8,
-        "lengthM": 3,
-        "thicknessM": 0.95,
-        "depthM": 0.95,
-        "gammaR": 1.4,
-        "mu": 0.48
-      },
-      {
-        "id": "FD_N5",
-        "type": "direct",
-        "nodeId": "N5",
-        "widthM": 2.8,
-        "lengthM": 3,
-        "thicknessM": 0.95,
-        "depthM": 0.95,
-        "gammaR": 1.4,
-        "mu": 0.48
-      },
-      {
-        "id": "FD_N7",
-        "type": "direct",
-        "nodeId": "N7",
-        "widthM": 2.8,
-        "lengthM": 3,
-        "thicknessM": 0.95,
-        "depthM": 0.95,
-        "gammaR": 1.4,
-        "mu": 0.48
-      }
-    ],
-    "soilLayers": [
-      {
-        "type": "sand",
-        "zTopM": 0,
-        "zBottomM": 15,
-        "gammaKnM3": 18,
-        "phiDeg": 30,
-        "EsMPa": 25,
-        "nu": 0.3,
-        "ksKnM3": 18000
-      }
-    ],
-    "baseline": {
-      "N1": {
-        "fixed": [
-          true,
-          true,
-          true,
-          true,
-          true,
-          true
-        ],
-        "springs": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ]
-      },
-      "N3": {
-        "fixed": [
-          true,
-          true,
-          true,
-          true,
-          true,
-          true
-        ],
-        "springs": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ]
-      },
-      "N5": {
-        "fixed": [
-          true,
-          true,
-          true,
-          true,
-          true,
-          true
-        ],
-        "springs": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ]
-      },
-      "N7": {
-        "fixed": [
-          true,
-          true,
-          true,
-          true,
-          true,
-          true
-        ],
-        "springs": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ]
-      }
-    },
-    "generatedSprings": {
-      "N1": [
-        0,
-        0,
-        151200,
-        0,
-        0,
-        0
-      ],
-      "N3": [
-        0,
-        0,
-        151200,
-        0,
-        0,
-        0
-      ],
-      "N5": [
-        0,
-        0,
-        151200,
-        0,
-        0,
-        0
-      ],
-      "N7": [
-        0,
-        0,
-        151200,
-        0,
-        0,
-        0
-      ]
-    }
-  }
+  "combinations": []
 }

@@ -4,7 +4,7 @@
  * by D2. Geotechnical / structural design has NOT been performed or certified.
  */
 import {complexDemo} from './assets/real-d2/complex-demo-geometry.mjs?v=20261024-8floor-d2a';
-import {showcaseModels} from './assets/real-d2/showcase-geometry.mjs?v=20261025-showcase5';
+import {showcaseModels} from './assets/real-d2/showcase-geometry.mjs?v=20261025-showcase6';
 export const MODEL_SHOWCASE_DURATION_MS=5000;
 const models=[complexDemo,...showcaseModels];
 const towerShowcase={
@@ -65,6 +65,8 @@ const colors={
   'stadium-purlin':[83,178,212],
   'stadium-roof':[116,198,220],
   'stadium-roof-brace':[237,131,64],
+  'stadium-column-brace':[228,116,61],
+  'stadium-winkler-grade-beam':[109,152,162],
   'stadium-ring-beam':[43,139,194],
   'football-pitch':[57,151,101],
   'arch-upper-rib':[22,86,161],
@@ -92,7 +94,19 @@ const colors={
   'terminal-edge-beam':[42,158,206],
   'terminal-ring-beam':[65,151,198],
   'terminal-cantilever':[38,172,200],
-  'terminal-steel-canopy':[129,203,213]
+  'terminal-steel-canopy':[129,203,213],
+  // Historic aggregate: real structural masonry wall shell faces, with
+  // openings absent from the native QUAD4 mesh; seven genuine timber roofs.
+  'masonry-wall':[211,174,126],
+  'stone-wall':[164,166,149],
+  'timber-roof':[223,155,78],
+  'timber-floor':[184,136,84],
+  'timber-rafter':[204,124,63],
+  'timber-purlin':[190,123,63],
+  'timber-ridge':[164,91,45],
+  'timber-tie':[179,114,66],
+  'timber-king-post':[185,118,75],
+  'timber-floor-joist':[173,108,55]
 };
 
 function crossSection(section){
@@ -215,9 +229,13 @@ export function initModelStage(){
        ?(italian?'COPERTURA · 114 × 84 M':'FOOTBALL ROOF · 114 × 84 M')
        :modelIndex===2
        ?(italian?'PONTE AD ARCO · LUCE 96 M':'TIED-ARCH BRIDGE · 96 M')
-       :(italian?'VOLTE GL24h · 84 × 54 M':'GLULAM VAULTS · 84 × 54 M');
+       :modelIndex===3
+       ?(italian?'VOLTE GL24h · 84 × 54 M':'GLULAM VAULTS · 84 × 54 M')
+       :(italian?'AGGREGATO IN MURATURA · 90 × 60 M':'MASONRY AGGREGATE · 90 × 60 M');
     if(modelMaterialKey){
       const materials=new Set(source.materials);
+      modelMaterialKey.setAttribute('aria-label',
+        (italian?'Materiali effettivi del modello: ':'Model source materials: ')+[...materials].join(', '));
       for(const label of modelMaterialKey.querySelectorAll('span')){
         const grade=label.textContent.trim();
         label.hidden=!materials.has(grade);
@@ -252,8 +270,8 @@ export function initModelStage(){
     towerHeight=nextModel.levels?.at(-1)??Math.max(1,extent[2]);
     roofHeight=mixedDemo.bbox.max[2];
     isTallConcept=target===0&&nextModel.storeyCount>=8;
-    yaw=[-.97,-.77,-.94,-.88][target]??-.97;
-    pitch=[.60,.60,.47,.62][target]??.60;
+    yaw=[-.97,-.77,-.94,-.88,-.74][target]??-.97;
+    pitch=[.60,.60,.47,.62,.54][target]??.60;
     const key=showcaseMeta[target].id;
     if(!geometryCache.has(key))geometryCache.set(key,makeGeometry());
     faces=geometryCache.get(key);
@@ -291,10 +309,10 @@ export function initModelStage(){
     const q=original?p:displaced(p);
     const x=q[0]-mid[0],y=q[1]-mid[1],z=q[2]-mid[2];
     const {cs,sn,cp,sp}=camera;
-    const xx=x*cs-y*sn,depth=(x*sn+y*cs)*cp+z*sp;
+    const xx=x*cs-y*sn,depth=(x*sn+y*cs)*cp+z*sp*(modelIndex===4?-1:1);
     const yy=(x*sn+y*cs)*sp-z*cp;
     const persp=clamp(1-depth*.008,.79,1.21);
-    return {x:width*.50+xx*scale*persp,y:height*.52+yy*scale*persp,depth};
+    return {x:width*.50+xx*scale*persp,y:height*(modelIndex===4?.42:modelIndex===1?.40:modelIndex===2?.385:.52)+yy*scale*persp,depth};
   }
   function poly(points,color,border='rgba(18,54,66,.12)'){
     ctx.beginPath();
@@ -370,8 +388,15 @@ export function initModelStage(){
     ctx.restore();
   }
   function paintFaces(){
+    // The masonry aggregate is deliberately opaque and architectural. Draw
+    // only outward-facing QUAD4 masonry/wood panels so hidden wall backs and
+    // floor undersides do not wash out the roofs and window openings.
+    // Other four native D2 models preserve their established drawing order.
+    const near=modelIndex===4?[-camera.sn*camera.cp,-camera.cs*camera.cp,camera.sp]:null;
+    const solidKinds=new Set(['masonry-wall','stone-wall','timber-roof','timber-floor']);
+    const selected=near?faces.filter(face=>!solidKinds.has(face.kind)||dot(face.normal,near)>=-.001):faces;
     // Depth-sort faces rather than overpainting member centerlines: real I flanges/web are visible.
-    const projected=faces.map(face=>{
+    const projected=selected.map(face=>{
       const points=face.vertices.map(p=>project(p));
       return {face,points,depth:points.reduce((sum,p)=>sum+p.depth,0)/points.length};
     }).sort((a,b)=>{
@@ -409,10 +434,51 @@ export function initModelStage(){
         face.kind==='glulam-roof'?.48:
         face.kind==='terminal-steel-canopy'?.26:
         face.kind==='wood-roof'?.64:face.kind==='wood-deck'?.28:
-        face.kind==='steel-roof'?.43:face.kind==='rc-wall'?.74:1;
-      const border=['rc-floor','rc-roof','rc-balcony','wood-deck','wood-roof','steel-roof','stadium-roof','glulam-roof','football-pitch','rc-bridge-deck','terminal-steel-canopy','rc-terminal-mezzanine'].includes(face.kind)?'rgba(39,95,123,.23)':'rgba(22,49,70,.23)';
+        face.kind==='steel-roof'?.43:
+        face.kind==='timber-roof'?.64:
+        face.kind==='timber-floor'?.22:
+        ['masonry-wall','stone-wall'].includes(face.kind)?.93:
+        face.kind==='rc-wall'?.74:1;
+      const border=['rc-floor','rc-roof','rc-balcony','wood-deck','wood-roof','steel-roof','stadium-roof','glulam-roof','football-pitch','rc-bridge-deck','terminal-steel-canopy','rc-terminal-mezzanine','timber-roof','timber-floor','masonry-wall','stone-wall'].includes(face.kind)?'rgba(39,95,123,.23)':'rgba(22,49,70,.23)';
       poly(points,rgba(pigment,lighting,opacity),border);
     }
+  }
+  // The two pinned and two rolling boundary supports are ACTUAL native D2
+  // endpoint node constraints. These are only standard FEM glyphs showing the
+  // fixed/free DOFs, never hidden decorative piers under the deck.
+  function paintBridgeBearings(){
+    if(modelIndex!==2||mode!=='structure'||!mixedDemo.supports?.length)return;
+    ctx.save();
+    for(const support of mixedDemo.supports){
+      const p=project([support.x,support.y,support.z],true);
+      const s=clamp(width/67,7,12);
+      ctx.strokeStyle='#214c5f';
+      ctx.fillStyle=support.kind==='hinge'?'#f5a36b':'#a7dce7';
+      ctx.lineWidth=1.8;
+      ctx.beginPath();
+      ctx.moveTo(p.x,p.y+2);
+      ctx.lineTo(p.x-s,p.y+s*1.28);
+      ctx.lineTo(p.x+s,p.y+s*1.28);
+      ctx.closePath();ctx.fill();ctx.stroke();
+      if(support.kind==='roller'){
+        for(const offset of [-s*.42,s*.42]){
+          ctx.beginPath();
+          ctx.arc(p.x+offset,p.y+s*1.58,s*.22,0,Math.PI*2);
+          ctx.fillStyle='#eaf6f4';ctx.fill();ctx.stroke();
+        }
+      }
+      ctx.beginPath();
+      ctx.moveTo(p.x-s*1.24,p.y+s*(support.kind==='hinge'?1.42:1.95));
+      ctx.lineTo(p.x+s*1.24,p.y+s*(support.kind==='hinge'?1.42:1.95));
+      ctx.strokeStyle='#527883';ctx.stroke();
+      ctx.font='850 '+Math.max(8,Math.min(10,width/110))+'px system-ui';
+      ctx.textAlign='center';
+      ctx.fillStyle=support.kind==='hinge'?'#98583a':'#2b7b97';
+      ctx.fillText(support.kind==='hinge'?(italian?'CERNIERA':'PIN'):
+       (italian?'CARRELLO':'ROLLER'),
+       p.x,p.y+s*(support.kind==='hinge'?2.85:3.3));
+    }
+    ctx.restore();
   }
   function axisTriad(){
     const x=38,y=height-49,origin=mid;
@@ -442,7 +508,7 @@ export function initModelStage(){
     ctx.setTransform(dpr,0,0,dpr,0,0);
     ctx.clearRect(0,0,width,height);
     camera={cs:Math.cos(yaw),sn:Math.sin(yaw),cp:Math.cos(pitch),sp:Math.sin(pitch)};
-    drawBackdrop();drawGhost();paintFaces();axisTriad();
+    drawBackdrop();drawGhost();paintFaces();paintBridgeBearings();axisTriad();
     stage.classList.add('model-ready');
   }
   function resize(){
@@ -454,6 +520,9 @@ export function initModelStage(){
     // Fit the native D2 model bounding volume through a 360-degree camera orbit.
     const orbitDiameter=Math.hypot(extent[0],extent[1]);
     scale=Math.min(width/(orbitDiameter*1.13),height/(orbitDiameter*.68+extent[2]*.78));
+    if(modelIndex===4)scale*=.78; // seven actual masonry volumes and their courtyard
+    if(modelIndex===1)scale*=.79; // 114x84 m stadium: keep edges above carousel controls
+    if(modelIndex===2)scale*=.73; // 96 m bridge: both bearings and the complete arch visible above controls
     render();
   }
   // One clock drives the 5-second slideshow and the existing 3D orbit.
@@ -528,7 +597,7 @@ export function initModelStage(){
   canvas.addEventListener('keydown',e=>{
     if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;
     e.preventDefault();
-    if(e.key==='Home'){yaw=[-.97,-.77,-.94,-.88][modelIndex];pitch=[.60,.60,.47,.62][modelIndex];}
+    if(e.key==='Home'){yaw=[-.97,-.77,-.94,-.88,-.74][modelIndex];pitch=[.60,.60,.47,.62,.54][modelIndex];}
     if(e.key==='ArrowLeft')yaw-=.12;
     if(e.key==='ArrowRight')yaw+=.12;
     if(e.key==='ArrowUp')pitch=clamp(pitch-.08,-.05,.95);
@@ -536,7 +605,7 @@ export function initModelStage(){
     render();
   });
   document.getElementById('reset-model')?.addEventListener('click',()=>{
-    yaw=[-.97,-.77,-.94,-.88][modelIndex];pitch=[.60,.60,.47,.62][modelIndex];
+    yaw=[-.97,-.77,-.94,-.88,-.74][modelIndex];pitch=[.60,.60,.47,.62,.54][modelIndex];
     render();canvas.focus({preventScroll:true});
   });
   const observer=new ResizeObserver(resize);observer.observe(canvas);

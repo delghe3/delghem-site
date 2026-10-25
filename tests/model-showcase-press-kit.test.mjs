@@ -5,7 +5,7 @@ import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const read=path=>readFileSync(resolve(root,path),'utf8');
-const names=['eight-storey','football-canopy','steel-arch-bridge','timber-terminal'];
+const names=['eight-storey','football-canopy','steel-arch-bridge','timber-terminal','masonry-aggregate'];
 test('Bilingual press kits show real 3D native concepts separately from screenshots of the application',()=>{
  for(const file of ['media-kit/index.html','en/media-kit/index.html']){
   const html=read(file);

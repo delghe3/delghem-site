@@ -1098,7 +1098,7 @@ body.photo-open{overflow:hidden}
  outline:3px solid #db995d;outline-offset:2px
 }
 .model-showcase-actions #model-showcase-pause{font-size:12px}
-.model-showcase-progress{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.model-showcase-progress{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
 .model-showcase-step{
   display:flex;min-width:0;flex-direction:column;gap:6px;cursor:pointer;
   border:0;background:transparent;padding:2px 0 0;
@@ -1167,3 +1167,15 @@ body.photo-open{overflow:hidden}
 .media-showcase-return:hover{background:#32899a;color:white}
 @media(max-width:670px){.media-showcase-section{padding:20px 20px 32px;margin-bottom:54px}.media-showcase-grid{grid-template-columns:1fr;gap:13px}.media-showcase-card figcaption{padding:14px 16px 18px}.media-showcase-card strong{font-size:14px}.media-showcase-card span{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.media-showcase-card img{transition:none}}
+
+/* Masonry and timber, recorded as actual D2 wall/roof shell materials. */
+.model-material-key .mat-masonry{background:linear-gradient(145deg,#d9ad73,#968270)}
+.model-material-key>span[hidden]{display:none!important}
+@media(max-width:650px){
+ .model-showcase-progress{gap:4px}
+ .showcase-step-label{font-size:7.5px}
+}
+@media(max-width:360px){
+ .model-showcase-progress{gap:3px}
+ .showcase-step-label{font-size:7px;letter-spacing:0}
+}

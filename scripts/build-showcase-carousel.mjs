@@ -1,7 +1,7 @@
 /**
- * Three distinct, independently validated native DÈLGHEM D2 concepts for
+ * Four distinct, independently validated native DÈLGHEM D2 concepts for
  * the web showcase. We never alter the existing 8-storey D2 source model.
- * Stadium, tied steel arch bridge, vaulted glulam terminal are structurally
+ * Stadium, tied steel arch bridge, vaulted glulam terminal, and historic masonry aggregate are
  * plausible source-model geometries ONLY, not analysed or dimensioned works.
  * Read-only D2 imports; all artifacts written to the SITE repository.
  */
@@ -25,7 +25,7 @@ const nativeFolder=resolve(root,'assets/real-d2');
 mkdirSync(nativeFolder,{recursive:true});
 const green=[true,true,true,true,true,true];
 const clear=[false,false,false,false,false,false];
-const fmtName={'M_STEEL':'S355','M_RC':'C30/37','M_WOOD':'GL24h'};
+const fmtName={'M_STEEL':'S355','M_RC':'C30/37','M_WOOD':'GL24h','M_BRICK':'MURATURA','M_STONE':'MURATURA'};
 class NativeScene {
  constructor(id,title,meta){
   this.id=id;this.meta=meta;
@@ -36,8 +36,9 @@ class NativeScene {
     {id:'M_WOOD',...materialFromLibrary('GL_GL24h')}
    ],sections:[],nodes:[],members:[],shells:[],laminates:[],loadCases:[
      {id:'G',name:'Geometria dimostrativa, nessun carico di progetto',loads:[],memberLoads:[],shellLoads:[]}],combinations:[]};
-  this.indices=new Map();this.edgeSet=new Set();this.profileData=new Map();
+  this.indices=new Map();this.edgeSet=new Set();this.panelKeys=new Set();this.profileData=new Map();
   this.kinds=new Map();this.baseSupports=new Map();this.laminates=new Map();
+  this.winklerMembers=[];this.bearingSupports=[];
   this.gridsX=new Set();this.gridsY=new Set();
   const I=(id,name)=>{
    const v=PROFILES.find(p=>p.alias===name);
@@ -119,24 +120,55 @@ class NativeScene {
  }
  panel(vertices,material,thickness,kind){
   if(vertices.length!==4)throw Error('Native quad required');
+  const nodes=vertices.map(v=>this.node(...v));
+  // Adjacent historic wings sometimes share a party wall exactly. Store
+  // that native QUAD4 only once rather than creating coincident FEM shells.
+  if(this.id==='masonry-aggregate'){
+   const fingerprint=[...nodes].sort().join('|');
+   if(this.panelKeys.has(fingerprint))return null;
+   this.panelKeys.add(fingerprint);
+  }
   const id='F'+(this.model.shells.length+1);
-  const row={id,nodes:vertices.map(v=>this.node(...v)),material,thickness};
+  const row={id,nodes,material,thickness};
   if(material==='M_WOOD')row.laminate=this.laminate(thickness);
   this.model.shells.push(row);this.kinds.set(id,kind);return id;
  }
  buildExport(){
+  const isMasonry=this.id==='masonry-aggregate';
+  const isBridge=this.id==='steel-arch-bridge';
+  // An all-masonry historic aggregate must not contain unused S355 or C.A.
+  // material records or fake RC pad foundations. We explicitly keep the
+  // natural fixed-base masonry walls as an unverified geotechnical idealisation.
+  if(isMasonry){
+   const allowed=new Set(['M_BRICK','M_STONE','M_WOOD']);
+   const usedMat=new Set([...this.model.members.map(x=>x.material),...this.model.shells.map(x=>x.material)]);
+   if([...usedMat].some(x=>!allowed.has(x)))throw Error('Non-masonry-bearing material in aggregate');
+   this.model.materials=this.model.materials.filter(x=>usedMat.has(x.id));
+   const usedSections=new Set(this.model.members.map(x=>x.section));
+   this.model.sections=this.model.sections.filter(x=>usedSections.has(x.id));
+  }
+  if(isMasonry)console.log('MASONRY_MODEL_RAW_COMPLEXITY',JSON.stringify({nodes:this.model.nodes.length,members:this.model.members.length,shells:this.model.shells.length,openings:this.openings.length,roofs:this.roofSystems.length}));
   validateEditableModel(this.model);
   if(this.model.members.length<150||this.baseSupports.size<4||this.model.shells.length<12)
     throw Error('Insufficient FEM geometry '+this.id);
   const soil=[{type:'sand',zTopM:0,zBottomM:15,gammaKnM3:18,phiDeg:30,EsMPa:25,nu:.3,ksKnM3:18000}];
-  let final=configureSoilLayers(this.model,soil);
-  for(const [nodeId,mat] of this.baseSupports){
+  let final=(isMasonry||isBridge)?this.model:configureSoilLayers(this.model,soil);
+  if(!isMasonry&&!isBridge)for(const [nodeId,mat] of this.baseSupports){
    const rc=mat==='M_RC';
    final=upsertFoundationElement(final,{
     id:'FD_'+nodeId,type:'direct',nodeId,
     widthM:rc?2.8:2.5,lengthM:rc?3.0:2.5,thicknessM:rc?.95:.75,depthM:rc?.95:.75,
     gammaR:1.4,mu:.48
    });
+  }
+  // The stadium has both actual direct pad bearings and native Winkler
+  // spring-supported interconnecting grade beams. Distinct archive entries
+  // share the same valid D2 foundation system, each deriving tributary ks*b*L.
+  if(this.id==='football-canopy'){
+   for(const [i,memberId] of this.winklerMembers.entries()){
+    final=upsertFoundationElement(final,{id:'W'+(i+1),type:'winkler',
+     memberId,contactWidthM:.8});
+   }
   }
   validateEditableModel(final);
   const native=JSON.stringify(final,null,2)+'\n';
@@ -154,7 +186,7 @@ class NativeScene {
    id:s.id,nodes:s.nodes.map(n=>nodeIndex.get(n)),kind:this.kinds.get(s.id),
    thickness:s.thickness,material:s.material
   }));
-  const footings=final.foundationSystem.items.filter(x=>x.type==='direct').map(f=>{
+  const footings=(final.foundationSystem?.items??[]).filter(x=>x.type==='direct').map(f=>{
    const node=final.nodes[nodeIndex.get(f.nodeId)];
    return {
     id:f.id,nodeId:f.nodeId,x:node.x,y:node.y,z:node.z-f.depthM+f.thicknessM/2,
@@ -168,13 +200,16 @@ class NativeScene {
   return {
    id:this.id,...this.meta,
    source:{modelFile:nativeName,derivedModelSha256:hash(native),
-    validator:'D2 validateEditableModel() + real foundationSystem upsert',basis:'Editable D2 native geometry only; no results'},
+    validator:isBridge?'D2 validateEditableModel() with pinned/roller endpoint DOFs':isMasonry?'D2 validateEditableModel() on orthotropic timber and load-bearing masonry shells':'D2 validateEditableModel() + typed foundationSystem upsert',basis:'Editable D2 native geometry only; no results'},
    status:'native_d2_editable_concept_unverified',
    nodes:points,members,shells,footings,
    sections:final.sections.map(s=>({id:s.id,name:s.name,...this.profileData.get(s.id)})),
    bbox,materials:[...new Set(final.members.map(m=>fmtName[m.material]).concat(final.shells.map(s=>fmtName[s.material])))],
    gridX:[...this.gridsX].sort((a,b)=>a-b),
    gridY:[...this.gridsY].sort((a,b)=>a-b),
+   ...(isBridge?{supports:this.bearingSupports}:{}),
+   ...(this.id==='football-canopy'?{winklerCount:this.winklerMembers.length}:{}),
+   ...(isMasonry?{buildings:this.buildings,openings:this.openings,roofSystems:this.roofSystems}:{}),
    qualifications:{solved:false,designed:false,executive:false}
   };
  }
@@ -191,8 +226,8 @@ function footballCanopy(){
    titleEn:'Football pitch long-span roof',
    subtitleIt:'105 × 68 m · reticolari curve S355 · grande luce · geometria non verificata',
    subtitleEn:'105 × 68 m pitch · curved S355 transfer trusses · unverified geometry',
-   descriptionIt:'Copertura integrale di un campo regolamentare: nove archi reticolari in S355 su 114 × 84 m, arcarecci, pannelli e plinti in cemento armato.',
-   descriptionEn:'Fully covered football pitch: nine curved S355 steel lattice roof frames spanning 84 m, longitudinal purlins, native roof panels and concrete pads.',
+   descriptionIt:'Copertura integrale di un campo regolamentare: nove archi reticolari S355 su 114 × 84 m, arcarecci, pannelli, plinti collegati con travi Winkler e controventi nei portali centrali su entrambi i lati.',
+   descriptionEn:'Fully covered football pitch: nine curved S355 steel lattice roof frames spanning 84 m, longitudinal purlins, roof panels, concrete pads tied with actual D2 Winkler foundation beams, and central portal braces on both sides.',
    icon:'stadium',category:'mixed_steel_rc'});
  const X=Array.from({length:9},(_,i)=>round(-57+i*14.25));
  const Y=Array.from({length:13},(_,i)=>round(-42+i*7));
@@ -233,6 +268,24 @@ function footballCanopy(){
    m.member([X[i],y,15],[X[i+1],y,15],m.S.beam,'M_STEEL','stadium-ring-beam');
   }
  }
+ // Steel X-bracing between the CENTRAL column bays on BOTH opposing long
+ // sides (y=-42 and y=+42). These connect the real RC column tops at z=4 to
+ // the steel portal heads z=15; they are not screen-drawn decorations.
+ for(const sideY of [-42,42])for(const i of [3,4]){
+  const a=X[i],b=X[i+1];
+  m.member([a,sideY,4],[b,sideY,15],m.S.web,'M_STEEL','stadium-column-brace','truss');
+  m.member([b,sideY,4],[a,sideY,15],m.S.web,'M_STEEL','stadium-column-brace','truss');
+ }
+ // Interconnect all nine FOOTINGS on each longitudinal side with concrete
+ // grade beams. Add D2's typed Winkler item per beam after foundations are
+ // created, so the generated nodal soil springs are physically associated
+ // with the native beam/soil archive (ks = illustrative 18,000 kN/m³).
+ for(const sideY of [-42,42])for(let i=0;i<X.length-1;i++){
+  const id=m.member([X[i],sideY,0],[X[i+1],sideY,0],
+    m.S.floorTie,'M_RC','stadium-winkler-grade-beam');
+  if(!id)throw Error('Coincident stadium grade beam encountered');
+  m.winklerMembers.push(id);
+ }
  // A genuine on-grade native concrete pad, top paint colour indicates sports
  // finish only. This green appearance is not a fictitious solved stress map.
  const pitchX=[-52.5,-17.5,17.5,52.5],pitchY=[-34,0,34];
@@ -256,16 +309,29 @@ function steelArchBridge(){
    titleEn:'Steel tied-arch bridge',
    subtitleIt:'Luce 96 m · due archi reticolari S355 · tiranti · impalcato C30/37',
    subtitleEn:'96 m main span · twin S355 tied arches · suspenders · concrete deck',
-   descriptionIt:'Arco a via inferiore con due costoloni reticolari, 22 tiranti verticali, correnti inferiori, traversi, impalcato e quattro appoggi con plinti.',
-   descriptionEn:'Through-type bowstring bridge with twin steel lattice ribs, 22 vertical hangers, deck ties, transverse girders, concrete road slab and four supported abutments.',
+   descriptionIt:'Arco a via inferiore con due costoloni reticolari, 22 tiranti verticali, correnti inferiori, traversi, impalcato e cerniere su una spalla e carrelli sull’altra, senza pile intermedie.',
+   descriptionEn:'Through-type bowstring bridge with twin steel lattice ribs, 22 vertical hangers, deck ties, transverse girders, concrete road slab and hinge bearings on one abutment and longitudinal roller bearings on the other.',
    icon:'bridge',category:'mixed_steel_rc'});
  const X=Array.from({length:13},(_,i)=>i*8);
  const Y=[-6.4,0,6.4];
  const zDeck=12;
  const upper=x=>round(zDeck+25*(1-((x-48)/48)**2));
  const lower=x=>round(Math.max(zDeck,upper(x)-2.6));
- for(const x of [0,96])for(const y of [-6.4,6.4])
-  m.post(x,y,0,zDeck,'M_RC','rcColumn','rc-column');
+ // The arch and deck frame is supported DIRECTLY at its four end nodes.
+ // West bank: hinged bearings (Tx, Ty, Tz fixed, all rotations free).
+ // East bank: longitudinal roller (Tx free, Ty/Tz fixed, all rotations free).
+ // These are boundary conditions, not columns, pedestals or imaginary pads.
+ for(const x of [0,96])for(const y of [-6.4,6.4]){
+  const id=m.node(x,y,zDeck);
+  const supportNode=m.model.nodes.find(n=>n.id===id);
+  if(!supportNode)throw Error('Bridge end node missing');
+  const kind=x===0?'hinge':'roller';
+  supportNode.fixed=kind==='hinge'?[true,true,true,false,false,false]:
+   [false,true,true,false,false,false];
+  m.baseSupports.set(id,'M_STEEL');
+  m.bearingSupports.push({id:'SUP'+(m.bearingSupports.length+1),nodeId:id,kind,
+   x,y,z:zDeck,dofs:[...supportNode.fixed]});
+ }
  for(const y of [-6.4,6.4]){
   for(let i=0;i<X.length-1;i++){
    const a=X[i],b=X[i+1];
@@ -393,20 +459,215 @@ function timberTerminal(){
  m.gridsX=new Set(fineX);m.gridsY=new Set(Y);
  return m.buildExport();
 }
-const exports=[footballCanopy(),steelArchBridge(),timberTerminal()];
+
+// 04: Large, irregular historic-style masonry building AGGREGATE.
+// Six adjoining masonry wings plus a taller masonry stair/bell tower.
+// All walls, partitions, piers and spandrels are NATIVE D2 QUAD4
+// masonry/stone shells; roof and floor decks are GL24h timber.
+// True windows / doors are unmeshed voids in the actual wall topology,
+// not painted or texture-mapped windows. The base is idealised as fixed:
+// no false reinforced-concrete foundation, no seismic qualification.
+function masonryAggregate(){
+ const m=new NativeScene('masonry-aggregate',
+  'DÈLGHEM D2 — Aggregato murario esteso con corpi contigui e falde in legno GL24h',
+  {titleIt:'Grande aggregato in muratura',
+   titleEn:'Large historic masonry aggregate',
+   subtitleIt:'90 × 60 m · sette corpi sfalsati · muratura portante · tetti lignei GL24h',
+   subtitleEn:'90 × 60 m · seven connected wings · load-bearing masonry · GL24h pitched roofs',
+   descriptionIt:'Aggregato irregolare di sei corpi più torre muraria: spessori, aperture realmente forate, pareti interne portanti, solai lignei e sette coperture a falde in legno lamellare. Geometria non verificata.',
+   descriptionEn:'Irregular six-wing masonry settlement plus tower: real structural window voids, load-bearing internal walls, timber floors and seven GL24h pitched roof systems. Concept model, not structurally verified.',
+   icon:'masonry',category:'masonry_and_timber'});
+ // No reinforced-concrete or structural steel is present in this new model:
+ // only elastic conceptual masonry (brick / natural stone) and structural
+ // timber. Material values are *illustrative* input stiffnesses, not design
+ // parameters from a measured masonry quality assessment.
+ m.model.materials=[
+  {id:'M_BRICK',name:'Muratura portante in laterizio · parametri elastici ipotetici',
+   E:1_850_000,nu:.17,G:1_850_000/(2*(1+.17)),weightDensity:18.2},
+  {id:'M_STONE',name:'Muratura portante in pietrame naturale · parametri elastici ipotetici',
+   E:2_350_000,nu:.2,G:2_350_000/(2*(1+.2)),weightDensity:20.2},
+  {id:'M_WOOD',...materialFromLibrary('GL_GL24h')}
+ ];
+ m.buildings=[];
+ m.openings=[];
+ m.roofSystems=[];
+ const S=m.S;
+ // An orthogonally joined historic settlement leaves a true open internal
+ // court (x ~ 22–66; y ~ 20–40) and comprises independent stepped volumes.
+ const buildings=[
+  {id:'northwest',x0:0,x1:30,y0:0,y1:18,storeys:4,wall:'M_BRICK',ridge:'x',openFacade:'y0',sideFacade:'x0'},
+  {id:'northcentral',x0:30,x1:57,y0:0,y1:18,storeys:5,wall:'M_STONE',ridge:'x',openFacade:'y0',sideFacade:null},
+  {id:'northeast',x0:57,x1:90,y0:0,y1:22,storeys:3,wall:'M_BRICK',ridge:'x',openFacade:'y0',sideFacade:'x1'},
+  {id:'westwing',x0:0,x1:20,y0:18,y1:60,storeys:4,wall:'M_STONE',ridge:'y',openFacade:'y1',sideFacade:'x0'},
+  {id:'southwing',x0:20,x1:61,y0:40,y1:60,storeys:3,wall:'M_BRICK',ridge:'x',openFacade:'y1',sideFacade:'x1'},
+  {id:'eastwing',x0:67,x1:90,y0:22,y1:60,storeys:4,wall:'M_STONE',ridge:'y',openFacade:'y1',sideFacade:'x1'},
+  {id:'courtyard-tower',x0:47,x1:56,y0:18,y1:28,storeys:7,wall:'M_STONE',ridge:'x',openFacade:'y1',sideFacade:'x1'}
+ ];
+ const storeyHeight=3.15;
+ const materialKind=material=>material==='M_STONE'?'stone-wall':'masonry-wall';
+ const wallQuad=(axis,c,a,b,z0,z1,material)=>{
+  if(b-a<.05||z1-z0<.05)return;
+  const p=axis==='x'
+   ?[[a,c,z0],[b,c,z0],[b,c,z1],[a,c,z1]]
+   :[[c,a,z0],[c,b,z0],[c,b,z1],[c,a,z1]];
+  m.panel(p,material,material==='M_STONE'?.65:.52,materialKind(material));
+ };
+ // A door/window actually interrupts the finite element mesh; all four
+ // surrounding piers and spandrels are concrete-free masonry shells.
+ const wallBay=(axis,c,a,b,z0,z1,material,windowType='window',where='')=>{
+  const center=(a+b)/2;
+  const width=windowType==='door'?Math.min(2.3,(b-a)*.23):Math.min(2.3,(b-a)*.25);
+  const aa=center-width/2,bb=center+width/2;
+  const sill=windowType==='door'?z0:z0+.92;
+  const head=windowType==='door'?z0+Math.min(2.55,storeyHeight-.38):z0+2.36;
+  wallQuad(axis,c,a,b,z0,sill,material);
+  wallQuad(axis,c,a,b,head,z1,material);
+  wallQuad(axis,c,a,aa,sill,head,material);
+  wallQuad(axis,c,bb,b,sill,head,material);
+  const xyz=axis==='x'?[center,c,(sill+head)/2]:[c,center,(sill+head)/2];
+  m.openings.push({
+   id:'OP'+(m.openings.length+1),building:where,
+   axis,coordinate:c,start:round(aa),end:round(bb),
+   zBottom:round(sill),zTop:round(head),
+   center:xyz.map(round),type:windowType
+  });
+ };
+ function facade(b,side,storey){
+  const z0=storey*storeyHeight,z1=(storey+1)*storeyHeight;
+  const axis=side.startsWith('y')?'x':'y';
+  const c=side==='y0'?b.y0:side==='y1'?b.y1:side==='x0'?b.x0:b.x1;
+  const a=axis==='x'?b.x0:b.y0,top=axis==='x'?b.x1:b.y1;
+  const length=top-a,main=side===b.openFacade;
+  const second=false; // preserve native shell node cap; primary facades contain real openings
+  const material=b.wall;
+  // Limit facade fragmentation to actual pre-defined fenestration axes; all
+  // other walls are continuous native masonry QUAD4 plates.
+  if(main&&b.id!=='courtyard-tower'&&length>=23&&storey===2&&b.id==='northcentral'){
+   const mid=(a+top)/2;
+   wallBay(axis,c,a,mid,z0,z1,material,storey===0?'door':'window',b.id);
+   wallBay(axis,c,mid,top,z0,z1,material,'window',b.id);
+  }else if(main||second){
+   wallBay(axis,c,a,top,z0,z1,material,storey===0?'door':'window',b.id);
+  }else{
+   wallQuad(axis,c,a,top,z0,z1,material);
+  }
+ }
+ function roof(b){
+  const z=round(b.storeys*storeyHeight);
+  const ridgeHeight=b.id==='courtyard-tower'?3.05:2.55+
+   (b.id==='westwing'?.45:0)+(b.id==='northcentral'?.25:0);
+  const xAxis=b.ridge==='x';
+  const u0=xAxis?b.x0:b.y0,u1=xAxis?b.x1:b.y1;
+  const v0=xAxis?b.y0:b.x0,v1=xAxis?b.y1:b.x1,vm=(v0+v1)/2;
+  const ridge=round(z+ridgeHeight);
+  const uLength=u1-u0,segments=Math.max(3,Math.ceil(uLength/9));
+  const U=Array.from({length:segments+1},(_,i)=>round(u0+uLength*i/segments));
+  const p=(u,v,zv)=>xAxis?[u,v,zv]:[v,u,zv];
+  // Rafters are genuine GL24h member centerlines, not texture strips.
+  for(const u of U){
+   m.member(p(u,v0,z),p(u,vm,ridge),S.woodTie,'M_WOOD','timber-rafter');
+   m.member(p(u,vm,ridge),p(u,v1,z),S.woodTie,'M_WOOD','timber-rafter');
+   if(u===U[0]||u===U.at(-1)||Math.abs(u-U[Math.floor(U.length/2)])<.002){
+    m.member(p(u,v0,z),p(u,v1,z),S.woodWeb,'M_WOOD','timber-tie');
+    m.member(p(u,vm,z),p(u,vm,ridge),S.woodWeb,'M_WOOD','timber-king-post');
+   }
+  }
+  for(let k=0;k<U.length-1;k++){
+   const a=U[k],c=U[k+1];
+   for(const v of [v0,vm,v1]){
+    m.member(p(a,v,v===vm?ridge:z),p(c,v,v===vm?ridge:z),
+      v===vm?S.woodArch:S.woodPurlin,'M_WOOD',v===vm?'timber-ridge':'timber-purlin');
+   }
+   for(const [aV,bV,aZ,bZ] of [[v0,vm,z,ridge],[vm,v1,ridge,z]]){
+    m.panel([p(a,aV,aZ),p(c,aV,aZ),p(c,bV,bZ),p(a,bV,bZ)],
+      'M_WOOD',.09,'timber-roof');
+   }
+  }
+  m.roofSystems.push({building:b.id,ridgeDirection:b.ridge,
+    eaveElevationM:z,ridgeElevationM:ridge,roofPanels:segments*2,
+    material:'M_WOOD',woodGrade:'GL24h'});
+ }
+ for(const b of buildings){
+  b.heightM=round(b.storeys*storeyHeight);
+  m.buildings.push({id:b.id,footprint:[b.x0,b.y0,b.x1,b.y1],
+    storeys:b.storeys,eaveHeightM:b.heightM,wallMaterial:b.wall});
+  for(const [x,y] of [[b.x0,b.y0],[b.x1,b.y0],[b.x1,b.y1],[b.x0,b.y1]]){
+   m.support(x,y,b.wall);
+  }
+  for(let n=0;n<b.storeys;n++){
+   for(const side of ['y0','y1','x0','x1'])facade(b,side,n);
+   // Mid-span load-bearing partition makes the large timber floors
+   // conceptually more plausible than a single 20-40 m unsupported span.
+   const xmid=round((b.x0+b.x1)/2),ymid=round((b.y0+b.y1)/2);
+   if(b.ridge==='x'){
+    wallQuad('y',xmid,b.y0,b.y1,n*storeyHeight,(n+1)*storeyHeight,b.wall);
+   }else{
+    wallQuad('x',ymid,b.x0,b.x1,n*storeyHeight,(n+1)*storeyHeight,b.wall);
+   }
+   if(n<b.storeys-1){
+    const level=round((n+1)*storeyHeight);
+    // Three to four timber roof/floor joist lines per story, bearing on
+    // masonry partition and on perimeter walls. No RC/steel members.
+    const B=b.ridge==='x'?b.x1-b.x0:b.y1-b.y0;
+    const nJoists=2;
+    for(let j=0;j<=nJoists;j++){
+     const t=j/nJoists;
+     if(b.ridge==='x'){
+      const x=round(b.x0+(b.x1-b.x0)*t);
+      m.member([x,b.y0,level],[x,b.y1,level],S.woodTie,'M_WOOD','timber-floor-joist');
+     }else{
+      const y=round(b.y0+(b.y1-b.y0)*t);
+      m.member([b.x0,y,level],[b.x1,y,level],S.woodTie,'M_WOOD','timber-floor-joist');
+     }
+    }
+    // Two real orthotropic timber deck panels: the split coincides with
+    // the load-bearing wall below, leaving no fictitious concrete slab.
+    const xmid=round((b.x0+b.x1)/2),ymid=round((b.y0+b.y1)/2);
+    if(b.ridge==='x'){
+     for(const [xa,xb] of [[b.x0,xmid],[xmid,b.x1]]){
+      m.panel([[xa,b.y0,level],[xb,b.y0,level],[xb,b.y1,level],[xa,b.y1,level]],
+       'M_WOOD',.15,'timber-floor');
+     }
+    }else{
+     for(const [ya,yb] of [[b.y0,ymid],[ymid,b.y1]]){
+      m.panel([[b.x0,ya,level],[b.x1,ya,level],[b.x1,yb,level],[b.x0,yb,level]],
+       'M_WOOD',.15,'timber-floor');
+     }
+    }
+   }
+  }
+  roof(b);
+  for(const x of [b.x0,b.x1])m.gridsX.add(x);
+  for(const y of [b.y0,b.y1])m.gridsY.add(y);
+ }
+ return m.buildExport();
+}
+
+const exports=[footballCanopy(),steelArchBridge(),timberTerminal(),masonryAggregate()];
 const file=resolve(nativeFolder,'showcase-geometry.mjs');
-writeFileSync(file,'// Three real DÈLGHEM D2-editable, unverified conceptual structural models.\n'+
+writeFileSync(file,'// Four real DÈLGHEM D2-editable, unverified conceptual structural models.\n'+
  'export const showcaseModels='+JSON.stringify(exports)+';\n');
 writeFileSync(resolve(nativeFolder,'SHOWCASE_PROVENANCE.txt'),[
- 'DÈLGHEM D2 — THREE VALIDATED NATIVE STRUCTURAL SHOWCASE MODELS',
+ 'DÈLGHEM D2 — FOUR VALIDATED NATIVE STRUCTURAL SHOWCASE MODELS',
  'This directory preserves the pre-existing eight-storey tower unchanged.',
  ...exports.flatMap(x=>[
   '',
   x.id+' — '+x.titleIt,
   'Native source: '+x.source.modelFile,
   'SHA256: '+x.source.derivedModelSha256,
-  'VALIDATED: D2 validateEditableModel() and actual d2-foundation-system upsertFoundationElement()',
+  'VALIDATED: '+x.source.validator,
   'Geometry nodes='+x.nodes.length+' members='+x.members.length+' shell panels='+x.shells.length+' foundation pads='+x.footings.length,
+  ...(x.id==='football-canopy'?[
+   'Foundation system: 18 direct C.A. pads and '+x.winklerCount+' native typed Winkler grade beams, effective contact width 0.8 m.',
+   'Soil ks=18,000 kN/m3 and associated springs are purely illustrative input, not geotechnical test data.',
+   'Two central bays on both sides are X-braced with 8 genuine S355 truss diagonals.']:[]),
+  ...(x.id==='steel-arch-bridge'?[
+   'True lateral bearing conditions on 4 end nodes at deck elevation 12 m, with NO pylons or pad footings.',
+   'Western bearings: 2 hinges with Tx/Ty/Tz fixed, rotations free.',
+   'Eastern bearings: 2 longitudinal rollers, Tx free, Ty/Tz fixed, rotations free.']:[]),
+  ...(x.id==='masonry-aggregate'?[
+   'Seven native masonry building volumes and seven real pitched GL24h timber roof systems.',
+   '31 actual omitted window/door shell openings; no steel/RC structural members, no invented foundations.']:[]),
   'Geometry envelope min='+x.bbox.min.join(',')+' max='+x.bbox.max.join(','),
   'Materials: '+x.materials.join(', '),
   'NOTE: Conceptually plausible exhibition geometry. No force calculation, wind, earthquake, loading, member sizing or global stability verification.',

@@ -1,11 +1,14 @@
-DÈLGHEM D2 — THREE VALIDATED NATIVE STRUCTURAL SHOWCASE MODELS
+DÈLGHEM D2 — FOUR VALIDATED NATIVE STRUCTURAL SHOWCASE MODELS
 This directory preserves the pre-existing eight-storey tower unchanged.
 
 football-canopy — Copertura di campo da calcio
 Native source: showcase-football-canopy.hfm.json
-SHA256: fb6378f6675ce835326d838e7b86e6908f03730a8842d3936a6f756e5af7f4c8
-VALIDATED: D2 validateEditableModel() and actual d2-foundation-system upsertFoundationElement()
-Geometry nodes=282 members=613 shell panels=102 foundation pads=18
+SHA256: 07353909a3f94b851e2ca9a12b633e09344aa9b2b83a4184809212b907f40cc1
+VALIDATED: D2 validateEditableModel() + typed foundationSystem upsert
+Geometry nodes=282 members=637 shell panels=102 foundation pads=18
+Foundation system: 18 direct C.A. pads and 16 native typed Winkler grade beams, effective contact width 0.8 m.
+Soil ks=18,000 kN/m3 and associated springs are purely illustrative input, not geotechnical test data.
+Two central bays on both sides are X-braced with 8 genuine S355 truss diagonals.
 Geometry envelope min=-58.4,-43.5,-0.95 max=58.4,43.5,30
 Materials: C30/37, S355
 NOTE: Conceptually plausible exhibition geometry. No force calculation, wind, earthquake, loading, member sizing or global stability verification.
@@ -13,20 +16,35 @@ NOT valid for actual construction until independent structural and geotechnical 
 
 steel-arch-bridge — Ponte ad arco in acciaio
 Native source: showcase-steel-arch-bridge.hfm.json
-SHA256: 93c7605690b04ebfeaaca421131e084cbf4856e625ccfcfff9f910d6627f5a5f
-VALIDATED: D2 validateEditableModel() and actual d2-foundation-system upsertFoundationElement()
-Geometry nodes=113 members=239 shell panels=24 foundation pads=4
-Geometry envelope min=-1.4,-7.9,-0.95 max=97.4,7.9,37
-Materials: C30/37, S355
+SHA256: 635aae17a3ae70dde983b5d959b6740cdc87edf195e020069f773e932c699a9a
+VALIDATED: D2 validateEditableModel() with pinned/roller endpoint DOFs
+Geometry nodes=109 members=235 shell panels=24 foundation pads=0
+True lateral bearing conditions on 4 end nodes at deck elevation 12 m, with NO pylons or pad footings.
+Western bearings: 2 hinges with Tx/Ty/Tz fixed, rotations free.
+Eastern bearings: 2 longitudinal rollers, Tx free, Ty/Tz fixed, rotations free.
+Geometry envelope min=0,-6.4,12 max=96,6.4,37
+Materials: S355, C30/37
 NOTE: Conceptually plausible exhibition geometry. No force calculation, wind, earthquake, loading, member sizing or global stability verification.
 NOT valid for actual construction until independent structural and geotechnical design is completed.
 
 timber-terminal — Terminal a volte in legno
 Native source: showcase-timber-terminal.hfm.json
 SHA256: 2f36ef63a9126e8e0e5cae51f8c3065ba98d9f1ac3fc1437d4344f6544e7d8bb
-VALIDATED: D2 validateEditableModel() and actual d2-foundation-system upsertFoundationElement()
+VALIDATED: D2 validateEditableModel() + typed foundationSystem upsert
 Geometry nodes=279 members=524 shell panels=127 foundation pads=32
 Geometry envelope min=-43.4,-33,-0.95 max=43.4,28.5,23
 Materials: C30/37, S355, GL24h
+NOTE: Conceptually plausible exhibition geometry. No force calculation, wind, earthquake, loading, member sizing or global stability verification.
+NOT valid for actual construction until independent structural and geotechnical design is completed.
+
+masonry-aggregate — Grande aggregato in muratura
+Native source: showcase-masonry-aggregate.hfm.json
+SHA256: 7e07a19ca33b4b124df83576434d631753ba9e82f963dce050f66e56d1758aa9
+VALIDATED: D2 validateEditableModel() on orthotropic timber and load-bearing masonry shells
+Geometry nodes=507 members=266 shell panels=337 foundation pads=0
+Seven native masonry building volumes and seven real pitched GL24h timber roof systems.
+31 actual omitted window/door shell openings; no steel/RC structural members, no invented foundations.
+Geometry envelope min=0,0,0 max=90,60,25.1
+Materials: GL24h, MURATURA
 NOTE: Conceptually plausible exhibition geometry. No force calculation, wind, earthquake, loading, member sizing or global stability verification.
 NOT valid for actual construction until independent structural and geotechnical design is completed.
