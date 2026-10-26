@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>DÈLGHEM D2 — Relazioni Tecniche Dimostrative</title>
+ <meta name="robots" content="index,follow"><link rel="canonical" href="https://www.delghe.com/reports/it/">
+ <style>
+ :root{color-scheme:light}*{box-sizing:border-box}
+ body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;color:#173846;background:#eef4f1;line-height:1.6}
+ .report-nav{position:sticky;top:0;padding:16px max(18px,calc((100vw - 1000px)/2));background:#103744;color:white;z-index:5;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+ a{color:#0c7272}.report-nav a{color:#b7f3db;text-decoration:none;font-size:12px}.report-nav strong{font-weight:900;letter-spacing:-.04em;font-size:21px}
+ main{max-width:960px;margin:40px auto;padding:0 18px}
+ header{background:#123a49;padding:42px;color:#f7fff9;border-radius:11px}
+ header small{font-weight:800;letter-spacing:.1em;color:#82e5bf}h1{font-size:clamp(30px,4vw,56px);line-height:1.1;letter-spacing:-.06em;margin:15px 0}
+ header p{color:#dcf4e7}article{background:white;margin-top:22px;padding:32px;border:1px solid #bdd5cc;border-top:5px solid #35b697;border-radius:8px;break-inside:avoid}
+ h2{font-size:26px;line-height:1.15;margin:0 0 16px;color:#12394a;letter-spacing:-.04em}
+ h3{font-size:15px;color:#1a5f65;margin-bottom:4px}
+ p,li{font-size:13px;color:#486a74}
+ table{width:100%;border-collapse:collapse;font-size:12px;margin-top:14px}
+ th,td{padding:9px;border:1px solid #bfd6ce;text-align:right}th:first-child,td:first-child{text-align:left}
+ thead{background:#144758;color:#effff7}
+ .formula{background:#edf6f1;padding:15px;color:#154b56;font-family:ui-monospace,monospace;border-left:3px solid #24ac91}
+ .alert{background:#fff4e9;border-left:4px solid #d28e5e;padding:15px;color:#744733!important}
+ .hash{overflow-wrap:anywhere;font:11px ui-monospace,monospace;color:#3c636a}
+ .foot{text-align:center;padding:24px;font-size:11px;color:#577078}
+ button{cursor:pointer;padding:10px 18px;border:1px solid #8acbb4;background:#b7f3db;color:#134653;border-radius:6px;font-weight:800}
+ @media print{body{background:white}.report-nav,.foot,button{display:none!important}main{margin:0;max-width:none}article{break-inside:auto;page-break-before:always;border:0}header{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+ </style></head><body>
+ <nav class="report-nav"><strong>DÈLGHEM / D2</strong>
+ <a href="#report-model">Modello</a>
+ <a href="#report-quantity">Quantità</a>
+ <a href="#report-provenance">Tracciabilità</a>
+ <a href="../../it/#technical-reports">Torna al sito</a>
+ <button type="button" onclick="window.print()">Stampa / Salva PDF</button></nav>
+ <main>
+ <header><small>DOCUMENTO DI SVILUPPO / NON FIRMATO</small>
+ <h1>Relazioni tecniche. Prima i dati, poi le conclusioni.</h1>
+ <p>Derivato da un modello dimostrativo DÈLGHEM D2 e da due archivi DXF riferiti a casi DISTINTI. NON costituisce una relazione esecutiva di progetto né un certificato di verifica strutturale.</p></header>
+ <article id="report-model"><h2>01 / Relazione illustrativa del modello</h2>
+ <h3>Identificazione del modello</h3>
+ <p>DÈLGHEM D2 | Torre asimmetrica otto piani S355 + CA C30/37 + GL24h, 3 coperture e plinti</p>
+ <table><thead><tr><th>Oggetto</th><th>Quantità</th></tr></thead><tbody>
+ <tr><td>Nodi</td><td>212</td></tr>
+ <tr><td>Elementi monodimensionali</td><td>514</td></tr>
+ <tr><td>Elementi bidimensionali shell</td><td>112</td></tr></tbody></table>
+ <p>Sorgente: assets/real-d2/complex-demonstration.hfm.json. Tutte le quantità riguardano SOLO questo dimostratore, salvo diversa indicazione.</p>
+ <p class="alert">Dati dimostrativi di ingresso; non si attestano completezza delle combinazioni, fasi costruttive, verifiche degli ancoraggi né calcoli firmati.</p></article>
+ <article id="report-quantity"><h2>02 / Relazione tecnica di computo materiali</h2>
+ <p>Le 514 aste sono raggruppate per materiale assegnato. Le 112 shell sono riportate in una seconda tabella distinta; fondazioni e sovrapposizioni rimangono escluse.</p>
+ <p class="formula">L = √[(x₂−x₁)² + (y₂−y₁)² + (z₂−z₁)²]<br>
+ V = L × A&nbsp; [m³] <br>
+ m = V × γ × (1000 / 9.80665) &nbsp;[kg, γ in kN/m³]</p>
+ <table><thead><tr><th>Materiale</th><th>Aste</th><th>Lunghezza [m]</th><th>Volume [m³]</th><th>Massa [kg]</th></tr></thead>
+ <tbody><tr><th scope="row">S355 · Acciaio aperto</th><td>307</td><td>1.510,81</td><td>12,22</td><td>97.850,40</td></tr><tr><th scope="row">C30/37 · Calcestruzzo</th><td>69</td><td>359,40</td><td>70,59</td><td>179.952,51</td></tr><tr><th scope="row">GL24h · Legno lamellare</th><td>138</td><td>565,77</td><td>30,08</td><td>12.639,30</td></tr></tbody></table>
+ <h3>Superfici e volumi delle shell, separati dalle aste</h3>
+ <p>Per ogni shell: area = somma delle aree triangolari dai nodi del poligono; volume = area × spessore della shell. Nessuna detrazione di aperture o sovrapposizioni.</p>
+ <table><thead><tr><th>Materiale</th><th>Shell</th><th>Superficie [m²]</th><th>Volume [m³]</th><th>Massa [kg]</th></tr></thead><tbody><tr><th scope="row">C30/37 · Calcestruzzo</th><td>76</td><td>2.349,60</td><td>448,92</td><td>1.144.427,51</td></tr><tr><th scope="row">S355 · Acciaio aperto</th><td>9</td><td>231,95</td><td>5,76</td><td>46.097,24</td></tr><tr><th scope="row">GL24h · Legno lamellare</th><td>27</td><td>737,40</td><td>94,16</td><td>39.559,34</td></tr></tbody></table>
+ <h3>Sorgente separata, NON sommata sopra</h3>
+ <p>L’archivio Armature-87-tavole-A1.zip contiene 87 distinte DXF di armatura che riportano, complessivamente,
+ <strong>5.239,49 kg</strong>. NON rappresentano la quantità di ferro del precedente modello misto a otto livelli.</p>
+ <p class="alert">Non è un preventivo d’appalto: esclusi volumi dei solai, intersezioni di calcestruzzo, tagli, dettagli d’officina, armature non modellate, sfridi, trasporto, manodopera e prezzi unitari.</p>
+ </article>
+ <article id="report-provenance"><h2>03 / Tracciabilità delle fonti e stato verifiche</h2>
+ <p>Il calcolo è riproducibile: ricalcolare le quantità da coordinate HFM del D2 e dai manifest originali degli archivi DXF. Non implica validazione FEM indipendente.</p>
+ <h3>SHA-256 del modello</h3><p class="hash">baaab78550ed055a3dedfea96a301305896481dc3e279164fc11ca026ccab31f</p>
+ <h3>SHA-256 modello archivio armature</h3>
+ <p class="hash">3f59fdbf3472784ed859482cbfd49590b5f5d97cac6fbe502898cd4274be298c</p>
+ <h3>SHA-256 modello archivio collegamenti acciaio</h3>
+ <p class="hash">95516c6e58033908d8818b3cb3c97b1ab00ae680e1ccfa3696678249fed095d9</p>
+ <p>Entrambi i manifest originali dichiarano completeExecutiveDesign = false; l’archivio acciaio dichiara inoltre completeConnectionVerification = false. Le tavole SVG composite riuniscono elementi reali DXF ma sono impaginazioni di presentazione, non nuovi esecutivi CAD nativi.</p>
+ <p class="alert">Verifiche strutturali, classi e geometrie di viti, dadi e rondelle, saldature, ancoraggi, piegature ferri, verifiche NTC specifiche, computi e cantierabilità devono essere completati e firmati prima di impiego costruttivo.</p></article>
+ <div class="foot">DÈLGHEM D2 • RELAZIONE PRELIMINARE DI SVILUPPO • NON FIRMATA</div>
+ </main></body></html>

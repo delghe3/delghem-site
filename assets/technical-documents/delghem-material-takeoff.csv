@@ -1,0 +1,8 @@
+﻿Source;material_id;material_name;members;length_m;volume_m3;equivalent_mass_kg;status
+complex-demonstration.hfm.json;M_STEEL;S355 · Acciaio aperto;307;1510.81;12.22;97850.4;PRELIMINARY / MEMBERS ONLY
+complex-demonstration.hfm.json;M_RC;C30/37 · Calcestruzzo;69;359.4;70.59;179952.51;PRELIMINARY / MEMBERS ONLY
+complex-demonstration.hfm.json;M_WOOD;GL24h · Legno lamellare;138;565.77;30.08;12639.3;PRELIMINARY / MEMBERS ONLY
+complex-demonstration.hfm.json / shell;M_RC;C30/37 · Calcestruzzo / 2D SHELL;76;2349.6;448.92;1144427.51;PRELIMINARY / SHELLS (AREA IN LENGTH COLUMN)
+complex-demonstration.hfm.json / shell;M_STEEL;S355 · Acciaio aperto / 2D SHELL;9;231.95;5.76;46097.24;PRELIMINARY / SHELLS (AREA IN LENGTH COLUMN)
+complex-demonstration.hfm.json / shell;M_WOOD;GL24h · Legno lamellare / 2D SHELL;27;737.4;94.16;39559.34;PRELIMINARY / SHELLS (AREA IN LENGTH COLUMN)
+Armature-87-tavole-A1.zip;SEPARATE_RC_BAR_SCHEDULE;Separate RC D2 archive;87;;;5239.49;"DIFFERENT PROJECT; DO NOT ADD TO OTHER MODEL TOTALS"

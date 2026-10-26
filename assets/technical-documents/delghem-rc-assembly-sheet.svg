@@ -1,0 +1,265 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1414" viewBox="0 0 2000 1414">
+<rect x="0" y="0" width="2000" height="1414" rx="0" fill="#f3f7f4" stroke="none" stroke-width="1.8"/>
+<rect x="20" y="20" width="1960" height="1374" rx="0" fill="#ffffff" stroke="#254c5e" stroke-width="1.8"/>
+<rect x="20" y="20" width="1960" height="130" rx="0" fill="#0c3545" stroke="#0c3545" stroke-width="1.8"/>
+<text x="59" y="68" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="900" fill="#9ef5d0" >DÈLGHEM  /  D2  /  TECHNICAL DRAWING PORTFOLIO</text>
+<text x="59" y="112" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="900" fill="#ffffff" >ARMATURE · CARPENTERIA GENERALE · SEZIONI / DISTINTE</text>
+<rect x="1592" y="39" width="352" height="90" rx="0" fill="#1e5960" stroke="#6bd7bd" stroke-width="1.8"/>
+<text x="1615" y="76" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="900" fill="#ecfff4" >SHEET / A1 · COMPOSITE</text>
+<text x="1615" y="108" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="800" fill="#ffd3ae" >NOT FOR CONSTRUCTION</text>
+<rect x="45" y="171" width="1909" height="5" rx="0" fill="#64b9a5" stroke="#64b9a5" stroke-width="1.8"/>
+<text x="64" y="211" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="850" fill="#145a68" >3-STOREY RC FRAME / SCHEMATIC INDEX</text>
+<text x="64" y="241" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#a2735a" >ORIENTATION ONLY • NOT TO SCALE • NATIVE DXF MEMBER DETAILS ON RIGHT</text>
+<rect x="56" y="265" width="1060" height="665" rx="7" fill="#fafffb" stroke="#b8cccd" stroke-width="1.8"/>
+<path d="M122.00 860.00L122.00 345.00" stroke="#2b566a" stroke-width="11" fill="none" />
+<text x="112.0" y="899" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="800" fill="#215f69" >A</text>
+<path d="M358.00 860.00L358.00 345.00" stroke="#2b566a" stroke-width="11" fill="none" />
+<text x="348.0" y="899" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="800" fill="#215f69" >B</text>
+<path d="M594.00 860.00L594.00 345.00" stroke="#2b566a" stroke-width="11" fill="none" />
+<text x="584.0" y="899" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="800" fill="#215f69" >C</text>
+<path d="M830.00 860.00L830.00 345.00" stroke="#2b566a" stroke-width="11" fill="none" />
+<text x="820.0" y="899" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="800" fill="#215f69" >D</text>
+<path d="M1066.00 860.00L1066.00 345.00" stroke="#2b566a" stroke-width="11" fill="none" />
+<text x="1056.0" y="899" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="800" fill="#215f69" >E</text>
+<path d="M122.00 860.00L358.00 860.00" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M358.00 860.00L594.00 860.00" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M594.00 860.00L830.00 860.00" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M830.00 860.00L1066.00 860.00" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M122.00 688.33L358.00 688.33" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M358.00 688.33L594.00 688.33" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M594.00 688.33L830.00 688.33" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M830.00 688.33L1066.00 688.33" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M86.00 688.33L97.00 688.33" stroke="#759aa0" stroke-width="1.5" fill="none" stroke-dasharray="5 4"/>
+<text x="62" y="692.3333333333334" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="800" fill="#708e94" >01</text>
+<text x="137" y="680.3333333333334" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="850" fill="#256776" >BX1</text>
+<path d="M122.00 516.67L358.00 516.67" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M358.00 516.67L594.00 516.67" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M594.00 516.67L830.00 516.67" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M830.00 516.67L1066.00 516.67" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M86.00 516.67L97.00 516.67" stroke="#759aa0" stroke-width="1.5" fill="none" stroke-dasharray="5 4"/>
+<text x="62" y="520.6666666666667" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="800" fill="#708e94" >02</text>
+<text x="137" y="508.66666666666674" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="850" fill="#256776" >BX2</text>
+<path d="M122.00 345.00L358.00 345.00" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M358.00 345.00L594.00 345.00" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M594.00 345.00L830.00 345.00" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M830.00 345.00L1066.00 345.00" stroke="#4b8791" stroke-width="7" fill="none" />
+<path d="M86.00 345.00L97.00 345.00" stroke="#759aa0" stroke-width="1.5" fill="none" stroke-dasharray="5 4"/>
+<text x="62" y="349.0" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="800" fill="#708e94" >03</text>
+<text x="137" y="337.0" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="850" fill="#256776" >BX3</text>
+<text x="240.0" y="765.5833333333334" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="730" fill="#607a85" >C1 / C2 / C3</text>
+<text x="240.0" y="593.9166666666667" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="730" fill="#607a85" >C1 / C2 / C3</text>
+<text x="240.0" y="422.25000000000006" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="730" fill="#607a85" >C1 / C2 / C3</text>
+<rect x="1140" y="265" width="810" height="304" rx="8" fill="#fafffb" stroke="#b8cdcb" stroke-width="1.8"/>
+<rect x="1140" y="265" width="810" height="38" rx="6" fill="#e6f3ec" stroke="#beddd1" stroke-width="1.8"/>
+<text x="1157" y="292" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="850" fill="#155669" >ORIGINAL D2 CAD GEOMETRY / BX1_0_0</text>
+<path d="M1187.73 498.94L1266.10 498.94" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1266.10 498.94L1266.10 368.32" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1266.10 368.32L1187.73 368.32" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1187.73 368.32L1187.73 498.94" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1196.87 489.80L1256.96 489.80" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1256.96 489.80L1256.96 377.47" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1256.96 377.47L1196.87 377.47" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1196.87 377.47L1196.87 489.80" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<circle cx="1199.75" cy="380.34" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1213.33" cy="380.34" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1226.92" cy="380.34" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1240.50" cy="380.34" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1254.08" cy="380.34" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1199.75" cy="486.92" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1213.33" cy="486.92" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1226.92" cy="486.92" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1240.50" cy="486.92" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1254.08" cy="486.92" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1199.75" cy="433.63" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1254.08" cy="433.63" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<path d="M1187.73 500.25L1187.73 514.61" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1266.10 500.25L1266.10 514.61" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1187.73 512.00L1266.10 512.00" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1186.29 513.44L1189.17 510.57" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1264.66 513.44L1267.54 510.57" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<text x="1220.5488106402934" y="510.43516071276326" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >300 mm</text>
+<path d="M1186.43 498.94L1172.06 498.94" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1186.43 368.32L1172.06 368.32" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1174.67 498.94L1174.67 368.32" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1173.23 500.38L1176.11 497.50" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1173.23 369.76L1176.11 366.89" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<text x="1173.1023957711654" y="440.000255776281" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >500 mm</text>
+<text x="1187.7314349049366" y="360.4875095916105" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >SEZIONE A-A · assi locali y/z</text>
+<text x="1187.7314349049366" y="352.65052434137607" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >Scala 1:5 · c=30 mm · staffa Ø10</text>
+<path d="M1577.95 405.55L1904.49 405.55" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1904.49 405.55L1904.49 372.90" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1904.49 372.90L1577.95 372.90" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1577.95 372.90L1577.95 405.55" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1577.95 375.90L1904.49 375.90" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1577.95 402.55L1904.49 402.55" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1577.95 389.22L1904.49 389.22" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1577.95 403.26L1577.95 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1591.01 403.26L1591.01 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1604.07 403.26L1604.07 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1617.13 403.26L1617.13 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1630.19 403.26L1630.19 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1643.26 403.26L1643.26 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1656.32 403.26L1656.32 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1669.38 403.26L1669.38 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1682.44 403.26L1682.44 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1695.50 403.26L1695.50 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1708.56 403.26L1708.56 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1721.63 403.26L1721.63 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1734.69 403.26L1734.69 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1747.75 403.26L1747.75 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1760.81 403.26L1760.81 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1773.87 403.26L1773.87 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1786.93 403.26L1786.93 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1800.00 403.26L1800.00 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1813.06 403.26L1813.06 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1826.12 403.26L1826.12 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1839.18 403.26L1839.18 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1852.24 403.26L1852.24 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1865.30 403.26L1865.30 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1878.37 403.26L1878.37 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1891.43 403.26L1891.43 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1904.49 403.26L1904.49 375.18" stroke="#159879" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1577.95 406.86L1577.95 426.45" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1904.49 406.86L1904.49 426.45" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1577.95 423.84L1904.49 423.84" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1576.51 425.27L1579.38 422.40" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1903.05 425.27L1905.93 422.40" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<text x="1733.7897092676271" y="422.2690766476255" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >5000 mm</text>
+<path d="M1905.80 405.55L1920.16 405.55" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1905.80 372.90L1920.16 372.90" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1917.55 405.55L1917.55 372.90" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1916.11 406.99L1918.99 404.11" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<path d="M1916.11 374.33L1918.99 371.46" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<text x="1915.9832892829738" y="395.59067269161903" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >500 mm</text>
+<path d="M1741.22 408.16L1741.22 367.67" stroke="#294d5e" stroke-width="1.9592463125586155" fill="none" />
+<text x="1739.2592718901865" y="365.05908432091394" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >A</text>
+<text x="1739.2592718901865" y="413.38716003069317" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >A</text>
+<text x="1577.9479921561942" y="353.30360644556225" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >SVILUPPO LOCALE x/z · scala 1:20</text>
+<text x="1577.9479921561942" y="361.14059169579673" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >Lunghezza fisica; ancoraggi e giunzioni riportati in distinta, non sagomati.</text>
+<text x="1156" y="557" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#456e70" >RC-013-BX1_0_0.dxf | 84 native drawing primitives</text>
+<rect x="1140" y="590" width="810" height="340" rx="8" fill="#fafffb" stroke="#b8cdcb" stroke-width="1.8"/>
+<rect x="1140" y="590" width="810" height="38" rx="6" fill="#e6f3ec" stroke="#beddd1" stroke-width="1.8"/>
+<text x="1157" y="617" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="850" fill="#155669" >ORIGINAL D2 CAD GEOMETRY / C1_0_0</text>
+<path d="M1189.36 832.30L1300.49 832.30" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1300.49 832.30L1300.49 721.17" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1300.49 721.17L1189.36 721.17" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1189.36 721.17L1189.36 832.30" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1198.81 822.85L1291.04 822.85" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1291.04 822.85L1291.04 730.62" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1291.04 730.62L1198.81 730.62" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1198.81 730.62L1198.81 822.85" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<circle cx="1201.59" cy="820.08" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1288.27" cy="820.08" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1288.27" cy="733.40" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1201.59" cy="733.40" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1244.93" cy="820.08" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1288.27" cy="776.74" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1244.93" cy="733.40" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1201.59" cy="776.74" r="2.00" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<path d="M1189.36 833.69L1189.36 848.97" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1300.49 833.69L1300.49 848.97" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1189.36 846.19L1300.49 846.19" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1187.84 847.72L1190.89 844.66" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1298.96 847.72L1302.02 844.66" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<text x="1238.1554991386345" y="844.5227128479464" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >400 mm</text>
+<path d="M1187.98 832.30L1172.70 832.30" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1187.98 721.17L1172.70 721.17" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1175.47 832.30L1175.47 721.17" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1173.95 833.83L1177.00 830.77" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1173.95 722.70L1177.00 719.65" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<text x="1173.8070541300208" y="783.5080242995739" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >400 mm</text>
+<text x="1189.364584277813" y="712.8393326684196" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >SEZIONE A-A · assi locali y/z</text>
+<text x="1189.364584277813" y="704.5049415178167" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >Scala 1:5 · c=30 mm · staffa Ø8</text>
+<path d="M1680.75 753.82L1903.00 753.82" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1903.00 753.82L1903.00 726.04" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1903.00 726.04L1680.75 726.04" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1680.75 726.04L1680.75 753.82" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1680.75 750.76L1903.00 750.76" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1680.75 729.09L1903.00 729.09" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1680.75 739.93L1903.00 739.93" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1680.75 751.46L1680.75 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1689.43 751.46L1689.43 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1698.11 751.46L1698.11 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1706.79 751.46L1706.79 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1715.47 751.46L1715.47 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1724.15 751.46L1724.15 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1732.84 751.46L1732.84 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1741.52 751.46L1741.52 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1750.20 751.46L1750.20 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1758.88 751.46L1758.88 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1767.56 751.46L1767.56 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1776.24 751.46L1776.24 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1784.93 751.46L1784.93 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1793.61 751.46L1793.61 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1802.29 751.46L1802.29 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1810.97 751.46L1810.97 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1819.65 751.46L1819.65 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1828.33 751.46L1828.33 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1837.02 751.46L1837.02 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1845.70 751.46L1845.70 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1854.38 751.46L1854.38 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1863.06 751.46L1863.06 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1871.74 751.46L1871.74 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1880.42 751.46L1880.42 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1889.11 751.46L1889.11 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1897.79 751.46L1897.79 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1903.00 751.46L1903.00 728.40" stroke="#159879" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1680.75 755.21L1680.75 776.04" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1903.00 755.21L1903.00 776.04" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1680.75 773.26L1903.00 773.26" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1679.22 774.79L1682.27 771.74" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1901.47 774.79L1904.52 771.74" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<text x="1783.9713029286427" y="771.5967902801706" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >3200 mm</text>
+<path d="M1904.39 753.82L1919.67 753.82" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1904.39 726.04L1919.67 726.04" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1916.89 753.82L1916.89 726.04" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1915.36 755.34L1918.42 752.29" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<path d="M1915.36 727.56L1918.42 724.51" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<text x="1915.2206002357423" y="746.6977967177442" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >400 mm</text>
+<path d="M1791.87 756.59L1791.87 720.48" stroke="#294d5e" stroke-width="2.0835977876507394" fill="none" />
+<text x="1789.7880134191678" y="717.7010608396047" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >A</text>
+<text x="1789.7880134191678" y="762.1511469761538" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >A</text>
+<text x="1680.7463958654457" y="705.1994741137003" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >SVILUPPO LOCALE x/z · scala 1:20</text>
+<text x="1680.7463958654457" y="713.5338652643032" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >Lunghezza fisica; ancoraggi e giunzioni riportati in distinta, non sagomati.</text>
+<text x="1156" y="918" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#456e70" >RC-001-C1_0_0.dxf | 81 native drawing primitives</text>
+<text x="68" y="967" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="900" fill="#174b5b" >INDICE ARMATURE / DISTINTE DEI MEMBRI ORIGINALI</text>
+<rect x="56" y="991" width="1894" height="148" rx="0" fill="#ffffff" stroke="#b6d1c8" stroke-width="1.8"/>
+<rect x="56" y="991" width="1894" height="33" rx="0" fill="#1a5662" stroke="#1a5662" stroke-width="1.8"/>
+<text x="68.0" y="1014" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="850" fill="#e9fff7" >MEMBER / DXF</text>
+<text x="541.5" y="1014" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="850" fill="#e9fff7" >LONGITUDINAL BARS</text>
+<text x="1015.0" y="1014" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="850" fill="#e9fff7" >REINFORCEMENT / KG</text>
+<text x="1488.5" y="1014" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="850" fill="#e9fff7" >STATUS</text>
+<rect x="56" y="1024" width="1894" height="37" rx="0" fill="#f2f7f3" stroke="#cfdfd7" stroke-width="1.8"/>
+<text x="66.0" y="1048" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#315464" >C1_0_0</text>
+<text x="539.5" y="1048" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#315464" >8 bars</text>
+<text x="1013.0" y="1048" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#315464" >43.41 kg</text>
+<text x="1486.5" y="1048" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#315464" >ORIGINAL DXF</text>
+<path d="M529.50 991.00L529.50 1139.00" stroke="#c4d8d1" stroke-width="1" fill="none" />
+<path d="M1003.00 991.00L1003.00 1139.00" stroke="#c4d8d1" stroke-width="1" fill="none" />
+<path d="M1476.50 991.00L1476.50 1139.00" stroke="#c4d8d1" stroke-width="1" fill="none" />
+<rect x="56" y="1061" width="1894" height="37" rx="0" fill="#ffffff" stroke="#cfdfd7" stroke-width="1.8"/>
+<text x="66.0" y="1085" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#315464" >BX1_0_0</text>
+<text x="539.5" y="1085" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#315464" >12 bars</text>
+<text x="1013.0" y="1085" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#315464" >84.36 kg</text>
+<text x="1486.5" y="1085" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#315464" >ORIGINAL DXF</text>
+<path d="M529.50 991.00L529.50 1139.00" stroke="#c4d8d1" stroke-width="1" fill="none" />
+<path d="M1003.00 991.00L1003.00 1139.00" stroke="#c4d8d1" stroke-width="1" fill="none" />
+<path d="M1476.50 991.00L1476.50 1139.00" stroke="#c4d8d1" stroke-width="1" fill="none" />
+<rect x="56" y="1098" width="1894" height="37" rx="0" fill="#f2f7f3" stroke="#cfdfd7" stroke-width="1.8"/>
+<text x="66.0" y="1122" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#315464" >BY1_0_0</text>
+<text x="539.5" y="1122" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#315464" >12 bars</text>
+<text x="1013.0" y="1122" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#315464" >84.36 kg</text>
+<text x="1486.5" y="1122" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#315464" >ORIGINAL DXF</text>
+<path d="M529.50 991.00L529.50 1139.00" stroke="#c4d8d1" stroke-width="1" fill="none" />
+<path d="M1003.00 991.00L1003.00 1139.00" stroke="#c4d8d1" stroke-width="1" fill="none" />
+<path d="M1476.50 991.00L1476.50 1139.00" stroke="#c4d8d1" stroke-width="1" fill="none" />
+<text x="63" y="1187" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="900" fill="#14576a" >SOURCE ARCHIVE : Armature-87-tavole-A1.zip  /  87 ORIGINAL A1 SHEETS</text>
+<text x="63" y="1221" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="550" fill="#557983" >Section details on this page are from actual exports. The frame elevation is an indicative, unscaled context diagram.</text>
+<path d="M52.00 1253.00L1950.00 1253.00" stroke="#accbc4" stroke-width="2" fill="none" />
+<rect x="54" y="1271" width="1192" height="90" rx="0" fill="#e7f3ed" stroke="#b9d2c9" stroke-width="1.8"/>
+<text x="80" y="1312" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="900" fill="#164e5f" >DÈLGHEM D2 / MULTIVIEW DRAFT DOSSIER</text>
+<text x="80" y="1342" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="650" fill="#825847" >Actual exported DXF details + separately marked illustrative index. Not a certified construction drawing.</text>
+<rect x="1265" y="1271" width="676" height="90" rx="0" fill="#f7faf7" stroke="#adcac6" stroke-width="1.8"/>
+<text x="1280" y="1308" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="850" fill="#164b5a" >DRAWING SCALE: VIEW-DEPENDENT / INDEX NTS</text>
+<text x="1280" y="1340" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="800" fill="#a25f42" >FILE STATUS: PRELIMINARY · FULL ENGINEERING CHECK REQUIRED</text>
+</svg>

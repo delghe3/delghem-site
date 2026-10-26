@@ -19,9 +19,9 @@ test('Both locales present a new sequence: genius > modelling > FEM results > au
   assert.ok(first<intro.indexOf('href="#app"'));
   assert.ok(first<intro.indexOf('href="#fem-lab"'));
   assert.ok(first<intro.indexOf('href="#production-drawings"'));
-  for(const id of ['rc-sheet-a1-feature','rc-detail-preview','steel-detail-preview','steel-floor-assembly-preview'])assert.ok(html.includes('id="'+id+'"'),file+': '+id);
+  for(const id of ['rc-composite-board','steel-composite-board'])assert.ok(html.includes('id="'+id+'"'),file+': '+id);
   assert.match(html,/not certified|non certifica|non (?:è|sono).*esecutiv|preliminar/i);
-  assert.ok(html.includes('contrast-recovery.css?v=20261026-journey2'));
+  assert.ok(html.includes('contrast-recovery.css?v=20261026-dossier3'));
  }
 });
 

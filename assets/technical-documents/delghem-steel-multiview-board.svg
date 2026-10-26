@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1120" viewBox="0 0 1600 1120" role="img">
+<rect x="0" y="0" width="1600" height="1120" rx="0" fill="#f5f9f7" stroke="none" stroke-width="1.8"/>
+<rect x="20" y="20" width="1560" height="1080" rx="0" fill="#fff" stroke="#123c4b" stroke-width="1.8"/>
+<rect x="20" y="20" width="1560" height="103" rx="0" fill="#103e4b" stroke="#103e4b" stroke-width="1.8"/>
+<text x="52" y="73" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="800" fill="#e9fdf4" >DÈLGHEM · D2   /   TECHNICAL DRAWING DOSSIER</text>
+<text x="1360" y="73" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="800" fill="#8fecce" >A1  ·  841×594</text>
+<text x="52" y="163" font-family="Arial,Helvetica,sans-serif" font-size="33" font-weight="900" fill="#133e50" >STRUCTURAL STEEL · MULTI-CONNECTION WORKSHOP DOSSIER</text>
+<text x="52" y="198" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="500" fill="#55747a" >Four native bolted-connection groups + expressly schematic head / washer / nut assembly</text>
+<rect x="47" y="218" width="1506" height="1" rx="0" fill="#7cacb0" stroke="#7cacb0" stroke-width="1.8"/>
+<rect x="55" y="247" width="724" height="320" rx="7" fill="#fafffb" stroke="#a6c6c5" stroke-width="1.8"/>
+<rect x="55" y="247" width="724" height="43" rx="6" fill="#e2f0e9" stroke="#b4d0c8" stroke-width="1.8"/>
+<text x="72" y="275" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="900" fill="#154e5b" >01 / BC_E22_i</text>
+<text x="634" y="275" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="800" fill="#32897b" >REAL D2 DXF</text>
+<path d="M372.46 515.70L455.93 515.70" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M455.93 515.70L455.93 333.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M455.93 333.09L372.46 333.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M372.46 333.09L372.46 515.70" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<circle cx="392.46" cy="494.83" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="494.83" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="494.83" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="494.83" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="447.87" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="447.87" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="447.87" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="447.87" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="400.91" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="400.91" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="400.91" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="400.91" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="353.96" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="353.96" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="353.96" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="353.96" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<path d="M372.46 517.43L372.46 536.57" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M455.93 517.43L455.93 536.57" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M372.46 533.09L455.93 533.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M370.54 535.00L374.37 531.17" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M454.02 535.00L457.85 531.17" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<text x="405.71739130434776" y="531.0" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >480 mm</text>
+<path d="M370.72 515.70L351.59 515.70" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M370.72 333.09L351.59 333.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M355.07 515.70L355.07 333.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M353.15 517.61L356.98 513.78" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M353.15 335.00L356.98 331.17" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<text x="352.9782608695652" y="434.2826086956522" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >1050 mm</text>
+<text x="372.4565217391304" y="322.6521739130435" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >DETTAGLIO LOCALE y/z · scala 1:10</text>
+<text x="77" y="558" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="600" fill="#61837e" >Source: SC-001-BC_E22_i.dxf  •  33 native primitives displayed</text>
+<rect x="818" y="247" width="724" height="320" rx="7" fill="#fafffb" stroke="#a6c6c5" stroke-width="1.8"/>
+<rect x="818" y="247" width="724" height="43" rx="6" fill="#e2f0e9" stroke="#b4d0c8" stroke-width="1.8"/>
+<text x="835" y="275" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="900" fill="#154e5b" >02 / BC_E27_i</text>
+<text x="1397" y="275" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="800" fill="#32897b" >REAL D2 DXF</text>
+<path d="M1135.46 515.70L1218.93 515.70" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1218.93 515.70L1218.93 333.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1218.93 333.09L1135.46 333.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1135.46 333.09L1135.46 515.70" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<circle cx="1155.46" cy="494.83" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="494.83" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="494.83" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="494.83" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="447.87" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="447.87" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="447.87" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="447.87" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="400.91" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="400.91" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="400.91" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="400.91" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="353.96" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="353.96" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="353.96" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="353.96" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<path d="M1135.46 517.43L1135.46 536.57" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1218.93 517.43L1218.93 536.57" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1135.46 533.09L1218.93 533.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1133.54 535.00L1137.37 531.17" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1217.02 535.00L1220.85 531.17" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<text x="1168.7173913043478" y="531.0" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >480 mm</text>
+<path d="M1133.72 515.70L1114.59 515.70" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1133.72 333.09L1114.59 333.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1118.07 515.70L1118.07 333.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1116.15 517.61L1119.98 513.78" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1116.15 335.00L1119.98 331.17" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<text x="1115.9782608695652" y="434.2826086956522" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >1050 mm</text>
+<text x="1135.4565217391303" y="322.6521739130435" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >DETTAGLIO LOCALE y/z · scala 1:10</text>
+<text x="840" y="558" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="600" fill="#61837e" >Source: SC-011-BC_E27_i.dxf  •  33 native primitives displayed</text>
+<rect x="55" y="590" width="724" height="320" rx="7" fill="#fafffb" stroke="#a6c6c5" stroke-width="1.8"/>
+<rect x="55" y="590" width="724" height="43" rx="6" fill="#e2f0e9" stroke="#b4d0c8" stroke-width="1.8"/>
+<text x="72" y="618" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="900" fill="#154e5b" >03 / BC_E32_i</text>
+<text x="634" y="618" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="800" fill="#32897b" >REAL D2 DXF</text>
+<path d="M372.46 858.70L455.93 858.70" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M455.93 858.70L455.93 676.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M455.93 676.09L372.46 676.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M372.46 676.09L372.46 858.70" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<circle cx="392.46" cy="837.83" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="837.83" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="837.83" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="837.83" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="790.87" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="790.87" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="790.87" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="790.87" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="743.91" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="743.91" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="743.91" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="743.91" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="696.96" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="392.46" cy="696.96" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="696.96" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="435.93" cy="696.96" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<path d="M372.46 860.43L372.46 879.57" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M455.93 860.43L455.93 879.57" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M372.46 876.09L455.93 876.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M370.54 878.00L374.37 874.17" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M454.02 878.00L457.85 874.17" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<text x="405.71739130434776" y="874.0" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >480 mm</text>
+<path d="M370.72 858.70L351.59 858.70" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M370.72 676.09L351.59 676.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M355.07 858.70L355.07 676.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M353.15 860.61L356.98 856.78" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M353.15 678.00L356.98 674.17" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<text x="352.9782608695652" y="777.2826086956521" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >1050 mm</text>
+<text x="372.4565217391304" y="665.6521739130435" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >DETTAGLIO LOCALE y/z · scala 1:10</text>
+<text x="77" y="901" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="600" fill="#61837e" >Source: SC-021-BC_E32_i.dxf  •  33 native primitives displayed</text>
+<rect x="818" y="590" width="724" height="320" rx="7" fill="#fafffb" stroke="#a6c6c5" stroke-width="1.8"/>
+<rect x="818" y="590" width="724" height="43" rx="6" fill="#e2f0e9" stroke="#b4d0c8" stroke-width="1.8"/>
+<text x="835" y="618" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="900" fill="#154e5b" >04 / BC_E35_j</text>
+<text x="1397" y="618" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="800" fill="#32897b" >REAL D2 DXF</text>
+<path d="M1135.46 858.70L1218.93 858.70" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1218.93 858.70L1218.93 676.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1218.93 676.09L1135.46 676.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1135.46 676.09L1135.46 858.70" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<circle cx="1155.46" cy="837.83" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="837.83" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="837.83" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="837.83" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="790.87" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="790.87" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="790.87" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="790.87" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="743.91" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="743.91" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="743.91" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="743.91" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="696.96" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1155.46" cy="696.96" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="696.96" r="2.87" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<circle cx="1198.93" cy="696.96" r="2.61" fill="#ecf6f2" stroke="#308678" stroke-width="1.5"/>
+<path d="M1135.46 860.43L1135.46 879.57" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1218.93 860.43L1218.93 879.57" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1135.46 876.09L1218.93 876.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1133.54 878.00L1137.37 874.17" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1217.02 878.00L1220.85 874.17" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<text x="1168.7173913043478" y="874.0" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >480 mm</text>
+<path d="M1133.72 858.70L1114.59 858.70" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1133.72 676.09L1114.59 676.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1118.07 858.70L1118.07 676.09" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1116.15 860.61L1119.98 856.78" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<path d="M1116.15 678.00L1119.98 674.17" stroke="#294d5e" stroke-width="2.608695652173913" fill="none" />
+<text x="1115.9782608695652" y="777.2826086956521" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >1050 mm</text>
+<text x="1135.4565217391303" y="665.6521739130435" font-family="Arial,Helvetica,sans-serif" font-size="6" font-weight="400" fill="#506874" >DETTAGLIO LOCALE y/z · scala 1:10</text>
+<text x="840" y="901" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="600" fill="#61837e" >Source: SC-028-BC_E35_j.dxf  •  33 native primitives displayed</text>
+<rect x="1148" y="663" width="370" height="206" rx="8" fill="#eff9f6" stroke="#a8cbca" stroke-width="1.8"/>
+<text x="1164" y="689" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="800" fill="#173b4c" >ASSEMBLAGGIO BULLONE / SCHEMA</text>
+<rect x="1188" y="735" width="66" height="65" rx="0" fill="#cadee0" stroke="#52727d" stroke-width="1.8"/>
+<rect x="1391" y="735" width="66" height="65" rx="0" fill="#cadee0" stroke="#52727d" stroke-width="1.8"/>
+<rect x="1236" y="755" width="187" height="25" rx="0" fill="#4a6c82" stroke="#345369" stroke-width="1.8"/>
+<rect x="1208" y="749" width="35" height="37" rx="3" fill="#d6a46b" stroke="#956940" stroke-width="1.8"/>
+<rect x="1245" y="743" width="8" height="50" rx="0" fill="#f2ba82" stroke="#956940" stroke-width="1.8"/>
+<rect x="1372" y="740" width="10" height="56" rx="2" fill="#e3b37e" stroke="#946640" stroke-width="1.8"/>
+<rect x="1402" y="740" width="10" height="56" rx="2" fill="#e3b37e" stroke="#946640" stroke-width="1.8"/>
+<rect x="1410" y="740" width="11" height="56" rx="2" fill="#e3b37e" stroke="#946640" stroke-width="1.8"/>
+<rect x="1422" y="740" width="11" height="56" rx="2" fill="#e3b37e" stroke="#946640" stroke-width="1.8"/>
+<text x="1170" y="830" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="800" fill="#886342" >TESTA — RONDELLE — DADO</text>
+<text x="1170" y="850" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="600" fill="#9a574c" >Esempio grafico · geometria non verificata</text>
+<text x="1158" y="896" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="900" fill="#984e43" >HARDWARE REPRESENTATION IS SCHEMATIC ONLY</text>
+<rect x="47" y="930" width="1506" height="105" rx="4" fill="#e8f3ec" stroke="#86aca6" stroke-width="1.8"/>
+<text x="68" y="966" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="900" fill="#154c5c" >SOURCE → 28 STEEL CONNECTION DXF A1 SHEETS</text>
+<text x="68" y="995" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="650" fill="#45656a" >Composite showcase assembled from multiple REAL D2 DXF exports; not a native exported project sheet.</text>
+<text x="68" y="1020" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="800" fill="#a15742" >PRELIMINARY / NOT FOR CONSTRUCTION — missing project-level detailing and verification.</text>
+<path d="M47.00 1050.00L1553.00 1050.00" stroke="#284d5b" stroke-width="1.6" fill="none" />
+<text x="56" y="1076" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="800" fill="#365c65" >DELGHEM  |  SOURCE-TRACEABLE DEMONSTRATION  |  DO NOT USE AS EXECUTIVE DESIGN</text>
+<text x="1463" y="1076" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="800" fill="#467a79" >DELGHEM-STEEL-MULTIVIEW-BOARD</text>
+</svg>

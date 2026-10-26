@@ -1,0 +1,124 @@
+{
+  "schema": "delghem-d2-demonstration-takeoff-v1",
+  "modelTitle": "DÈLGHEM D2 | Torre asimmetrica otto piani S355 + CA C30/37 + GL24h, 3 coperture e plinti",
+  "source": "assets/real-d2/complex-demonstration.hfm.json",
+  "notes": [
+    "Quantities reflect the separate D2 demonstration model, not the RC or steel DXF archive examples.",
+    "Member volume = member centerline length × section A. Mass derived from model weight density; no fabrication optimization.",
+    "Shell quantities excluded from member subtotal; no foundations, overlaps, openings, joints, waste or procurement allowances included.",
+    "Bar schedule sum from 87 separate original RC DXF sheets; NOT part of the 8-storey model takeoff.",
+    "Preliminary model-derived demonstration only, not a contract bill of quantities or cost estimate.",
+    "Separate shell takeoff: face area by triangulating node polygons, multiplied by declared thickness; no openings, penetrations, reinforcement, overlaps or wastage deductions."
+  ],
+  "modelCounts": {
+    "nodes": 212,
+    "members": 514,
+    "shells": 112
+  },
+  "byMaterial": {
+    "M_STEEL": {
+      "count": 307,
+      "lengthM": 1510.81,
+      "volumeM3": 12.22,
+      "massKg": 97850.4
+    },
+    "M_RC": {
+      "count": 69,
+      "lengthM": 359.4,
+      "volumeM3": 70.59,
+      "massKg": 179952.51
+    },
+    "M_WOOD": {
+      "count": 138,
+      "lengthM": 565.77,
+      "volumeM3": 30.08,
+      "massKg": 12639.3
+    }
+  },
+  "memberTotals": {
+    "lengthM": 2435.99,
+    "volumeM3": 112.9
+  },
+  "rebarArchive": {
+    "source": "Armature-87-tavole-A1.zip",
+    "sheetCount": 87,
+    "totalBarKg": 5239.49
+  },
+  "steelArchive": {
+    "source": "Acciaio-28-tavole-A1.zip",
+    "sheetCount": 28
+  },
+  "derivation": "For member m: L=euclidean node distance [m], V=L × section.A [m3], mass=V × weightDensity [kN/m3] × 1000/9.80665; reinforcement archive sum separate.",
+  "groups": [
+    {
+      "key": "M_STEEL",
+      "materialName": "S355 · Acciaio aperto",
+      "count": 307,
+      "lengthM": 1510.81,
+      "volumeM3": 12.22,
+      "massKg": 97850.4
+    },
+    {
+      "key": "M_RC",
+      "materialName": "C30/37 · Calcestruzzo",
+      "count": 69,
+      "lengthM": 359.4,
+      "volumeM3": 70.59,
+      "massKg": 179952.51
+    },
+    {
+      "key": "M_WOOD",
+      "materialName": "GL24h · Legno lamellare",
+      "count": 138,
+      "lengthM": 565.77,
+      "volumeM3": 30.08,
+      "massKg": 12639.3
+    }
+  ],
+  "shellTakeoff": {
+    "M_RC": {
+      "count": 76,
+      "areaM2": 2349.6,
+      "volumeM3": 448.92,
+      "massKg": 1144427.51
+    },
+    "M_STEEL": {
+      "count": 9,
+      "areaM2": 231.95,
+      "volumeM3": 5.76,
+      "massKg": 46097.24
+    },
+    "M_WOOD": {
+      "count": 27,
+      "areaM2": 737.4,
+      "volumeM3": 94.16,
+      "massKg": 39559.34
+    }
+  },
+  "shellGroups": [
+    {
+      "key": "M_RC",
+      "materialName": "C30/37 · Calcestruzzo",
+      "count": 76,
+      "areaM2": 2349.6,
+      "volumeM3": 448.92,
+      "massKg": 1144427.51
+    },
+    {
+      "key": "M_STEEL",
+      "materialName": "S355 · Acciaio aperto",
+      "count": 9,
+      "areaM2": 231.95,
+      "volumeM3": 5.76,
+      "massKg": 46097.24
+    },
+    {
+      "key": "M_WOOD",
+      "materialName": "GL24h · Legno lamellare",
+      "count": 27,
+      "areaM2": 737.4,
+      "volumeM3": 94.16,
+      "massKg": 39559.34
+    }
+  ]
+}

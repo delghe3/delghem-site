@@ -32,10 +32,14 @@ test('Published M1 scores and independent groundwater times have correct units a
   assert.ok(item.source.startsWith('https://'));
  }
 });
-test('Real RC sheet selector points only to whitelisted D2 assets; no fictional engineering drawings',()=>{
- const s=read('production-drawings.js');
- assert.match(s,/armature-d2-a1-0\[1-5\]/);
- assert.match(s,/aria-pressed/);
- assert.match(s,/rc-sheet-active-image/);
- assert.doesNotMatch(s,/fetch\(|Math\.random/);
+test('Real DXF-derived composite boards are the primary portfolio images; each keeps source PDF/ZIP accessible',()=>{
+ for(const page of ['index.html','it/index.html']){
+  const html=read(page);
+  for(const name of ['delghem-rc-multiview-board.svg','delghem-steel-multiview-board.svg',
+    'Armature-87-tavole-A1.zip','Acciaio-28-tavole-A1.zip',
+    'Armature-cinque-tavole-A1.pdf','Acciaio-tre-tavole-A1.pdf'])assert.ok(html.includes(name),page+': '+name);
+  assert.ok(html.indexOf('id="production-drawings"')<html.indexOf('id="materials-takeoff"'));
+  assert.ok(html.indexOf('id="materials-takeoff"')<html.indexOf('id="technical-reports"'));
+ }
+ assert.match(read('production-drawings.js'),/production-dossier/);
 });
