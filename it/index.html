@@ -43,6 +43,8 @@
 <script type="module" src="../site-intro.js?v=20261025-neonhold"></script>
   <noscript><style>.site-intro{display:none!important}</style></noscript>
  <link rel="stylesheet" href="../delghem-art-direction.css?v=20261026-studio01">
+ <link rel="stylesheet" href="../contrast-recovery.css?v=20261026-journey2">
+<link rel="stylesheet" href="../silicon-performance.css?v=20261026-nativebench1">
 </head>
 <body>
 <div class="site-intro" id="site-intro" role="region" aria-label="DELGHEM" data-phase="build" data-ready="false">
@@ -85,7 +87,7 @@
   <div class="reading-progress" aria-hidden="true"><span></span></div>
   <header class="site-header">
     <a class="wordmark" href="#home" aria-label="DÈLGHEM home">DÈLGHEM<span class="wordmark-dot" aria-hidden="true"></span></a>
-    <nav class="desktop-nav" aria-label="Navigazione principale"><a href="#model-showcase">Modelli 3D</a><a href="#genius">Genius</a><a href="#fem-lab">Analisi FEM</a><a href="#engineering-benchmarks">Pali e dissipatori</a><a href="#native">Apple Silicon</a></nav>
+    <nav class="desktop-nav" aria-label="Navigazione principale"><a href="#genius">Genius</a><a href="#app">Modellazione</a><a href="#fem-lab">Analisi FEM</a><a href="#engineering-benchmarks">Pali e dissipatori</a><a href="#native">Apple Silicon</a></nav>
     <div class="header-controls">
       <div class="language-control" role="group" aria-label="Website language / Lingua del sito">
       <a class="language-link" data-language="en" href="/" lang="en" hreflang="en" aria-label="English"><span class="lang-flag">🇬🇧</span><span class="lang-label">English</span></a>
@@ -94,7 +96,7 @@
       <button class="menu-toggle icon-button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Apri menu" data-i18n-aria="openMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
     </div>
   </header>
-  <nav class="mobile-menu" id="mobile-menu" aria-label="Navigazione mobile" hidden><a href="#model-showcase">Modelli 3D</a><a href="#genius">Genius</a><a href="#fem-lab">Laboratorio FEM</a><a href="#engineering-benchmarks">Pali e dissipatori</a><a href="#native">Nativo Mac</a><a href="#gallery">Schermate vere</a><a href="#release">vAlpha1</a><a href="#project">Contatti</a></nav>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Navigazione mobile" hidden><a href="#genius">Genius</a><a href="#app">Modellazione</a><a href="#fem-lab">Laboratorio FEM</a><a href="#engineering-benchmarks">Pali e dissipatori</a><a href="#native">Nativo Mac</a><a href="#gallery">Schermate vere</a><a href="#release">vAlpha1</a><a href="#project">Contatti</a></nav>
 
   <main id="main">
   <section class="support-banner support-banner-top" id="support-top" aria-label="Sostieni DÈLGHEM con PayPal">
@@ -149,6 +151,40 @@
       </div>
       <div class="hero-bottom"><a href="#app" class="scroll-prompt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 4v16m-5-5 5 5 5-5"/></svg><span data-i18n="scrollDiscover">Scorri. Entra nel progetto.</span></a><span class="development-note"><span aria-hidden="true"></span><span data-i18n="development">Progetto in sviluppo</span></span></div>
     </section>
+
+<section class="silicon-benchmark-section chapter" id="silicon-performance" aria-labelledby="silicon-performance-title">
+ <div class="silicon-benchmark-inner">
+  <div class="silicon-performance-head">
+   <div><span class="silicon-benchmark-eyebrow">02 / APPLE SILICON · ARM64 NATIVO</span>
+   <h2 id="silicon-performance-title">Architettura nativa.<em> Differenze misurate.</em></h2></div>
+   <p>DÈLGHEM è sviluppato per l’esecuzione nativa su Apple Silicon. I benchmark pubblici mostrano perché evitare la traduzione delle istruzioni x86 può essere vantaggioso, ma questi dati appartengono ad altri carichi di lavoro, non al solutore DÈLGHEM.</p>
+  </div>
+  <div class="silicon-architecture-paths">
+   <div class="silicon-architecture-path silicon-architecture-path--native"><span>ARM64 / ESECUZIONE DIRETTA</span><strong>DÈLGHEM → macOS ARM64 → Apple Silicon</strong><small>Build nativa; nessuna traduzione x86 in questo percorso</small></div>
+   <div class="silicon-architecture-path silicon-architecture-path--legacy"><span>X86_64 / TRADUZIONE</span><strong>Intel x86 → Rosetta 2 → ARM64</strong><small>Compatibilità per vecchie applicazioni macOS esclusivamente Intel</small></div>
+  </div>
+  <div class="silicon-benchmark-lab">
+   <div class="silicon-benchmark-tabbar" role="group" aria-label="Scegli il benchmark pubblico">
+    <button type="button" data-silicon-benchmark="m1-single" aria-pressed="true">M1 / SINGLE CORE</button>
+    <button type="button" data-silicon-benchmark="m1-multi" aria-pressed="false">M1 / MULTI CORE</button>
+    <button type="button" data-silicon-benchmark="m5-groundwater" aria-pressed="false">M5 / TEMPI SIMULAZIONE</button>
+   </div>
+   <div class="silicon-data-head"><span id="silicon-benchmark-workload">Geekbench 5 CPU single core</span><span id="silicon-benchmark-host">M1 / 2020</span></div>
+   <div class="silicon-benchmark-comparison">
+    <div class="silicon-benchmark-line silicon-benchmark-line--native"><span>NATIVO ARM64</span><div class="silicon-benchmark-track"><div id="silicon-native-bar" class="silicon-benchmark-fill"></div></div><strong id="silicon-native-value">1687</strong></div>
+    <div class="silicon-benchmark-line silicon-benchmark-line--translated"><span>ROSETTA 2 / X86</span><div class="silicon-benchmark-track"><div id="silicon-translated-bar" class="silicon-benchmark-fill"></div></div><strong id="silicon-translated-value">1313</strong></div>
+   </div>
+   <div class="silicon-benchmark-outcome"><div><span>DIFFERENZA OSSERVATA IN QUESTO TEST</span><strong id="silicon-benchmark-delta">+28.5%</strong></div><p id="silicon-benchmark-interpretation">Un punteggio Geekbench più alto è migliore. Sono risultati M1 pubblici, non un test FEM di DÈLGHEM.</p></div>
+   <div class="silicon-benchmark-source"><span>FONTI / LIMITI ESPLICITI</span><a id="silicon-benchmark-source-link" href="https://www.macrumors.com/2020/11/15/m1-chip-emulating-x86-benchmark/" target="_blank" rel="noopener noreferrer">Apri la fonte originale ↗</a><p id="silicon-benchmark-method">Risultati Geekbench 5 pubblicati per Apple M1 (2020). DÈLGHEM non fa parte di questo studio.</p></div>
+  </div>
+  <div class="silicon-complexity-note">
+   <div><span>COMPLEXITY / FEM</span><strong>I modelli grandi richiedono un’architettura numerica efficiente, non moltiplicatori pubblicitari.</strong></div>
+   <p>I tempi di soluzione FEM e la dimensione massima della mesh dipendono dai gradi di libertà, dalla fattorizzazione sparsa, dall’algoritmo, dal condizionamento, dalla memoria e dai thread. ARM64 nativo elimina uno strato di compatibilità, ma non dimostra automaticamente accelerazioni universali o modelli verificati più grandi. Il confronto corretto per DÈLGHEM richiederà lo stesso modello strutturale, identica tolleranza, lo stesso Mac e tempi di calcolo riproducibili.</p>
+  </div>
+  <p class="silicon-platform-source">Fonti architettura: <a href="https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment" target="_blank" rel="noopener noreferrer">Apple Developer — Rosetta</a> <span aria-hidden="true">·</span> <a href="https://support.apple.com/en-euro/102527" target="_blank" rel="noopener noreferrer">Apple Support — Native apps</a></p>
+ </div>
+</section>
+
 <section class="engineering-benchmarks chapter" id="engineering-benchmarks" aria-labelledby="engineering-proof-title">
  <header class="eng-proof-heading">
   <div><span class="eyebrow">FONDAZIONI / GEOTECNICA / DISPOSITIVI ANTISISMICI</span>
@@ -340,7 +376,12 @@
  <div class="eng-proof-screen"><img src="../assets/app-foundation-real.png" width="1200" height="700" loading="lazy" decoding="async" alt="Schermata originale di modello cappello pali DÈLGHEM"><p>Schermata autentica dell’applicazione · distinta dai due benchmark numerici soprastanti.</p></div>
 </section>
 
-  <section class="editorial-hub" id="editorial-hub" aria-labelledby="editorial-title"><div class="editorial-inner"><div class="editorial-head"><div><span class="eyebrow">ESPLORA IL PROGETTO</span><h2 id="editorial-title">Dalla geometria alla progettazione digitale.</h2></div><p>Quattro percorsi. Un unico ambiente di ingegneria.</p></div><nav class="engineering-track" aria-label="Approfondimenti strutturali DÈLGHEM"><div class="engineering-track-inner"><a href="#engineering-benchmarks" class="engineering-track-item engineering-track-item--featured"><span class="engineering-track-index">01 / FONDAZIONI E SISMA</span><strong>Dal terreno alla risposta sismica.</strong><span class="engineering-track-description">Pali stratificati, dissipatori viscosi e confronto isolatori: risultati e limiti in evidenza.</span><span class="engineering-track-visual"><img src="../assets/engineering/pile-stratigraphy-it.webp" width="480" height="300" loading="lazy" decoding="async" alt="Mappa stratigrafica con palo Ø60 e diffusione approssimata delle tensioni"><img src="../assets/engineering/steel-viscous-frame-it.webp?v=20261025-showcase15seo" width="480" height="300" loading="lazy" decoding="async" alt="Telaio HEB260 IPE330 DÈLGHEM con dissipatore viscoso in 3D"></span><span class="engineering-track-cta">Apri il laboratorio sismico <span aria-hidden="true">↗</span></span></a><a href="#model-showcase" class="engineering-track-item"><span class="engineering-track-index">02 / MODELLI</span><strong>Modellazione strutturale</strong><span class="engineering-track-description">Cinque geometrie native D2 modificabili</span><span class="engineering-track-cta">Esplora <span aria-hidden="true">↗</span></span></a><a href="#genius" class="engineering-track-item"><span class="engineering-track-index">04 / GENIUS</span><strong>Genius Assistant</strong><span class="engineering-track-description">Interazione testuale e flusso di lavoro in sviluppo</span><span class="engineering-track-cta">Esplora <span aria-hidden="true">↗</span></span></a><a href="#fem-lab" class="engineering-track-item"><span class="engineering-track-index">03 / CALCOLO</span><strong>Laboratorio FEM Kratos</strong><span class="engineering-track-description">Risultati numerici documentati e analisi dinamiche</span><span class="engineering-track-cta">Esplora <span aria-hidden="true">↗</span></span></a></div></nav></div></section>
+  <section class="editorial-hub" id="editorial-hub" aria-labelledby="editorial-title"><div class="editorial-inner"><div class="editorial-head"><div><span class="eyebrow">ESPLORA IL PROGETTO</span><h2 id="editorial-title">Genius. Modellazione. Risultati. Tavole.</h2></div><p>Un percorso completo attraverso risultati reali delle build di sviluppo.</p></div><nav class="engineering-track" aria-label="Capacità ingegneristiche DÈLGHEM"><div class="engineering-track-inner">
+  <a href="#genius" class="engineering-track-item engineering-track-item--featured engineering-track-item--genius"><span class="engineering-track-index">01 / GENIUS ASSISTANT</span><strong>Scrivi il comando. Modifica la struttura.</strong><span class="engineering-track-description">Un flusso guidato da testo al modello, con anteprima delle modifiche prima di applicarle. Dimostrazione della build di sviluppo.</span><span class="engineering-track-visual"><img src="../assets/genius/genius-workflow-it.webp" width="600" height="340" loading="lazy" decoding="async" alt="Interfaccia reale D2 dell’assistente Genius"><img src="../assets/genius/genius-steel.webp" width="480" height="300" loading="lazy" decoding="async" alt="Genius associato a un modello di telaio metallico nativo"></span><span class="engineering-track-cta">SCOPRI GENIUS <span aria-hidden="true">↗</span></span></a>
+  <a href="#app" class="engineering-track-item"><span class="engineering-track-index">02 / MODELLAZIONE</span><strong>Geometria. Materiali. Sezioni.</strong><span class="engineering-track-description">Editor dei modelli D2 e cataloghi di profili reali</span><span class="engineering-track-cta">APRI MODELLAZIONE ↗</span></a>
+  <a href="#fem-lab" class="engineering-track-item"><span class="engineering-track-index">03 / RISULTATI</span><strong>Benchmark Kratos reali</strong><span class="engineering-track-description">Mappe, risposte dinamiche e limiti documentati</span><span class="engineering-track-cta">ESPLORA FEM ↗</span></a>
+  <a href="#production-drawings" class="engineering-track-item"><span class="engineering-track-index">04 / ELABORATI</span><strong>Tavole cemento armato e acciaio</strong><span class="engineering-track-description">Esempi originali D2 A1/DXF e schermate di officina</span><span class="engineering-track-cta">VEDI LE TAVOLE ↗</span></a>
+ </div></nav></div></section>
 
 
 <section class="contact-strip" aria-label="Contatta DÈLGHEM">
@@ -357,21 +398,7 @@
     </div>
   </section>
 
-    <section class="app-section chapter" id="app" aria-labelledby="app-title" data-chapter="app">
-      <div class="section-heading"><h2 id="app-title" data-i18n="appTitle">La struttura al centro.<br>Tutto il resto, a portata di mano.</h2><p data-i18n="appDescription">Geometria, proprietà e risultati nello stesso ambiente. Guarda da vicino l’interfaccia reale di DÈLGHEM.</p></div>
-      <div class="gallery-tabs" role="tablist" aria-label="Schermate del programma" data-i18n-aria="galleryTabs"><button id="tab-model" role="tab" aria-selected="true" aria-controls="gallery-panel" data-gallery="model" data-i18n="galleryModel">Il modello</button><button id="tab-results" role="tab" aria-selected="false" aria-controls="gallery-panel" tabindex="-1" data-gallery="results" data-i18n="galleryResults">I risultati</button><button id="tab-drawings" role="tab" aria-selected="false" aria-controls="gallery-panel" tabindex="-1" data-gallery="drawings" data-i18n="galleryDrawings">La documentazione</button></div>
-      <figure class="app-figure" id="gallery-panel" role="tabpanel" aria-labelledby="tab-model"><button class="screenshot-button" id="enlarge-image" aria-label="Ingrandisci la schermata" data-i18n-aria="enlarge"><img id="gallery-image" src="../assets/app-model.png" width="1600" height="1000" alt="Schermata reale di DÈLGHEM con il modello strutturale" data-i18n-alt="modelImageAlt" loading="lazy"><span class="enlarge-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/></svg><span data-i18n="enlargeShort">Ingrandisci</span></span></button><figcaption><div><strong id="gallery-title" data-i18n="modelCaptionTitle">Il tuo progetto, in tutte le dimensioni.</strong><p id="gallery-caption" data-i18n="modelCaption">Viste del modello e strumenti di lavoro dell’applicazione.</p></div><span class="real-image-label" data-i18n="realScreenshot">Schermata reale dell’app</span></figcaption></figure>
-    </section>
-
-    <section class="native-section chapter" id="native" aria-labelledby="native-title" data-chapter="native">
-      <div class="native-intro"><h2 id="native-title" data-i18n="nativeTitle">Nato per Apple Silicon.<br>A casa, su macOS.</h2><p class="large-body" data-i18n="nativeDescription">Apri il Mac. Entra nel tuo progetto. DÈLGHEM porta il calcolo strutturale direttamente nell’ambiente in cui lavori.</p></div>
-      <div class="mac-capabilities" aria-label="Funzioni principali DÈLGHEM per Apple Silicon"><a href="#model-showcase" class="mac-capability"><small>ARM64</small><strong>Apple Silicon</strong><span>Esecuzione nativa macOS, senza virtualizzare Windows.</span><i aria-hidden="true">↗</i></a><a href="#fem-lab" class="mac-capability"><small>FEM 3D</small><strong>KratosMultiphysics</strong><span>Mesh shell, aste e benchmark numerici documentati.</span><i aria-hidden="true">↗</i></a><a href="#genius" class="mac-capability"><small>Genius</small><strong>Comandi verificabili</strong><span>Modifica geometria, sezioni e carichi con anteprima.</span><i aria-hidden="true">↗</i></a><a href="#engineering-benchmarks" class="mac-capability"><small>B16</small><strong>Fondazioni e pali</strong><span>Travi Winkler, pali t–z/q–z e interazione terreno.</span><i aria-hidden="true">↗</i></a></div><details class="native-technical-depth"><summary><strong>Architettura ARM64, virtualizzazione e metodo dei benchmark</strong><span>Approfondimento tecnico</span><i aria-hidden="true">+</i></summary><div><div class="architecture-comparison"><div class="native-path"><h3>DÈLGHEM</h3><p data-i18n="nativePathLabel">Il percorso nativo</p><div class="path-diagram" aria-label="DÈLGHEM su macOS e Apple Silicon" data-i18n-aria="nativeDiagram"><span class="path-app">DÈLGHEM<span data-i18n="nativeApp">App nativa</span></span><span class="path-line" aria-hidden="true"></span><span>macOS</span><span class="path-line" aria-hidden="true"></span><span class="path-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 1v4m6-4v4M9 19v4m6-4v4M1 9h4m-4 6h4m14-6h4m-4 6h4"/></svg>Apple Silicon</span></div><p class="path-conclusion" data-i18n="nativeConclusion">Un’app Mac. Nessuna macchina virtuale Windows da avviare.</p></div><div class="windows-path"><h3 data-i18n="windowsTitle">Un’app Windows sul Mac</h3><p data-i18n="windowsPathLabel">Il percorso con virtualizzazione</p><div class="path-diagram"><span class="path-app" data-i18n="windowsApp">App Windows</span><span class="path-line" aria-hidden="true"></span><span class="translation-layer" data-i18n="translation">Traduzione x86/x64, se necessaria</span><span class="path-line" aria-hidden="true"></span><span>Windows Arm <span class="path-detail">+ Software di virtualizzazione</span></span><span class="path-line" aria-hidden="true"></span><span>macOS <span class="path-detail">+ Apple Silicon</span></span></div><p class="comparison-note" data-i18n="comparisonNote">Le applicazioni Windows ARM64 non richiedono la traduzione x86/x64. Questo schema descrive l’architettura, non misura le prestazioni.</p></div></div>
-      <details class="technical-detail"><summary><span data-i18n="technicalTitle">Cosa significa davvero “nativo”?</span><span aria-hidden="true">+</span></summary><div><p data-i18n="technicalBody">Una build ARM64 esegue istruzioni compatibili con Apple Silicon. Un software di virtualizzazione può eseguire un sistema operativo guest, ad esempio Windows Arm; alcune applicazioni x86/x64 possono richiedere la traduzione delle istruzioni. L'impatto sulle prestazioni dipende da hardware, carico di lavoro e configurazione: l'esecuzione nativa non garantisce automaticamente tempi inferiori.</p><p class="source-links"><span data-i18n="sources">Fonti tecniche:</span> <a href="https://developer.apple.com/documentation/apple-silicon/building-a-universal-macos-binary" target="_blank" rel="noopener noreferrer">Apple Developer</a><a href="https://learn.microsoft.com/en-us/windows/arm/apps-on-arm-x86-emulation" target="_blank" rel="noopener noreferrer">Microsoft</a></p></div></details>
-      <div class="benchmark-block"><h3 data-i18n="benchmarkTitle">Le prestazioni meritano numeri veri.</h3><div><p data-i18n="benchmarkBody">Tempi di soluzione, memoria e fluidità: i confronti con altri ambienti saranno pubblicati insieme ai modelli e alle condizioni di prova.</p><details><summary data-i18n="benchmarkMethod">Come confronteremo le prestazioni</summary><p data-i18n="benchmarkProtocol">Stesso Mac e problema strutturale equivalente, software e versioni dichiarati, risultati numerici confrontabili. Almeno cinque ripetizioni, mediana e variabilità; tempi di avvio, soluzione ed esportazione separati. Memoria dell’app e dell’intero ambiente misurate distintamente.</p><p class="benchmark-status" data-i18n="benchmarkStatus">Non sono ancora disponibili benchmark comparativi verificati per questa presentazione.</p></details></div></div>
-    </div></details>
-    </section>
-
-<section class="genius-section chapter" id="genius" aria-labelledby="genius-title" data-chapter="genius">
+    <section class="genius-section chapter" id="genius" aria-labelledby="genius-title" data-chapter="genius">
   <div class="genius-topline"><span class="eyebrow">GENIUS / L’INGEGNERE MANTIENE IL CONTROLLO</span><span class="genius-technology">DÈLGHEM D2 / GENIUS</span></div>
   <div class="genius-hero-layout">
     <div class="genius-copy">
@@ -426,7 +453,13 @@
   </div></details><a class="seo-genius-detail-link" href="/genius-assistente-fem-mac/">Approfondisci Genius Assistant ↗</a><p class="genius-trust-note">Genius è un’interfaccia locale a comandi deterministici, non un progettista autonomo. Ogni modifica e analisi richiede verifica professionale. Un comando non costituisce una verifica strutturale certificata.</p>
 </section>
 
-<section class="fem-lab-section chapter" id="fem-lab" aria-labelledby="fem-lab-title" data-chapter="fem-lab">
+<section class="app-section chapter" id="app" aria-labelledby="app-title" data-chapter="app">
+      <div class="section-heading"><h2 id="app-title" data-i18n="appTitle">La struttura al centro.<br>Tutto il resto, a portata di mano.</h2><p data-i18n="appDescription">Geometria, proprietà e risultati nello stesso ambiente. Guarda da vicino l’interfaccia reale di DÈLGHEM.</p></div>
+      <div class="gallery-tabs" role="tablist" aria-label="Schermate del programma" data-i18n-aria="galleryTabs"><button id="tab-model" role="tab" aria-selected="true" aria-controls="gallery-panel" data-gallery="model" data-i18n="galleryModel">Il modello</button><button id="tab-results" role="tab" aria-selected="false" aria-controls="gallery-panel" tabindex="-1" data-gallery="results" data-i18n="galleryResults">I risultati</button><button id="tab-drawings" role="tab" aria-selected="false" aria-controls="gallery-panel" tabindex="-1" data-gallery="drawings" data-i18n="galleryDrawings">La documentazione</button></div>
+      <figure class="app-figure" id="gallery-panel" role="tabpanel" aria-labelledby="tab-model"><button class="screenshot-button" id="enlarge-image" aria-label="Ingrandisci la schermata" data-i18n-aria="enlarge"><img id="gallery-image" src="../assets/app-model.png" width="1600" height="1000" alt="Schermata reale di DÈLGHEM con il modello strutturale" data-i18n-alt="modelImageAlt" loading="lazy"><span class="enlarge-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/></svg><span data-i18n="enlargeShort">Ingrandisci</span></span></button><figcaption><div><strong id="gallery-title" data-i18n="modelCaptionTitle">Il tuo progetto, in tutte le dimensioni.</strong><p id="gallery-caption" data-i18n="modelCaption">Viste del modello e strumenti di lavoro dell’applicazione.</p></div><span class="real-image-label" data-i18n="realScreenshot">Schermata reale dell’app</span></figcaption></figure>
+    </section>
+
+    <section class="fem-lab-section chapter" id="fem-lab" aria-labelledby="fem-lab-title" data-chapter="fem-lab">
   <div class="fem-lab-inner">
     <div class="fem-lab-heading"><div><span class="eyebrow">DATI DEL SOLUTORE / VERI BENCHMARK D2</span><h2 id="fem-lab-title">La struttura prende vita.<br><em>Tensioni. Capacità. Dinamica.</em></h2></div><p>Dal modello ai risultati del solutore KratosMultiphysics: mappe di tensione da 176 shell QUAD4, risposta ciclica assiale non lineare di provini in acciaio S235, analisi dinamica incrementale e accelerogrammi. Le analisi riguardano casi di prova distinti; le curve Pushover laterali del programma sono ancora in fase di verifica.</p></div>
     <nav class="lab-scroll-index" aria-label="Esplora le quattro analisi"><p class="lab-scroll-hint">Quattro sezioni complete. Scorri per esplorarle tutte.</p><div class="lab-scroll-links"><a class="lab-scroll-link" href="#lab-panel-stress"><span>01 / Tensioni FEM</span><small>Telaio · 176 shell · 66 aste</small><span aria-hidden="true" class="lab-scroll-arrow">↘</span></a><a class="lab-scroll-link" href="#lab-panel-pushover"><span>02 / Cicli assiali Kratos</span><small>Curve X e Y · fibre S235</small><span aria-hidden="true" class="lab-scroll-arrow">↘</span></a><a class="lab-scroll-link" href="#lab-panel-ida"><span>03 / IDA non lineare</span><small>16 analisi · plasticizzazione</small><span aria-hidden="true" class="lab-scroll-arrow">↘</span></a><a class="lab-scroll-link" href="#lab-panel-accelerograms"><span>04 / Accelerogrammi e time-history</span><small>2 segnali · 16 storie reali</small><span aria-hidden="true" class="lab-scroll-arrow">↘</span></a></div></nav>
@@ -526,6 +559,64 @@
     <div class="fem-lab-source"><span>DATI SCIENTIFICI TRACCIABILI</span><p>Tutti i grafici numerici sono tratti da <strong>KratosMultiphysics</strong>: 176 shell e 66 aste per il benchmark B01, una prova statica ciclica assiale in acciaio S235 con 240 stati convergenti e 16 analisi IDA non lineari con due orientamenti diagnostici. Modelli separati dalla torre concettuale della home. Le curve di capacità Pushover laterale restano in fase di verifica e non vengono presentate come già validate.</p><p>I grafici sono risultati numerici di benchmark con condizioni di carico assegnate, <strong>non</strong> verifiche di sicurezza strutturale certificate. Nessuna capacità ultima, danno sismico, collasso o curva di fragilità è dedotta oltre i risultati osservati.</p></div>
   </div>
 </section>
+
+<section class="production-drawings chapter" id="production-drawings" aria-labelledby="production-drawings-title" data-chapter="production-drawings">
+ <div class="production-drawings-inner">
+  <div class="production-drawings-header">
+   <div><span class="production-kicker">04 / ELABORATI REALI DÈLGHEM D2</span>
+    <h2 id="production-drawings-title">Disegni tecnici.<em> Dal modello alla carpenteria.</em></h2>
+   </div>
+   <p>Tavole originali di armatura, dettagli delle aste e schermate di carpenteria prodotte o visualizzate nelle build di prova DÈLGHEM D2. Qui gli elaborati sono presentati nel loro contesto, senza disegni tecnici inventati.</p>
+  </div>
+  <div class="production-headline-stats" aria-label="Tipologie di elaborati mostrate">
+   <span><strong>87</strong>TAVOLE DXF C.A. PRELIMINARI</span>
+   <span><strong>A1</strong>ARMATURE REALI</span>
+   <span><strong>D2</strong>SCHERMATE DI CARPENTERIA</span>
+  </div>
+  <div class="production-editorial-grid">
+   <article class="production-discipline production-rc" aria-labelledby="production-rc-title">
+    <div class="production-discipline-head"><span>01 / CEMENTO ARMATO</span><strong>RC / DXF / A1</strong></div>
+    <h3 id="production-rc-title">Ferri. Staffe. Sezioni. Distinte.</h3>
+    <p>Tavole reali 841 × 594 mm dal lotto documentato di 87 DXF D2: sezioni di travi e pilastri, sviluppi longitudinali e distinte dei ferri. Seleziona una delle tavole originali.</p>
+    <div class="production-sheet-tabs" role="group" aria-label="Seleziona la tavola A1 originale" id="production-rc-tabs"><button type="button" data-rc-sheet="1" data-rc-src="../assets/rc-drawings/armature-d2-a1-01.webp" aria-pressed="true">A1 / 01</button><button type="button" data-rc-sheet="2" data-rc-src="../assets/rc-drawings/armature-d2-a1-02.webp" aria-pressed="false">A1 / 02</button><button type="button" data-rc-sheet="3" data-rc-src="../assets/rc-drawings/armature-d2-a1-03.webp" aria-pressed="false">A1 / 03</button><button type="button" data-rc-sheet="4" data-rc-src="../assets/rc-drawings/armature-d2-a1-04.webp" aria-pressed="false">A1 / 04</button><button type="button" data-rc-sheet="5" data-rc-src="../assets/rc-drawings/armature-d2-a1-05.webp" aria-pressed="false">A1 / 05</button></div>
+    <a class="production-sheet production-sheet--a1" id="rc-sheet-a1-feature" href="../assets/rc-drawings/armature-d2-a1-01.webp" target="_blank" rel="noopener noreferrer" aria-label="Ingrandisci la tavola A1 originale di armatura">
+      <img id="rc-sheet-active-image" src="../assets/rc-drawings/armature-d2-a1-01.webp" width="1620" height="1144" loading="lazy" decoding="async" alt="Tavola reale A1 DÈLGHEM D2 con barre, staffe e distinta ferri">
+      <span class="production-sheet-action">PIENO FORMATO · A1 ORIGINALE ↗</span>
+    </a>
+    <a class="production-detail-mini" href="../assets/rc-drawings/rc-beam-BX1.webp" target="_blank" rel="noopener noreferrer">
+     <img id="rc-detail-preview" src="../assets/rc-drawings/rc-beam-BX1-detail.webp" width="957" height="662" loading="lazy" decoding="async" alt="Dettaglio reale D2 di armatura trave BX1 e sezione">
+     <span><strong>DETTAGLIO REALE · TRAVE BX1</strong><small>Sviluppi longitudinali e armature trasversali ↗</small></span>
+    </a>
+    <a class="production-more" href="#rc-drawings">Approfondisci i dettagli in cemento armato nell’archivio tecnico <span aria-hidden="true">↗</span></a>
+   </article>
+   <article class="production-discipline production-steel" aria-labelledby="production-steel-title">
+    <div class="production-discipline-head"><span>02 / CARPENTERIA METALLICA</span><strong>STEEL / D2 / SHOP</strong></div>
+    <h3 id="production-steel-title">Collegamenti. Officina. Montaggio.</h3>
+    <p>Viste reali D2 di un collegamento bullonato quotato e di una tavola di assieme d’impalcato metallico. Geometria di sezione, identificativi e contesto della schermata originale; non un progetto esecutivo inventato.</p>
+    <a class="production-sheet production-sheet--steel" href="../assets/screenshots/drawing.webp" target="_blank" rel="noopener noreferrer">
+     <img id="steel-detail-preview" src="../assets/screenshots/drawing.webp" width="870" height="650" loading="lazy" decoding="async" alt="Dettaglio quotato di collegamento acciaio DÈLGHEM D2 autentico">
+     <span class="production-sheet-action">COLLEGAMENTO QUOTATO · ORIGINALE ↗</span>
+    </a>
+    <a class="production-detail-mini production-detail-mini--steel" href="../assets/real-d2/floor-assembly.webp" target="_blank" rel="noopener noreferrer">
+     <img id="steel-floor-assembly-preview" src="../assets/real-d2/floor-assembly.webp" width="1320" height="850" loading="lazy" decoding="async" alt="Pianta reale di assieme carpenteria metallica D2 con identificativi delle aste">
+     <span><strong>ASSIEME REALE IMPALCATO IN ACCIAIO</strong><small>Sigle delle aste, planimetria e interfaccia D2 ↗</small></span>
+    </a>
+    <a class="production-more" href="#steel-authentic-showcase">Scopri i dettagli acciaio e le schermate di officina <span aria-hidden="true">↗</span></a>
+   </article>
+  </div>
+  <div class="production-trust"><span>◈ OUTPUT DI SVILUPPO / FONTE TRACCIABILE</span>
+    <p>Gli elaborati sono esempi realmente esportati o acquisiti da DÈLGHEM D2, non documenti costruttivi certificati. I DXF di armatura sono preliminari; ancoraggi sismici, collegamenti, cantierabilità e verifiche di resistenza NTC specifiche del progetto richiedono ulteriori controlli.</p>
+  </div>
+ </div>
+</section>
+<section class="native-section chapter" id="native" aria-labelledby="native-title" data-chapter="native">
+      <div class="native-intro"><h2 id="native-title" data-i18n="nativeTitle">Nato per Apple Silicon.<br>A casa, su macOS.</h2><p class="large-body" data-i18n="nativeDescription">Apri il Mac. Entra nel tuo progetto. DÈLGHEM porta il calcolo strutturale direttamente nell’ambiente in cui lavori.</p></div>
+      <div class="mac-capabilities" aria-label="Funzioni principali DÈLGHEM per Apple Silicon"><a href="#model-showcase" class="mac-capability"><small>ARM64</small><strong>Apple Silicon</strong><span>Esecuzione nativa macOS, senza virtualizzare Windows.</span><i aria-hidden="true">↗</i></a><a href="#fem-lab" class="mac-capability"><small>FEM 3D</small><strong>KratosMultiphysics</strong><span>Mesh shell, aste e benchmark numerici documentati.</span><i aria-hidden="true">↗</i></a><a href="#genius" class="mac-capability"><small>Genius</small><strong>Comandi verificabili</strong><span>Modifica geometria, sezioni e carichi con anteprima.</span><i aria-hidden="true">↗</i></a><a href="#engineering-benchmarks" class="mac-capability"><small>B16</small><strong>Fondazioni e pali</strong><span>Travi Winkler, pali t–z/q–z e interazione terreno.</span><i aria-hidden="true">↗</i></a></div><details class="native-technical-depth"><summary><strong>Architettura ARM64, virtualizzazione e metodo dei benchmark</strong><span>Approfondimento tecnico</span><i aria-hidden="true">+</i></summary><div><div class="architecture-comparison"><div class="native-path"><h3>DÈLGHEM</h3><p data-i18n="nativePathLabel">Il percorso nativo</p><div class="path-diagram" aria-label="DÈLGHEM su macOS e Apple Silicon" data-i18n-aria="nativeDiagram"><span class="path-app">DÈLGHEM<span data-i18n="nativeApp">App nativa</span></span><span class="path-line" aria-hidden="true"></span><span>macOS</span><span class="path-line" aria-hidden="true"></span><span class="path-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 1v4m6-4v4M9 19v4m6-4v4M1 9h4m-4 6h4m14-6h4m-4 6h4"/></svg>Apple Silicon</span></div><p class="path-conclusion" data-i18n="nativeConclusion">Un’app Mac. Nessuna macchina virtuale Windows da avviare.</p></div><div class="windows-path"><h3 data-i18n="windowsTitle">Un’app Windows sul Mac</h3><p data-i18n="windowsPathLabel">Il percorso con virtualizzazione</p><div class="path-diagram"><span class="path-app" data-i18n="windowsApp">App Windows</span><span class="path-line" aria-hidden="true"></span><span class="translation-layer" data-i18n="translation">Traduzione x86/x64, se necessaria</span><span class="path-line" aria-hidden="true"></span><span>Windows Arm <span class="path-detail">+ Software di virtualizzazione</span></span><span class="path-line" aria-hidden="true"></span><span>macOS <span class="path-detail">+ Apple Silicon</span></span></div><p class="comparison-note" data-i18n="comparisonNote">Le applicazioni Windows ARM64 non richiedono la traduzione x86/x64. Questo schema descrive l’architettura, non misura le prestazioni.</p></div></div>
+      <details class="technical-detail"><summary><span data-i18n="technicalTitle">Cosa significa davvero “nativo”?</span><span aria-hidden="true">+</span></summary><div><p data-i18n="technicalBody">Una build ARM64 esegue istruzioni compatibili con Apple Silicon. Un software di virtualizzazione può eseguire un sistema operativo guest, ad esempio Windows Arm; alcune applicazioni x86/x64 possono richiedere la traduzione delle istruzioni. L'impatto sulle prestazioni dipende da hardware, carico di lavoro e configurazione: l'esecuzione nativa non garantisce automaticamente tempi inferiori.</p><p class="source-links"><span data-i18n="sources">Fonti tecniche:</span> <a href="https://developer.apple.com/documentation/apple-silicon/building-a-universal-macos-binary" target="_blank" rel="noopener noreferrer">Apple Developer</a><a href="https://learn.microsoft.com/en-us/windows/arm/apps-on-arm-x86-emulation" target="_blank" rel="noopener noreferrer">Microsoft</a></p></div></details>
+      <div class="benchmark-block"><h3 data-i18n="benchmarkTitle">Le prestazioni meritano numeri veri.</h3><div><p data-i18n="benchmarkBody">Tempi di soluzione, memoria e fluidità: i confronti con altri ambienti saranno pubblicati insieme ai modelli e alle condizioni di prova.</p><details><summary data-i18n="benchmarkMethod">Come confronteremo le prestazioni</summary><p data-i18n="benchmarkProtocol">Stesso Mac e problema strutturale equivalente, software e versioni dichiarati, risultati numerici confrontabili. Almeno cinque ripetizioni, mediana e variabilità; tempi di avvio, soluzione ed esportazione separati. Memoria dell’app e dell’intero ambiente misurate distintamente.</p><p class="benchmark-status" data-i18n="benchmarkStatus">Non sono ancora disponibili benchmark comparativi verificati per questa presentazione.</p></details></div></div>
+    </div></details>
+    </section>
+
 <section class="technical-library" id="technical-library" aria-labelledby="technical-library-title">
    <div class="technical-library-intro"><span class="eyebrow">ARCHIVIO TECNICO / APPROFONDIMENTI</span><h2 id="technical-library-title">Approfondisci soltanto ciò che ti serve.</h2><p>Le funzioni e le immagini del programma restano disponibili. Apri un argomento per consultare esempi, elaborati e schermate senza appesantire la pagina principale.</p></div>
    <div class="technical-library-collection"><details class="technical-library-details" name="technical-deep-dives" id="technical-software">
@@ -656,5 +747,7 @@
 <script type="module" src="../seismic-isolators.js?v=20261025-shear2"></script>
 <script type="module" src="../engineering-simulations.js?v=20261025-shear2"></script>
 <script type="module" src="../delghem-art-direction.js?v=20261026-studio01"></script>
+<script type="module" src="../production-drawings.js?v=20261026-journey2"></script>
+<script type="module" src="../silicon-performance.js?v=20261026-nativebench1"></script>
 </body>
 </html>

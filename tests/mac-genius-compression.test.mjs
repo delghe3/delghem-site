@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),read=x=>fs.readFileSync(path.join(root,x),'utf8');
 test('Apple Silicon is explained in one concise Mac feature pathway with optional deep detail, not invented benchmarks',()=>{
  for(const n of ['index.html','it/index.html']){
-  const s=read(n),a=s.indexOf('<section class="native-section'),b=s.indexOf('<section class="genius-section',a);
+  const s=read(n),a=s.indexOf('<section class="native-section'),b=s.indexOf('<section class="technical-library',a);
   const region=s.slice(a,b);
   assert.ok(a>=0&&b>a);
   assert.match(region,/class="mac-capabilities"/);

@@ -1,0 +1,148 @@
+/* Public independent platform evidence, NOT software-vs-software engineering
+   benchmark. Fits directly after the opening 3D structural hero. */
+.silicon-benchmark-section{
+ padding:clamp(54px,7vw,95px) 23px;
+ color:#f0fff7;
+ background:
+  radial-gradient(ellipse 36% 62% at 92% 8%,#2dd6b034,transparent 80%),
+  radial-gradient(ellipse 43% 50% at 8% 100%,#d19a5f16,transparent 80%),
+  repeating-linear-gradient(90deg,transparent 0 66px,#86e4c509 67px),
+  linear-gradient(135deg,#0b2937,#10434d 60%,#0a303d);
+ border-block:1px solid #4ba89882;
+}
+.silicon-benchmark-inner{max-width:1330px;margin:0 auto}
+.silicon-performance-head{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end}
+.silicon-benchmark-eyebrow{
+ font:900 10px ui-monospace,SFMono-Regular,monospace;letter-spacing:.13em;
+ color:#81f3cd
+}
+.silicon-performance-head h2{
+ font-size:clamp(32px,4.2vw,62px);line-height:1.05;letter-spacing:-.055em;
+ color:#f6fff9!important;margin:17px 0 8px
+}
+.silicon-performance-head h2 em{font-style:normal;color:#87e6cf}
+.silicon-performance-head>p{font-size:13px;line-height:1.75;color:#d6ede6!important}
+.silicon-architecture-paths{
+ display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:29px 0 22px
+}
+.silicon-architecture-path{
+ display:flex;flex-direction:column;gap:10px;min-width:0;
+ padding:16px 18px;border-radius:10px;border:1px solid #9ad2c65a;
+ background:#0d3442;
+}
+.silicon-architecture-path--native{border-left:5px solid #42d9af}
+.silicon-architecture-path--legacy{border-left:5px solid #df9e6e}
+.silicon-architecture-path span{font:850 10px ui-monospace,monospace;color:#82e9cb}
+.silicon-architecture-path--legacy span{color:#f1b48b}
+.silicon-architecture-path strong{font-size:clamp(12px,1.5vw,18px);color:#f5fffa;letter-spacing:-.025em}
+.silicon-architecture-path small{font-size:11px;color:#a9d1d2;line-height:1.45}
+.silicon-benchmark-lab{
+ background:#fafffc;border:1px solid #b0d7cb;border-radius:14px;
+ overflow:hidden;color:#163d47;box-shadow:0 21px 60px #081c2763
+}
+.silicon-benchmark-tabbar{
+ display:flex;flex-wrap:wrap;gap:5px;background:#e6f2ed;
+ border-bottom:1px solid #c0dad2;padding:12px
+}
+.silicon-benchmark-tabbar button{
+ flex:1;cursor:pointer;min-height:42px;padding:10px;
+ border-radius:6px;border:1px solid transparent;
+ background:transparent;color:#246773;
+ font:900 10px ui-monospace,SFMono-Regular,monospace;
+ letter-spacing:.03em;transition:background .2s,color .2s
+}
+.silicon-benchmark-tabbar button[aria-pressed="true"]{
+ background:#123f50;border-color:#123f50;color:#fff
+}
+.silicon-benchmark-tabbar button:hover:not([aria-pressed="true"]){
+ background:#d1e9df
+}
+.silicon-data-head{
+ display:flex;align-items:center;justify-content:space-between;gap:15px;
+ padding:23px 23px 12px;flex-wrap:wrap
+}
+.silicon-data-head span:first-child{font-size:17px;font-weight:900;color:#123f50}
+.silicon-data-head span:last-child{font:700 10px ui-monospace,monospace;color:#537780}
+.silicon-benchmark-comparison{padding:12px 23px 24px}
+.silicon-benchmark-line{
+ display:grid;grid-template-columns:minmax(120px,170px) 1fr 130px;
+ align-items:center;gap:14px;margin:13px 0
+}
+.silicon-benchmark-line>span{font:800 11px ui-monospace,monospace;color:#265b63}
+.silicon-benchmark-line>strong{
+ font:900 16px ui-monospace,SFMono-Regular,monospace;
+ font-variant-numeric:tabular-nums;color:#115b65;text-align:right
+}
+.silicon-benchmark-line--translated>strong{color:#a46a47}
+.silicon-benchmark-track{
+ height:33px;border-radius:5px;overflow:hidden;
+ background:repeating-linear-gradient(90deg,#edf5f1 0,#edf5f1 calc(25% - 1px),#c7ded4 calc(25% - 1px),#c7ded4 25%);
+ border:1px solid #bed7d0;
+}
+.silicon-benchmark-fill{
+ height:100%;width:0;max-width:100%;border-radius:4px;
+ background:linear-gradient(110deg,#148c8e,#44e0ac);
+ box-shadow:inset 0 2px 0 #ffffff55,0 0 15px #30cba477;
+ transition:width .4s ease
+}
+.silicon-benchmark-line--translated .silicon-benchmark-fill{
+ background:linear-gradient(110deg,#a16948,#ebad75);
+ box-shadow:inset 0 2px 0 #ffffff55,0 0 15px #dc925d70
+}
+.silicon-benchmark-outcome{
+ display:grid;grid-template-columns:205px 1fr;gap:19px;
+ padding:15px 23px;border-block:1px solid #c2ded5;
+ background:linear-gradient(90deg,#e6f7ef,#f9fcf7)
+}
+.silicon-benchmark-outcome>div{display:flex;flex-direction:column;gap:6px}
+.silicon-benchmark-outcome>div span{font:800 9px ui-monospace,monospace;color:#49787c;line-height:1.4}
+.silicon-benchmark-outcome>div strong{font-size:clamp(27px,3.4vw,44px);font-weight:950;letter-spacing:-.04em;color:#137e73}
+.silicon-benchmark-outcome>p{
+ align-self:center;font-size:11px;line-height:1.65;color:#537078!important
+}
+.silicon-benchmark-source{
+ padding:16px 23px 22px;display:flex;flex-wrap:wrap;
+ align-items:center;gap:6px 13px
+}
+.silicon-benchmark-source span{font:850 10px ui-monospace,monospace;color:#356e70}
+.silicon-benchmark-source a{color:#0b6c79;font-size:11px;font-weight:900}
+.silicon-benchmark-source p{
+ width:100%;font-size:10px;line-height:1.6;color:#4d737a!important;
+ margin:4px 0 0
+}
+.silicon-complexity-note{
+ display:grid;grid-template-columns:1fr 1.7fr;gap:22px;
+ background:#123745;border:1px solid #75aea881;border-radius:9px;
+ padding:21px 23px;margin-top:18px
+}
+.silicon-complexity-note>div{display:flex;flex-direction:column;gap:9px}
+.silicon-complexity-note>div span{font:900 10px ui-monospace,monospace;color:#81efca}
+.silicon-complexity-note strong{font-size:17px;line-height:1.3;color:#edfef7}
+.silicon-complexity-note>p{margin:0;line-height:1.74;font-size:11px;color:#c3e1dc!important}
+.silicon-platform-source{font-size:10px;margin:13px 3px 0;color:#9ecbc6!important}
+.silicon-platform-source a{color:#a7f7d3!important;text-decoration:underline}
+.silicon-benchmark-section a:focus-visible,.silicon-benchmark-section button:focus-visible{
+ outline:3px solid #f4b47c;outline-offset:3px
+}
+@media(max-width:760px){
+ .silicon-performance-head,.silicon-complexity-note{grid-template-columns:1fr;gap:12px}
+ .silicon-architecture-paths{grid-template-columns:1fr}
+ .silicon-benchmark-line{grid-template-columns:110px 1fr 100px;gap:7px}
+ .silicon-benchmark-line>span{font-size:9px}
+ .silicon-benchmark-line>strong{font-size:12px}
+ .silicon-benchmark-outcome{grid-template-columns:1fr;gap:5px}
+}
+@media(max-width:650px){
+ .silicon-benchmark-section{padding:48px 13px}
+ .silicon-benchmark-tabbar{padding:7px}
+ .silicon-benchmark-tabbar button{font-size:8px;padding:7px 5px}
+ .silicon-data-head{padding:18px 12px 4px}
+ .silicon-benchmark-comparison{padding:11px}
+ .silicon-benchmark-line{grid-template-columns:100px 1fr 87px;gap:5px}
+ .silicon-benchmark-line>span{font-size:8px}
+ .silicon-benchmark-line>strong{font-size:10px}
+ .silicon-benchmark-track{height:22px}
+ .silicon-benchmark-outcome{padding:12px}
+ .silicon-benchmark-source{padding:15px}
+}
+@media(prefers-reduced-motion:reduce){.silicon-benchmark-fill{transition:none}}

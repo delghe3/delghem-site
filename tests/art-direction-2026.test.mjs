@@ -55,8 +55,8 @@ test('Editorial overview stays four purposeful topic links and avoids repeated s
   const overview=html.slice(start,end);
   assert.equal((overview.match(/class="engineering-track-item/g)||[]).length,4);
   assert.ok(overview.length<5000,'overview should not repeat long technical sections');
-  assert.match(overview,/pile-stratigraphy-(en|it)\.webp/);
-  assert.match(overview,/steel-viscous-frame-(en|it)\.webp/);
+  assert.match(overview,/genius-workflow-(en|it)\.webp/);
+  assert.match(overview,/genius-steel\.webp/);
   assert.ok(html.includes('eng-stress-qualification'));
   assert.ok(html.includes('isolation-method-note'));
   assert.ok(html.includes('eng-proof-limit'));

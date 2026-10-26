@@ -35,7 +35,7 @@ for(const [file,language] of [['index.html','en'],['it/index.html','it']]){
    assert.doesNotMatch(html.slice(hero),/<section class="support-banner(?: |")/,
      'the old footer donation must be moved, not duplicated');
  });
- test(language+': native D2 piles and viscous frame are prioritized in the opening hero and editorial hub',()=>{
+ test(language+': native D2 piles and viscous frame lead the hero, while Genius now leads the editorial hub',()=>{
    const html=read(file);
    const hero=html.slice(html.indexOf('<section class="hero chapter"'),
      html.indexOf('<section class="editorial-hub"'));
@@ -44,10 +44,10 @@ for(const [file,language] of [['index.html','en'],['it/index.html','it']]){
    assert.match(hero,/class="hero-engineering-link"/);
    assert.match(hero,/href="#engineering-benchmarks"/);
    assert.match(intro,/engineering-track-item--featured/);
-   assert.match(intro,/href="#engineering-benchmarks"/);
-   assert.match(intro,/assets\/engineering\/pile-stratigraphy-(it|en)\.webp/);
-   assert.match(intro,/assets\/engineering\/steel-viscous-frame-(it|en)\.webp/);
-   assert.match(intro,/Pali|dampers|soil|Terreno|dissipatori/i);
+   assert.match(intro,/href="#genius"/);
+   assert.match(intro,/assets\/genius\/genius-workflow-(it|en)\.webp/);
+   assert.match(intro,/assets\/genius\/genius-steel\.webp/);
+   assert.match(intro,/Genius|assistant|modello|model/i);
    assert.match(html,/id="soil-stress-scene"/);
    assert.match(html,/id="steel-frame-scene"/);
    assert.equal((intro.match(/class="engineering-track-item/g)||[]).length,4,

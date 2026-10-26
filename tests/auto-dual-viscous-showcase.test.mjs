@@ -14,7 +14,7 @@ test('viscous engineering evidence is located directly after the hero, before se
    editorial=h.indexOf('<section class="editorial-hub"'),
    application=h.indexOf('<section class="app-section'),
    genius=h.indexOf('<section class="genius-section');
-  assert.ok(hero>=0&&hero<engineering&&engineering<editorial&&editorial<application&&application<genius,name);
+  assert.ok(hero>=0&&hero<engineering&&engineering<editorial&&editorial<genius&&genius<application,name);
   assert.equal((h.match(/id="engineering-benchmarks"/g)||[]).length,1);
   const block=h.slice(engineering,editorial);
   assert.ok(block.indexOf('class="eng-graph-card eng-device-card')<block.indexOf('class="eng-graph-card eng-pile-card'));
