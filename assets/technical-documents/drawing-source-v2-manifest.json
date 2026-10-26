@@ -1,0 +1,49 @@
+{
+  "schema": "delghem-source-derived-techdrawings-2",
+  "sourceRcSha256": "f009bf9cc557ca4e87c39e703c31f057a880d9ecf25991114f3b07365c1d72d2",
+  "sourceSteelSha256": "60c65b206d93a27f26f86a0260d0ec245034e7f0f9fa8c46ef3feaf3c8c59b4a",
+  "kratosRawSolverResultSha256": "c77c54baf6c50afbd5021267b3bc3c65ceea03f97646ce43330f457577b0d252",
+  "modelSeparation": "RC benchmark, 28 steel connection export, and Kratos B01 are three distinct models. Do not mix solver stresses with drawing details.",
+  "rc": {
+    "nodes": 48,
+    "members": 87,
+    "grids": "5m×5m",
+    "levels": [
+      0,
+      3.2,
+      6.4,
+      9.6
+    ],
+    "archiveA1": 87,
+    "completeExecutiveDesign": false
+  },
+  "steel": {
+    "nodes": 24,
+    "members": 35,
+    "boltGroups": 28,
+    "boltsPerGroup": 8,
+    "plateThicknessMm": 40,
+    "boltDiameterMm": 30,
+    "holeDiameterMm": 33,
+    "pitchMm": 270,
+    "gaugeMm": 250,
+    "completeConnectionVerification": false
+  },
+  "kratos": {
+    "elements": 176,
+    "beams": 66,
+    "gaussFaceSamples": 1408,
+    "vonMisesMinMPa": 0.03461,
+    "vonMisesMaxMPa": 1.527475,
+    "residual": 8.209093065765238e-12,
+    "sameDrawingModel": false
+  },
+  "plates": [
+    "delghem-rc-engineering-ga.svg",
+    "delghem-rc-reinforcement-schedule.svg",
+    "delghem-steel-portal-detail.svg",
+    "delghem-steel-bolting-fabrication.svg",
+    "delghem-kratos-source-benchmark.svg"
+  ],
+  "notes": "Vector plates combine source model geometry, original D2 DXF details and explicitly labelled depiction of hardware without verified washer/nut lengths. They are not a finalized fabrication output; unsupported checks remain excluded."
+}

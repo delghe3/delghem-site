@@ -43,9 +43,9 @@
 <script type="module" src="../site-intro.js?v=20261025-neonhold"></script>
   <noscript><style>.site-intro{display:none!important}</style></noscript>
  <link rel="stylesheet" href="../delghem-art-direction.css?v=20261026-studio01">
- <link rel="stylesheet" href="../contrast-recovery.css?v=20261026-dossier3">
+ <link rel="stylesheet" href="../contrast-recovery.css?v=20261026-dossier4">
 <link rel="stylesheet" href="../silicon-performance.css?v=20261026-nativebench1">
-<link rel="stylesheet" href="../technical-dossier.css?v=20261026-dossier3">
+<link rel="stylesheet" href="../technical-dossier.css?v=20261026-dossier4">
 </head>
 <body>
 <div class="site-intro" id="site-intro" role="region" aria-label="DELGHEM" data-phase="build" data-ready="false">
@@ -567,39 +567,78 @@
   <div class="production-drawings-header">
    <div><span class="production-kicker">04 / DÈLGHEM D2 · ARCHIVIO DXF REALE</span>
    <h2 id="production-drawings-title">Dai singoli particolari<em> a una tavola di insieme.</em></h2></div>
-   <p>Non più un pilastro isolato o un nodo spoglio. Due tavole sinottiche multipannello in formato A1 riuniscono dettagli riconducibili a 87 DXF autentici di cemento armato e 28 DXF autentici di collegamenti metallici, con i fascicoli originali consultabili qui sotto.</p>
+   <p>Non più un pilastro isolato o un nodo spoglio. Quattro nuove tavole tecniche vettoriali presentano geometrie strutturali D2, armature e connessioni M30 quotate, ricavate dal modello a tre piani, dal telaio a sette piani e dai rispettivi DXF. Una quinta appendice riporta separatamente i risultati FEM Kratos.</p>
   </div>
-  <div class="production-headline-stats"><span><strong>87</strong>TAVOLE A1 C.A. ORIGINALI</span><span><strong>28</strong>TAVOLE A1 ACCIAIO ORIGINALI</span><span><strong>2</strong>TAVOLE SINOTTICHE COMPOSITE</span></div>
-  <div class="production-dossier-grid">
-   <article class="production-dossier production-dossier--rc">
-    <div class="production-dossier-topline"><span>01 / FASCICOLO ARMATURE C.A.</span><span>RC / A1 / DXF</span></div>
-    <h3>Armature di travi e pilastri nella stessa tavola.</h3>
-    <p>Vista d’insieme non in scala di un telaio c.a. a tre piani, particolari originali DXF di travi e pilastri e distinta documentata. Schemi di contesto esplicitamente illustrativi.</p>
-    <a class="production-dossier-sheet" id="rc-composite-board" href="../assets/technical-documents/delghem-rc-assembly-sheet.svg" target="_blank" rel="noopener noreferrer">
-     <img src="../assets/technical-documents/delghem-rc-assembly-sheet.svg" alt="Tavola composita derivata da DXF D2 reali: quattro diversi dettagli di armatura con quote e annotazioni delle distinte" loading="lazy" decoding="async" width="1600" height="1120">
-     <span>INGRANDISCI LA TAVOLA COMPOSITA ↗</span>
-    </a>
-    <div class="production-dossier-actions"><a href="../assets/technical-documents/delghem-rc-multiview-board.svg" target="_blank" rel="noopener noreferrer">DETTAGLI CAD ORIGINALI ↗</a>
-     <a href="../assets/technical-documents/Armature-cinque-tavole-A1.pdf" target="_blank" rel="noopener noreferrer">PDF / 05 A1 ↗</a>
-     <a href="../assets/technical-documents/Armature-87-tavole-A1.zip" download>DXF / 87 A1 <span aria-hidden="true">↓</span></a>
-    </div>
-   </article>
-   <article class="production-dossier production-dossier--steel">
-    <div class="production-dossier-topline"><span>02 / FASCICOLO OFFICINA ACCIAIO</span><span>STEEL / A1 / DXF</span></div>
-    <h3>Più collegamenti. Piastre. Bulloneria.</h3>
-    <p>Prospetto non in scala di un telaio a sette livelli e due campate, più gruppi di fori derivati da DXF autentici e rappresentazione esplosa illustrativa di testa, rondelle e dado. Le dimensioni mancanti della bulloneria NON sono verificate.</p>
-    <a class="production-dossier-sheet" id="steel-composite-board" href="../assets/technical-documents/delghem-steel-assembly-sheet.svg" target="_blank" rel="noopener noreferrer">
-     <img src="../assets/technical-documents/delghem-steel-assembly-sheet.svg" alt="Tavola d'officina multipannello basata sui DXF D2, con bulloneria schematica esplicativa" loading="lazy" decoding="async" width="1600" height="1120">
-     <span>INGRANDISCI LA TAVOLA COMPOSITA ↗</span>
-    </a>
-    <div class="production-dossier-actions"><a href="../assets/technical-documents/delghem-steel-multiview-board.svg" target="_blank" rel="noopener noreferrer">DETTAGLI CAD ORIGINALI ↗</a>
-     <a href="../assets/technical-documents/Acciaio-tre-tavole-A1.pdf" target="_blank" rel="noopener noreferrer">PDF / 03 A1 ↗</a>
-     <a href="../assets/technical-documents/Acciaio-28-tavole-A1.zip" download>DXF / 28 A1 <span aria-hidden="true">↓</span></a>
-    </div>
-   </article>
+  <div class="production-headline-stats"><span><strong>87</strong>TAVOLE A1 C.A. ORIGINALI</span><span><strong>28</strong>TAVOLE A1 ACCIAIO ORIGINALI</span><span><strong>4+1</strong>TAVOLE D2 + KRATOS</span></div>
+
+  <div class="d2-techdrawings-meta" role="group" aria-label="Sorgenti reali degli elaborati">
+   <span><strong>48 / 87</strong>NODI / ASTE MODELLO C.A.</span>
+   <span><strong>28 × 8</strong>NODI ACCIAIO / BULLONI M30</span>
+   <span><strong>176</strong>QUAD4 KRATOS · CASO SEPARATO</span>
   </div>
+  <div class="production-dossier-grid production-dossier-grid--extended">
+  <article class="production-dossier production-dossier--rc" aria-labelledby="rc-production-heading">
+   <div class="production-dossier-topline"><span>RC / MODELLO NATIVO → CAD</span><span>RC-01 · RC-02</span></div>
+   <div class="production-dossier-cover">
+     <h3 id="rc-production-heading">Tre piani completi, non un singolo pilastro.</h3>
+     <p>Piante di carpenteria ricavate da 48 nodi e 87 aste originali DÈLGHEM, con maglia 5 m. I prospetti hanno tre livelli reali da 3,20 m; una seconda tavola presenta sei particolari DXF originali di travi e pilastri.</p>
+     <span class="d2-drawing-source-tag">GEOMETRIA TELAIO REALE + PARTICOLARI DXF C.A. ESPORTATI</span>
+   </div>
+   <div class="d2-drawing-tabs" role="group" aria-label="Seleziona tavola in cemento armato">
+    <button type="button" data-tech-sheet="rc" data-tech-file="delghem-rc-engineering-ga.svg" data-tech-code="RC-01 / GA" aria-pressed="true">01 · CARPENTERIA GENERALE</button>
+    <button type="button" data-tech-sheet="rc" data-tech-file="delghem-rc-reinforcement-schedule.svg" data-tech-code="RC-02 / REBAR" aria-pressed="false">02 · ARMATURE E DISTINTE</button>
+   </div>
+   <a class="production-dossier-sheet d2-drawing-viewer" id="rc-composite-board" href="../assets/technical-documents/delghem-rc-engineering-ga.svg" target="_blank" rel="noopener noreferrer">
+     <img src="../assets/technical-documents/delghem-rc-engineering-ga.svg" width="2300" height="1550" decoding="async" loading="lazy" alt="Pianta di carpenteria, prospetto strutturale c.a. D2 a tre piani, particolari DXF reali e distinte">
+     <span>INGRANDISCI LA TAVOLA VETTORIALE COMPLETA <b id="rc-drawing-code">RC-01 / GA</b> ↗</span>
+   </a>
+   <div class="d2-drawing-proofline"><span>5.00 m × 5.00 m</span><span>3 × 3.20 m</span><span>87 DXF / A1</span></div>
+   <div class="production-dossier-actions">
+    <a href="../assets/technical-documents/Armature-cinque-tavole-A1.pdf" target="_blank" rel="noopener noreferrer">PDF / 05 A1 ↗</a>
+    <a href="../assets/technical-documents/Armature-87-tavole-A1.zip" download>DXF / 87 A1 ↓</a>
+    <a href="../assets/technical-documents/delghem-rc-multiview-board.svg" target="_blank" rel="noopener noreferrer">PARTICOLARI DXF ↗</a>
+    <a href="../assets/technical-documents/delghem-rc-assembly-sheet.svg" target="_blank" rel="noopener noreferrer">PANORAMICA PRECEDENTE ↗</a>
+   </div>
+  </article>
+
+  <article class="production-dossier production-dossier--steel" aria-labelledby="steel-production-heading">
+   <div class="production-dossier-topline"><span>STEEL / COLLEGAMENTI REALI + CONTROLLI</span><span>ST-01 · ST-02</span></div>
+   <div class="production-dossier-cover">
+     <h3 id="steel-production-heading">Sette piani. Ventotto nodi. Bulloneria reale.</h3>
+     <p>Prospetto metallico dalle coordinate del modello, profili W reali e campate di 9,144 m. Gruppi da 8 bulloni M30, piastre da 40 mm, passo 270 mm, interasse 250 mm, con azioni e coefficienti di utilizzazione parziali esportati da D2.</p>
+     <span class="d2-drawing-source-tag">RISULTATI COLLEGAMENTI D2 DEL 22/10/2026 · VERIFICHE INCOMPLETE</span>
+   </div>
+   <div class="d2-drawing-tabs" role="group" aria-label="Seleziona tavola di carpenteria metallica">
+    <button type="button" data-tech-sheet="steel" data-tech-file="delghem-steel-portal-detail.svg" data-tech-code="ST-01 / ELEVATION" aria-pressed="true">01 · CARPENTERIA METALLICA</button>
+    <button type="button" data-tech-sheet="steel" data-tech-file="delghem-steel-bolting-fabrication.svg" data-tech-code="ST-02 / JOINTS" aria-pressed="false">02 · PIASTRE E BULLONERIA</button>
+   </div>
+   <a class="production-dossier-sheet d2-drawing-viewer" id="steel-composite-board" href="../assets/technical-documents/delghem-steel-portal-detail.svg" target="_blank" rel="noopener noreferrer">
+     <img src="../assets/technical-documents/delghem-steel-portal-detail.svg" width="2300" height="1550" loading="lazy" decoding="async" alt="Telaio metallico DÈLGHEM 7 piani, sezioni W reali, piastra bullonata M30 con quote e utilizzi parziali del risultato D2">
+     <span>INGRANDISCI LA TAVOLA VETTORIALE COMPLETA <b id="steel-drawing-code">ST-01 / ELEVATION</b> ↗</span>
+   </a>
+   <div class="d2-drawing-proofline"><span>7 × LIVELLI</span><span>28 × 8 M30</span><span>t40 / 270 / 250</span></div>
+   <div class="production-dossier-actions">
+    <a href="../assets/technical-documents/Acciaio-tre-tavole-A1.pdf" target="_blank" rel="noopener noreferrer">PDF / 03 A1 ↗</a>
+    <a href="../assets/technical-documents/Acciaio-28-tavole-A1.zip" download>DXF / 28 A1 ↓</a>
+    <a href="../assets/technical-documents/delghem-steel-multiview-board.svg" target="_blank" rel="noopener noreferrer">PARTICOLARI DXF ↗</a>
+    <a href="../assets/technical-documents/delghem-steel-assembly-sheet.svg" target="_blank" rel="noopener noreferrer">PANORAMICA PRECEDENTE ↗</a>
+   </div>
+  </article>
+ </div>
+ <aside class="d2-kratos-drawing-evidence" aria-labelledby="d2-kratos-evidence-title">
+  <div class="d2-kratos-evidence-copy"><span>KRATOS MULTIPHYSICS / B01 / BENCHMARK INDIPENDENTE</span>
+    <h3 id="d2-kratos-evidence-title">Risultati numerici, non tensioni decorative.</h3>
+    <p>L’appendice riporta 176 shell QUAD4 e 66 aste realmente risolte da Kratos, con 1.408 campioni di Gauss sulle due facce. È un benchmark SEPARATO, non un’analisi dei due telai rappresentati nelle tavole soprastanti.</p>
+    <div class="d2-kratos-evidence-metrics"><span><strong>176</strong> QUAD4</span><span><strong>66</strong> BEAMS</span><span><strong>1.5275</strong> σVM MPa</span></div>
+    <a href="../assets/technical-documents/delghem-kratos-source-benchmark.svg" target="_blank" rel="noopener noreferrer">APRI L’APPENDICE NUMERICA KRATOS REALE ↗</a>
+    <small>Non è una verifica di resistenza NTC: modello e condizioni di carico differenti.</small>
+  </div>
+  <a class="d2-kratos-evidence-preview" href="../assets/technical-documents/delghem-kratos-source-benchmark.svg" target="_blank" rel="noopener noreferrer">
+    <img src="../assets/technical-documents/delghem-kratos-source-benchmark.svg" width="2300" height="1550" alt="Tavola vettoriale delle tensioni von Mises a punti Gauss provenienti da un benchmark strutturale Kratos separato" loading="lazy" decoding="async">
+  </a>
+ </aside>
   <div class="production-trust"><span>◈ FONTI AUTENTICHE · OUTPUT PRELIMINARI</span>
-   <p>Le tavole sinottiche sono una nuova impaginazione di più frammenti DXF realmente esportati da D2, non tavole complessive native già prodotte dal programma. La rappresentazione di dadi, teste e rondelle è esplicitamente illustrativa. Entrambi i manifest dichiarano completeExecutiveDesign = false: non si tratta quindi di elaborati esecutivi certificati o pronti per il cantiere e servono specifiche complete di ancoraggio e bulloneria, verifiche dei collegamenti e controlli di progetto.</p></div>
+   <p>I nuovi elaborati riuniscono geometrie dei veri modelli D2 e dettagli DXF esportati: non sono ancora tavole esecutive native e certificate. Interassi, diametri e spessore della piastra metallica provengono dal modello D2; geometrie e specifiche di dadi, rondelle, grip e saldature sono incomplete. Il controllo dei collegamenti è parziale e i manifest DXF riportano completeExecutiveDesign = false. I risultati Kratos appartengono a un diverso benchmark, non verificano le tavole esposte.</p></div>
  </div>
 </section>
 <section class="materials-takeoff chapter" id="materials-takeoff" aria-labelledby="materials-title">
@@ -790,7 +829,7 @@
 <script type="module" src="../seismic-isolators.js?v=20261025-shear2"></script>
 <script type="module" src="../engineering-simulations.js?v=20261025-shear2"></script>
 <script type="module" src="../delghem-art-direction.js?v=20261026-studio01"></script>
-<script type="module" src="../production-drawings.js?v=20261026-dossier3"></script>
+<script type="module" src="../production-drawings.js?v=20261026-dossier4"></script>
 <script type="module" src="../silicon-performance.js?v=20261026-nativebench1"></script>
 <script type="module" src="../materials-takeoff.js?v=20261026-dossier3"></script>
 </body>

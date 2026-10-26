@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1550" viewBox="0 0 2300 1550" role="img" aria-label="STRUCTURAL STEEL · COMPLETE ELEVATION &amp; CONNECTION REGISTER">
+<rect x="0.00" y="0.00" width="2300.00" height="1550.00" rx="0" fill="#e5eeeb" stroke="none" stroke-width="0"/>
+<rect x="20.00" y="20.00" width="2260.00" height="1510.00" rx="0" fill="#fff" stroke="#214454" stroke-width="2"/>
+<rect x="22.00" y="22.00" width="2256.00" height="108.00" rx="0" fill="#123d4c" stroke="none" stroke-width="0"/>
+<text x="55.00" y="69.00" font-size="26" fill="#9df3d0" font-family="Arial,Helvetica,sans-serif" font-weight="880" >DÈLGHEM D2 / DRAWING SYSTEM</text>
+<text x="55.00" y="108.00" font-size="32" fill="#f8fffa" font-family="Arial,Helvetica,sans-serif" font-weight="920" >STRUCTURAL STEEL · COMPLETE ELEVATION &amp; CONNECTION REGISTER</text>
+<text x="2250.00" y="64.00" font-size="21" fill="#f3c694" font-family="Arial,Helvetica,sans-serif" font-weight="870" text-anchor="end">ST-D2 / 01</text>
+<text x="2250.00" y="103.00" font-size="13" fill="#d4f1e4" font-family="Arial,Helvetica,sans-serif" font-weight="700" text-anchor="end">VECTOR / D2 / MODEL-DERIVED</text>
+<text x="52.00" y="167.00" font-size="17" fill="#476b76" font-family="Arial,Helvetica,sans-serif" font-weight="660" >Seven floors, two 9.144 m spans · surveyed directly from D2 source nodes and beam IDs.</text>
+<path d="M52.00 187.00L2248.00 187.00" fill="none" stroke="#76bcb0" stroke-width="2"/>
+<rect x="55.00" y="220.00" width="1338.00" height="1118.00" rx="7" fill="#fcfffd" stroke="#bad0cc" stroke-width="1.8"/>
+<rect x="55.00" y="220.00" width="1338.00" height="46.00" rx="6" fill="#e6f3ed" stroke="none" stroke-width="0"/>
+<rect x="55.00" y="220.00" width="6.00" height="46.00" rx="0" fill="#c8936b" stroke="none" stroke-width="0"/>
+<text x="74.00" y="250.00" font-size="18" fill="#173f52" font-family="Arial,Helvetica,sans-serif" font-weight="900" >E.01 / 7-STOREY PORTAL ELEVATION</text>
+<text x="1376.00" y="249.00" font-size="13" fill="#537179" font-family="Arial,Helvetica,sans-serif" font-weight="720" text-anchor="end">D2 SOURCE 24 NODES / 35 MEMBERS</text>
+<path d="M450.65 1179.00L450.65 1057.79" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M450.65 1057.79L450.65 936.59" fill="none" stroke="#cf8e64" stroke-width="7"/>
+<path d="M450.65 936.59L450.65 819.87" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M450.65 819.87L450.65 703.15" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M450.65 703.15L450.65 586.43" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M450.65 586.43L450.65 469.72" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M450.65 469.72L450.65 353.00" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M720.00 1179.00L720.00 1057.79" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M720.00 1057.79L720.00 936.59" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M720.00 936.59L720.00 819.87" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M720.00 819.87L720.00 703.15" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M720.00 703.15L720.00 586.43" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M720.00 586.43L720.00 469.72" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M720.00 469.72L720.00 353.00" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M989.35 1179.00L989.35 1057.79" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M989.35 1057.79L989.35 936.59" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M989.35 936.59L989.35 819.87" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M989.35 819.87L989.35 703.15" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M989.35 703.15L989.35 586.43" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M989.35 586.43L989.35 469.72" fill="none" stroke="#cf8e64" stroke-width="7"/>
+<path d="M989.35 469.72L989.35 353.00" fill="none" stroke="#cf8e64" stroke-width="7"/>
+<path d="M450.65 1057.79L720.00 1057.79" fill="none" stroke="#cf8e64" stroke-width="7"/>
+<path d="M720.00 1057.79L989.35 1057.79" fill="none" stroke="#cf8e64" stroke-width="7"/>
+<path d="M450.65 936.59L720.00 936.59" fill="none" stroke="#cf8e64" stroke-width="7"/>
+<path d="M720.00 936.59L989.35 936.59" fill="none" stroke="#cf8e64" stroke-width="7"/>
+<path d="M450.65 819.87L720.00 819.87" fill="none" stroke="#cf8e64" stroke-width="7"/>
+<path d="M720.00 819.87L989.35 819.87" fill="none" stroke="#cf8e64" stroke-width="7"/>
+<path d="M450.65 703.15L720.00 703.15" fill="none" stroke="#cf8e64" stroke-width="7"/>
+<path d="M720.00 703.15L989.35 703.15" fill="none" stroke="#cf8e64" stroke-width="7"/>
+<path d="M450.65 586.43L720.00 586.43" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M720.00 586.43L989.35 586.43" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M450.65 469.72L720.00 469.72" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M720.00 469.72L989.35 469.72" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M450.65 353.00L720.00 353.00" fill="none" stroke="#25536a" stroke-width="7"/>
+<path d="M720.00 353.00L989.35 353.00" fill="none" stroke="#25536a" stroke-width="7"/>
+<circle cx="450.65" cy="1179.00" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="720.00" cy="1179.00" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="989.35" cy="1179.00" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="450.65" cy="1057.79" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="720.00" cy="1057.79" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="989.35" cy="1057.79" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="450.65" cy="936.59" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="720.00" cy="936.59" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="989.35" cy="936.59" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="450.65" cy="819.87" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="720.00" cy="819.87" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="989.35" cy="819.87" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="450.65" cy="703.15" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="720.00" cy="703.15" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="989.35" cy="703.15" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="450.65" cy="586.43" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="720.00" cy="586.43" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="989.35" cy="586.43" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="450.65" cy="469.72" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="720.00" cy="469.72" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="989.35" cy="469.72" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="450.65" cy="353.00" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="720.00" cy="353.00" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<circle cx="989.35" cy="353.00" r="6.00" fill="#e8f8ef" stroke="#22786f" stroke-width="2"/>
+<path d="M115.00 1179.00L1340.00 1179.00" fill="none" stroke="#b4cdd2" stroke-width="0.75" stroke-dasharray="4 6"/>
+<text x="118.00" y="1170.00" font-size="12" fill="#5b7981" font-family="Arial,Helvetica,sans-serif" font-weight="740" >+0.00 m</text>
+<path d="M115.00 1057.79L1340.00 1057.79" fill="none" stroke="#b4cdd2" stroke-width="0.75" stroke-dasharray="4 6"/>
+<text x="118.00" y="1048.79" font-size="12" fill="#5b7981" font-family="Arial,Helvetica,sans-serif" font-weight="740" >+4.11 m</text>
+<path d="M115.00 936.59L1340.00 936.59" fill="none" stroke="#b4cdd2" stroke-width="0.75" stroke-dasharray="4 6"/>
+<text x="118.00" y="927.59" font-size="12" fill="#5b7981" font-family="Arial,Helvetica,sans-serif" font-weight="740" >+8.23 m</text>
+<path d="M115.00 819.87L1340.00 819.87" fill="none" stroke="#b4cdd2" stroke-width="0.75" stroke-dasharray="4 6"/>
+<text x="118.00" y="810.87" font-size="12" fill="#5b7981" font-family="Arial,Helvetica,sans-serif" font-weight="740" >+12.19 m</text>
+<path d="M115.00 703.15L1340.00 703.15" fill="none" stroke="#b4cdd2" stroke-width="0.75" stroke-dasharray="4 6"/>
+<text x="118.00" y="694.15" font-size="12" fill="#5b7981" font-family="Arial,Helvetica,sans-serif" font-weight="740" >+16.15 m</text>
+<path d="M115.00 586.43L1340.00 586.43" fill="none" stroke="#b4cdd2" stroke-width="0.75" stroke-dasharray="4 6"/>
+<text x="118.00" y="577.43" font-size="12" fill="#5b7981" font-family="Arial,Helvetica,sans-serif" font-weight="740" >+20.12 m</text>
+<path d="M115.00 469.72L1340.00 469.72" fill="none" stroke="#b4cdd2" stroke-width="0.75" stroke-dasharray="4 6"/>
+<text x="118.00" y="460.72" font-size="12" fill="#5b7981" font-family="Arial,Helvetica,sans-serif" font-weight="740" >+24.08 m</text>
+<path d="M115.00 353.00L1340.00 353.00" fill="none" stroke="#b4cdd2" stroke-width="0.75" stroke-dasharray="4 6"/>
+<text x="118.00" y="344.00" font-size="12" fill="#5b7981" font-family="Arial,Helvetica,sans-serif" font-weight="740" >+28.04 m</text>
+<circle cx="450.65" cy="1219.00" r="18.00" fill="#f4faf4" stroke="#21777b" stroke-width="2"/>
+<text x="450.65" y="1225.00" font-size="17" fill="#216771" font-family="Arial,Helvetica,sans-serif" font-weight="900" text-anchor="middle">A</text>
+<circle cx="720.00" cy="1219.00" r="18.00" fill="#f4faf4" stroke="#21777b" stroke-width="2"/>
+<text x="720.00" y="1225.00" font-size="17" fill="#216771" font-family="Arial,Helvetica,sans-serif" font-weight="900" text-anchor="middle">B</text>
+<circle cx="989.35" cy="1219.00" r="18.00" fill="#f4faf4" stroke="#21777b" stroke-width="2"/>
+<text x="989.35" y="1225.00" font-size="17" fill="#216771" font-family="Arial,Helvetica,sans-serif" font-weight="900" text-anchor="middle">C</text>
+<path d="M450.65 1179.00L450.65 1249.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M720.00 1179.00L720.00 1249.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M450.65 1249.00L720.00 1249.00" fill="none" stroke="#6d8790" stroke-width="1.1"/>
+<path d="M446.65 1245.00L454.65 1253.00" fill="none" stroke="#6d8790" stroke-width="1.5"/>
+<path d="M716.00 1245.00L724.00 1253.00" fill="none" stroke="#6d8790" stroke-width="1.5"/>
+<text x="585.33" y="1244.00" font-size="12" fill="#51717c" font-family="Arial,Helvetica,sans-serif" font-weight="770" text-anchor="middle">9 144 mm</text>
+<path d="M720.00 1179.00L720.00 1249.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M989.35 1179.00L989.35 1249.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M720.00 1249.00L989.35 1249.00" fill="none" stroke="#6d8790" stroke-width="1.1"/>
+<path d="M716.00 1245.00L724.00 1253.00" fill="none" stroke="#6d8790" stroke-width="1.5"/>
+<path d="M985.35 1245.00L993.35 1253.00" fill="none" stroke="#6d8790" stroke-width="1.5"/>
+<text x="854.67" y="1244.00" font-size="12" fill="#51717c" font-family="Arial,Helvetica,sans-serif" font-weight="770" text-anchor="middle">9 144 mm</text>
+<circle cx="450.65" cy="1057.79" r="10.00" fill="#f4ad70" stroke="#9c5735" stroke-width="2.6"/>
+<text x="467.65" y="1042.79" font-size="13" fill="#9d6042" font-family="Arial,Helvetica,sans-serif" font-weight="900" >BC_E22_i</text>
+<circle cx="450.65" cy="936.59" r="10.00" fill="#f4ad70" stroke="#9c5735" stroke-width="2.6"/>
+<text x="467.65" y="921.59" font-size="13" fill="#9d6042" font-family="Arial,Helvetica,sans-serif" font-weight="900" >BC_E24_i</text>
+<circle cx="720.00" cy="819.87" r="10.00" fill="#f4ad70" stroke="#9c5735" stroke-width="2.6"/>
+<text x="737.00" y="804.87" font-size="13" fill="#9d6042" font-family="Arial,Helvetica,sans-serif" font-weight="900" >BC_E27_i</text>
+<circle cx="450.65" cy="586.43" r="10.00" fill="#f4ad70" stroke="#9c5735" stroke-width="2.6"/>
+<text x="467.65" y="571.43" font-size="13" fill="#9d6042" font-family="Arial,Helvetica,sans-serif" font-weight="900" >BC_E30_i</text>
+<circle cx="450.65" cy="353.00" r="10.00" fill="#f4ad70" stroke="#9c5735" stroke-width="2.6"/>
+<text x="467.65" y="338.00" font-size="13" fill="#9d6042" font-family="Arial,Helvetica,sans-serif" font-weight="900" >BC_E34_i</text>
+<text x="96.00" y="1295.00" font-size="15" fill="#496d74" font-family="Arial,Helvetica,sans-serif" font-weight="750" >PORTAL MEMBERS: historical AISC W sections (actual source catalogue)</text>
+<rect x="1413.00" y="220.00" width="832.00" height="638.00" rx="7" fill="#fcfffd" stroke="#bad0cc" stroke-width="1.8"/>
+<rect x="1413.00" y="220.00" width="832.00" height="46.00" rx="6" fill="#e6f3ed" stroke="none" stroke-width="0"/>
+<rect x="1413.00" y="220.00" width="6.00" height="46.00" rx="0" fill="#e3a16d" stroke="none" stroke-width="0"/>
+<text x="1432.00" y="250.00" font-size="18" fill="#173f52" font-family="Arial,Helvetica,sans-serif" font-weight="900" >J.01 / END-PLATE / BOLT GROUP</text>
+<text x="2228.00" y="249.00" font-size="13" fill="#537179" font-family="Arial,Helvetica,sans-serif" font-weight="720" text-anchor="end">BC_E22_i · NATIVE D2 INPUT</text>
+<rect x="1644.00" y="334.00" width="192.00" height="420.00" rx="0" fill="#edf6f0" stroke="#51747e" stroke-width="3"/>
+<circle cx="1690.00" cy="382.00" r="6.60" fill="#f3cfab" stroke="#ae714b" stroke-width="2"/>
+<circle cx="1690.00" cy="382.00" r="6.00" fill="#dea571" stroke="#a06843" stroke-width="1.5"/>
+<circle cx="1790.00" cy="382.00" r="6.60" fill="#f3cfab" stroke="#ae714b" stroke-width="2"/>
+<circle cx="1790.00" cy="382.00" r="6.00" fill="#dea571" stroke="#a06843" stroke-width="1.5"/>
+<circle cx="1690.00" cy="490.00" r="6.60" fill="#f3cfab" stroke="#ae714b" stroke-width="2"/>
+<circle cx="1690.00" cy="490.00" r="6.00" fill="#dea571" stroke="#a06843" stroke-width="1.5"/>
+<circle cx="1790.00" cy="490.00" r="6.60" fill="#f3cfab" stroke="#ae714b" stroke-width="2"/>
+<circle cx="1790.00" cy="490.00" r="6.00" fill="#dea571" stroke="#a06843" stroke-width="1.5"/>
+<circle cx="1690.00" cy="598.00" r="6.60" fill="#f3cfab" stroke="#ae714b" stroke-width="2"/>
+<circle cx="1690.00" cy="598.00" r="6.00" fill="#dea571" stroke="#a06843" stroke-width="1.5"/>
+<circle cx="1790.00" cy="598.00" r="6.60" fill="#f3cfab" stroke="#ae714b" stroke-width="2"/>
+<circle cx="1790.00" cy="598.00" r="6.00" fill="#dea571" stroke="#a06843" stroke-width="1.5"/>
+<circle cx="1690.00" cy="706.00" r="6.60" fill="#f3cfab" stroke="#ae714b" stroke-width="2"/>
+<circle cx="1690.00" cy="706.00" r="6.00" fill="#dea571" stroke="#a06843" stroke-width="1.5"/>
+<circle cx="1790.00" cy="706.00" r="6.60" fill="#f3cfab" stroke="#ae714b" stroke-width="2"/>
+<circle cx="1790.00" cy="706.00" r="6.00" fill="#dea571" stroke="#a06843" stroke-width="1.5"/>
+<path d="M1644.00 754.00L1644.00 792.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M1836.00 754.00L1836.00 792.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M1644.00 792.00L1836.00 792.00" fill="none" stroke="#6d8790" stroke-width="1.1"/>
+<path d="M1640.00 788.00L1648.00 796.00" fill="none" stroke="#6d8790" stroke-width="1.5"/>
+<path d="M1832.00 788.00L1840.00 796.00" fill="none" stroke="#6d8790" stroke-width="1.5"/>
+<text x="1740.00" y="787.00" font-size="12" fill="#51717c" font-family="Arial,Helvetica,sans-serif" font-weight="770" text-anchor="middle">480 mm</text>
+<path d="M1836.00 334.00L1866.00 334.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M1836.00 754.00L1866.00 754.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M1866.00 334.00L1866.00 754.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<text x="1874.00" y="544.00" font-size="12" fill="#53727a" font-family="Arial,Helvetica,sans-serif" font-weight="760" >1050 mm</text>
+<text x="1425.00" y="805.00" font-size="15" fill="#315e67" font-family="Arial,Helvetica,sans-serif" font-weight="650" >M30 / Ø33 HOLES  ·  8 BOLTS / CONNECTION</text>
+<text x="1425.00" y="830.00" font-size="15" fill="#315e67" font-family="Arial,Helvetica,sans-serif" font-weight="650" >PITCH 270  ·  GAUGE 250  ·  PLATE t=40 mm</text>
+<rect x="1413.00" y="884.00" width="832.00" height="452.00" rx="7" fill="#fcfffd" stroke="#bad0cc" stroke-width="1.8"/>
+<rect x="1413.00" y="884.00" width="832.00" height="46.00" rx="6" fill="#e6f3ed" stroke="none" stroke-width="0"/>
+<rect x="1413.00" y="884.00" width="6.00" height="46.00" rx="0" fill="#d99863" stroke="none" stroke-width="0"/>
+<text x="1432.00" y="914.00" font-size="18" fill="#173f52" font-family="Arial,Helvetica,sans-serif" font-weight="900" >C.01 / CURRENT CONNECTION CHECKS</text>
+<text x="2228.00" y="913.00" font-size="13" fill="#537179" font-family="Arial,Helvetica,sans-serif" font-weight="720" text-anchor="end">CASE: OS_STATIC / PARTIAL</text>
+<rect x="1431.00" y="955.00" width="791.00" height="249.00" rx="0" fill="#fafffb" stroke="#b3cbc4" stroke-width="1.8"/>
+<rect x="1431.00" y="955.00" width="791.00" height="37.00" rx="0" fill="#144a59" stroke="none" stroke-width="0"/>
+<text x="1443.00" y="981.00" font-size="14" fill="#e9fff7" font-family="Arial,Helvetica,sans-serif" font-weight="850" >CONNECTION</text>
+<text x="1640.75" y="981.00" font-size="14" fill="#e9fff7" font-family="Arial,Helvetica,sans-serif" font-weight="850" >VZ</text>
+<text x="1838.50" y="981.00" font-size="14" fill="#e9fff7" font-family="Arial,Helvetica,sans-serif" font-weight="850" >MY</text>
+<text x="2036.25" y="981.00" font-size="14" fill="#e9fff7" font-family="Arial,Helvetica,sans-serif" font-weight="850" >PARTIAL UTIL.</text>
+<rect x="1431.00" y="992.00" width="791.00" height="34.00" rx="0" fill="#f0f6f1" stroke="#dae5df" stroke-width="0.8"/>
+<text x="1442.00" y="1014.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >BC_E22_i</text>
+<text x="1639.75" y="1014.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >60.6 kN</text>
+<text x="1837.50" y="1014.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >-288.2 kNm</text>
+<text x="2035.25" y="1014.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >0.495</text>
+<rect x="1431.00" y="1026.00" width="791.00" height="34.00" rx="0" fill="#ffffff" stroke="#dae5df" stroke-width="0.8"/>
+<text x="1442.00" y="1048.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >BC_E24_i</text>
+<text x="1639.75" y="1048.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >66.4 kN</text>
+<text x="1837.50" y="1048.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >-313.4 kNm</text>
+<text x="2035.25" y="1048.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >0.539</text>
+<rect x="1431.00" y="1060.00" width="791.00" height="34.00" rx="0" fill="#f0f6f1" stroke="#dae5df" stroke-width="0.8"/>
+<text x="1442.00" y="1082.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >BC_E25_j</text>
+<text x="1639.75" y="1082.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >66.4 kN</text>
+<text x="1837.50" y="1082.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >313.4 kNm</text>
+<text x="2035.25" y="1082.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >0.539</text>
+<rect x="1431.00" y="1094.00" width="791.00" height="34.00" rx="0" fill="#ffffff" stroke="#dae5df" stroke-width="0.8"/>
+<text x="1442.00" y="1116.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >BC_E28_i</text>
+<text x="1639.75" y="1116.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >50.8 kN</text>
+<text x="1837.50" y="1116.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >-239.6 kNm</text>
+<text x="2035.25" y="1116.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >0.412</text>
+<rect x="1431.00" y="1128.00" width="791.00" height="34.00" rx="0" fill="#f0f6f1" stroke="#dae5df" stroke-width="0.8"/>
+<text x="1442.00" y="1150.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >BC_E32_j</text>
+<text x="1639.75" y="1150.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >26.2 kN</text>
+<text x="1837.50" y="1150.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >116.2 kNm</text>
+<text x="2035.25" y="1150.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >0.344</text>
+<rect x="1431.00" y="1162.00" width="791.00" height="34.00" rx="0" fill="#ffffff" stroke="#dae5df" stroke-width="0.8"/>
+<text x="1442.00" y="1184.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >BC_E35_i</text>
+<text x="1639.75" y="1184.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >12.4 kN</text>
+<text x="1837.50" y="1184.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >-53.9 kNm</text>
+<text x="2035.25" y="1184.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >0.344</text>
+<text x="1432.00" y="1237.00" font-size="14" fill="#965941" font-family="Arial,Helvetica,sans-serif" font-weight="650" >Results are from D2 exported connection group calculations.</text>
+<text x="1432.00" y="1262.00" font-size="14" fill="#965941" font-family="Arial,Helvetica,sans-serif" font-weight="650" >Plate flexure / prying / welding / joint panel checks incomplete.</text>
+<text x="1432.00" y="1287.00" font-size="14" fill="#965941" font-family="Arial,Helvetica,sans-serif" font-weight="650" >Partial utilization is NOT complete connection approval.</text>
+<path d="M52.00 1386.00L2248.00 1386.00" fill="none" stroke="#aacac3" stroke-width="2"/>
+<rect x="52.00" y="1399.00" width="1540.00" height="101.00" rx="0" fill="#eaf4ee" stroke="#b9cec8" stroke-width="1.8"/>
+<text x="76.00" y="1436.00" font-size="17" fill="#174a59" font-family="Arial,Helvetica,sans-serif" font-weight="840" >D2 steelConnectionDesign: 35 members, 28 bolt groups, 8 × M30 per group</text>
+<text x="76.00" y="1466.00" font-size="14" fill="#99583e" font-family="Arial,Helvetica,sans-serif" font-weight="720" >Actual partial actions and bolt spacing, but full joint verification is missing.</text>
+<rect x="1610.00" y="1399.00" width="638.00" height="101.00" rx="0" fill="#123e4c" stroke="#2b6b70" stroke-width="1.8"/>
+<text x="1630.00" y="1434.00" font-size="19" fill="#f7fff9" font-family="Arial,Helvetica,sans-serif" font-weight="890" >DÈLGHEM / ST-01</text>
+<text x="1630.00" y="1467.00" font-size="14" fill="#ffe0b5" font-family="Arial,Helvetica,sans-serif" font-weight="750" >PRELIMINARY  |  NOT FOR CONSTRUCTION</text>
+</svg>

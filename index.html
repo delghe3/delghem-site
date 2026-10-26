@@ -43,9 +43,9 @@
 <script type="module" src="./site-intro.js?v=20261025-neonhold"></script>
   <noscript><style>.site-intro{display:none!important}</style></noscript>
  <link rel="stylesheet" href="./delghem-art-direction.css?v=20261026-studio01">
- <link rel="stylesheet" href="./contrast-recovery.css?v=20261026-dossier3">
+ <link rel="stylesheet" href="./contrast-recovery.css?v=20261026-dossier4">
 <link rel="stylesheet" href="./silicon-performance.css?v=20261026-nativebench1">
-<link rel="stylesheet" href="./technical-dossier.css?v=20261026-dossier3">
+<link rel="stylesheet" href="./technical-dossier.css?v=20261026-dossier4">
 </head>
 <body>
 <div class="site-intro" id="site-intro" role="region" aria-label="DELGHEM" data-phase="build" data-ready="false">
@@ -568,39 +568,78 @@
   <div class="production-drawings-header">
    <div><span class="production-kicker">04 / DÈLGHEM D2 · REAL DXF LIBRARY</span>
    <h2 id="production-drawings-title">From separate details<em> to a full drawing dossier.</em></h2></div>
-   <p>No generic columns or empty connections. Two multiview A1-style showcase sheets assemble details traced to 87 actual reinforced-concrete DXFs and 28 actual steel-connection DXFs, with the original archives available below.</p>
+   <p>No generic columns or empty connections. Four new full-vector technical plates combine real D2 source model coordinates, genuine reinforcement details and dimensioned M30 steel connections. A fifth appendix separately displays actual Kratos FEM benchmark values. Original DXF archives remain available.</p>
   </div>
-  <div class="production-headline-stats"><span><strong>87</strong>ORIGINAL RC A1 SHEETS</span><span><strong>28</strong>ORIGINAL STEEL A1 SHEETS</span><span><strong>2</strong>COMPOSITE EXHIBITION BOARDS</span></div>
-  <div class="production-dossier-grid">
-   <article class="production-dossier production-dossier--rc">
-    <div class="production-dossier-topline"><span>01 / RC REINFORCEMENT DOSSIER</span><span>RC / A1 / DXF</span></div>
-    <h3>Beam + column reinforcement in one view.</h3>
-    <p>An unscaled overall three-storey RC frame elevation, native DXF beam/column details and a documented bar schedule. Context geometry is explicitly illustrative.</p>
-    <a class="production-dossier-sheet" id="rc-composite-board" href="./assets/technical-documents/delghem-rc-assembly-sheet.svg" target="_blank" rel="noopener noreferrer">
-     <img src="./assets/technical-documents/delghem-rc-assembly-sheet.svg" alt="Original-DXF-derived D2 composite board: four different reinforcement member details with dimensions and schedule annotations" loading="lazy" decoding="async" width="1600" height="1120">
-     <span>OPEN THE COMPLETE COMPOSITE BOARD ↗</span>
-    </a>
-    <div class="production-dossier-actions"><a href="./assets/technical-documents/delghem-rc-multiview-board.svg" target="_blank" rel="noopener noreferrer">SOURCE CAD DETAIL BOARD ↗</a>
-     <a href="./assets/technical-documents/Armature-cinque-tavole-A1.pdf" target="_blank" rel="noopener noreferrer">PDF / 05 A1 ↗</a>
-     <a href="./assets/technical-documents/Armature-87-tavole-A1.zip" download>DXF / 87 A1 <span aria-hidden="true">↓</span></a>
-    </div>
-   </article>
-   <article class="production-dossier production-dossier--steel">
-    <div class="production-dossier-topline"><span>02 / STRUCTURAL STEEL WORKSHOP DOSSIER</span><span>STEEL / A1 / DXF</span></div>
-    <h3>Multiple connections. Plates. Bolting assembly.</h3>
-    <p>An unscaled seven-storey, two-bay steel frame elevation, multiple native DXF connection-hole patterns and a clearly marked illustrative head/washer/nut assembly. Missing hardware sizes remain unverified.</p>
-    <a class="production-dossier-sheet" id="steel-composite-board" href="./assets/technical-documents/delghem-steel-assembly-sheet.svg" target="_blank" rel="noopener noreferrer">
-     <img src="./assets/technical-documents/delghem-steel-assembly-sheet.svg" alt="D2 source-derived multi-connection workshop board with schematic bolt-head washer and nut explanation" loading="lazy" decoding="async" width="1600" height="1120">
-     <span>OPEN THE COMPLETE COMPOSITE BOARD ↗</span>
-    </a>
-    <div class="production-dossier-actions"><a href="./assets/technical-documents/delghem-steel-multiview-board.svg" target="_blank" rel="noopener noreferrer">SOURCE CAD DETAIL BOARD ↗</a>
-     <a href="./assets/technical-documents/Acciaio-tre-tavole-A1.pdf" target="_blank" rel="noopener noreferrer">PDF / 03 A1 ↗</a>
-     <a href="./assets/technical-documents/Acciaio-28-tavole-A1.zip" download>DXF / 28 A1 <span aria-hidden="true">↓</span></a>
-    </div>
-   </article>
+  <div class="production-headline-stats"><span><strong>87</strong>ORIGINAL RC A1 SHEETS</span><span><strong>28</strong>ORIGINAL STEEL A1 SHEETS</span><span><strong>4+1</strong>D2 PLATES + KRATOS</span></div>
+
+  <div class="d2-techdrawings-meta" role="group" aria-label="Origin of drawing sources">
+   <span><strong>48 / 87</strong>RC MODEL NODES / MEMBERS</span>
+   <span><strong>28 × 8</strong>STEEL CONNECTIONS / M30 BOLTS</span>
+   <span><strong>176</strong>KRATOS QUAD4 · SEPARATE CASE</span>
   </div>
+  <div class="production-dossier-grid production-dossier-grid--extended">
+  <article class="production-dossier production-dossier--rc" aria-labelledby="rc-production-heading">
+   <div class="production-dossier-topline"><span>RC / NATIVE MODEL → CAD</span><span>RC-01 · RC-02</span></div>
+   <div class="production-dossier-cover">
+     <h3 id="rc-production-heading">A whole three-storey building, not one column.</h3>
+     <p>Floor plans from 48 original DÈLGHEM nodes, 87 frame members and 5 m structural grids. Elevations have three genuine 3.20 m storeys; a separate reinforcement sheet includes six real beam and column DXF panels.</p>
+     <span class="d2-drawing-source-tag">ACTUAL FRAME GEOMETRY + EXPORTED RC DXF DETAILS</span>
+   </div>
+   <div class="d2-drawing-tabs" role="group" aria-label="Choose reinforced concrete drawing sheet">
+    <button type="button" data-tech-sheet="rc" data-tech-file="delghem-rc-engineering-ga.svg" data-tech-code="RC-01 / GA" aria-pressed="true">01 · GENERAL ARRANGEMENT</button>
+    <button type="button" data-tech-sheet="rc" data-tech-file="delghem-rc-reinforcement-schedule.svg" data-tech-code="RC-02 / REBAR" aria-pressed="false">02 · REBAR AND SCHEDULES</button>
+   </div>
+   <a class="production-dossier-sheet d2-drawing-viewer" id="rc-composite-board" href="./assets/technical-documents/delghem-rc-engineering-ga.svg" target="_blank" rel="noopener noreferrer">
+     <img src="./assets/technical-documents/delghem-rc-engineering-ga.svg" width="2300" height="1550" decoding="async" loading="lazy" alt="Actual D2 3-storey reinforced-concrete structural grid plan, elevations, beam-column DXF details and material schedule">
+     <span>ZOOM FULL VECTOR A1-STYLE SHEET <b id="rc-drawing-code">RC-01 / GA</b> ↗</span>
+   </a>
+   <div class="d2-drawing-proofline"><span>5.00 m × 5.00 m</span><span>3 × 3.20 m</span><span>87 DXF / A1</span></div>
+   <div class="production-dossier-actions">
+    <a href="./assets/technical-documents/Armature-cinque-tavole-A1.pdf" target="_blank" rel="noopener noreferrer">PDF / 05 A1 ↗</a>
+    <a href="./assets/technical-documents/Armature-87-tavole-A1.zip" download>DXF / 87 A1 ↓</a>
+    <a href="./assets/technical-documents/delghem-rc-multiview-board.svg" target="_blank" rel="noopener noreferrer">ORIGINAL DXF VIEWS ↗</a>
+    <a href="./assets/technical-documents/delghem-rc-assembly-sheet.svg" target="_blank" rel="noopener noreferrer">PREVIOUS OVERVIEW ↗</a>
+   </div>
+  </article>
+
+  <article class="production-dossier production-dossier--steel" aria-labelledby="steel-production-heading">
+   <div class="production-dossier-topline"><span>STEEL / REAL CONNECTIONS + CHECKS</span><span>ST-01 · ST-02</span></div>
+   <div class="production-dossier-cover">
+     <h3 id="steel-production-heading">Seven storeys. Twenty-eight joints. Real bolting.</h3>
+     <p>Model-coordinate steel elevation with genuine W profiles and 9.144 m bays; full 8-bolt M30 groups, 40 mm plates, 270 mm pitch, 250 mm gauge, and D2-exported partial actions and utilization.</p>
+     <span class="d2-drawing-source-tag">SOURCE 2026-10-22 STEEL DESIGN RESULT · INCOMPLETE CONNECTION CHECK</span>
+   </div>
+   <div class="d2-drawing-tabs" role="group" aria-label="Choose structural steel drawing sheet">
+    <button type="button" data-tech-sheet="steel" data-tech-file="delghem-steel-portal-detail.svg" data-tech-code="ST-01 / ELEVATION" aria-pressed="true">01 · STEEL ELEVATION</button>
+    <button type="button" data-tech-sheet="steel" data-tech-file="delghem-steel-bolting-fabrication.svg" data-tech-code="ST-02 / JOINTS" aria-pressed="false">02 · PLATE AND BOLTS</button>
+   </div>
+   <a class="production-dossier-sheet d2-drawing-viewer" id="steel-composite-board" href="./assets/technical-documents/delghem-steel-portal-detail.svg" target="_blank" rel="noopener noreferrer">
+     <img src="./assets/technical-documents/delghem-steel-portal-detail.svg" width="2300" height="1550" loading="lazy" decoding="async" alt="DÈLGHEM 7-storey structural steel frame, W sections, original end-plate M30 bolt layout and source-backed partial utilization">
+     <span>ZOOM FULL VECTOR A1-STYLE SHEET <b id="steel-drawing-code">ST-01 / ELEVATION</b> ↗</span>
+   </a>
+   <div class="d2-drawing-proofline"><span>7 × STOREY</span><span>28 × 8 M30</span><span>t40 / 270 / 250</span></div>
+   <div class="production-dossier-actions">
+    <a href="./assets/technical-documents/Acciaio-tre-tavole-A1.pdf" target="_blank" rel="noopener noreferrer">PDF / 03 A1 ↗</a>
+    <a href="./assets/technical-documents/Acciaio-28-tavole-A1.zip" download>DXF / 28 A1 ↓</a>
+    <a href="./assets/technical-documents/delghem-steel-multiview-board.svg" target="_blank" rel="noopener noreferrer">ORIGINAL DXF VIEWS ↗</a>
+    <a href="./assets/technical-documents/delghem-steel-assembly-sheet.svg" target="_blank" rel="noopener noreferrer">PREVIOUS OVERVIEW ↗</a>
+   </div>
+  </article>
+ </div>
+ <aside class="d2-kratos-drawing-evidence" aria-labelledby="d2-kratos-evidence-title">
+  <div class="d2-kratos-evidence-copy"><span>KRATOS MULTIPHYSICS / B01 / INDEPENDENT TEST</span>
+    <h3 id="d2-kratos-evidence-title">Numerical evidence, not decorative stress maps.</h3>
+    <p>The related technical appendix uses 176 actual Kratos QUAD4 shells and 66 beams with 1,408 top/bottom-face Gauss samples. It is a SEPARATE benchmark, not a solver run on the two structures drawn above.</p>
+    <div class="d2-kratos-evidence-metrics"><span><strong>176</strong> QUAD4</span><span><strong>66</strong> BEAMS</span><span><strong>1.5275</strong> σVM MPa</span></div>
+    <a href="./assets/technical-documents/delghem-kratos-source-benchmark.svg" target="_blank" rel="noopener noreferrer">OPEN REAL KRATOS NUMERICAL APPENDIX ↗</a>
+    <small>Not an NTC resistance verification; different benchmark model and load case.</small>
+  </div>
+  <a class="d2-kratos-evidence-preview" href="./assets/technical-documents/delghem-kratos-source-benchmark.svg" target="_blank" rel="noopener noreferrer">
+    <img src="./assets/technical-documents/delghem-kratos-source-benchmark.svg" width="2300" height="1550" alt="Vector numerical Kratos QUAD4 contour board with source-derived von Mises Gauss values, from a separate structural benchmark" loading="lazy" decoding="async">
+  </a>
+ </aside>
   <div class="production-trust"><span>◈ AUTHENTIC SOURCES · PRELIMINARY OUTPUTS</span>
-   <p>The composite exhibition boards are newly assembled from several separate authentic D2 DXF fragments; they are not original all-in-one DXF exports. The steel hardware overlay is explicitly illustrative. Both original manifests state completeExecutiveDesign = false, so these drawings are NOT certified or construction-ready and require complete anchorage, bolt/nut/washer specification, connection checks and site-specific verification.</p></div>
+   <p>The new sheets combine real D2 structural-model geometry with originally exported DXF details; they are not native complete certified construction sets. Bolt diameter, pitch, gauge and plate thickness come from the D2 connection model; nuts, washers, grip length and weld geometry remain incomplete. Original manifests state completeExecutiveDesign = false, connection checks are partial, and the Kratos appendix is a DIFFERENT benchmark—not proof of these buildings.</p></div>
  </div>
 </section>
 <section class="materials-takeoff chapter" id="materials-takeoff" aria-labelledby="materials-title">
@@ -791,7 +830,7 @@
 <script type="module" src="./seismic-isolators.js?v=20261025-shear2"></script>
 <script type="module" src="./engineering-simulations.js?v=20261025-shear2"></script>
 <script type="module" src="./delghem-art-direction.js?v=20261026-studio01"></script>
-<script type="module" src="./production-drawings.js?v=20261026-dossier3"></script>
+<script type="module" src="./production-drawings.js?v=20261026-dossier4"></script>
 <script type="module" src="./silicon-performance.js?v=20261026-nativebench1"></script>
 <script type="module" src="./materials-takeoff.js?v=20261026-dossier3"></script>
 </body>

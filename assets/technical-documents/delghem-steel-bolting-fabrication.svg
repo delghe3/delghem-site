@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1550" viewBox="0 0 2300 1550" role="img" aria-label="STRUCTURAL STEEL · CONNECTION FABRICATION DOSSIER">
+<rect x="0.00" y="0.00" width="2300.00" height="1550.00" rx="0" fill="#e5eeeb" stroke="none" stroke-width="0"/>
+<rect x="20.00" y="20.00" width="2260.00" height="1510.00" rx="0" fill="#fff" stroke="#214454" stroke-width="2"/>
+<rect x="22.00" y="22.00" width="2256.00" height="108.00" rx="0" fill="#123d4c" stroke="none" stroke-width="0"/>
+<text x="55.00" y="69.00" font-size="26" fill="#9df3d0" font-family="Arial,Helvetica,sans-serif" font-weight="880" >DÈLGHEM D2 / DRAWING SYSTEM</text>
+<text x="55.00" y="108.00" font-size="32" fill="#f8fffa" font-family="Arial,Helvetica,sans-serif" font-weight="920" >STRUCTURAL STEEL · CONNECTION FABRICATION DOSSIER</text>
+<text x="2250.00" y="64.00" font-size="21" fill="#f3c694" font-family="Arial,Helvetica,sans-serif" font-weight="870" text-anchor="end">ST-D2 / 02</text>
+<text x="2250.00" y="103.00" font-size="13" fill="#d4f1e4" font-family="Arial,Helvetica,sans-serif" font-weight="700" text-anchor="end">VECTOR / D2 / MODEL-DERIVED</text>
+<text x="52.00" y="167.00" font-size="17" fill="#476b76" font-family="Arial,Helvetica,sans-serif" font-weight="660" >D2 connection BC_E22_i · dimensions are from original 2026-10-22 output; bolt hardware thicknesses missing.</text>
+<path d="M52.00 187.00L2248.00 187.00" fill="none" stroke="#76bcb0" stroke-width="2"/>
+<rect x="55.00" y="221.00" width="1030.00" height="884.00" rx="7" fill="#fcfffd" stroke="#bad0cc" stroke-width="1.8"/>
+<rect x="55.00" y="221.00" width="1030.00" height="46.00" rx="6" fill="#e6f3ed" stroke="none" stroke-width="0"/>
+<rect x="55.00" y="221.00" width="6.00" height="46.00" rx="0" fill="#db965b" stroke="none" stroke-width="0"/>
+<text x="74.00" y="251.00" font-size="18" fill="#173f52" font-family="Arial,Helvetica,sans-serif" font-weight="900" >J.02 / END PLATE ELEVATION · 1:4</text>
+<text x="1068.00" y="250.00" font-size="13" fill="#537179" font-family="Arial,Helvetica,sans-serif" font-weight="720" text-anchor="end">4 ROWS × 2 COLUMNS · M30</text>
+<rect x="345.00" y="353.00" width="278.86" height="610.00" rx="0" fill="#e3f2ef" stroke="#2b6675" stroke-width="3"/>
+<circle cx="411.81" cy="422.71" r="13.42" fill="white" stroke="#b07a55" stroke-width="2.5"/>
+<polygon points="421.40,422.71 416.60,431.02 407.02,431.02 402.22,422.71 407.02,414.41 416.60,414.41" fill="#d49c68" stroke="#895b41" stroke-width="2"/>
+<circle cx="411.81" cy="422.71" r="3.45" fill="#f9dbc1" stroke="#bd8155" stroke-width="0.5"/>
+<circle cx="557.05" cy="422.71" r="13.42" fill="white" stroke="#b07a55" stroke-width="2.5"/>
+<polygon points="566.63,422.71 561.84,431.02 552.25,431.02 547.46,422.71 552.25,414.41 561.84,414.41" fill="#d49c68" stroke="#895b41" stroke-width="2"/>
+<circle cx="557.05" cy="422.71" r="3.45" fill="#f9dbc1" stroke="#bd8155" stroke-width="0.5"/>
+<circle cx="411.81" cy="579.57" r="13.42" fill="white" stroke="#b07a55" stroke-width="2.5"/>
+<polygon points="421.40,579.57 416.60,587.87 407.02,587.87 402.22,579.57 407.02,571.27 416.60,571.27" fill="#d49c68" stroke="#895b41" stroke-width="2"/>
+<circle cx="411.81" cy="579.57" r="3.45" fill="#f9dbc1" stroke="#bd8155" stroke-width="0.5"/>
+<circle cx="557.05" cy="579.57" r="13.42" fill="white" stroke="#b07a55" stroke-width="2.5"/>
+<polygon points="566.63,579.57 561.84,587.87 552.25,587.87 547.46,579.57 552.25,571.27 561.84,571.27" fill="#d49c68" stroke="#895b41" stroke-width="2"/>
+<circle cx="557.05" cy="579.57" r="3.45" fill="#f9dbc1" stroke="#bd8155" stroke-width="0.5"/>
+<circle cx="411.81" cy="736.43" r="13.42" fill="white" stroke="#b07a55" stroke-width="2.5"/>
+<polygon points="421.40,736.43 416.60,744.73 407.02,744.73 402.22,736.43 407.02,728.13 416.60,728.13" fill="#d49c68" stroke="#895b41" stroke-width="2"/>
+<circle cx="411.81" cy="736.43" r="3.45" fill="#f9dbc1" stroke="#bd8155" stroke-width="0.5"/>
+<circle cx="557.05" cy="736.43" r="13.42" fill="white" stroke="#b07a55" stroke-width="2.5"/>
+<polygon points="566.63,736.43 561.84,744.73 552.25,744.73 547.46,736.43 552.25,728.13 561.84,728.13" fill="#d49c68" stroke="#895b41" stroke-width="2"/>
+<circle cx="557.05" cy="736.43" r="3.45" fill="#f9dbc1" stroke="#bd8155" stroke-width="0.5"/>
+<circle cx="411.81" cy="893.29" r="13.42" fill="white" stroke="#b07a55" stroke-width="2.5"/>
+<polygon points="421.40,893.29 416.60,901.59 407.02,901.59 402.22,893.29 407.02,884.98 416.60,884.98" fill="#d49c68" stroke="#895b41" stroke-width="2"/>
+<circle cx="411.81" cy="893.29" r="3.45" fill="#f9dbc1" stroke="#bd8155" stroke-width="0.5"/>
+<circle cx="557.05" cy="893.29" r="13.42" fill="white" stroke="#b07a55" stroke-width="2.5"/>
+<polygon points="566.63,893.29 561.84,901.59 552.25,901.59 547.46,893.29 552.25,884.98 561.84,884.98" fill="#d49c68" stroke="#895b41" stroke-width="2"/>
+<circle cx="557.05" cy="893.29" r="3.45" fill="#f9dbc1" stroke="#bd8155" stroke-width="0.5"/>
+<path d="M345.00 963.00L345.00 1005.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M623.86 963.00L623.86 1005.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M345.00 1005.00L623.86 1005.00" fill="none" stroke="#6d8790" stroke-width="1.1"/>
+<path d="M341.00 1001.00L349.00 1009.00" fill="none" stroke="#6d8790" stroke-width="1.5"/>
+<path d="M619.86 1001.00L627.86 1009.00" fill="none" stroke="#6d8790" stroke-width="1.5"/>
+<text x="484.43" y="1000.00" font-size="12" fill="#51717c" font-family="Arial,Helvetica,sans-serif" font-weight="770" text-anchor="middle">480 mm</text>
+<path d="M623.86 353.00L658.86 353.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M623.86 963.00L658.86 963.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M658.86 353.00L658.86 963.00" fill="none" stroke="#6d8790" stroke-width="1"/>
+<text x="666.86" y="658.00" font-size="12" fill="#53727a" font-family="Arial,Helvetica,sans-serif" font-weight="760" >1050 mm</text>
+<path d="M411.81 422.71L411.81 367.71" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M557.05 422.71L557.05 367.71" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M411.81 367.71L557.05 367.71" fill="none" stroke="#6d8790" stroke-width="1.1"/>
+<path d="M407.81 363.71L415.81 371.71" fill="none" stroke="#6d8790" stroke-width="1.5"/>
+<path d="M553.05 363.71L561.05 371.71" fill="none" stroke="#6d8790" stroke-width="1.5"/>
+<text x="484.43" y="362.71" font-size="12" fill="#51717c" font-family="Arial,Helvetica,sans-serif" font-weight="770" text-anchor="middle">250 mm</text>
+<path d="M411.81 422.71L363.81 422.71" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M411.81 579.57L363.81 579.57" fill="none" stroke="#6d8790" stroke-width="1"/>
+<path d="M363.81 422.71L363.81 579.57" fill="none" stroke="#6d8790" stroke-width="1"/>
+<text x="371.81" y="501.14" font-size="12" fill="#53727a" font-family="Arial,Helvetica,sans-serif" font-weight="760" >270 mm</text>
+<text x="90.00" y="1009.00" font-size="19" fill="#165166" font-family="Arial,Helvetica,sans-serif" font-weight="650" >2 COLS × 4 ROWS · M30 · Ø33 HOLE</text>
+<text x="90.00" y="1043.00" font-size="19" fill="#165166" font-family="Arial,Helvetica,sans-serif" font-weight="650" >PLATE: 480 × 1050 × 40 mm (SOURCE-DERIVED)</text>
+<rect x="1105.00" y="221.00" width="1139.00" height="413.00" rx="7" fill="#fcfffd" stroke="#bad0cc" stroke-width="1.8"/>
+<rect x="1105.00" y="221.00" width="1139.00" height="46.00" rx="6" fill="#e6f3ed" stroke="none" stroke-width="0"/>
+<rect x="1105.00" y="221.00" width="6.00" height="46.00" rx="0" fill="#d99865" stroke="none" stroke-width="0"/>
+<text x="1124.00" y="251.00" font-size="18" fill="#173f52" font-family="Arial,Helvetica,sans-serif" font-weight="900" >S.02 / SECTION THROUGH BOLT</text>
+<text x="2227.00" y="250.00" font-size="13" fill="#537179" font-family="Arial,Helvetica,sans-serif" font-weight="720" text-anchor="end">COMPONENT POSITIONING</text>
+<rect x="1170.00" y="412.00" width="900.00" height="108.00" rx="0" fill="#d9e9e5" stroke="#567783" stroke-width="3"/>
+<rect x="1530.00" y="330.00" width="75.00" height="274.00" rx="0" fill="#aec3c7" stroke="#3c6575" stroke-width="3"/>
+<rect x="1600.00" y="330.00" width="85.00" height="274.00" rx="0" fill="#a6b8bd" stroke="#346371" stroke-width="3"/>
+<rect x="1390.00" y="450.00" width="595.00" height="33.00" rx="0" fill="#5e8293" stroke="#254f60" stroke-width="2"/>
+<polygon points="1379.00,443.00 1379.00,489.00 1333.00,507.00 1312.00,483.00 1312.00,451.00 1333.00,429.00" fill="#e3a769" stroke="#95613c" stroke-width="2"/>
+<rect x="1372.00" y="435.00" width="16.00" height="64.00" rx="0" fill="#e9bf88" stroke="#ad7548" stroke-width="2"/>
+<rect x="1982.00" y="434.00" width="18.00" height="66.00" rx="0" fill="#f2c692" stroke="#ad7548" stroke-width="2"/>
+<polygon points="2002.00,430.00 2050.00,430.00 2069.00,467.00 2050.00,502.00 2002.00,502.00 1982.00,467.00" fill="#e4b077" stroke="#915f3b" stroke-width="2"/>
+<text x="1385.00" y="370.00" font-size="16" fill="#916542" font-family="Arial,Helvetica,sans-serif" font-weight="850" >HEAD + WASHER</text>
+<text x="1930.00" y="375.00" font-size="16" fill="#916542" font-family="Arial,Helvetica,sans-serif" font-weight="850" >WASHER + NUT</text>
+<text x="1550.00" y="634.00" font-size="16" fill="#235b69" font-family="Arial,Helvetica,sans-serif" font-weight="850" >PLATE t = 40 mm (SOURCE)</text>
+<text x="1186.00" y="669.00" font-size="14" fill="#aa644b" font-family="Arial,Helvetica,sans-serif" font-weight="760" >Schematic hardware: head/nut/washer dimensions and grip length NOT PROVIDED by export.</text>
+<rect x="1105.00" y="659.00" width="1139.00" height="447.00" rx="7" fill="#fcfffd" stroke="#bad0cc" stroke-width="1.8"/>
+<rect x="1105.00" y="659.00" width="1139.00" height="46.00" rx="6" fill="#e6f3ed" stroke="none" stroke-width="0"/>
+<rect x="1105.00" y="659.00" width="6.00" height="46.00" rx="0" fill="#39a995" stroke="none" stroke-width="0"/>
+<text x="1124.00" y="689.00" font-size="18" fill="#173f52" font-family="Arial,Helvetica,sans-serif" font-weight="900" >N.02 / REAL D2 DXF DETAIL</text>
+<text x="2227.00" y="688.00" font-size="13" fill="#537179" font-family="Arial,Helvetica,sans-serif" font-weight="720" text-anchor="end">SOURCE SC-001-BC_E22_i.dxf</text>
+<path d="M1414.35 979.00L1510.35 979.00" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<path d="M1510.35 979.00L1510.35 769.00" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<path d="M1510.35 769.00L1414.35 769.00" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<path d="M1414.35 769.00L1414.35 979.00" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<circle cx="1437.35" cy="955.00" r="3.30" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1437.35" cy="955.00" r="3.00" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1487.35" cy="955.00" r="3.30" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1487.35" cy="955.00" r="3.00" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1437.35" cy="901.00" r="3.30" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1437.35" cy="901.00" r="3.00" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1487.35" cy="901.00" r="3.30" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1487.35" cy="901.00" r="3.00" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1437.35" cy="847.00" r="3.30" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1437.35" cy="847.00" r="3.00" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1487.35" cy="847.00" r="3.30" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1487.35" cy="847.00" r="3.00" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1437.35" cy="793.00" r="3.30" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1437.35" cy="793.00" r="3.00" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1487.35" cy="793.00" r="3.30" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<circle cx="1487.35" cy="793.00" r="3.00" fill="white" stroke="#c57e58" stroke-width="1.7"/>
+<path d="M1414.35 981.00L1414.35 1003.00" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<path d="M1510.35 981.00L1510.35 1003.00" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<path d="M1414.35 999.00L1510.35 999.00" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<path d="M1412.15 1001.20L1416.55 996.80" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<path d="M1508.15 1001.20L1512.55 996.80" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<text x="1452.60" y="996.60" font-size="6" fill="#4a6b71" font-family="Arial,Helvetica,sans-serif" font-weight="600" >480 mm</text>
+<path d="M1412.35 979.00L1390.35 979.00" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<path d="M1412.35 769.00L1390.35 769.00" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<path d="M1394.35 979.00L1394.35 769.00" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<path d="M1392.15 981.20L1396.55 976.80" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<path d="M1392.15 771.20L1396.55 766.80" fill="none" stroke="#1a6873" stroke-width="2.8"/>
+<text x="1391.95" y="885.38" font-size="6" fill="#4a6b71" font-family="Arial,Helvetica,sans-serif" font-weight="600" >1050 mm</text>
+<text x="1414.35" y="757.00" font-size="6" fill="#4a6b71" font-family="Arial,Helvetica,sans-serif" font-weight="600" >DETTAGLIO LOCALE y/z · scala 1:10</text>
+<text x="1816.00" y="773.00" font-size="17" fill="#315f6a" font-family="Arial,Helvetica,sans-serif" font-weight="650" >Fz = 60.62 kN</text>
+<text x="1816.00" y="826.00" font-size="17" fill="#315f6a" font-family="Arial,Helvetica,sans-serif" font-weight="650" >My = -288.19 kNm</text>
+<text x="1816.00" y="879.00" font-size="17" fill="#315f6a" font-family="Arial,Helvetica,sans-serif" font-weight="650" >UTIL. = 0.495</text>
+<text x="1816.00" y="932.00" font-size="17" fill="#315f6a" font-family="Arial,Helvetica,sans-serif" font-weight="650" >8 × M30 / t40 mm</text>
+<rect x="55.00" y="1128.00" width="2189.00" height="208.00" rx="7" fill="#fcfffd" stroke="#bad0cc" stroke-width="1.8"/>
+<rect x="55.00" y="1128.00" width="2189.00" height="46.00" rx="6" fill="#e6f3ed" stroke="none" stroke-width="0"/>
+<rect x="55.00" y="1128.00" width="6.00" height="46.00" rx="0" fill="#cb8758" stroke="none" stroke-width="0"/>
+<text x="74.00" y="1158.00" font-size="18" fill="#173f52" font-family="Arial,Helvetica,sans-serif" font-weight="900" >M.02 / CONNECTOR DESIGN BASIS · SOURCE-LIMITED</text>
+<text x="2227.00" y="1157.00" font-size="13" fill="#537179" font-family="Arial,Helvetica,sans-serif" font-weight="720" text-anchor="end">NOT FOR FABRICATION</text>
+<rect x="76.00" y="1198.00" width="2138.00" height="104.00" rx="0" fill="#fafffb" stroke="#b3cbc4" stroke-width="1.8"/>
+<rect x="76.00" y="1198.00" width="2138.00" height="37.00" rx="0" fill="#144a59" stroke="none" stroke-width="0"/>
+<text x="88.00" y="1224.00" font-size="14" fill="#e9fff7" font-family="Arial,Helvetica,sans-serif" font-weight="850" >BOLT GROUP</text>
+<text x="558.36" y="1224.00" font-size="14" fill="#e9fff7" font-family="Arial,Helvetica,sans-serif" font-weight="850" >STEEL SOURCE</text>
+<text x="985.96" y="1224.00" font-size="14" fill="#e9fff7" font-family="Arial,Helvetica,sans-serif" font-weight="850" >MIN EDGE / PITCH</text>
+<text x="1584.60" y="1224.00" font-size="14" fill="#e9fff7" font-family="Arial,Helvetica,sans-serif" font-weight="850" >CHECK STATUS</text>
+<rect x="76.00" y="1235.00" width="2138.00" height="34.00" rx="0" fill="#f0f6f1" stroke="#dae5df" stroke-width="0.8"/>
+<text x="87.00" y="1257.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >BC_E22_i</text>
+<text x="557.36" y="1257.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >fub 800 MPa</text>
+<text x="984.96" y="1257.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >e1 120 mm, e2 115 mm</text>
+<text x="1583.60" y="1257.00" font-size="13" fill="#274e5d" font-family="Arial,Helvetica,sans-serif" font-weight="740" >PARTIAL ONLY</text>
+<text x="89.00" y="1320.00" font-size="15" fill="#95593e" font-family="Arial,Helvetica,sans-serif" font-weight="720" >Missing from D2 output: plate bending / prying; slip, weld, panel-zone stiffness and certified executive bolt-set specification.</text>
+<path d="M52.00 1386.00L2248.00 1386.00" fill="none" stroke="#aacac3" stroke-width="2"/>
+<rect x="52.00" y="1399.00" width="1540.00" height="101.00" rx="0" fill="#eaf4ee" stroke="#b9cec8" stroke-width="1.8"/>
+<text x="76.00" y="1436.00" font-size="17" fill="#174a59" font-family="Arial,Helvetica,sans-serif" font-weight="840" >D2: real BC_E22_i connection calculation, plate and bolt dimensions</text>
+<text x="76.00" y="1466.00" font-size="14" fill="#99583e" font-family="Arial,Helvetica,sans-serif" font-weight="720" >Head/nut/washer outlines are schematic; assembly dimensions and full design approval absent.</text>
+<rect x="1610.00" y="1399.00" width="638.00" height="101.00" rx="0" fill="#123e4c" stroke="#2b6b70" stroke-width="1.8"/>
+<text x="1630.00" y="1434.00" font-size="19" fill="#f7fff9" font-family="Arial,Helvetica,sans-serif" font-weight="890" >DÈLGHEM / ST-02</text>
+<text x="1630.00" y="1467.00" font-size="14" fill="#ffe0b5" font-family="Arial,Helvetica,sans-serif" font-weight="750" >PRELIMINARY  |  NOT FOR CONSTRUCTION</text>
+</svg>

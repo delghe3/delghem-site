@@ -177,3 +177,166 @@
 .materials-shell-row strong{color:#164e5c;font-size:12px}
 .materials-shell-row b{font:900 14px ui-monospace,monospace;color:#147f75;text-align:right}
 @media(max-width:650px){.materials-shell-panel{padding:13px}.materials-shell-row{grid-template-columns:1fr;gap:3px}.materials-shell-row b{text-align:left}}
+/* D2 native drawing showcase / 26 Oct 2026, version 4.
+   The full model-derived vector sheets must remain high resolution. */
+.production-dossier-grid--extended{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ gap:34px!important;
+}
+.production-dossier-grid--extended .production-dossier{
+ padding:clamp(18px,3vw,39px)!important;
+ border-top-width:6px;
+ box-shadow:0 28px 60px #04233144;
+}
+.production-dossier-cover{
+ display:grid;grid-template-columns:minmax(250px,1fr) minmax(260px,.9fr);
+ align-items:start;gap:20px 36px;
+ margin:8px 0 20px
+}
+.production-dossier-cover h3{
+ font-size:clamp(28px,3.9vw,57px)!important;
+ line-height:1.08!important;max-width:14ch;
+}
+.production-dossier-cover p{
+ font-size:14px!important;line-height:1.8!important;min-height:0!important;
+ margin:14px 0 0!important
+}
+.d2-drawing-source-tag{
+ grid-column:1/-1;
+ font:850 11px ui-monospace,SFMono-Regular,monospace;
+ color:#1e6b75;
+ background:linear-gradient(90deg,#e1f4ed,#fff);
+ border-left:3px solid #3ac29e;
+ padding:12px 16px;
+ letter-spacing:.025em
+}
+.production-dossier--steel .d2-drawing-source-tag{
+ border-left-color:#d89865;color:#8b603e;
+ background:linear-gradient(90deg,#fff1e6,#fff)
+}
+.d2-techdrawings-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:7px 0 26px}
+.d2-techdrawings-meta>span{
+ display:flex;align-items:center;gap:13px;
+ border:1px solid #83c0b3;background:#123a47;
+ padding:16px 19px;border-radius:9px;color:#c9eee3;
+ font:800 10px ui-monospace,SFMono-Regular,monospace
+}
+.d2-techdrawings-meta strong{
+ font-size:clamp(20px,2.4vw,31px);font-variant-numeric:tabular-nums;
+ letter-spacing:-.04em;color:#96f4cf
+}
+.d2-drawing-tabs{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:7px;margin:12px 0 10px;background:#d5e8df;
+ border:1px solid #b4cfc4;padding:6px;border-radius:9px
+}
+.d2-drawing-tabs button{
+ min-height:50px;
+ border:1px solid transparent;border-radius:6px;
+ background:#e9f2ec;color:#255966;
+ font:900 clamp(10px,1.2vw,14px) ui-monospace,SFMono-Regular,monospace;
+ padding:12px;cursor:pointer;transition:background .18s ease;
+}
+.d2-drawing-tabs button[aria-pressed="true"]{
+ background:#0c4e57;color:white;border-color:#266d72;
+ box-shadow:0 5px 15px #07505a29
+}
+.d2-drawing-tabs button:hover:not([aria-pressed="true"]){background:#c5e6d7}
+.production-dossier-sheet.d2-drawing-viewer{
+ padding:12px;border:1px solid #94bcb2;border-radius:10px;
+ background:linear-gradient(155deg,#fff,#f0f8f3);
+ box-shadow:0 28px 52px #15405b23
+}
+.d2-drawing-viewer>img{
+ width:100%!important;
+ height:auto!important;
+ max-height:none!important;
+ aspect-ratio:2300/1550!important;
+ object-fit:contain!important;
+ display:block!important;
+ background:#f6fbf8!important;
+ border:1px solid #c6dad1!important
+}
+.d2-drawing-viewer>span{
+ display:flex;align-items:center;justify-content:space-between;gap:15px;
+ font-size:clamp(10px,1vw,14px);
+ padding:14px 21px!important;
+ position:absolute;bottom:21px;left:21px;right:21px
+}
+.d2-drawing-viewer>span>b{font:850 12px ui-monospace,monospace;white-space:nowrap}
+.d2-drawing-proofline{
+ display:flex;gap:8px;flex-wrap:wrap;margin-top:18px
+}
+.d2-drawing-proofline span{
+ background:#e7f5eb;border:1px solid #bdd8ca;color:#235d63;
+ border-radius:5px;padding:11px 16px;
+ font:850 11px ui-monospace,SFMono-Regular,monospace
+}
+.d2-drawing-proofline span:first-child{background:#d8eee5}
+.d2-kratos-drawing-evidence{
+ display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;
+ padding:clamp(25px,4vw,52px);
+ border:1px solid #4b999b;border-radius:16px;
+ margin:28px 0 32px;
+ background:
+ radial-gradient(circle at 87% 0,#9fe9b019,transparent 48%),
+ linear-gradient(115deg,#082d3c,#174e56);
+ box-shadow:0 25px 65px #001d2936
+}
+.d2-kratos-evidence-copy>span{
+ font:850 12px ui-monospace,monospace;color:#a1f8d0;
+ letter-spacing:.06em
+}
+.d2-kratos-evidence-copy h3{
+ font-size:clamp(27px,3.2vw,49px);
+ line-height:1.1;letter-spacing:-.052em;
+ color:#f7fff7;margin:13px 0
+}
+.d2-kratos-evidence-copy p{
+ line-height:1.78;color:#d1ede5;font-size:13px
+}
+.d2-kratos-evidence-metrics{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}
+.d2-kratos-evidence-metrics span{display:flex;flex-direction:column;gap:6px;
+ padding:13px;background:#17606a;border:1px solid #76b9ac4f;
+ border-radius:7px;font:750 10px ui-monospace,monospace;color:#b4e6db}
+.d2-kratos-evidence-metrics strong{font-size:26px;color:#80f0d1}
+.d2-kratos-evidence-copy>a{display:inline-flex;max-width:100%;
+ background:#c7f5da;padding:15px 19px;
+ color:#124f5d!important;font-weight:900;font-size:12px;
+ text-decoration:none;border-radius:6px}
+.d2-kratos-evidence-copy small{display:block;margin-top:12px;color:#a6d3d1;line-height:1.6}
+.d2-kratos-evidence-preview{
+ padding:7px;background:white;border:1px solid #72ae9b;border-radius:10px;
+ box-shadow:0 19px 42px #001d2b6a
+}
+.d2-kratos-evidence-preview img{
+ display:block;width:100%;height:auto;
+ aspect-ratio:2300/1550;object-fit:contain
+}
+.d2-drawing-tabs button:focus-visible,.d2-kratos-drawing-evidence a:focus-visible{
+ outline:3px solid #ffb36c;outline-offset:3px
+}
+@media(max-width:800px){
+ .production-dossier-cover{grid-template-columns:1fr}
+ .production-dossier-cover h3{max-width:none;margin-bottom:0}
+ .production-dossier-cover p{margin-top:0!important}
+ .d2-kratos-drawing-evidence{grid-template-columns:1fr}
+ .d2-techdrawings-meta{grid-template-columns:1fr}
+ .d2-drawing-proofline span{font-size:10px;padding:9px}
+}
+@media(max-width:650px){
+ .production-dossier-grid--extended{gap:16px!important}
+ .d2-drawing-tabs button{min-height:55px;font-size:9px;padding:10px 5px}
+ .d2-drawing-viewer>span{
+  left:15px!important;right:15px!important;bottom:15px!important;
+  padding:8px!important;font-size:9px!important
+ }
+ .d2-drawing-viewer>span>b{font-size:9px}
+ .d2-drawing-proofline span{font-size:8px;padding:7px}
+ .production-dossier-cover p{font-size:12px!important}
+ .d2-kratos-drawing-evidence{padding:17px}
+}
+@media(prefers-reduced-motion:reduce){
+ .d2-drawing-tabs button{transition:none}
+}
