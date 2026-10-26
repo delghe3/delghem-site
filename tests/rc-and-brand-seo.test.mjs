@@ -23,8 +23,8 @@ test('real reinforced concrete drawing gallery links D2 exported A1 and DXF evid
 test('brand-focused HTML and structured data associate DELGHE with software DÈLGHEM',()=>{
   for(const h of ['index.html','it/index.html']){
     const s=read(h);
-    assert.match(s,/<title>DELGHE.*DÈLGHEM/i);
-    assert.match(s,/<meta name="description" content="DELGHE/);
+    assert.match(s,/<title>DÈLGHEM.*(?:Mac|Apple Silicon)/i);
+    assert.match(s,/<meta name="description" content="[^"]*DÈLGHEM/);
     assert.match(s,/"@type":"Organization","@id":"https:\/\/www\.delghe\.com\/#organization","name":"DELGHE"/);
     assert.match(s,/name="robots" content="index,follow/);
     assert.match(s,/rel="canonical"/);

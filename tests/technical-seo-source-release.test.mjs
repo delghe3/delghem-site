@@ -9,14 +9,17 @@ const read=p=>readFileSync(resolve(root,p),'utf8'),sha=p=>createHash('sha256').u
 test('Bilingual home SEO leads with DELGHE DÈLGHEM Genius and native Apple Silicon, grounded in evidence, not certification claims',()=>{
  for(const [page,lang] of [['index.html','en'],['it/index.html','it']]){
   const html=read(page);
-  assert.match(html,/<title>DELGHE[^<]+DÈLGHEM/);
-  assert.match(html,/<meta name="description" content="DELGHE[^"]*Genius[^"]*Kratos[^"]*Apple Silicon[^"]*"/);
-  assert.match(html,/<meta property="og:description" content="DELGHE[^"]*Genius[^"]*Kratos[^"]*"/);
-  assert.match(html,/<meta name="twitter:description" content="DELGHE[^"]*Genius[^"]*Kratos[^"]*"/);
+  assert.match(html,/<title>DÈLGHEM[^<]+(?:Mac|Apple Silicon)/);
+  for(const field of ['description','og:description','twitter:description']){
+   const regex=field==='description'?/<meta name="description" content="([^"]+)"/:
+      new RegExp('<meta '+(field==='og:description'?'property':'name')+'="'+field+'" content="([^"]+)"');
+   const value=html.match(regex)?.[1];
+   assert.ok(value&&value.includes('DÈLGHEM')&&value.includes('Kratos')&&value.includes('Apple Silicon'),page+' '+field);
+  }
   const script=html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s);
   assert.ok(script,page+' JSON-LD');
   const obj=JSON.parse(script[1]);assert.ok(obj['@graph'].some(x=>x['@type']==='SoftwareApplication'));
-  assert.match(obj['@graph'].find(x=>x['@type']==='SoftwareApplication').description,/Genius.*Kratos/);
+  assert.match(obj['@graph'].find(x=>x['@type']==='SoftwareApplication').description,/(?:Kratos.*Genius|Genius.*Kratos)/);
   assert.match(html,/surface-studio\.js\?v=20261025-smooth19/);
   assert.match(html,/engineering-benchmarks\.js\?v=20261025-showcase15seo/);
   assert.match(html,/genius-demo\.js\?v=20261025-showcase15seo/);

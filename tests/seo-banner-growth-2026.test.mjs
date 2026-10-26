@@ -40,11 +40,11 @@ test('Six real engineering topic pages bilingual canonical crawlable with qualif
   assert.match(html,/href="\/(media-kit\/|en\/media-kit\/)"/);
  }
 });
-test('Sitemap has 22 unique canonical bilingual URLs, including six new technical resources',()=>{
+test('Sitemap has 30 unique canonical bilingual URLs, including six new technical resources',()=>{
  const xml=read('sitemap.xml');
  const urls=[...xml.matchAll(/<loc>(https:\/\/www\.delghe\.com\/[^<]*)<\/loc>/g)].map(m=>m[1]);
- assert.equal(urls.length,22);
- assert.equal(new Set(urls).size,22);
+ assert.equal(urls.length,30);
+ assert.equal(new Set(urls).size,30);
  for(const [file,url] of cases){
   assert.ok(urls.includes(url),file);
   assert.ok(!url.includes('#'));

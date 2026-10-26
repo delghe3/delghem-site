@@ -1,0 +1,46 @@
+/* A compact self-contained stylesheet for bilingual search-led engineering pages.
+   No JS, no render-blocking external fonts or trackers. */
+:root{color-scheme:light;--ink:#163d4c;--green:#167d78;--white:#fcfdfa;--muted:#4d6f75;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);line-height:1.7}
+a{color:#086f72;text-underline-offset:3px}
+a:focus-visible,summary:focus-visible{outline:3px solid #e69955;outline-offset:3px}
+.skip-link{position:absolute;top:-100px;background:#f3fff8;padding:8px 15px;z-index:30}
+.skip-link:focus{top:3px}
+.seo-header{padding:20px max(22px,calc((100vw - 1200px)/2));display:flex;align-items:center;justify-content:space-between;gap:19px;flex-wrap:wrap;background:#123c4b;color:white;border-bottom:1px solid #4b9f8a}
+.seo-header a{color:#eafff5;text-decoration:none}
+.seo-header .brand{font-size:24px;font-weight:900;letter-spacing:-.04em}
+.seo-header .brand span{font-size:11px;font-weight:700;letter-spacing:.04em;color:#89e7c5}
+.seo-header nav{display:flex;align-items:center;gap:21px;font-size:12px;font-weight:750}
+.seo-header nav .contact{background:#c8f7de;color:#175362;padding:9px 12px;border-radius:5px}
+.seo-main{max-width:1250px;margin:auto;padding:0 24px 45px}
+.seo-hero{display:grid;grid-template-columns:1fr .94fr;align-items:center;gap:34px;padding:clamp(52px,6vw,92px) 0 30px}
+.eyebrow{font-size:11px;color:#148976;letter-spacing:.11em;font-weight:900}
+.seo-hero h1{font-size:clamp(37px,4.8vw,66px);letter-spacing:-.058em;line-height:1.06;margin:21px 0}
+.seo-hero .lead{font-size:16px;line-height:1.84;color:#456772;max-width:60ch}
+.primary-action{display:inline-block;margin:23px 0 0;background:#14505a;color:#f7fff9;font-size:13px;font-weight:850;padding:14px 20px;text-decoration:none;border-radius:6px}
+.primary-action:hover,.seo-header .contact:hover{background:#1c817d;color:white}
+.seo-hero figure{min-width:0;background:#e4f1e9;border:1px solid #afcec6;padding:9px;margin:0;border-radius:11px;box-shadow:0 20px 36px #21495a26}
+.seo-hero img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:contain;background:white}
+.seo-hero figcaption{font-size:11px;line-height:1.6;padding:10px;color:#4c6970}
+.seo-numbers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:21px 0 30px;border-bottom:1px solid #c6dad3}
+.seo-numbers span{display:grid;place-content:center;min-height:78px;background:#eaf6ef;border:1px solid #b9ddd0;border-radius:7px;font-size:16px;font-weight:850;text-align:center;padding:14px}
+.seo-content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 42px}
+.seo-section{padding:37px 0 33px;border-bottom:1px solid #d5e3dc;max-width:620px}
+.seo-section h2{font-size:clamp(26px,3vw,39px);line-height:1.19;letter-spacing:-.044em;margin:0 0 18px;color:#14475a}
+.seo-section p{font-size:15px;line-height:1.87;color:#526f75}
+.seo-questions{grid-column:1/-1;max-width:none}
+.seo-questions details{padding:15px 0;border-bottom:1px solid #d0e0d6}
+.seo-questions summary{font-weight:850;font-size:15px;cursor:pointer;color:#174e5d}
+.seo-questions details p{font-size:14px;margin:8px 0;color:#527277}
+.seo-related{padding:27px 31px;margin:35px 0 20px;background:#143f4e;color:white;border-radius:9px}
+.seo-related h2{font-size:22px;margin:4px 0 15px;color:white;letter-spacing:-.025em}
+.seo-related>div{display:flex;flex-wrap:wrap;gap:10px}
+.seo-related a{display:inline-flex;padding:12px 16px;background:#d8f7e7;border-radius:5px;color:#134b57;font-weight:800;text-decoration:none;font-size:13px}
+.seo-related a:hover{background:#9ceac9}
+.seo-disclaimer{font-size:11px;padding:15px 19px;border-left:4px solid #c88a5d;background:#fff7ee;line-height:1.7;color:#79624e}
+.seo-footer{padding:27px max(24px,calc((100vw - 1200px)/2));background:#102c38;color:#cae6e2;font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.seo-footer a{color:#a8eed2}
+@media(max-width:760px){.seo-hero,.seo-content{grid-template-columns:1fr}.seo-hero{padding-top:45px}.seo-numbers{grid-template-columns:repeat(2,minmax(0,1fr))}.seo-main{padding-inline:14px}.seo-related{padding:22px}.seo-header{padding-inline:17px}.seo-header .brand{font-size:20px}.seo-header nav{gap:11px}.seo-section{padding:27px 0}.seo-hero img{max-height:390px}.seo-hero h1{margin-block:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

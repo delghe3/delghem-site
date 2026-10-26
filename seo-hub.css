@@ -1,0 +1,16 @@
+/* Crawlable, bilingual high-value internal library. No layout-shifting JS. */
+.seo-documentation-hub{padding:clamp(64px,8vw,106px) 22px;background:linear-gradient(125deg,#e4f4ea,#f8fbf5 68%,#e5f3ed);border-top:1px solid #b4d5c6}
+.seo-documentation-hub-inner{max-width:1370px;margin:0 auto}
+.seo-documentation-eyebrow{font:850 11px ui-monospace,SFMono-Regular,monospace;color:#147f76;letter-spacing:.11em}
+.seo-documentation-hub h2{max-width:850px;margin:18px 0 15px;font-size:clamp(35px,4.2vw,66px);line-height:1.09;letter-spacing:-.054em;color:#163e4f!important}
+.seo-documentation-hub-inner>p{max-width:880px;font-size:14px;line-height:1.85;color:#4b7176!important}
+.seo-documentation-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:30px}
+.seo-documentation-cards article{padding:25px;border:1px solid #a6cbbd;border-top:4px solid #2bb492;border-radius:10px;background:#fbfffc;box-shadow:0 18px 27px #103c4514;min-width:0}
+.seo-documentation-cards article:nth-child(2){border-top-color:#dc9d6d}
+.seo-documentation-cards article:nth-child(3){border-top-color:#58a7bc}
+.seo-documentation-cards h3{margin:0 0 15px;font-size:clamp(18px,2vw,26px);line-height:1.25;letter-spacing:-.035em}
+.seo-documentation-cards a{color:#134b5e!important;text-decoration:none!important}
+.seo-documentation-cards a:hover{color:#0c8b86!important;text-decoration:underline!important}
+.seo-documentation-cards p{font-size:12px;line-height:1.7;color:#56757b!important;margin:0}
+.seo-documentation-hub a:focus-visible{outline:3px solid #dc9256;outline-offset:4px}
+@media(max-width:850px){.seo-documentation-cards{grid-template-columns:1fr;gap:12px}.seo-documentation-hub{padding:55px 14px}.seo-documentation-cards article{padding:20px}}

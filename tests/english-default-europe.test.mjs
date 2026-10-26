@@ -31,7 +31,7 @@ test('legacy /en/ does not compete for canonical indexing',()=>{
 });
 test('whole-site SEO pairs reciprocate with English x-default and no Italian root duplicates',()=>{
  const xml=read('sitemap.xml');
- assert.equal((xml.match(/<loc>/g)||[]).length,22);
+ assert.equal((xml.match(/<loc>/g)||[]).length,30);
  assert.ok(xml.includes('<loc>'+englishUrl+'</loc>'));
  assert.ok(xml.includes('<loc>'+italianUrl+'</loc>'));
  assert.doesNotMatch(xml,/<loc>https:\/\/www.delghe.com\/en\/<\/loc>/);
