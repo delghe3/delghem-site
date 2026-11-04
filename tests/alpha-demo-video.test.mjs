@@ -12,7 +12,7 @@ for(const [file,language] of [['index.html','en'],['it/index.html','it']]){
   const hero=html.indexOf('class="hero chapter"');
   const section=html.indexOf('id="alpha-demo"');
   const next=html.indexOf('id="silicon-performance"');
-  assert.ok(hero>=0&&section>hero&&next>section,'Video follows presentation and precedes rest of site');
+  assert.ok(section>=0&&hero>section&&next>hero,'Video opens before Structural analysis on your Mac');
   assert.match(html,new RegExp('<video[^>]+controls[^>]+poster="[^"]*'+poster.replaceAll('/','\\/')+'"'));
   assert.match(html,/preload="none"/);
   assert.match(html,/playsinline/);

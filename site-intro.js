@@ -41,6 +41,8 @@ if(root){
   // Only after five full seconds of tagline visibility may the exit begin.
   // Removal happens once the subsequent 390ms closing transition ends.
   root.remove();
+  // The hero video is allowed to load and play only after the splash exits.
+  document.dispatchEvent(new CustomEvent('delghem:intro-complete'));
  }
  function handleMotion(event){
   if(event.matches)cleanUp();

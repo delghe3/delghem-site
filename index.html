@@ -48,6 +48,7 @@
 <link rel="stylesheet" href="./technical-dossier.css?v=20261026-dossier4">
 <link rel="stylesheet" href="./seo-hub.css?v=20261026-seo2">
 <link rel="stylesheet" href="./alpha-demo-video.css?v=20261104-alpha-demo">
+<script defer src="./alpha-demo-video.js?v=20261104-autoplay-2x"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"DÈLGHEM Alpha — Seven-minute 3D Demonstration","description":"A seven-minute demonstration of the DÈLGHEM Alpha structural modelling workspace and development-build results.","thumbnailUrl":"https://www.delghe.com/assets/video/delghem-alpha-demo-cover.webp","contentUrl":"https://www.delghe.com/assets/video/delghem-alpha-demo-3d.mp4","uploadDate":"2026-11-04","duration":"PT7M","inLanguage":"en","isFamilyFriendly":true,"publisher":{"@id":"https://www.delghe.com/#organization"}}</script>
 </head>
 <body>
@@ -103,6 +104,8 @@
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden><a href="#genius">Genius</a><a href="#app">Modelling</a><a href="#fem-lab">FEM Laboratory</a><a href="#engineering-benchmarks">Soil & Dampers</a><a href="#native">Native Mac</a><a href="#gallery">Real Screenshots</a><a href="#release">vAlpha1</a><a href="#project">Contact</a></nav>
 
   <main id="main">
+
+
   <section class="support-banner support-banner-top" id="support-top" aria-label="Support DÈLGHEM with PayPal">
   <div class="support-banner-inner">
     <div class="support-banner-copy">
@@ -118,6 +121,32 @@
     </div>
   <div class="visitor-counter visitor-counter--top" role="status" aria-live="polite"><span class="visitor-counter__eyebrow">VISITORS</span><strong class="visitor-counter__number" id="visitor-counter-total">122,300</strong></div>
   </div>
+</section>
+
+<section class="alpha-demo-section" id="alpha-demo" aria-labelledby="alpha-demo-title">
+ <div class="alpha-demo-inner">
+  <div class="alpha-demo-intro">
+   <div class="alpha-demo-heading">
+    <p class="alpha-demo-eyebrow"><span aria-hidden="true"></span> DÈLGHEM ALPHA / WATCH THE SOFTWARE IN ACTION</p>
+    <h2 id="alpha-demo-title">Watch DÈLGHEM Come to Life.<em> From the First Click to FEM Results.</em></h2>
+    <p>Watch genuine mouse-driven 3D modelling, structural geometry taking shape and documented FEM results. Seven minutes of engineering, shown at 2× speed in just three and a half minutes.</p>
+   </div>
+   <div class="alpha-demo-facts" aria-label="Video details">
+    <span><strong>07:00</strong> Original video</span>
+    <span><strong>03:30</strong> At 2× speed</span>
+    <span><strong>1080p</strong> Full HD</span>
+   </div>
+  </div>
+  <figure class="alpha-demo-frame">
+   <video id="alpha-demo-video" autoplay muted playsinline loop controls preload="none" poster="/assets/video/delghem-alpha-demo-cover.webp" width="1920" height="1080" aria-label="DÈLGHEM Alpha: seven-minute three-dimensional structural modelling demonstration">
+    <source data-src="/assets/video/delghem-alpha-demo-3d.mp4" type="video/mp4">
+    Your browser does not support HTML5 video. <a href="/assets/video/delghem-alpha-demo-3d.mp4">Open the demonstration video.</a>
+   </video>
+   <button type="button" class="alpha-demo-play-fallback" id="alpha-demo-play-fallback" hidden>Play demonstration at 2×</button>
+   <figcaption><span><span class="alpha-demo-live-dot" aria-hidden="true"></span> DÈLGHEM ALPHA / 3D MODELLING DEMO</span><a href="/assets/video/delghem-alpha-demo-3d.mp4" target="_blank" rel="noopener noreferrer">Open video in a new tab <span aria-hidden="true">↗</span></a></figcaption>
+  </figure>
+  <p class="alpha-demo-disclaimer">Real mouse-driven modelling in DÈLGHEM Alpha. Advanced structural results were calculated separately with Kratos and numerical post-processing; this is not a fully integrated, code-certified engineering workflow.</p>
+ </div>
 </section>
 
   <section class="hero chapter" id="home" aria-labelledby="hero-title" data-chapter="intro">
@@ -156,30 +185,7 @@
       <div class="hero-bottom"><a href="#app" class="scroll-prompt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 4v16m-5-5 5 5 5-5"/></svg><span data-i18n="scrollDiscover">Scroll. Explore the project.</span></a><span class="development-note"><span aria-hidden="true"></span><span data-i18n="development">Project in development</span></span></div>
     </section>
 
-<section class="alpha-demo-section" id="alpha-demo" aria-labelledby="alpha-demo-title">
- <div class="alpha-demo-inner">
-  <div class="alpha-demo-intro">
-   <div class="alpha-demo-heading">
-    <p class="alpha-demo-eyebrow"><span aria-hidden="true"></span> DÈLGHEM ALPHA / OFFICIAL DEMONSTRATION</p>
-    <h2 id="alpha-demo-title">From the first element.<em> To the 3D model.</em></h2>
-    <p>Watch the seven-minute DÈLGHEM Alpha demonstration: structural modelling in the 3D workspace, interface operations and a guided tour of the results shown in the development build.</p>
-   </div>
-   <div class="alpha-demo-facts" aria-label="Video details">
-    <span><strong>07:00</strong> Duration</span>
-    <span><strong>1080p</strong> Full HD</span>
-    <span><strong>ALPHA</strong> Development build</span>
-   </div>
-  </div>
-  <figure class="alpha-demo-frame">
-   <video controls playsinline preload="none" poster="/assets/video/delghem-alpha-demo-cover.webp" width="1920" height="1080" aria-label="DÈLGHEM Alpha: seven-minute three-dimensional structural modelling demonstration">
-    <source src="/assets/video/delghem-alpha-demo-3d.mp4" type="video/mp4">
-    Your browser does not support HTML5 video. <a href="/assets/video/delghem-alpha-demo-3d.mp4">Open the demonstration video.</a>
-   </video>
-   <figcaption><span><span class="alpha-demo-live-dot" aria-hidden="true"></span> DÈLGHEM ALPHA / 3D MODELLING DEMO</span><a href="/assets/video/delghem-alpha-demo-3d.mp4" target="_blank" rel="noopener noreferrer">Open video in a new tab <span aria-hidden="true">↗</span></a></figcaption>
-  </figure>
-  <p class="alpha-demo-disclaimer">Development-stage demonstration. Features and numerical workflows shown are not a substitute for project-specific engineering verification.</p>
- </div>
-</section>
+
 
 <section class="silicon-benchmark-section chapter" id="silicon-performance" aria-labelledby="silicon-performance-title">
  <div class="silicon-benchmark-inner">

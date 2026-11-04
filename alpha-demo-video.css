@@ -52,3 +52,18 @@
 @media(prefers-reduced-motion:reduce){
  .alpha-demo-section *{scroll-behavior:auto}
 }
+
+
+/* Post-splash autoplay: the native control bar remains available to pause
+   the mute 2× stream. This fallback is shown only if autoplay is blocked. */
+.alpha-demo-frame{position:relative}
+.alpha-demo-play-fallback{
+ position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+ z-index:3;cursor:pointer;border:1px solid #9ae9e0;
+ border-radius:999px;padding:15px 25px;background:#0c3444ed;
+ box-shadow:0 8px 32px #0009;color:#fff;font-weight:800;font-size:15px;
+}
+.alpha-demo-play-fallback[hidden]{display:none}
+.alpha-demo-play-fallback:hover,.alpha-demo-play-fallback:focus-visible{
+ background:#11576c;outline:3px solid #9ae9e0;outline-offset:4px;
+}
