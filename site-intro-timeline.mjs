@@ -1,14 +1,13 @@
 /**
  * Native Mac DÈLGHEM opening sequence.
- * Seven unchanged left-anchored type-in stages precede one instantaneous
- * neon tagline. The line remains fully visible for five whole seconds
- * BEFORE the closing transition starts.
+ * Seven left-anchored type-in stages precede a brief neon tagline.
+ * The intro including its exit lasts exactly three seconds.
  */
 export const INTRO_WORD_STAGES=Object.freeze(['D','DE','DEL','DELG','DELGH','DELGHE','DELGHEM']);
-const INTRO_LETTER_INTERVAL_MS=455;
-export const INTRO_TAGLINE_REVEAL_MS=2930;
-export const INTRO_TAGLINE_HOLD_MS=5000;
-export const INTRO_EXIT_DURATION_MS=390;
+const INTRO_LETTER_INTERVAL_MS=290;
+export const INTRO_TAGLINE_REVEAL_MS=1850;
+export const INTRO_TAGLINE_HOLD_MS=850;
+export const INTRO_EXIT_DURATION_MS=300;
 export const INTRO_EXIT_START_MS=INTRO_TAGLINE_REVEAL_MS+INTRO_TAGLINE_HOLD_MS;
 export const INTRO_DURATION_MS=INTRO_EXIT_START_MS+INTRO_EXIT_DURATION_MS;
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));

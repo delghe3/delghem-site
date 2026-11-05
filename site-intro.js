@@ -1,12 +1,12 @@
-import {introAt,INTRO_DURATION_MS,INTRO_EXIT_START_MS,INTRO_TAGLINE_HOLD_MS} from './site-intro-timeline.mjs?v=20261025-neonhold';
+import {introAt,INTRO_DURATION_MS,INTRO_EXIT_START_MS,INTRO_TAGLINE_HOLD_MS} from './site-intro-timeline.mjs?v=20261105-three-second';
 
 /**
  * The DÈLGHEM homepage builds its name, ignites its neon tagline,
- * then holds it for five full seconds before the exit transition.
+ * then briefly holds it before the exit transition.
  * Coloured mesh cells are decorative engineering visual language only.
  * The side cards reference ACTUAL existing D2 / Kratos source imagery.
  * No browser APIs, external requests or persistence are needed beyond this
- * one deterministic timeline with a five-second tagline hold.
+ * one deterministic three-second timeline.
  */
 const root=document.getElementById('site-intro');
 if(root){
@@ -38,8 +38,7 @@ if(root){
   root.dataset.done='true';
   root.classList.add('is-dismissed');
   root.setAttribute('aria-hidden','true');
-  // Only after five full seconds of tagline visibility may the exit begin.
-  // Removal happens once the subsequent 390ms closing transition ends.
+  // The tagline hold ends at 2.70s; the 300ms exit completes at 3.00s.
   root.remove();
   // The hero video is allowed to load and play only after the splash exits.
   document.dispatchEvent(new CustomEvent('delghem:intro-complete'));

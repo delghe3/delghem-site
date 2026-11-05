@@ -6,34 +6,34 @@ import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 
-test('DELGHEM assembles normally, neon tagline pops in, waits five full seconds, then exits smoothly',async()=>{
+test('DELGHEM assembles word and tagline then exits in exactly three seconds',async()=>{
  const timeline=await import('../site-intro-timeline.mjs');
- assert.equal(timeline.INTRO_TAGLINE_REVEAL_MS,2930);
- assert.equal(timeline.INTRO_TAGLINE_HOLD_MS,5000);
- assert.equal(timeline.INTRO_EXIT_START_MS,7930);
- assert.equal(timeline.INTRO_DURATION_MS,8320);
+ assert.equal(timeline.INTRO_TAGLINE_REVEAL_MS,1850);
+ assert.equal(timeline.INTRO_TAGLINE_HOLD_MS,850);
+ assert.equal(timeline.INTRO_EXIT_START_MS,2700);
+ assert.equal(timeline.INTRO_DURATION_MS,3000);
  assert.deepEqual(timeline.INTRO_WORD_STAGES,['D','DE','DEL','DELG','DELGH','DELGHE','DELGHEM']);
  const at=ms=>timeline.introAt(ms);
  assert.equal(at(0).word,'D');
- assert.equal(at(500).word,'DE');
- assert.equal(at(1000).word,'DEL');
- assert.equal(at(1500).word,'DELG');
- assert.equal(at(2000).word,'DELGH');
- assert.equal(at(2500).word,'DELGHE');
- assert.equal(at(3000).word,'DELGHEM');
- assert.equal(at(3500).word,'DELGHEM');
+ assert.equal(at(300).word,'DE');
+ assert.equal(at(600).word,'DEL');
+ assert.equal(at(900).word,'DELG');
+ assert.equal(at(1200).word,'DELGH');
+ assert.equal(at(1500).word,'DELGHE');
+ assert.equal(at(1800).word,'DELGHEM');
+ assert.equal(at(2500).word,'DELGHEM');
  assert.equal(at(4999).word,'DELGHEM');
- assert.ok(!at(4999).done);
- assert.ok(!at(2929).tagline);
- assert.ok(at(2930).tagline);
- assert.ok(at(3000).tagline);
- assert.ok(!at(7929).exit);
- assert.ok(at(7930).exit);
- assert.ok(!at(8319).done);
- assert.equal(at(8320).done,true);
- assert.equal(at(9000).done,true);
+ assert.ok(!at(2999).done);
+ assert.ok(!at(1849).tagline);
+ assert.ok(at(1850).tagline);
+ assert.ok(at(2000).tagline);
+ assert.ok(!at(2699).exit);
+ assert.ok(at(2700).exit);
+ assert.ok(!at(2999).done);
+ assert.equal(at(3000).done,true);
+ assert.equal(at(4000).done,true);
  assert.ok(!at(1000).tagline);
- for(let ms=0;ms<=8320;ms+=100)
+ for(let ms=0;ms<=3000;ms+=100)
   assert.ok(at(ms).progress>=0&&at(ms).progress<=1&&at(ms).progress>=at(Math.max(0,ms-100)).progress);
 });
 
@@ -52,8 +52,8 @@ test('Two homepages deliver animated splash before the rest of the site with rea
   assert.match(html,/id="site-intro-tagline"/);
   assert.match(html,/Superior performance through native Apple Silicon\./);
   assert.match(html,/aria-label="DELGHEM"/);
-  assert.match(html,/site-intro\.js\?v=20261025-neonhold/);
-  assert.match(html,/intro-neon\.css\?v=20261025-neonhold/);
+  assert.match(html,/site-intro\.js\?v=20261105-three-second/);
+  assert.match(html,/intro-neon\.css\?v=20261105-three-second/);
   assert.match(html,/style\.css\?v=20261025-showcase15seo/);
   assert.match(html,/kratos.*surface|surface-skewed-double-opening-slab\.webp/);
   assert.ok(html.includes(prefix+'assets/fem-lab/gallery/surface-skewed-double-opening-slab.webp'));
@@ -89,7 +89,7 @@ test('Splash animation has no dependency on external APIs, uses one RAF, cleans 
  assert.doesNotMatch(js,/fetch\(|localStorage|sessionStorage|network|WebSocket|new Image\(/i);
 });
 
-test('Neon subtitle is revealed abruptly, pulses with a glowing halo and stays five seconds before transition',()=>{
+test('Neon subtitle is revealed abruptly, pulses with a glowing halo and stays 850ms before transition',()=>{
  const css=read('intro-neon.css');
  const js=read('site-intro.js');
  for(const [pattern,message] of [
@@ -97,10 +97,10 @@ test('Neon subtitle is revealed abruptly, pulses with a glowing halo and stays f
   [/\.site-intro\[data-phase="complete"\] \.site-intro__tagline/s,'instant subtitle display'],
   [/@keyframes introTaglineNeonStrike/,'neon ignition keyframes'],
   [/text-shadow:/,'neon text halo'],
-  [/introFailsafe\s+9\.3s/,'extended failsafe'],
+  [/introFailsafe\s+3\.6s/,'extended failsafe'],
   [/@media\s*\(prefers-reduced-motion:\s*reduce\)/,'reduced-motion support']
  ])assert.match(css,pattern,message);
- assert.match(js,/site-intro-timeline\.mjs\?v=20261025-neonhold/);
+ assert.match(js,/site-intro-timeline\.mjs\?v=20261105-three-second/);
  assert.match(js,/INTRO_TAGLINE_HOLD_MS/);
  for(const f of ['index.html','it/index.html'])assert.match(read(f),/class="intro-label-hold"/);
 });
