@@ -11,8 +11,8 @@
   let activated = false;
 
   function rate() {
-    video.defaultPlaybackRate = 2;
-    video.playbackRate = 2;
+    video.defaultPlaybackRate = 1;
+    video.playbackRate = 1;
   }
   function requestPlayback() {
     rate();
